@@ -88,9 +88,17 @@ h1 {
     border-right-width: 1px;
   }
 
-  &:hover {
-    background-color: #00008b;
-    color: #fff;
+  @media screen and (width > 480px) {
+    &:hover {
+      background-color: #00008b;
+      color: #fff;
+    }
+  }
+  @media screen and (width <= 480px) {
+    &:active {
+      background-color: #00008b;
+      color: #fff;
+    }
   }
 }
 
