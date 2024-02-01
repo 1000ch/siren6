@@ -3,5 +3,9 @@
     font-size: 1.23rem;
   }
 
-  
+  #result {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
