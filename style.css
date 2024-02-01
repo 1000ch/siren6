@@ -1,0 +1,19 @@
+
+#app {
+  margin: 0 8px;
+}
+
+#item-group {
+  display: flex;
+}
+
+#item-group > div:first-child {
+  margin-left: 0;
+}
+
+#item-group > div {
+  margin-left: 10px;
+}
+
+
+
