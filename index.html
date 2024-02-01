@@ -25,6 +25,16 @@
       </template>
       <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
     </div>
+    <div>
+      <table>
+        <tr>
+          <th>名前</th><th>買値</th><th>売値</th>
+        </tr>
+        <tr v-for="item in itemList">
+          <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <script src="./dist/main.js"></script>

@@ -36,14 +36,14 @@ const vm = {
         },
         findItemList() {
             switch (this.itemType) {
-                case 'kusa': findKusaList(this.nedan, this.nedanType); break;
-                case 'tue': /*TODO*/; break;
-                case 'makimono': /*TODO*/; break;
-                case 'tubo': /*TODO*/; break;
-                case 'okou': /*TODO*/; break;
-                case 'udewa': /*TODO*/; break;
-                case 'buki': /*TODO*/; break;
-                case 'tate': /*TODO*/; break;
+                case 'kusa': return findKusaList(this.nedan, this.nedanType);
+                case 'tue': return /*TODO*/;
+                case 'makimono': return /*TODO*/;
+                case 'tubo': return /*TODO*/;
+                case 'okou': return /*TODO*/;
+                case 'udewa': return /*TODO*/;
+                case 'buki': return /*TODO*/;
+                case 'tate': return /*TODO*/;
                 default: throw new Error(`不正なitemType: ${this.itemType}`);
             }
         },
