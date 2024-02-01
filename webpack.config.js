@@ -8,6 +8,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname),
+    },
+    hot: true,
+    open: true,
+  },
   module: {
     rules: [
       {
