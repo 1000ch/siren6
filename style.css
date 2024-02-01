@@ -18,11 +18,11 @@
 #input-nedan-container {
   display: flex;
 
-  > div:first-child {
+  > *:first-child {
     margin-left: 0;
   }
 
-  > div {
+  > * {
     margin-left: 10px;
   }
 }
