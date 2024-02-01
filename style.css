@@ -13,6 +13,7 @@ input {
 }
 
 h1 {
+  margin: 16px 0;
   color: #8b4513;
 }
 
@@ -21,17 +22,26 @@ h1 {
 }
 
 .item-group {
-  margin-left: 2px;
+  display: flex;
+  min-width: 30px;
   padding: 2px 4px;
   border: 1px solid #00008b;
-  border-radius: 8px;
+  border-right-width: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   color: #000;
   background-color: #add8e6;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 
   &:first-of-type {
-    margin-left: 0;
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
   }
 
   &:hover {
