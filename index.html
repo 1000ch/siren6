@@ -13,12 +13,14 @@
     <div id="item-type-container">
       <template v-for="key in itemTypeKey">
         <div class="radio-btn item-type"
+             :class="{'selected': itemKey === key}"
              @click="onClickItemType(key)">{{itemTypeName[key]}}</div>
       </template>
     </div>
     <div id="input-nedan-container">
       <template v-for="key in nedanTypeKey">
         <div class="radio-btn nedan-type"
+             :class="{'selected': nedanKey === key}"
              @click="onClickNedanType(key)">{{nedanTypeName[key]}}</div>
       </template>
       <input type="number" id="input-nedan">

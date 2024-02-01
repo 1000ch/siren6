@@ -12,6 +12,8 @@ const vm = {
             },
             nedanTypeKey: ['kaine', 'urine'],
             nedanTypeName: {'kaine': '買値', 'urine': '売値'},
+            itemKey: 'kusa',
+            nedanKey: 'kaine',
         }
     },
     created() {
@@ -19,10 +21,10 @@ const vm = {
     },
     methods: {
         onClickItemType(key) {
-            console.log(key);
+            this.itemKey = key;
         },
         onClickNedanType(key) {
-            console.log(key);
+            this.nedanKey = key;
         }
     }
 };
