@@ -26,7 +26,10 @@
       <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
     </div>
     <div id="result">
-      <table>
+      <template v-if="itemList.length === 0">
+        該当なし😢
+      </template>
+      <table v-else>
         <tr>
           <th>名前</th><th>買値</th><th>売値</th>
         </tr>

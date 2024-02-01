@@ -133,7 +133,7 @@ table {
 }
 
 th, td {
-  width: 100px;
+  min-width: 80px;
   max-width: 200px;
   border: 1px solid #ccc;
   padding: 12px;
