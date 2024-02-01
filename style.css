@@ -61,17 +61,39 @@ h1 {
 #input-nedan-container {
   display: flex;
   margin-top: 8px;
+}
 
-  > *:first-child {
-    margin-left: 0;
+.nedan-type {
+  display: flex;
+  min-width: 30px;
+  padding: 2px 4px;
+  border: 1px solid #00008b;
+  border-right-width: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  background-color: #add8e6;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:first-of-type {
+    border-radius: 2px 0 0 2px;
   }
 
-  > * {
-    margin-left: 10px;
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
+  }
+
+  &:hover {
+    background-color: #00008b;
+    color: #fff;
   }
 }
 
 #input-nedan {
+  margin-left: 10px;
   width: 70px;
 }
 
