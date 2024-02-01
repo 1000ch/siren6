@@ -11,14 +11,10 @@
   <div id="app">
     <h1>シレン6 値段識別ツール(雑)v2</h1>
     <div id="item-group-container">
-      <div class="radio-btn item-group">草</div>
-      <div class="radio-btn item-group">杖</div>
-      <div class="radio-btn item-group">巻物</div>
-      <div class="radio-btn item-group">壺</div>
-      <div class="radio-btn item-group">お香</div>
-      <div class="radio-btn item-group">腕輪</div>
-      <div class="radio-btn item-group">武器</div>
-      <div class="radio-btn item-group">盾</div>
+      <template v-for="key in itemGroupKey">
+        <div class="radio-btn item-group"
+             @click="onClickItemGroup(key)">{{itemGroupName[key]}}</div>
+      </template>
     </div>
     <div id="input-nedan-container">
       <div class="radio-btn nedan-type">買値</div>
