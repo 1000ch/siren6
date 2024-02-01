@@ -16,10 +16,11 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
+            itemList: [],
         }
     },
     created() {
-        console.log(this.findItemList());
+        this.itemList = this.findItemList();
     },
     methods: {
         onClickItemType(type) {
@@ -27,11 +28,11 @@ const vm = {
         },
         onClickNedanType(type) {
             this.nedanType = type;
-            console.log(this.findItemList());
+            this.itemList = this.findItemList();
         },
         onBlurInputNedan() {
             this.nedan = Number(this.nedan);
-            console.log(this.findItemList());
+            this.itemList = this.findItemList();
         },
         findItemList() {
             switch (this.itemType) {
