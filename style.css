@@ -62,20 +62,24 @@ h1 {
 .item-type {
   border: 1px solid #00008b;
   background-color: #add8e6;
+  opacity: 0.5;
   border-right-width: 0;
   &.selected {
     background-color: #00008b;
+    opacity: 1;
     color: #fff;
   }
   @media screen and (min-width: 481px) {
     &:hover {
       background-color: #00008b;
+      opacity: 1;
       color: #fff;
     }
   }
   @media screen and (max-width: 480px) {
     &:active {
       background-color: #00008b;
+      opacity: 1;
       color: #fff;
     }
   }
@@ -89,20 +93,24 @@ h1 {
 .nedan-type {
   border: 1px solid #008000;
   background-color: #90ee90;
+  opacity: 0.5;
   border-right-width: 0;
   &.selected {
     background-color: #008000;
+    opacity: 1;
     color: #fff;
   }
   @media screen and (min-width: 481px) {
     &:hover {
       background-color: #008000;
+      opacity: 1;
       color: #fff;
     }
   }
   @media screen and (max-width: 480px) {
     &:active {
       background-color: #008000;
+      opacity: 1;
       color: #fff;
     }
   }
@@ -132,7 +140,7 @@ th, td {
 }
 
 th {
-  background-color: #f0f8ff;
+  background-color: #fff;
   color: #333;
   text-transform: uppercase;
   font-weight: bold;
