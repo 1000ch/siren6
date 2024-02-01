@@ -1,4 +1,6 @@
 
+const kusaList = [];
+
 function kusaListPush(name, kaine, urine) {
     kusaList.push({
         name: name,
@@ -6,8 +8,6 @@ function kusaListPush(name, kaine, urine) {
         urine: urine
     });
 }
-
-export const kusaList = [];
 
 kusaListPush('雑草', 10, 4);
 kusaListPush('薬草', 40, 10);
@@ -37,4 +37,9 @@ kusaListPush('くねくね草', 100, 40);
 kusaListPush('不幸の種', 400, 160);
 kusaListPush('超不幸の種', 2000, 800);
 
-
+export function findKusaList(nedan = 0, nedanType) {
+    if (nedan === 0) {
+        return kusaList;
+    }
+    return kusaList.filter(kusa => kusa[nedanType] === nedan);
+}

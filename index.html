@@ -11,19 +11,19 @@
   <div id="app">
     <h1>シレン6 値段識別ツール(雑)</h1>
     <div id="item-type-container">
-      <template v-for="key in itemTypeKey">
+      <template v-for="type in itemTypeList">
         <div class="radio-btn item-type"
-             :class="{'selected': itemKey === key}"
-             @click="onClickItemType(key)">{{itemTypeName[key]}}</div>
+             :class="{'selected': itemType === type}"
+             @click="onClickItemType(type)">{{itemTypeName[type]}}</div>
       </template>
     </div>
     <div id="input-nedan-container">
-      <template v-for="key in nedanTypeKey">
+      <template v-for="type in nedanTypeList">
         <div class="radio-btn nedan-type"
-             :class="{'selected': nedanKey === key}"
-             @click="onClickNedanType(key)">{{nedanTypeName[key]}}</div>
+             :class="{'selected': nedanType === type}"
+             @click="onClickNedanType(type)">{{nedanTypeName[type]}}</div>
       </template>
-      <input type="number" id="input-nedan">
+      <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
     </div>
   </div>
 

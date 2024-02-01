@@ -1,32 +1,51 @@
 import { createApp } from 'vue'
-import { kusaList } from './kusa';
+import { findKusaList } from './kusa';
 
 const vm = {
     data() {
         return {
-            itemTypeKey: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
+            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
             itemTypeName: {
                 kusa: '草', tue: '杖',
                 makimono: '巻物', tubo: '壺',
                 okou: 'お香', udewa: '腕輪',
                 buki: '武器', tate: '盾',
             },
-            nedanTypeKey: ['kaine', 'urine'],
+            nedanTypeList: ['kaine', 'urine'],
             nedanTypeName: {'kaine': '買値', 'urine': '売値'},
-            itemKey: 'kusa',
-            nedanKey: 'kaine',
+            itemType: 'kusa',
+            nedanType: 'kaine',
+            nedan: 0,
         }
     },
     created() {
-        console.log(kusaList);
+        console.log(this.findItemList());
     },
     methods: {
-        onClickItemType(key) {
-            this.itemKey = key;
+        onClickItemType(type) {
+            this.itemType = type;
         },
-        onClickNedanType(key) {
-            this.nedanKey = key;
-        }
+        onClickNedanType(type) {
+            this.nedanType = type;
+            console.log(this.findItemList());
+        },
+        onBlurInputNedan() {
+            this.nedan = Number(this.nedan);
+            console.log(this.findItemList());
+        },
+        findItemList() {
+            switch (this.itemType) {
+                case 'kusa': findKusaList(this.nedan, this.nedanType); break;
+                case 'tue': /*TODO*/; break;
+                case 'makimono': /*TODO*/; break;
+                case 'tubo': /*TODO*/; break;
+                case 'okou': /*TODO*/; break;
+                case 'udewa': /*TODO*/; break;
+                case 'buki': /*TODO*/; break;
+                case 'tate': /*TODO*/; break;
+                default: throw new Error(`不正なitemType: ${this.itemType}`);
+            }
+        },
     }
 };
 
