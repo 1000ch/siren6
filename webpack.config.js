@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development', // production
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: 'main.js'
   },
   devServer: {
