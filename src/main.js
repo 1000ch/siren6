@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { kusaList } from './kusa';
 
 const vm = {
     data() {
@@ -17,7 +18,7 @@ const vm = {
         }
     },
     created() {
-        // 仮
+        console.log(kusaList);
     },
     methods: {
         onClickItemType(key) {
