@@ -5,15 +5,28 @@
 
 #item-group {
   display: flex;
+
+  > div:first-child {
+    margin-left: 0;
+  }
+
+  > div {
+    margin-left: 10px;
+  }
 }
 
-#item-group > div:first-child {
-  margin-left: 0;
+#input-nedan-container {
+  display: flex;
+
+  > div:first-child {
+    margin-left: 0;
+  }
+
+  > div {
+    margin-left: 10px;
+  }
 }
 
-#item-group > div {
-  margin-left: 10px;
+#input-nedan {
+  width: 70px;
 }
-
-
-
