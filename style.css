@@ -16,20 +16,33 @@ h1 {
   color: #8b4513;
 }
 
-#item-group {
+#item-group-container {
   display: flex;
+}
 
-  > div:first-child {
+.item-group {
+  margin-left: 2px;
+  padding: 2px 4px;
+  border: 1px solid #00008b;
+  border-radius: 8px;
+  color: #000;
+  background-color: #add8e6;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:first-of-type {
     margin-left: 0;
   }
 
-  > div {
-    margin-left: 10px;
+  &:hover {
+    background-color: #00008b;
+    color: #fff;
   }
 }
 
 #input-nedan-container {
   display: flex;
+  margin-top: 8px;
 
   > *:first-child {
     margin-left: 0;
