@@ -36,6 +36,7 @@ kusaListPush('天使の種', 2000, 800);
 kusaListPush('くねくね草', 100, 40);
 kusaListPush('不幸の種', 400, 160);
 kusaListPush('超不幸の種', 2000, 800);
+kusaList.sort((a, b) => a.kaine - b.kaine);
 
 export function findKusaList(nedan = 0, nedanType) {
     if (nedan === 0) {

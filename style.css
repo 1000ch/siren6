@@ -113,3 +113,36 @@ h1 {
   width: 70px;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f8ff;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+tr:nth-child(odd) {
+  background-color: #e6f7ff;
+}
+tr:nth-child(even) {
+  background-color: #d6e6ff;
+}
+tr:hover {
+  background-color: #b3d9ff;
+}
+
+
+
