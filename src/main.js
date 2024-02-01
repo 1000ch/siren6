@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
 
-createApp({
+const vm = {
     data() {
         return {
             message: 'Hello Vue!'
         }
     }
-}).mount('#app');
+};
+
+createApp(vm).mount('#app');

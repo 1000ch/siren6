@@ -76,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm-bundler.js\");\n\n(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({\n  data: function data() {\n    return {\n      message: 'Hello Vue!'\n    };\n  }\n}).mount('#app');\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm-bundler.js\");\n\nvar vm = {\n  data: function data() {\n    return {\n      message: 'Hello Vue!'\n    };\n  }\n};\n(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(vm).mount('#app');\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ }),
 
