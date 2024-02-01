@@ -35,6 +35,7 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   user-select: none;
+  -webkit-touch-callout: none;
 
   &:first-of-type {
     border-radius: 2px 0 0 2px;
@@ -78,6 +79,7 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   user-select: none;
+  -webkit-touch-callout: none;
 
   &:first-of-type {
     border-radius: 2px 0 0 2px;
