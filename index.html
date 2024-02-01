@@ -10,10 +10,10 @@
 <body>
   <div id="app">
     <h1>シレン6 値段識別ツール(雑)</h1>
-    <div id="item-group-container">
-      <template v-for="key in itemGroupKey">
-        <div class="radio-btn item-group"
-             @click="onClickItemGroup(key)">{{itemGroupName[key]}}</div>
+    <div id="item-type-container">
+      <template v-for="key in itemTypeKey">
+        <div class="radio-btn item-type"
+             @click="onClickItemType(key)">{{itemTypeName[key]}}</div>
       </template>
     </div>
     <div id="input-nedan-container">

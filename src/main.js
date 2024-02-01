@@ -3,8 +3,8 @@ import { createApp } from 'vue'
 const vm = {
     data() {
         return {
-            itemGroupKey: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
-            itemGroupName: {
+            itemTypeKey: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
+            itemTypeName: {
                 kusa: '草', tue: '杖',
                 makimono: '巻物', tubo: '壺',
                 okou: 'お香', udewa: '腕輪',
@@ -16,7 +16,7 @@ const vm = {
         // 仮
     },
     methods: {
-        onClickItemGroup(key) {
+        onClickItemType(key) {
             console.log(key);
         },
         onClickNedanType() {

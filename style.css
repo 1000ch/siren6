@@ -17,7 +17,7 @@ h1 {
   color: #8b4513;
 }
 
-#item-group-container {
+#item-type-container {
   display: flex;
 }
 
@@ -59,7 +59,7 @@ h1 {
   }
 }
 
-.item-group {
+.item-type {
   border: 1px solid #00008b;
   background-color: #add8e6;
   border-right-width: 0;
