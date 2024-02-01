@@ -9,7 +9,9 @@ const vm = {
                 makimono: '巻物', tubo: '壺',
                 okou: 'お香', udewa: '腕輪',
                 buki: '武器', tate: '盾',
-            }
+            },
+            nedanTypeKey: ['kaine', 'urine'],
+            nedanTypeName: {'kaine': '買値', 'urine': '売値'},
         }
     },
     created() {
@@ -19,8 +21,8 @@ const vm = {
         onClickItemType(key) {
             console.log(key);
         },
-        onClickNedanType() {
-
+        onClickNedanType(key) {
+            console.log(key);
         }
     }
 };

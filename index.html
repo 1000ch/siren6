@@ -17,8 +17,10 @@
       </template>
     </div>
     <div id="input-nedan-container">
-      <div class="radio-btn nedan-type">買値</div>
-      <div class="radio-btn nedan-type">売値</div>
+      <template v-for="key in nedanTypeKey">
+        <div class="radio-btn nedan-type"
+             @click="onClickNedanType(key)">{{nedanTypeName[key]}}</div>
+      </template>
       <input type="number" id="input-nedan">
     </div>
   </div>
