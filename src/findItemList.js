@@ -1,7 +1,7 @@
 
 export function findItemList(itemList, nedan = 0, nedanType) {
     if (nedan === 0) {
-        return itemList.filter(item => item.default || item.status === 'normal');
+        return itemList.filter(item => item.status === 'normal');
     }
     return itemList.filter(item => item[nedanType] === nedan).sort((a, b) => {
         if (a.status === b.status) {

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { findItemList } from './findItemList'
 import { kusaList } from './kusa';
+import * as tue from './tue';
 
 const vm = {
     data() {
@@ -26,6 +27,7 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.itemType = type;
+            this.itemList = this.findItemList();
         },
         onClickNedanType(type) {
             this.nedanType = type;
@@ -36,17 +38,19 @@ const vm = {
             this.itemList = this.findItemList();
         },
         findItemList() {
+            let targetList = [];
             switch (this.itemType) {
-                case 'kusa': return findItemList(kusaList, this.nedan, this.nedanType);
-                case 'tue': return /*TODO*/;
-                case 'makimono': return /*TODO*/;
-                case 'tubo': return /*TODO*/;
-                case 'okou': return /*TODO*/;
-                case 'udewa': return /*TODO*/;
-                case 'buki': return /*TODO*/;
-                case 'tate': return /*TODO*/;
+                case 'kusa': targetList = kusaList; break;
+                case 'tue': return tue.findItemList(this.nedan, this.nedanType);
+                case 'makimono': targetList = [/*TODO*/]; break;
+                case 'tubo': targetList = [/*TODO*/]; break;
+                case 'okou': targetList = [/*TODO*/]; break;
+                case 'udewa': targetList = [/*TODO*/]; break;
+                case 'buki': targetList = [/*TODO*/]; break;
+                case 'tate': targetList = [/*TODO*/]; break;
                 default: throw new Error(`不正なitemType: ${this.itemType}`);
             }
+            return findItemList(targetList, this.nedan, this.nedanType);
         },
     }
 };

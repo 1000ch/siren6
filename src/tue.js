@@ -1,10 +1,7 @@
-import { itemListPush } from './itemListPush'
+import { createFuncItemListPush } from './itemListPush'
 
-export const tueList = [];
-const tmpItemListPush = createFuncItemListPush(tueList, false);
-function itemListPush(name, kaine, urine) {
-    tmpItemListPush(name, kaine, urine, name.endsWith('[0]'));
-}
+const itemList = [];
+const itemListPush = createFuncItemListPush(itemList, false);
 itemListPush('ただの杖[0]', 500, 200);
 itemListPush('ただの杖[1]', 600, 240);
 itemListPush('ただの杖[2]', 700, 280);
@@ -150,4 +147,30 @@ itemListPush('桃まんの杖[3]', 2300, 920);
 itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
-kusaList.sort((a, b) => a.kaine - b.kaine);
+itemList.sort((a, b) => a.kaine - b.kaine);
+
+export function findItemList(nedan = 0, nedanType) {
+    if (nedan === 0) {
+        return itemList.filter(item => item.status === 'normal' && item.name.endsWith('[0]'));
+    }
+    return itemList.filter(item => item[nedanType] === nedan).sort((a, b) => {
+        if (a.status === b.status) {
+            return 0;
+        }
+        else if (a.status === 'noroi') {
+            return -1;
+        }
+        else if (b.status === 'noroi') {
+            return 1;
+        }
+        else if (a.status === 'syukufuku') {
+            return 1;
+        }
+        else if (b.status === 'syukufuku') {
+            return -1;
+        }
+        throw new Error('ここが実行されることはありえない');
+    });
+}
+
+
