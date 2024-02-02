@@ -1,12 +1,15 @@
 
-export function createFuncListPushItem(list, canSyukufuku) {
-    return function(name, kaine, urine) {
+export function createFuncItemListPush(list, canSyukufuku) {
+    return function(name, kaine, urine, isDefault = false) {
         list.push({
             status: 'normal',
             name: name,
             kaine: kaine,
             urine: urine
         });
+        if (isDefault) {
+            list.at(-1).default = true;
+        }
         if (canSyukufuku) {
             list.push({
                 status: 'syukufuku',
