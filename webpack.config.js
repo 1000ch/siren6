@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development', // production
+  mode: 'production', // development
   entry: './src/main.js',
   output: {
     publicPath: '/dist/',
