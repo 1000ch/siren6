@@ -3,9 +3,22 @@ const kusaList = [];
 
 function kusaListPush(name, kaine, urine) {
     kusaList.push({
+        status: 'normal',
         name: name,
         kaine: kaine,
         urine: urine
+    });
+    kusaList.push({
+        status: 'syukufuku',
+        name: name + '🔔',
+        kaine: kaine * 2,
+        urine: urine * 2
+    });
+    kusaList.push({
+        status: 'noroi',
+        name: name + '💀',
+        kaine: Math.floor(kaine * 0.87),
+        urine: Math.floor(urine * 0.87)
     });
 }
 
@@ -40,7 +53,24 @@ kusaList.sort((a, b) => a.kaine - b.kaine);
 
 export function findKusaList(nedan = 0, nedanType) {
     if (nedan === 0) {
-        return kusaList;
+        return kusaList.filter(kusa => kusa.status === 'normal');
     }
-    return kusaList.filter(kusa => kusa[nedanType] === nedan);
+    return kusaList.filter(kusa => kusa[nedanType] === nedan).sort((a, b) => {
+        if (a.status === b.status) {
+            return 0;
+        }
+        else if (a.status === 'noroi') {
+            return -1;
+        }
+        else if (b.status === 'noroi') {
+            return 1;
+        }
+        else if (a.status === 'syukufuku') {
+            return 1;
+        }
+        else if (b.status === 'syukufuku') {
+            return -1;
+        }
+        throw new Error('ここが実行されることはありえない');
+    });
 }
