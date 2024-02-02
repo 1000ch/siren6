@@ -1,6 +1,6 @@
 import { listPushItem } from './listPushItem'
 
-const kusaList = [];
+export const kusaList = [];
 listPushItem(kusaList, '雑草', 10, 4);
 listPushItem(kusaList, '薬草', 40, 10);
 listPushItem(kusaList, '弟切草', 80, 30);
@@ -29,27 +29,3 @@ listPushItem(kusaList, 'くねくね草', 100, 40);
 listPushItem(kusaList, '不幸の種', 400, 160);
 listPushItem(kusaList, '超不幸の種', 2000, 800);
 kusaList.sort((a, b) => a.kaine - b.kaine);
-
-export function findKusaList(nedan = 0, nedanType) {
-    if (nedan === 0) {
-        return kusaList.filter(kusa => kusa.status === 'normal');
-    }
-    return kusaList.filter(kusa => kusa[nedanType] === nedan).sort((a, b) => {
-        if (a.status === b.status) {
-            return 0;
-        }
-        else if (a.status === 'noroi') {
-            return -1;
-        }
-        else if (b.status === 'noroi') {
-            return 1;
-        }
-        else if (a.status === 'syukufuku') {
-            return 1;
-        }
-        else if (b.status === 'syukufuku') {
-            return -1;
-        }
-        throw new Error('ここが実行されることはありえない');
-    });
-}

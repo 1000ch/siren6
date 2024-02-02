@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import { findKusaList } from './kusa';
+import { findItemList } from './findItemList'
+import { kusaList } from './kusa';
 
 const vm = {
     data() {
@@ -36,7 +37,7 @@ const vm = {
         },
         findItemList() {
             switch (this.itemType) {
-                case 'kusa': return findKusaList(this.nedan, this.nedanType);
+                case 'kusa': return findItemList(kusaList, this.nedan, this.nedanType);
                 case 'tue': return /*TODO*/;
                 case 'makimono': return /*TODO*/;
                 case 'tubo': return /*TODO*/;
