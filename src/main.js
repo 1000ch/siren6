@@ -2,6 +2,12 @@ import { createApp } from 'vue'
 import { findItemList } from './item'
 import { kusaList } from './kusa';
 import { tueList } from './tue';
+import { makimonoList } from './makimono';
+import { tuboList } from './tubo';
+import { okouList } from './okou';
+import { udewaList } from './udewa';
+import { bukiList } from './buki';
+import { tateList } from './tate';
 
 const vm = {
     data() {
@@ -38,17 +44,19 @@ const vm = {
             this.itemList = this.findItemList();
         },
         findItemList() {
+            let targetList = [];
             switch (this.itemType) {
-                case 'kusa': return findItemList(kusaList, this.nedan, this.nedanType);
-                case 'tue': return findItemList(tueList, this.nedan, this.nedanType);
-                case 'makimono': return [];
-                case 'tubo': return [];
-                case 'okou': return [];
-                case 'udewa': return [];
-                case 'buki': return [];
-                case 'tate': return [];
+                case 'kusa': targetList = kusaList; break;
+                case 'tue': targetList = tueList; break;
+                case 'makimono': targetList = makimonoList; break;
+                case 'tubo': targetList = tuboList; break;
+                case 'okou': targetList = okouList; break;
+                case 'udewa': targetList = udewaList; break;
+                case 'buki': targetList = bukiList; break;
+                case 'tate': targetList = tateList; break;
                 default: throw new Error(`不正なitemType: ${this.itemType}`);
             }
+            return findItemList(targetList, this.nedan, this.nedanType);
         },
     }
 };
