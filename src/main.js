@@ -44,6 +44,13 @@ const vm = {
             this.findItemList();
         },
         onClickClearBtn() {
+            const clearBtnClassList = this.$refs.clearBtn.classList;
+            if (!clearBtnClassList.contains('jump')) {
+                clearBtnClassList.add('jump');
+                setTimeout(() => {
+                    clearBtnClassList.remove('jump');
+                }, 200);
+            }
             this.nedan = 0;
             this.findItemList();
         },

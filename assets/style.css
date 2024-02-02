@@ -151,6 +151,16 @@ h1 {
   cursor: pointer;
 }
 
+.jump {
+  animation: jump 0.2s ease;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
 #search-item-list {
   margin-top: 0.8rem;
 }
