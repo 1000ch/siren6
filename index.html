@@ -31,14 +31,17 @@
       <div id="no-item" v-if="itemList.length === 0">
         該当データなし😢
       </div>
-      <table v-else>
-        <tr>
-          <th>名前</th><th>買値</th><th>売値</th>
-        </tr>
-        <tr v-for="item in itemList">
-          <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
-        </tr>
-      </table>
+      <div v-else>
+        灰色：店売りではありえないと思われるもの(憶測)
+        <table>
+          <tr>
+            <th>名前</th><th>買値</th><th>売値</th>
+          </tr>
+          <tr v-for="item in itemList">
+            <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 
