@@ -20,27 +20,30 @@ export function findItemList(itemList, nedan = 0, nedanType) {
     });
 }
 
-export function createFuncItemListPush(list, canSyukufuku) {
+export function createFuncItemListPush(list, canSyukufuku, unused = true) {
     return function(name, kaine, urine) {
         list.push({
             status: 'normal',
             name: name,
             kaine: kaine,
-            urine: urine
+            urine: urine,
+            unused: unused
         });
         if (canSyukufuku) {
             list.push({
                 status: 'syukufuku',
                 name: name + '🔔',
                 kaine: kaine * 2,
-                urine: urine * 2
+                urine: urine * 2,
+                unused: unused
             });
         }
         list.push({
             status: 'noroi',
             name: name + '💀',
             kaine: Math.floor(kaine * 0.87),
-            urine: Math.floor(urine * 0.87)
+            urine: Math.floor(urine * 0.87),
+            unused: unused
         });
     }
 }
