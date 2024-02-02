@@ -29,7 +29,7 @@
                  @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
           </template>
         </div>
-        <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
+        <input type="number" id="input-nedan" v-model="nedan" @focus="onFocusInputNedan" @blur="onBlurInputNedan">
         <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png" @click="onClickClearBtn">
       </div>
     </div>

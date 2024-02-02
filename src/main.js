@@ -39,6 +39,9 @@ const vm = {
             this.nedanType = type;
             this.findItemList();
         },
+        onFocusInputNedan(event) {
+            event.target.select();
+        },
         onBlurInputNedan() {
             this.nedan = Number(this.nedan);
             this.findItemList();
