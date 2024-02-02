@@ -1,7 +1,7 @@
-import { createFuncItemListPush } from './itemListPush'
+import { createFuncItemListPush } from './item'
 
-const itemList = [];
-const itemListPush = createFuncItemListPush(itemList, false);
+const tueList = [];
+const itemListPush = createFuncItemListPush(tueList, false);
 itemListPush('ただの杖[0]', 500, 200);
 itemListPush('ただの杖[1]', 600, 240);
 itemListPush('ただの杖[2]', 700, 280);
@@ -147,13 +147,13 @@ itemListPush('桃まんの杖[3]', 2300, 920);
 itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
-itemList.sort((a, b) => a.kaine - b.kaine);
+tueList.sort((a, b) => a.kaine - b.kaine);
 
-export function findItemList(nedan = 0, nedanType) {
+export function findTueList(nedan = 0, nedanType) {
     if (nedan === 0) {
-        return itemList.filter(item => item.status === 'normal' && item.name.endsWith('[0]'));
+        return tueList.filter(item => item.status === 'normal' && item.name.endsWith('[0]'));
     }
-    return itemList.filter(item => item[nedanType] === nedan).sort((a, b) => {
+    return tueList.filter(item => item[nedanType] === nedan).sort((a, b) => {
         if (a.status === b.status) {
             return 0;
         }
