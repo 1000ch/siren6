@@ -43,6 +43,10 @@ const vm = {
             this.nedan = Number(this.nedan);
             this.findItemList();
         },
+        onClickClearBtn() {
+            this.nedan = 0;
+            this.findItemList();
+        },
         findItemList() {
             if (this.itemType === 'buki') {
                 this.resultItemList = bukiList;

@@ -148,6 +148,7 @@ h1 {
 #clear-btn {
   margin-left: 5px;
   height: 40px;
+  cursor: pointer;
 }
 
 #search-item-list {
