@@ -1,6 +1,6 @@
-import { createFuncItemListPush, findItemList } from './item'
+import { createFuncItemListPush } from './item'
 
-const kusaList = [];
+export const kusaList = [];
 const itemListPush = createFuncItemListPush(kusaList, true);
 itemListPush('雑草', 10, 4);
 itemListPush('薬草', 40, 10);
@@ -30,7 +30,3 @@ itemListPush('くねくね草', 100, 40);
 itemListPush('不幸の種', 400, 160);
 itemListPush('超不幸の種', 2000, 800);
 kusaList.sort((a, b) => a.kaine - b.kaine);
-
-export function findKusaList(nedan = 0, nedanType) {
-    return findItemList(kusaList, nedan, nedanType);
-}

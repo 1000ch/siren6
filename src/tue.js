@@ -1,6 +1,6 @@
-import { createFuncItemListPush, findItemList } from './item'
+import { createFuncItemListPush } from './item'
 
-const tueList = [];
+export const tueList = [];
 const itemListPush = createFuncItemListPush(tueList, false);
 itemListPush('ただの杖[0]', 500, 200);
 itemListPush('ただの杖[1]', 600, 240);
@@ -148,9 +148,3 @@ itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
 tueList.sort((a, b) => a.kaine - b.kaine);
-
-export function findTueList(nedan = 0, nedanType) {
-    return findItemList(tueList, nedan, nedanType);
-}
-
-
