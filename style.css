@@ -154,17 +154,11 @@ td:not(:first-of-type) {
   text-align: right;
 }
 
-tr:nth-child(odd) {
+tr {
   background-color: #e6f7ff;
 }
 
-tr:nth-child(even) {
-  background-color: #d6e6ff;
+.maybe-used {
+  background-color: #aaa;
 }
-
-tr:hover {
-  background-color: #b3d9ff;
-}
-
-
 

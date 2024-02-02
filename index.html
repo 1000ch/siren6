@@ -37,7 +37,8 @@
           <tr>
             <th>名前</th><th>買値</th><th>売値</th>
           </tr>
-          <tr v-for="item in itemList">
+          <tr v-for="item in itemList"
+              :class="{'maybe-used': !item.unused}">
             <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
           </tr>
         </table>

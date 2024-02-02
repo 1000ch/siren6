@@ -20,8 +20,8 @@ export function findItemList(itemList, nedan = 0, nedanType) {
     });
 }
 
-export function createFuncItemListPush(list, canSyukufuku, unused = true) {
-    return function(name, kaine, urine) {
+export function createFuncItemListPush(list, canSyukufuku) {
+    return function(name, kaine, urine, unused = true) {
         list.push({
             status: 'normal',
             name: name,
