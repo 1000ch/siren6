@@ -26,8 +26,8 @@
         </template>
       </div>
       <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
-      <div id="misiyou-container">
-        <input type="checkbox" id="misiyou">
+      <div id="misiyou-container" v-show="itemType === 'tue'">
+        <input type="checkbox" id="misiyou" v-model="isMisiyou">
         <label for="misiyou">未使用時の値段のみ(最小回数は憶測)</label>
       </div>
     </div>
