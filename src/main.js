@@ -12,6 +12,7 @@ import { tateList } from './tate';
 const vm = {
     data() {
         return {
+            isFirstTime: true,
             itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
             itemTypeName: {
                 kusa: '草', tue: '杖',
@@ -26,9 +27,6 @@ const vm = {
             nedan: 0,
             resultItemList: [],
         }
-    },
-    created() {
-        this.findItemList();
     },
     methods: {
         onClickItemType(type) {
@@ -58,6 +56,8 @@ const vm = {
             this.findItemList();
         },
         findItemList() {
+            this.isFirstTime = false;
+
             if (this.itemType === 'buki') {
                 this.resultItemList = bukiList;
                 return;

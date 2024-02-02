@@ -26,6 +26,10 @@
     margin-right: auto;
   }
 
+  #message {
+    padding: 0 8px;
+  }
+
   #no-item {
     margin-top: 2rem;
     font-size: 2rem;

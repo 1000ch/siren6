@@ -36,7 +36,10 @@
     </div>
 
     <div id="result">
-      <div id="no-item" v-if="resultItemList.length === 0">
+      <div id="message" v-if="isFirstTime">
+        値段を入力すると条件に一致するアイテムが分かります。
+      </div>
+      <div id="no-item" v-else-if="resultItemList.length === 0">
         該当データなし😢
       </div>
       <div v-else>
