@@ -9,7 +9,7 @@
   background-color: #f5deb3;
 }
 
-input {
+input, select {
   font-size: 20px;
 }
 
@@ -127,6 +127,10 @@ h1 {
 #input-nedan {
   margin-left: 10px;
   width: 70px;
+}
+
+#search-item-list {
+  margin-top: 8px;
 }
 
 #result {
