@@ -40,7 +40,7 @@
         値段を入力すると条件に一致するアイテムが分かります。
       </div>
       <div id="no-item" v-else-if="resultItemList.length === 0">
-        該当データなし😢
+        しかし、なにも起きなかった。
       </div>
       <div v-else>
         <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りではありえないと思われるもの(憶測)</span>
