@@ -28,20 +28,20 @@ const vm = {
         }
     },
     created() {
-        this.itemList = this.findItemList();
+        this.findItemList();
     },
     methods: {
         onClickItemType(type) {
             this.itemType = type;
-            this.itemList = this.findItemList();
+            this.findItemList();
         },
         onClickNedanType(type) {
             this.nedanType = type;
-            this.itemList = this.findItemList();
+            this.findItemList();
         },
         onBlurInputNedan() {
             this.nedan = Number(this.nedan);
-            this.itemList = this.findItemList();
+            this.findItemList();
         },
         findItemList() {
             let targetList = [];
@@ -56,7 +56,7 @@ const vm = {
                 case 'tate': targetList = tateList; break;
                 default: throw new Error(`不正なitemType: ${this.itemType}`);
             }
-            return findItemList(targetList, this.nedan, this.nedanType);
+            this.itemList = findItemList(targetList, this.nedan, this.nedanType);
         },
     }
 };
