@@ -38,4 +38,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm-bundler.js'
     }
   },
+  performance: {
+    maxEntrypointSize: 500_000,
+    maxAssetSize: 500_000,
+  },
 };
