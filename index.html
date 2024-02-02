@@ -18,13 +18,8 @@
       </template>
     </div>
 
-    <template v-if="itemType === 'buki' || itemType === 'tate'">
-      <select id="search-item-list">
-        <option v-for="item in searchItemList"
-                :value="item.name">{{item.name}}</option>
-      </select>
-    </template>
-    <div v-else id="input-nedan-container">
+    <div v-show="itemType !== 'buki' && itemType !== 'tate'"
+         id="input-nedan-container">
       <div id="nedan-type-container">
         <template v-for="t in nedanTypeList">
           <div class="radio-btn nedan-type"
@@ -41,6 +36,7 @@
       </div>
       <div v-else>
         <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りではありえないと思われるもの(憶測)</span>
+        <span v-show="itemType === 'buki' || itemType === 'tate'">ノーマルな状態な値段一覧です。</span>
         <table>
           <tr>
             <th>名前</th><th>買値</th><th>売値</th>

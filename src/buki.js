@@ -2,7 +2,7 @@
 export const bukiList = [];
 
 function itemListPush(name, kaine, urine) {
-    bukiList.push({name, kaine, urine});
+    bukiList.push({name, kaine, urine, unused: true});
 }
 
 itemListPush('木刀', 250, 100);

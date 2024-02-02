@@ -24,7 +24,6 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
-            searchItemList: [],
             resultItemList: [],
         }
     },
@@ -34,15 +33,7 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.itemType = type;
-            if (type === 'buki') {
-                this.searchItemList = bukiList;
-            }
-            else if (type === 'tate') {
-                this.searchItemList = tateList;
-            }
-            else {
-                this.findItemList();
-            }
+            this.findItemList();
         },
         onClickNedanType(type) {
             this.nedanType = type;
@@ -53,6 +44,15 @@ const vm = {
             this.findItemList();
         },
         findItemList() {
+            if (this.itemType === 'buki') {
+                this.resultItemList = bukiList;
+                return;
+            }
+            else if (this.itemType === 'tate') {
+                this.resultItemList = tateList;
+                return;
+            }
+
             let targetList = [];
             switch (this.itemType) {
                 case 'kusa': targetList = kusaList; break;
@@ -61,7 +61,6 @@ const vm = {
                 case 'tubo': targetList = tuboList; break;
                 case 'okou': targetList = okouList; break;
                 case 'udewa': targetList = udewaList; break;
-                default: throw new Error(`不正なitemType: ${this.itemType}`);
             }
             this.resultItemList = findItemList(targetList, this.nedan, this.nedanType);
         },

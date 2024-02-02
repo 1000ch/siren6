@@ -3,7 +3,7 @@ import { createFuncItemListPush } from './item'
 export const tateList = [];
 
 function itemListPush(name, kaine, urine) {
-    tateList.push({name, kaine, urine});
+    tateList.push({name, kaine, urine, unused: true});
 }
 
 itemListPush('木甲の盾', 500, 200);
