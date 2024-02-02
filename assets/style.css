@@ -145,6 +145,11 @@ h1 {
   }
 }
 
+#clear-btn {
+  margin-left: 5px;
+  height: 40px;
+}
+
 #search-item-list {
   margin-top: 0.8rem;
 }
