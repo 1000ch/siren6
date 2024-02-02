@@ -124,16 +124,6 @@ h1 {
   width: 70px;
 }
 
-#misiyou-container {
-  margin-left: 10px;
-
-  label {
-    font-size: 0.9rem;
-    cursor: pointer;
-    user-select: none;
-  }
-}
-
 #result {
   margin-top: 8px;
   margin-bottom: 1rem;

@@ -1,4 +1,4 @@
-import { createFuncItemListPush } from './item'
+import { createFuncItemListPush, findItemList } from './item'
 
 const tueList = [];
 const itemListPush = createFuncItemListPush(tueList, false);
@@ -150,27 +150,7 @@ itemListPush('桃まんの杖[6]', 2600, 1040);
 tueList.sort((a, b) => a.kaine - b.kaine);
 
 export function findTueList(nedan = 0, nedanType) {
-    if (nedan === 0) {
-        return tueList.filter(item => item.status === 'normal' && item.name.endsWith('[0]'));
-    }
-    return tueList.filter(item => item[nedanType] === nedan).sort((a, b) => {
-        if (a.status === b.status) {
-            return 0;
-        }
-        else if (a.status === 'noroi') {
-            return -1;
-        }
-        else if (b.status === 'noroi') {
-            return 1;
-        }
-        else if (a.status === 'syukufuku') {
-            return 1;
-        }
-        else if (b.status === 'syukufuku') {
-            return -1;
-        }
-        throw new Error('ここが実行されることはありえない');
-    });
+    return findItemList(tueList, nedan, nedanType);
 }
 
 

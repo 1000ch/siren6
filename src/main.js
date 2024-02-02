@@ -17,7 +17,6 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
-            isMisiyou: false,
             itemList: [],
         }
     },
