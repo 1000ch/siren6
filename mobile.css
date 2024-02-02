@@ -1,13 +1,26 @@
 @media screen and (max-width: 480px) {
+  :root {
+    font-size: 1.2rem;
+  }
+
+  input, select {
+    font-size: 1.2rem;
+  }
+
+  #input-nedan {
+    height: 1.2rem;
+  }
+  
   #app {
     margin: 0;
   }
 
   h1 {
-    font-size: 1.23rem;
+    font-size: 1.3rem;
+    text-align: center;
   }
 
-  #result {
+  #search-container, #result {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;

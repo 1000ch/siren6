@@ -10,24 +10,27 @@
 <body>
   <div id="app" v-cloak>
     <h1>シレン6 値段識別ツール(雑)</h1>
-    <div id="item-type-container">
-      <template v-for="t in itemTypeList">
-        <div class="radio-btn item-type"
-             :class="{'selected': itemType === t}"
-             @click="onClickItemType(t)">{{itemTypeName[t]}}</div>
-      </template>
-    </div>
-
-    <div v-show="itemType !== 'buki' && itemType !== 'tate'"
-         id="input-nedan-container">
-      <div id="nedan-type-container">
-        <template v-for="t in nedanTypeList">
-          <div class="radio-btn nedan-type"
-               :class="{'selected': nedanType === t}"
-               @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
+    
+    <div id="search-container">
+      <div id="item-type-container">
+        <template v-for="t in itemTypeList">
+          <div class="radio-btn item-type"
+               :class="{'selected': itemType === t}"
+               @click="onClickItemType(t)">{{itemTypeName[t]}}</div>
         </template>
       </div>
-      <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
+  
+      <div v-show="itemType !== 'buki' && itemType !== 'tate'"
+           id="input-nedan-container">
+        <div id="nedan-type-container">
+          <template v-for="t in nedanTypeList">
+            <div class="radio-btn nedan-type"
+                 :class="{'selected': nedanType === t}"
+                 @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
+          </template>
+        </div>
+        <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
+      </div>
     </div>
 
     <div id="result">
