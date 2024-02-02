@@ -60,10 +60,9 @@ h1 {
 }
 
 .item-type {
-  border: 1px solid #00008b;
+  border-color: #00008b;
   background-color: #add8e6;
   opacity: 0.5;
-  border-right-width: 0;
   &.selected {
     background-color: #00008b;
     opacity: 1;
@@ -88,13 +87,17 @@ h1 {
 #input-nedan-container {
   display: flex;
   margin-top: 8px;
+  align-items: center;
+}
+
+#nedan-type-container {
+  display: flex;
 }
 
 .nedan-type {
-  border: 1px solid #008000;
+  border-color: #008000;
   background-color: #90ee90;
   opacity: 0.5;
-  border-right-width: 0;
   &.selected {
     background-color: #008000;
     opacity: 1;
@@ -119,6 +122,14 @@ h1 {
 #input-nedan {
   margin-left: 10px;
   width: 70px;
+}
+
+#misiyou-container {
+  margin-left: 10px;
+
+  label {
+    font-size: 0.9rem;
+  }
 }
 
 #result {

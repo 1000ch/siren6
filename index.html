@@ -18,17 +18,23 @@
       </template>
     </div>
     <div id="input-nedan-container">
-      <template v-for="t in nedanTypeList">
-        <div class="radio-btn nedan-type"
-             :class="{'selected': nedanType === t}"
-             @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
-      </template>
+      <div id="nedan-type-container">
+        <template v-for="t in nedanTypeList">
+          <div class="radio-btn nedan-type"
+               :class="{'selected': nedanType === t}"
+               @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
+        </template>
+      </div>
       <input type="number" id="input-nedan" v-model="nedan" @blur="onBlurInputNedan">
+      <div id="misiyou-container">
+        <input type="checkbox" id="misiyou">
+        <label for="misiyou">未使用時の値段のみ(最小回数は憶測)</label>
+      </div>
     </div>
     <div id="result">
-      <template v-if="itemList.length === 0">
+      <div id="no-item" v-if="itemList.length === 0">
         該当なし😢
-      </template>
+      </div>
       <table v-else>
         <tr>
           <th>名前</th><th>買値</th><th>売値</th>
