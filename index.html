@@ -32,7 +32,7 @@
         該当データなし😢
       </div>
       <div v-else>
-        灰色：店売りではありえないと思われるもの(憶測)
+        <span v-show="itemList.some(item => !item.unused)">灰色：店売りではありえないと思われるもの(憶測)</span>
         <table>
           <tr>
             <th>名前</th><th>買値</th><th>売値</th>
