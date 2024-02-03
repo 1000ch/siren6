@@ -43,6 +43,7 @@ const vm = {
         onBlurInputNedan() {
             this.nedan = Number(this.nedan);
             this.findItemList();
+            this.isFirstTime = false;
         },
         onClickClearBtn() {
             const clearBtnClassList = this.$refs.clearBtn.classList;
@@ -54,10 +55,9 @@ const vm = {
             }
             this.nedan = 0;
             this.findItemList();
+            this.isFirstTime = true;
         },
         findItemList() {
-            this.isFirstTime = false;
-
             if (this.itemType === 'buki') {
                 this.resultItemList = bukiList;
                 return;

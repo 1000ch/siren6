@@ -36,14 +36,16 @@
     </div>
 
     <div id="result">
-      <div id="message" v-if="isFirstTime">
-        値段を入力すると条件に一致するアイテムが分かります。
-      </div>
-      <div id="no-item" v-else-if="resultItemList.length === 0">
-        しかし、なにも起きなかった。
+      <div id="message" v-if="resultItemList.length === 0">
+        <template v-if="isFirstTime">
+          値段を入力すると条件に一致するアイテムが分かります。
+        </template>
+        <template v-else>
+          しかし、なにも起きなかった。
+        </template>
       </div>
       <div v-else>
-        <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りではありえないと思われるもの(憶測)</span>
+        <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りで存在しない(憶測)</span>
         <span v-show="itemType === 'buki' || itemType === 'tate'">
           通常の値段一覧です。<br>
           神器は値段が2倍になると思われます。
