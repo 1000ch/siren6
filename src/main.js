@@ -51,7 +51,7 @@ const vm = {
                 clearBtnClassList.add('jump');
                 setTimeout(() => {
                     clearBtnClassList.remove('jump');
-                }, 200);
+                }, 2000);
             }
             this.nedan = 0;
             this.findItemList();
