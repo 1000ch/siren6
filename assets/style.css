@@ -9,6 +9,10 @@
   background-color: #f5deb3;
 }
 
+body {
+  height: 90vh;
+}
+
 input, select {
   font-size: 1.4rem;
 }
