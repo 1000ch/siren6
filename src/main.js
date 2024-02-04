@@ -1,13 +1,13 @@
 import { createApp } from 'vue'
-import { findItemList } from './item'
-import { kusaList } from './kusa';
-import { tueList } from './tue';
-import { makimonoList } from './makimono';
-import { tuboList } from './tubo';
-import { okouList } from './okou';
-import { udewaList } from './udewa';
-import { bukiList } from './buki';
-import { tateList } from './tate';
+import { findItemList } from './item/item'
+import { kusaList } from './item/kusa';
+import { tueList } from './item/tue';
+import { makimonoList } from './item/makimono';
+import { tuboList } from './item/tubo';
+import { okouList } from './item/okou';
+import { udewaList } from './item/udewa';
+import { bukiList } from './item/buki';
+import { tateList } from './item/tate';
 
 const vm = {
     data() {
