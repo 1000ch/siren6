@@ -2,7 +2,28 @@
 export const makimonoList = [];
 
 function itemListPush(name, kaine, urine, needSelect = false) {
-    makimonoList.push({name, kaine, urine, unused: true, needSelect});
+    makimonoList.push({
+        status: 'normal',
+        name, kaine, urine,
+        unused: true,
+        needSelect
+    });
+    makimonoList.push({
+        status: 'syukufuku',
+        name: name + '🔔',
+        kaine: kaine * 2,
+        urine: urine * 2,
+        unused: true,
+        needSelect
+    });
+    makimonoList.push({
+        status: 'noroi',
+        name: name + '💀',
+        kaine: Math.floor(kaine * 0.87),
+        urine: Math.floor(urine * 0.87),
+        unused: true,
+        needSelect
+    });
 }
 
 itemListPush('混乱の巻物', 300, 120);
