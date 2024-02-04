@@ -40,10 +40,13 @@ const vm = {
         onFocusInputNedan(event) {
             event.target.select();
         },
-        onBlurInputNedan() {
+        onBlurInputNedan(event) {
             this.nedan = Number(this.nedan);
+            event.target.value = this.nedan;
             this.findItemList();
-            this.isFirstTime = false;
+            if (this.isFirstTime && this.nedan !== 0) {
+                this.isFirstTime = false;
+            }
         },
         onKeyDownEnterInputNedan(event) {
             event.target.blur();
