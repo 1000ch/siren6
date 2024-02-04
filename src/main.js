@@ -4,7 +4,6 @@ import { kusaList } from './item/kusa';
 import { tueList } from './item/tue';
 import { makimonoList } from './item/makimono';
 import { tuboList } from './item/tubo';
-import { okouList } from './item/okou';
 import { udewaList } from './item/udewa';
 import { bukiList } from './item/buki';
 import { tateList } from './item/tate';
@@ -13,12 +12,11 @@ const vm = {
     data() {
         return {
             isFirstTime: true,
-            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'okou', 'udewa', 'buki', 'tate'],
+            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate'],
             itemTypeName: {
                 kusa: '草', tue: '杖',
                 makimono: '巻物', tubo: '壺',
-                okou: 'お香', udewa: '腕輪',
-                buki: '武器', tate: '盾',
+                udewa: '腕輪', buki: '武器', tate: '盾',
             },
             nedanTypeList: ['kaine', 'urine'],
             nedanTypeName: {'kaine': '買値', 'urine': '売値'},
@@ -79,7 +77,6 @@ const vm = {
                 case 'tue': targetList = tueList; break;
                 case 'makimono': targetList = makimonoList; break;
                 case 'tubo': targetList = tuboList; break;
-                case 'okou': targetList = okouList; break;
                 case 'udewa': targetList = udewaList; break;
             }
             this.resultItemList = findItemList(targetList, this.nedan, this.nedanType);
