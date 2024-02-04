@@ -47,6 +47,9 @@
       </div>
       <div v-else>
         <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りで存在しない(憶測)</span>
+        <span v-show="itemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+          黄色：選択式巻物
+        </span>
         <span v-show="itemType === 'buki' || itemType === 'tate'">
           通常の値段一覧です。
         </span>
@@ -55,7 +58,7 @@
             <th>名前</th><th>買値</th><th>売値</th>
           </tr>
           <tr v-for="item in resultItemList"
-              :class="{'maybe-used': !item.unused}">
+              :class="{'maybe-used': !item.unused, 'need-select': item.needSelect}">
             <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
           </tr>
         </table>
