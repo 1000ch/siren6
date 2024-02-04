@@ -45,6 +45,9 @@ const vm = {
             this.findItemList();
             this.isFirstTime = false;
         },
+        onKeyDownEnterInputNedan(event) {
+            event.target.blur();
+        },
         onClickClearBtn() {
             const clearBtnClassList = this.$refs.clearBtn.classList;
             if (!clearBtnClassList.contains('jump')) {
