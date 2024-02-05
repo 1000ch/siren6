@@ -38,12 +38,13 @@ const vm = {
         },
         onClickItemType(type) {
             this.itemType = type;
-
+            this.nedan = 0;
             if (this.itemType === 'tuePlus') {
+                this.searchItemName = 'ただの杖';
                 this.nedanType = 'urine';
             }
-
             this.findItemList();
+            this.isFirstTime = true;
         },
         onClickNedanType(type) {
             this.nedanType = type;

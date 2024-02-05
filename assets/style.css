@@ -221,7 +221,11 @@ th {
   text-align: center;
 }
 
-td:not(:first-of-type) {
+td.center {
+  text-align: center;
+}
+
+td.right {
   text-align: right;
 }
 

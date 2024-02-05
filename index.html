@@ -64,7 +64,7 @@
             <th>呪い</th><th>回数</th>
           </tr>
           <tr v-for="tue in resultTueCountList">
-            <td>{{tue.isNoroi ? 'あり' : 'なし'}}</td><td>{{tue.count}}</td>
+            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="right">{{tue.count}}</td>
           </tr>
         </table>
       </template>
@@ -91,7 +91,9 @@
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{'maybe-used': !item.unused, 'need-select': item.needSelect}">
-              <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
+              <td>{{item.name}}</td>
+              <td class="right">{{item.kaine}}</td>
+              <td class="right">{{item.urine}}</td>
             </tr>
           </table>
         </div>
