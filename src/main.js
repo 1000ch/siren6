@@ -25,6 +25,8 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
+            currentNedan: 0,
+            currentTuePlusNedan: 0,
             resultItemList: [],
             resultTueCountList: [],
         }
@@ -32,13 +34,24 @@ const vm = {
     created() {
         this.tueNameList = tueNameList;
     },
+    watch: {
+        itemType(newVal, oldVal) {
+            if (oldVal === 'tuePlus') {
+                this.currentTuePlusNedan = this.nedan;
+                this.nedan = this.currentNedan;
+            }
+            else if (newVal === 'tuePlus') {
+                this.currentNedan = this.nedan;
+                this.nedan = this.currentTuePlusNedan;
+            }
+        }
+    },
     methods: {
         onChangeSearchItemName() {
             this.findItemList();
         },
         onClickItemType(type) {
             this.itemType = type;
-            this.nedan = 0;
             if (this.itemType === 'tuePlus') {
                 this.searchItemName = 'ただの杖';
                 this.nedanType = 'urine';
