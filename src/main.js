@@ -12,7 +12,8 @@ const vm = {
     data() {
         return {
             isFirstTime: true,
-            itemTypeList: ['kusa', 'tue', 'tuePlus', 'makimono', 'tubo', 'udewa', 'buki', 'tate'],
+            isTuePlusFirstTime: true,
+            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
                 kusa: '草', tue: '杖', tuePlus: '杖+',
                 makimono: '巻物', tubo: '壺',
@@ -25,6 +26,11 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
+            prevItemType: 'kusa',
+            currentNedanType: 'kaine',
+            currentTuePlusNedanType: 'urine',
+            currentNedan: 0,
+            currentTuePlusNedan: 0,
             resultItemList: [],
             resultTueCountList: [],
         }
@@ -38,13 +44,22 @@ const vm = {
         },
         onClickItemType(type) {
             this.itemType = type;
-            this.nedan = 0;
-            if (this.itemType === 'tuePlus') {
-                this.searchItemName = 'ただの杖';
-                this.nedanType = 'urine';
+
+            if (this.prevItemType === 'tuePlus') {
+                this.currentTuePlusNedanType = this.nedanType;
+                this.currentTuePlusNedan = this.nedan;
+                this.nedanType = this.currentNedanType;
+                this.nedan = this.currentNedan;
             }
+            else if (this.itemType === 'tuePlus') {
+                this.currentNedanType = this.nedanType;
+                this.currentNedan = this.nedan;
+                this.nedanType = this.currentTuePlusNedanType;
+                this.nedan = this.currentTuePlusNedan;
+            }
+            this.prevItemType = this.itemType;
+
             this.findItemList();
-            this.isFirstTime = true;
         },
         onClickNedanType(type) {
             this.nedanType = type;
@@ -57,8 +72,17 @@ const vm = {
             this.nedan = Number(this.nedan);
             event.target.value = this.nedan;
             this.findItemList();
-            if (this.isFirstTime && this.nedan !== 0) {
-                this.isFirstTime = false;
+            if (this.nedan !== 0) {
+                if (this.itemType === 'tuePlus') {
+                    if (this.isTuePlusFirstTime) {
+                        this.isTuePlusFirstTime = false;
+                    }
+                }
+                else {
+                    if (this.isFirstTime) {
+                        this.isFirstTime = false;
+                    }
+                }
             }
         },
         onKeyDownEnterInputNedan(event) {
@@ -74,7 +98,12 @@ const vm = {
             }
             this.nedan = 0;
             this.findItemList();
-            this.isFirstTime = true;
+            if (this.itemType === 'tuePlus') {
+                this.isTuePlusFirstTime = true;
+            }
+            else {
+                this.isFirstTime = true;
+            }
         },
         findItemList() {
             if (this.itemType === 'buki') {

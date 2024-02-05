@@ -52,7 +52,7 @@
     <div id="result">
       <template v-if="itemType === 'tuePlus'">
         <div id="message" v-if="resultTueCountList.length === 0">
-          <template v-if="isFirstTime">
+          <template v-if="isTuePlusFirstTime">
             アイテムと値段を入力すると残り回数が分かります。
           </template>
           <template v-else>
@@ -64,14 +64,14 @@
             <th>呪い</th><th>回数</th>
           </tr>
           <tr v-for="tue in resultTueCountList">
-            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="right">{{tue.count}}</td>
+            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
           </tr>
         </table>
       </template>
       <template v-else>
         <div id="message" v-if="resultItemList.length === 0">
           <template v-if="isFirstTime">
-            値段を入力すると条件に一致するアイテムが分かります。
+            値段を入力するとアイテムが分かります。
           </template>
           <template v-else>
             しかし、なにも起きなかった。
