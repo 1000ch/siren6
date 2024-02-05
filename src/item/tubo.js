@@ -28,7 +28,7 @@ itemListPush('換金の壺[4]', 1400, 560);
 itemListPush('換金の壺[5]', 1500, 600);
 // itemListPush('合成の壺[0]', 6000, 2400, false);
 itemListPush('合成の壺[1]', 6100, 2440, false);
-itemListPush('合成の壺[2]', 6200, 2480);
+itemListPush('合成の壺[2]', 6200, 2480); // MEMO 存在しない？
 itemListPush('合成の壺[3]', 6300, 2520);
 itemListPush('合成の壺[4]', 6400, 2560);
 // itemListPush('おはらいの壺[0]', 1600, 640, false);
@@ -98,7 +98,7 @@ itemListPush('トドの壺[4]', 2400, 960);
 itemListPush('トドの壺[5]', 2500, 1000);
 itemListPush('水鉄砲の壺[0]', 2000, 800, false);
 itemListPush('水鉄砲の壺[1]', 2100, 840, false);
-itemListPush('水鉄砲の壺[2]', 2200, 880, false);
+itemListPush('水鉄砲の壺[2]', 2200, 880); // MEMO: 床落ちで存在するらしい
 itemListPush('水鉄砲の壺[3]', 2300, 920);
 itemListPush('水鉄砲の壺[4]', 2400, 960);
 itemListPush('水鉄砲の壺[5]', 2500, 1000);
