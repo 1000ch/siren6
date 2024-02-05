@@ -22,7 +22,8 @@ select {
 }
 
 #app {
-  margin: 0 24px;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 h1 {
