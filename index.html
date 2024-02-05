@@ -24,7 +24,9 @@
   
       <div id="search-nedan-container">
         <select id="search-item-name" v-show="itemType === 'tuePlus'">
-          <option value="hoge">ほげほげの杖</option>
+          <template v-for="name in tueNameList">
+            <option :value="name">{{name}}</option>
+          </template>
         </select>
   
         <div v-show="itemType !== 'buki' && itemType !== 'tate'"

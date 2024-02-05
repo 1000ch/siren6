@@ -148,3 +148,5 @@ itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
 tueList.sort((a, b) => a.kaine - b.kaine);
+
+export const tueNameList = [...new Set(tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => tue.name.slice(0, -3)))];

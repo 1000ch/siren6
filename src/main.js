@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { findItemList } from './item/item'
 import { kusaList } from './item/kusa';
-import { tueList } from './item/tue';
+import { tueList, tueNameList } from './item/tue';
 import { makimonoList } from './item/makimono';
 import { tuboList } from './item/tubo';
 import { udewaList } from './item/udewa';
@@ -18,6 +18,7 @@ const vm = {
                 makimono: '巻物', tubo: '壺',
                 udewa: '腕輪', buki: '武器', tate: '盾',
             },
+            tueNameList: [],
             nedanTypeList: ['kaine', 'urine'],
             nedanTypeName: {'kaine': '買値', 'urine': '売値'},
             itemType: 'kusa',
@@ -25,6 +26,9 @@ const vm = {
             nedan: 0,
             resultItemList: [],
         }
+    },
+    created() {
+        this.tueNameList = tueNameList;
     },
     methods: {
         onClickItemType(type) {

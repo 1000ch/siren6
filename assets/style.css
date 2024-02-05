@@ -13,8 +13,12 @@ body {
   height: 90vh;
 }
 
-input, select {
+input {
   font-size: 1.4rem;
+}
+
+select {
+  font-size: 1rem;
 }
 
 #app {
@@ -99,6 +103,7 @@ h1 {
 
 #search-item-name {
   margin-bottom: 6px;
+  padding: 2px 4px;
 }
 
 #input-nedan-container {
