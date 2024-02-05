@@ -93,9 +93,16 @@ h1 {
   }
 }
 
+#search-nedan-container {
+  margin-top: 0.8rem;
+}
+
+#search-item-name {
+  margin-bottom: 6px;
+}
+
 #input-nedan-container {
   display: flex;
-  margin-top: 0.8rem;
   align-items: center;
 }
 

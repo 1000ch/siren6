@@ -22,20 +22,26 @@
         </template>
       </div>
   
-      <div v-show="itemType !== 'buki' && itemType !== 'tate'"
-           id="input-nedan-container">
-        <div id="nedan-type-container">
-          <template v-for="t in nedanTypeList">
-            <div class="radio-btn nedan-type"
-                 :class="{'selected': nedanType === t}"
-                 @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
-          </template>
+      <div id="search-nedan-container">
+        <select id="search-item-name" v-show="itemType === 'tuePlus'">
+          <option value="hoge">ほげほげの杖</option>
+        </select>
+  
+        <div v-show="itemType !== 'buki' && itemType !== 'tate'"
+             id="input-nedan-container">
+          <div id="nedan-type-container">
+            <template v-for="t in nedanTypeList">
+              <div class="radio-btn nedan-type"
+                   :class="{'selected': nedanType === t}"
+                   @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
+            </template>
+          </div>
+          <input type="number" id="input-nedan" v-model="nedan"
+                 @focus="onFocusInputNedan"
+                 @blur="onBlurInputNedan"
+                 @keydown.enter="onKeyDownEnterInputNedan">
+          <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png" @click="onClickClearBtn">
         </div>
-        <input type="number" id="input-nedan" v-model="nedan"
-               @focus="onFocusInputNedan"
-               @blur="onBlurInputNedan"
-               @keydown.enter="onKeyDownEnterInputNedan">
-        <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png" @click="onClickClearBtn">
       </div>
     </div>
 
