@@ -23,7 +23,6 @@ select {
 
 #app {
   margin-left: 120px;
-  max-width: 600px;
 }
 
 @media screen and (max-width: 770px) {
