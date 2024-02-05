@@ -168,8 +168,20 @@ export function findTueCount(name, nedan, nedanType) {
         return [];
     }
     
-    // tood
+    const result = [];
+    const nedanDelta = nedanType === 'kaine' ? 100 : 40;
+
+    for (let count = 0; count <= 99; count++) {
+        const tmpNedan = nedan0 + nedanDelta * count;
+        if (nedan === Math.floor(tmpNedan * 0.87)) {
+            result.push({isNoroi: true, count});
+        }
+        else if (nedan === tmpNedan) {
+            result.push({isNoroi: false, count});
+            break;
+        }
+    }
     
-    return [];
+    return result;
 }
 
