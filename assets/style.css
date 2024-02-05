@@ -30,6 +30,14 @@ h1 {
   color: #774c1b;
 }
 
+h3, h4 {
+  margin: 16px 0 0 0;
+}
+
+ul {
+  margin: 0;
+}
+
 #item-type-container {
   display: flex;
 }
