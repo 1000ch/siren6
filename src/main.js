@@ -26,13 +26,16 @@ const vm = {
             nedanType: 'kaine',
             nedan: 0,
             resultItemList: [],
-            resultTueCount: -1,
+            resultTueCountList: [],
         }
     },
     created() {
         this.tueNameList = tueNameList;
     },
     methods: {
+        onChangeSearchItemName() {
+            this.findItemList();
+        },
         onClickItemType(type) {
             this.itemType = type;
 
@@ -82,9 +85,7 @@ const vm = {
                 return;
             }
             else if (this.itemType === 'tuePlus') {
-                const result = findTueCount(this.searchItemName, this.nedan, this.nedanType)
-                console.log(result);
-                this.resultTueCount = 42;
+                this.resultTueCountList = findTueCount(this.searchItemName, this.nedan, this.nedanType)
                 return;
             }
 

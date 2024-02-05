@@ -23,7 +23,9 @@
       </div>
   
       <div id="search-nedan-container">
-        <select id="search-item-name" v-show="itemType === 'tuePlus'" v-model="searchItemName">
+        <select id="search-item-name" v-show="itemType === 'tuePlus'"
+                                      v-model="searchItemName"
+                                      @change="onChangeSearchItemName">
           <template v-for="name in tueNameList">
             <option :value="name">{{name}}</option>
           </template>
@@ -49,19 +51,22 @@
 
     <div id="result">
       <template v-if="itemType === 'tuePlus'">
-        <div id="message">
-          <template v-if="resultTueCount === -1">
-            <template v-if="isFirstTime">
-              アイテムと値段を入力すると残り回数が分かります。
-            </template>
-            <template v-else>
-              しかし、なにも起きなかった。
-            </template>
+        <div id="message" v-if="resultTueCountList.length === 0">
+          <template v-if="isFirstTime">
+            アイテムと値段を入力すると残り回数が分かります。
           </template>
           <template v-else>
-            残り {{resultTueCount}}回
+            しかし、なにも起きなかった。
           </template>
         </div>
+        <table v-else>
+          <tr>
+            <th>呪い</th><th>回数</th>
+          </tr>
+          <tr v-for="tue in resultTueCountList">
+            <td>{{tue.isNoroi ? 'あり' : 'なし'}}</td><td>{{tue.count}}</td>
+          </tr>
+        </table>
       </template>
       <template v-else>
         <div id="message" v-if="resultItemList.length === 0">
