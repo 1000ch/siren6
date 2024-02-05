@@ -26,6 +26,9 @@ const vm = {
             itemType: 'kusa',
             nedanType: 'kaine',
             nedan: 0,
+            prevItemType: 'kusa',
+            currentNedanType: 'kaine',
+            currentTuePlusNedanType: 'urine',
             currentNedan: 0,
             currentTuePlusNedan: 0,
             resultItemList: [],
@@ -35,28 +38,27 @@ const vm = {
     created() {
         this.tueNameList = tueNameList;
     },
-    watch: {
-        itemType(newVal, oldVal) {
-            if (oldVal === 'tuePlus') {
-                this.currentTuePlusNedan = this.nedan;
-                this.nedan = this.currentNedan;
-            }
-            else if (newVal === 'tuePlus') {
-                this.currentNedan = this.nedan;
-                this.nedan = this.currentTuePlusNedan;
-            }
-        }
-    },
     methods: {
         onChangeSearchItemName() {
             this.findItemList();
         },
         onClickItemType(type) {
             this.itemType = type;
-            if (this.itemType === 'tuePlus') {
-                this.searchItemName = 'ただの杖';
-                this.nedanType = 'urine';
+
+            if (this.prevItemType === 'tuePlus') {
+                this.currentTuePlusNedanType = this.nedanType;
+                this.currentTuePlusNedan = this.nedan;
+                this.nedanType = this.currentNedanType;
+                this.nedan = this.currentNedan;
             }
+            else if (this.itemType === 'tuePlus') {
+                this.currentNedanType = this.nedanType;
+                this.currentNedan = this.nedan;
+                this.nedanType = this.currentTuePlusNedanType;
+                this.nedan = this.currentTuePlusNedan;
+            }
+            this.prevItemType = this.itemType;
+
             this.findItemList();
         },
         onClickNedanType(type) {
