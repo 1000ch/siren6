@@ -12,7 +12,8 @@ const vm = {
     data() {
         return {
             isFirstTime: true,
-            itemTypeList: ['kusa', 'tue', 'tuePlus', 'makimono', 'tubo', 'udewa', 'buki', 'tate'],
+            isTuePlusFirstTime: true,
+            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
                 kusa: '草', tue: '杖', tuePlus: '杖+',
                 makimono: '巻物', tubo: '壺',
@@ -69,8 +70,17 @@ const vm = {
             this.nedan = Number(this.nedan);
             event.target.value = this.nedan;
             this.findItemList();
-            if (this.isFirstTime && this.nedan !== 0) {
-                this.isFirstTime = false;
+            if (this.nedan !== 0) {
+                if (this.itemType === 'tuePlus') {
+                    if (this.isTuePlusFirstTime) {
+                        this.isTuePlusFirstTime = false;
+                    }
+                }
+                else {
+                    if (this.isFirstTime) {
+                        this.isFirstTime = false;
+                    }
+                }
             }
         },
         onKeyDownEnterInputNedan(event) {
@@ -86,7 +96,12 @@ const vm = {
             }
             this.nedan = 0;
             this.findItemList();
-            this.isFirstTime = true;
+            if (this.itemType === 'tuePlus') {
+                this.isTuePlusFirstTime = true;
+            }
+            else {
+                this.isFirstTime = true;
+            }
         },
         findItemList() {
             if (this.itemType === 'buki') {

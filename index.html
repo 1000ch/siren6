@@ -52,7 +52,7 @@
     <div id="result">
       <template v-if="itemType === 'tuePlus'">
         <div id="message" v-if="resultTueCountList.length === 0">
-          <template v-if="isFirstTime">
+          <template v-if="isTuePlusFirstTime">
             アイテムと値段を入力すると残り回数が分かります。
           </template>
           <template v-else>
