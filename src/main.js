@@ -57,7 +57,6 @@ const vm = {
                 this.nedanType = 'urine';
             }
             this.findItemList();
-            this.isFirstTime = true;
         },
         onClickNedanType(type) {
             this.nedanType = type;
