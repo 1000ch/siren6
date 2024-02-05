@@ -48,32 +48,49 @@
     </div>
 
     <div id="result">
-      <div id="message" v-if="resultItemList.length === 0">
-        <template v-if="isFirstTime">
-          値段を入力すると条件に一致するアイテムが分かります。
-        </template>
-        <template v-else>
-          しかし、なにも起きなかった。
-        </template>
-      </div>
-      <div v-else>
-        <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りで存在しない(憶測)</span>
-        <span v-show="itemType === 'makimono' && resultItemList.some(item => item.needSelect)">
-          黄色：選択式巻物
-        </span>
-        <span v-show="itemType === 'buki' || itemType === 'tate'">
-          通常の値段一覧です。
-        </span>
-        <table>
-          <tr>
-            <th>名前</th><th>買値</th><th>売値</th>
-          </tr>
-          <tr v-for="item in resultItemList"
-              :class="{'maybe-used': !item.unused, 'need-select': item.needSelect}">
-            <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
-          </tr>
-        </table>
-      </div>
+      <template v-if="itemType === 'tuePlus'">
+        <div id="message">
+          <template v-if="resultTueCount === -1">
+            <template v-if="isFirstTime">
+              アイテムと値段を入力すると残り回数が分かります。
+            </template>
+            <template v-else>
+              しかし、なにも起きなかった。
+            </template>
+          </template>
+          <template v-else>
+            残り {{resultTueCount}}回
+          </template>
+        </div>
+      </template>
+      <template v-else>
+        <div id="message" v-if="resultItemList.length === 0">
+          <template v-if="isFirstTime">
+            値段を入力すると条件に一致するアイテムが分かります。
+          </template>
+          <template v-else>
+            しかし、なにも起きなかった。
+          </template>
+        </div>
+        <div v-else>
+          <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りで存在しない(憶測)</span>
+          <span v-show="itemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+            黄色：選択式巻物
+          </span>
+          <span v-show="itemType === 'buki' || itemType === 'tate'">
+            通常の値段一覧です。
+          </span>
+          <table>
+            <tr>
+              <th>名前</th><th>買値</th><th>売値</th>
+            </tr>
+            <tr v-for="item in resultItemList"
+                :class="{'maybe-used': !item.unused, 'need-select': item.needSelect}">
+              <td>{{item.name}}</td><td>{{item.kaine}}</td><td>{{item.urine}}</td>
+            </tr>
+          </table>
+        </div>
+      </template>
     </div>
   </div>
 

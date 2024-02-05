@@ -25,6 +25,7 @@ const vm = {
             nedanType: 'kaine',
             nedan: 0,
             resultItemList: [],
+            resultTueCount: -1,
         }
     },
     created() {
@@ -33,6 +34,11 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.itemType = type;
+
+            if (this.itemType === 'tuePlus') {
+                this.nedanType = 'urine';
+            }
+
             this.findItemList();
         },
         onClickNedanType(type) {
@@ -72,6 +78,10 @@ const vm = {
             }
             else if (this.itemType === 'tate') {
                 this.resultItemList = tateList;
+                return;
+            }
+            else if (this.itemType === 'tuePlus') {
+                this.resultTueCount = 42;
                 return;
             }
 
