@@ -12,9 +12,9 @@ const vm = {
     data() {
         return {
             isFirstTime: true,
-            itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate'],
+            itemTypeList: ['kusa', 'tue', 'tuePlus', 'makimono', 'tubo', 'udewa', 'buki', 'tate'],
             itemTypeName: {
-                kusa: '草', tue: '杖',
+                kusa: '草', tue: '杖', tuePlus: '杖+',
                 makimono: '巻物', tubo: '壺',
                 udewa: '腕輪', buki: '武器', tate: '盾',
             },
