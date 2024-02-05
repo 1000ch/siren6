@@ -20,13 +20,24 @@
     text-align: center;
   }
 
-  #search-container, #result {
+  #search-container {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
   }
+  
+  #result {
+    width: 361px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-  #message {
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #message, #tips {
     padding: 0 8px;
   }
 }
