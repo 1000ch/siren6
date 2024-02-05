@@ -156,7 +156,7 @@ ul {
 }
 
 #input-nedan {
-  margin-left: 10px;
+  margin-left: 25px;
   padding-left: 4px;
   width: 120px;
   height: 1.4rem;
@@ -177,7 +177,7 @@ ul {
 }
 
 #clear-btn {
-  margin-left: 5px;
+  margin-left: 10px;
   height: 40px;
   cursor: pointer;
 }
