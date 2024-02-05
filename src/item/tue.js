@@ -149,4 +149,11 @@ itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
 tueList.sort((a, b) => a.kaine - b.kaine);
 
-export const tueNameList = [...new Set(tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => tue.name.slice(0, -3)))];
+const tueBaseList = tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => ({
+    name: tue.name.slice(0, -3),
+    kaine: tue.kaine,
+    urine: tue.urine
+}));
+
+export const tueNameList = tueBaseList.map(tue => tue.name);
+
