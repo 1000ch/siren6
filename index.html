@@ -50,6 +50,7 @@
     </div>
 
     <div id="result">
+      <!-- 杖+ -->
       <template v-if="itemType === 'tuePlus'">
         <div id="message" v-if="resultTueCountList.length === 0">
           <template v-if="isTuePlusFirstTime">
@@ -68,6 +69,7 @@
           </tr>
         </table>
       </template>
+      <!-- 杖+以外 -->
       <template v-else>
         <div id="message" v-if="resultItemList.length === 0">
           <template v-if="isFirstTime">
@@ -77,7 +79,7 @@
             しかし、なにも起きなかった。
           </template>
         </div>
-        <div v-else>
+        <template v-else>
           <span v-show="resultItemList.some(item => !item.unused)">灰色：店売りで存在しない(憶測)</span>
           <span v-show="itemType === 'makimono' && resultItemList.some(item => item.needSelect)">
             黄色：選択式巻物
@@ -96,7 +98,7 @@
               <td class="right">{{item.urine}}</td>
             </tr>
           </table>
-        </div>
+        </template>
       </template>
     </div>
   </div>
