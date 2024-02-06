@@ -8,10 +8,10 @@ function itemListPush(name, kaine, urine, unused = true, isNedanBase = false) {
         unused, isNedanBase
     });
     tuboList.push({
-        status: 'syukufuku',
-        name: name + '🔔',
-        kaine: kaine * 2,
-        urine: urine * 2,
+        status: 'noroi',
+        name: name + '💀',
+        kaine: Math.floor(kaine * 0.87),
+        urine: Math.floor(urine * 0.87),
         unused, isNedanBase
     });
 }
