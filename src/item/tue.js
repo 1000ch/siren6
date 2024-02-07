@@ -170,7 +170,9 @@ const tueBaseList = tueGroupList.map(tueGroup => ({
 
 export const tueNameList = tueBaseList.map(tue => tue.name);
 
-console.log(tueGroupList);
+export function findAllTueList() {
+    return tueGroupList.sort((a, b) => a[0].kaine - b[0].kaine).flat();
+}
 
 export function findTueCountList(name, nedan, searchNedanType) {
     let nedan0 = 0;
