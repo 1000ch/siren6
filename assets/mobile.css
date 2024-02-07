@@ -52,6 +52,14 @@
     margin-right: auto;
   }
 
+  #all-item-list {
+    th, td {
+      max-width: 120px;
+      min-width: 60px;
+      padding: 12px 6px;
+    }
+  }
+
   #message, #tips {
     padding: 0 8px;
   }

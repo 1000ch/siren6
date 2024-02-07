@@ -76,6 +76,7 @@ export function findAllItemGroupList(itemGroupList) {
         return {
             name: group[0].name.slice(0, -3),
             kaine: group[0].kaine,
+            urine: group[0].urine,
             count: `${minCount}～${group.at(-1).name.at(-2)}`,
         };
     });
