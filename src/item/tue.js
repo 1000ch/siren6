@@ -27,7 +27,7 @@ itemListPush('封印の杖[6]', 1100, 440);
 itemListPush('身代わりの杖[0]', 2000, 800, false);
 itemListPush('身代わりの杖[1]', 2100, 840, false);
 itemListPush('身代わりの杖[2]', 2200, 880, false);
-itemListPush('身代わりの杖[3]', 2300, 920), false;
+itemListPush('身代わりの杖[3]', 2300, 920, false);
 itemListPush('身代わりの杖[4]', 2400, 960);
 itemListPush('身代わりの杖[5]', 2500, 1000);
 itemListPush('身代わりの杖[6]', 2600, 1040);
