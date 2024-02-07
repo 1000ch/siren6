@@ -67,7 +67,8 @@
           <tr>
             <th>呪い</th><th>回数</th>
           </tr>
-          <tr v-for="tue in resultTueCountList">
+          <tr v-for="tue in resultTueCountList"
+              :class="{'tue-noroi': tue.isNoroi}">
             <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
           </tr>
         </table>
