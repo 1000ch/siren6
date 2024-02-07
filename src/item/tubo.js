@@ -1,24 +1,9 @@
-import { grouping } from "./item";
+import { createFuncItemListPush, grouping } from "./item";
 
 export const tuboList = [];
 
-function itemListPush(name, kaine, urine, unused = true, isNedanBase = false) {
-    tuboList.push({
-        status: 'normal',
-        name, kaine, urine,
-        unused, isNedanBase
-    });
-    tuboList.push({
-        status: 'noroi',
-        name: name + '💀',
-        kaine: Math.floor(kaine * 0.87),
-        urine: Math.floor(urine * 0.87),
-        unused, isNedanBase
-    });
-}
-
 // コメントアウトは意図的に残している
-
+const itemListPush = createFuncItemListPush(tuboList, false);
 itemListPush('保存の壺[0]', 800, 320, false, true);
 // itemListPush('保存の壺[1]', 900, 360, false);
 // itemListPush('保存の壺[2]', 1000, 400, false);

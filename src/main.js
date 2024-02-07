@@ -105,6 +105,9 @@ const vm = {
                 this.isFirstTime = true;
             }
         },
+        isZeroTimes(item) {
+            return item.name.endsWith('[0]');
+        },
         findItemList() {
             if (this.searchItemType === 'buki') {
                 this.resultItemList = bukiList;

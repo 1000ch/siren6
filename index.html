@@ -91,14 +91,17 @@
           </template>
         </div>
         <template v-else>
-          <div v-show="resultItemList.some(item => !item.unused && !item.isNedanBase)">
+          <div v-show="resultItemList.some(item => !item.unused && !isZeroTimes(item))">
             灰色：店売りで存在しない(憶測)
           </div>
           <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
             黄色：選択式巻物
           </div>
-          <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.isNedanBase)">
-            橙色：容量0の値段(利便性のために定義している)
+          <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
+            橙色：残り回数0の値段
+          </div>
+          <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
+            橙色：容量0の値段(利便性のために定義)
           </div>
           <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
             通常の値段一覧です。
@@ -108,7 +111,7 @@
               <th>名前</th><th>買値</th><th>売値</th>
             </tr>
             <tr v-for="item in resultItemList"
-                :class="{'maybe-used': !item.unused, 'need-select': item.needSelect, 'nedan-base': item.isNedanBase}">
+                :class="{'maybe-used': !item.unused, 'need-select': item.needSelect, 'nedan-base': isZeroTimes(item)}">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>
               <td class="right">{{item.urine}}</td>
