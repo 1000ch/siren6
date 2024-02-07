@@ -156,7 +156,7 @@ const tueBaseList = tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => (
 
 export const tueNameList = tueBaseList.map(tue => tue.name);
 
-export function findTueCount(name, nedan, searchNedanType) {
+export function findTueCountList(name, nedan, searchNedanType) {
     let nedan0 = 0;
     for (const tue of tueBaseList) {
         if (tue.name === name) {

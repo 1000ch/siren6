@@ -15,10 +15,10 @@
     
     <div id="search-container">
       <div id="item-type-container">
-        <template v-for="t in itemTypeList">
+        <template v-for="itemType in itemTypeList">
           <div class="radio-btn item-type"
-               :class="{'selected': searchItemType === t}"
-               @click="onClickItemType(t)">{{itemTypeName[t]}}</div>
+               :class="{'selected': searchItemType === itemType}"
+               @click="onClickItemType(itemType)">{{itemTypeName[itemType]}}</div>
         </template>
       </div>
   
@@ -34,11 +34,11 @@
         <div v-show="searchItemType !== 'buki' && searchItemType !== 'tate'"
              id="input-nedan-container">
           <div id="nedan-type-container">
-            <template v-for="t in nedanTypeList">
+            <template v-for="nedanType in nedanTypeList">
               <div class="radio-btn nedan-type"
-                   v-show="!(searchItemType === 'tuePlus' && t === 'all')"
-                   :class="{'selected': searchNedanType === t}"
-                   @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
+                   v-show="!(searchItemType === 'tuePlus' && nedanType === 'all')"
+                   :class="{'selected': searchNedanType === nedanType}"
+                   @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
           </div>
           <input type="number" id="input-nedan" v-model="searchNedan"

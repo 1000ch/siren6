@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { findItemList } from './item/item'
 import { kusaList } from './item/kusa';
-import { tueList, tueNameList, findTueCount } from './item/tue';
+import { tueList, tueNameList, findTueCountList } from './item/tue';
 import { makimonoList } from './item/makimono';
 import { tuboList } from './item/tubo';
 import { udewaList } from './item/udewa';
@@ -115,7 +115,7 @@ const vm = {
                 return;
             }
             else if (this.searchItemType === 'tuePlus') {
-                this.resultTueCountList = findTueCount(this.searchItemName, this.searchNedan, this.searchNedanType)
+                this.resultTueCountList = findTueCountList(this.searchItemName, this.searchNedan, this.searchNedanType)
                 return;
             }
 
