@@ -1,6 +1,6 @@
 
-export function findItemList(itemList, nedan, nedanType) {
-    return itemList.filter(item => item[nedanType] === nedan).sort((a, b) => {
+export function findItemList(itemList, nedan, searchNedanType) {
+    return itemList.filter(item => item[searchNedanType] === nedan).sort((a, b) => {
         if (a.status === b.status) {
             return 0;
         }

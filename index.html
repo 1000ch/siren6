@@ -17,13 +17,13 @@
       <div id="item-type-container">
         <template v-for="t in itemTypeList">
           <div class="radio-btn item-type"
-               :class="{'selected': itemType === t}"
+               :class="{'selected': searchItemType === t}"
                @click="onClickItemType(t)">{{itemTypeName[t]}}</div>
         </template>
       </div>
   
       <div id="search-nedan-container">
-        <select id="search-item-name" v-show="itemType === 'tuePlus'"
+        <select id="search-item-name" v-show="searchItemType === 'tuePlus'"
                                       v-model="searchItemName"
                                       @change="onChangeSearchItemName">
           <template v-for="name in tueNameList">
@@ -31,17 +31,17 @@
           </template>
         </select>
   
-        <div v-show="itemType !== 'buki' && itemType !== 'tate'"
+        <div v-show="searchItemType !== 'buki' && searchItemType !== 'tate'"
              id="input-nedan-container">
           <div id="nedan-type-container">
             <template v-for="t in nedanTypeList">
               <div class="radio-btn nedan-type"
-                   v-show="!(itemType === 'tuePlus' && t === 'all')"
-                   :class="{'selected': nedanType === t}"
+                   v-show="!(searchItemType === 'tuePlus' && t === 'all')"
+                   :class="{'selected': searchNedanType === t}"
                    @click="onClickNedanType(t)">{{nedanTypeName[t]}}</div>
             </template>
           </div>
-          <input type="number" id="input-nedan" v-model="nedan"
+          <input type="number" id="input-nedan" v-model="searchNedan"
                  @focus="onFocusInputNedan"
                  @blur="onBlurInputNedan"
                  @keydown.enter="onKeyDownEnterInputNedan">
@@ -54,7 +54,7 @@
 
     <div id="result">
       <!-- 杖+ -->
-      <template v-if="itemType === 'tuePlus'">
+      <template v-if="searchItemType === 'tuePlus'">
         <div id="message" v-if="resultTueCountList.length === 0">
           <template v-if="isTuePlusFirstTime">
             アイテムと値段を入力すると残り回数が分かります。
@@ -76,7 +76,7 @@
       <template v-else>
         <div id="message" v-if="resultItemList.length === 0">
           <template v-if="isFirstTime">
-            <template v-if="itemType !== 'tue'">
+            <template v-if="searchItemType !== 'tue'">
               値段を入力するとアイテムが分かります。
             </template>
             <template v-else>
@@ -93,13 +93,13 @@
           <div v-show="resultItemList.some(item => !item.unused && !item.isNedanBase)">
             灰色：店売りで存在しない(憶測)
           </div>
-          <div v-show="itemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+          <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
             黄色：選択式巻物
           </div>
-          <div v-show="itemType === 'tubo' && resultItemList.some(item => item.isNedanBase)">
+          <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.isNedanBase)">
             橙色：容量0の値段(利便性のため)
           </div>
-          <div v-show="itemType === 'buki' || itemType === 'tate'">
+          <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
             通常の値段一覧です。
           </div>
           <table>
@@ -114,7 +114,7 @@
             </tr>
           </table>
         </template>
-        <div id="tips" v-show="itemType === 'tubo'">
+        <div id="tips" v-show="searchItemType === 'tubo'">
           <h3>TIPS</h3>
           憶測なので参考程度に
           <h4>容量2～3</h4>

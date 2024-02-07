@@ -156,11 +156,11 @@ const tueBaseList = tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => (
 
 export const tueNameList = tueBaseList.map(tue => tue.name);
 
-export function findTueCount(name, nedan, nedanType) {
+export function findTueCount(name, nedan, searchNedanType) {
     let nedan0 = 0;
     for (const tue of tueBaseList) {
         if (tue.name === name) {
-            nedan0 = tue[nedanType];
+            nedan0 = tue[searchNedanType];
         }
     }
     if (nedan0 === 0) {
@@ -168,7 +168,7 @@ export function findTueCount(name, nedan, nedanType) {
     }
     
     const result = [];
-    const nedanDelta = nedanType === 'kaine' ? 100 : 40;
+    const nedanDelta = searchNedanType === 'kaine' ? 100 : 40;
 
     for (let count = 0; count <= 99; count++) {
         const tmpNedan = nedan0 + nedanDelta * count;

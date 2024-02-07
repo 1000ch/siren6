@@ -23,9 +23,9 @@ const vm = {
             searchItemName: 'ただの杖',
             nedanTypeList: ['kaine', 'urine', 'all'],
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
-            itemType: 'kusa',
-            nedanType: 'kaine',
-            nedan: 0,
+            searchItemType: 'kusa',
+            searchNedanType: 'kaine',
+            searchNedan: 0,
             prevItemType: 'kusa',
             currentNedanType: 'kaine',
             currentTuePlusNedanType: 'urine',
@@ -43,37 +43,37 @@ const vm = {
             this.findItemList();
         },
         onClickItemType(type) {
-            this.itemType = type;
+            this.searchItemType = type;
 
             if (this.prevItemType === 'tuePlus') {
-                this.currentTuePlusNedanType = this.nedanType;
-                this.currentTuePlusNedan = this.nedan;
-                this.nedanType = this.currentNedanType;
-                this.nedan = this.currentNedan;
+                this.currentTuePlusNedanType = this.searchNedanType;
+                this.currentTuePlusNedan = this.searchNedan;
+                this.searchNedanType = this.currentNedanType;
+                this.searchNedan = this.currentNedan;
             }
-            else if (this.itemType === 'tuePlus') {
-                this.currentNedanType = this.nedanType;
-                this.currentNedan = this.nedan;
-                this.nedanType = this.currentTuePlusNedanType;
-                this.nedan = this.currentTuePlusNedan;
+            else if (this.searchItemType === 'tuePlus') {
+                this.currentNedanType = this.searchNedanType;
+                this.currentNedan = this.searchNedan;
+                this.searchNedanType = this.currentTuePlusNedanType;
+                this.searchNedan = this.currentTuePlusNedan;
             }
-            this.prevItemType = this.itemType;
+            this.prevItemType = this.searchItemType;
 
             this.findItemList();
         },
         onClickNedanType(type) {
-            this.nedanType = type;
+            this.searchNedanType = type;
             this.findItemList();
         },
         onFocusInputNedan(event) {
             event.target.select();
         },
         onBlurInputNedan(event) {
-            this.nedan = Number(this.nedan);
-            event.target.value = this.nedan;
+            this.searchNedan = Number(this.searchNedan);
+            event.target.value = this.searchNedan;
             this.findItemList();
-            if (this.nedan !== 0) {
-                if (this.itemType === 'tuePlus') {
+            if (this.searchNedan !== 0) {
+                if (this.searchItemType === 'tuePlus') {
                     if (this.isTuePlusFirstTime) {
                         this.isTuePlusFirstTime = false;
                     }
@@ -96,9 +96,9 @@ const vm = {
                     clearBtnClassList.remove('jump');
                 }, 2000);
             }
-            this.nedan = 0;
+            this.searchNedan = 0;
             this.findItemList();
-            if (this.itemType === 'tuePlus') {
+            if (this.searchItemType === 'tuePlus') {
                 this.isTuePlusFirstTime = true;
             }
             else {
@@ -106,28 +106,28 @@ const vm = {
             }
         },
         findItemList() {
-            if (this.itemType === 'buki') {
+            if (this.searchItemType === 'buki') {
                 this.resultItemList = bukiList;
                 return;
             }
-            else if (this.itemType === 'tate') {
+            else if (this.searchItemType === 'tate') {
                 this.resultItemList = tateList;
                 return;
             }
-            else if (this.itemType === 'tuePlus') {
-                this.resultTueCountList = findTueCount(this.searchItemName, this.nedan, this.nedanType)
+            else if (this.searchItemType === 'tuePlus') {
+                this.resultTueCountList = findTueCount(this.searchItemName, this.searchNedan, this.searchNedanType)
                 return;
             }
 
             let targetList = [];
-            switch (this.itemType) {
+            switch (this.searchItemType) {
                 case 'kusa': targetList = kusaList; break;
                 case 'tue': targetList = tueList; break;
                 case 'makimono': targetList = makimonoList; break;
                 case 'tubo': targetList = tuboList; break;
                 case 'udewa': targetList = udewaList; break;
             }
-            this.resultItemList = findItemList(targetList, this.nedan, this.nedanType);
+            this.resultItemList = findItemList(targetList, this.searchNedan, this.searchNedanType);
         },
     }
 };
