@@ -36,7 +36,7 @@
           <div id="nedan-type-container">
             <template v-for="nedanType in nedanTypeList">
               <div class="radio-btn nedan-type"
-                   v-show="!(searchItemType === 'tuePlus' && nedanType === 'all')"
+                   v-if="!(searchItemType === 'tuePlus' && nedanType === 'all')"
                    :class="{'selected': searchNedanType === nedanType}"
                    @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
@@ -95,7 +95,7 @@
         </div>
         <template v-else>
           <div v-show="resultItemList.some(item => !item.unused && !isZeroTimes(item))">
-            灰色：店売りで存在しない(憶測)
+            灰色：店売りで存在しない
           </div>
           <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
             黄色：選択式巻物
@@ -104,10 +104,7 @@
             橙色：残り回数0の値段
           </div>
           <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
-            橙色：容量0の値段(利便性のために定義)
-          </div>
-          <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
-            通常の値段一覧です。
+            橙色：容量0の値段
           </div>
           <table>
             <tr>
@@ -136,13 +133,9 @@
             <li>呪いの壺</li>
             <li>底抜けの壺</li>
           </ul>
-          <h4>容量2がある例外</h4>
-          <ul>
-            <li>水鉄砲の壺(自分は未確認)</li>
-          </ul>
           <h4>容量3～4</h4>
           <ul>
-            <li>合成の壺(多分2はない？)</li>
+            <li>合成の壺</li>
           </ul>
         </div>
       </template>
