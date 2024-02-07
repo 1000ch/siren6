@@ -36,7 +36,7 @@
           <div id="nedan-type-container">
             <template v-for="nedanType in nedanTypeList">
               <div class="radio-btn nedan-type"
-                   v-show="!(searchItemType === 'tuePlus' && nedanType === 'all')"
+                   v-if="!(searchItemType === 'tuePlus' && nedanType === 'all')"
                    :class="{'selected': searchNedanType === nedanType}"
                    @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
