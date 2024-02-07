@@ -1,23 +1,28 @@
 
 export function findItemList(itemList, nedan, searchNedanType) {
-    return itemList.filter(item => item[searchNedanType] === nedan).sort((a, b) => {
-        if (a.status === b.status) {
-            return 0;
-        }
-        else if (a.status === 'noroi') {
-            return -1;
-        }
-        else if (b.status === 'noroi') {
-            return 1;
-        }
-        else if (a.status === 'syukufuku') {
-            return 1;
-        }
-        else if (b.status === 'syukufuku') {
-            return -1;
-        }
-        throw new Error('ここが実行されることはありえない');
-    });
+    if (searchNedanType === 'all') {
+        return itemList.filter(item => item.status === 'normal').sort((a, b) => a.kaine - b.kaine);
+    }
+    else {
+        return itemList.filter(item => item[searchNedanType] === nedan).sort((a, b) => {
+            if (a.status === b.status) {
+                return 0;
+            }
+            else if (a.status === 'noroi') {
+                return -1;
+            }
+            else if (b.status === 'noroi') {
+                return 1;
+            }
+            else if (a.status === 'syukufuku') {
+                return 1;
+            }
+            else if (b.status === 'syukufuku') {
+                return -1;
+            }
+            throw new Error('ここが実行されることはありえない');
+        });
+    }
 }
 
 export function createFuncItemListPush(list, canSyukufuku) {
