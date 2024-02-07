@@ -16,6 +16,8 @@ function itemListPush(name, kaine, urine, unused = true, isNedanBase = false) {
     });
 }
 
+// コメントアウトは意図的に残している
+
 itemListPush('保存の壺[0]', 800, 320, false, true);
 // itemListPush('保存の壺[1]', 900, 360, false);
 // itemListPush('保存の壺[2]', 1000, 400, false);
