@@ -100,7 +100,7 @@ itemListPush('トドの壺[4]', 2400, 960);
 itemListPush('トドの壺[5]', 2500, 1000);
 itemListPush('水鉄砲の壺[0]', 2000, 800, false, true);
 itemListPush('水鉄砲の壺[1]', 2100, 840, false);
-itemListPush('水鉄砲の壺[2]', 2200, 880); // MEMO: 床落ちで存在するらしい
+itemListPush('水鉄砲の壺[2]', 2200, 880, false);
 itemListPush('水鉄砲の壺[3]', 2300, 920);
 itemListPush('水鉄砲の壺[4]', 2400, 960);
 itemListPush('水鉄砲の壺[5]', 2500, 1000);
