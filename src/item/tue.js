@@ -148,13 +148,29 @@ itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
 
-const tueBaseList = tueList.filter(tue => tue.name.endsWith('[0]')).map(tue => ({
-    name: tue.name.slice(0, -3),
-    kaine: tue.kaine,
-    urine: tue.urine
+function grouping() {
+    const groups = {};
+    for (const tue of tueList.filter(tue => tue.status === 'normal')) {
+        const name = tue.name.slice(0, -3);
+        if (!groups[name]) {
+            groups[name] = [];
+        }
+        groups[name].push(tue);
+    }
+    return Object.values(groups);
+}
+
+const tueGroupList = grouping();
+
+const tueBaseList = tueGroupList.map(tueGroup => ({
+    name: tueGroup[0].name.slice(0, -3),
+    kaine: tueGroup[0].kaine,
+    urine: tueGroup[0].urine
 }));
 
 export const tueNameList = tueBaseList.map(tue => tue.name);
+
+console.log(tueGroupList);
 
 export function findTueCountList(name, nedan, searchNedanType) {
     let nedan0 = 0;
