@@ -132,4 +132,3 @@ itemListPush('魔物の壺[5]', 2500, 1000);
 // itemListPush('ビックリの壺[3]', 2300, 920);
 // itemListPush('ビックリの壺[4]', 2400, 960);
 // itemListPush('ビックリの壺[5]', 2500, 1000);
-tuboList.sort((a, b) => a.kaine - b.kaine);

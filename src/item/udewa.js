@@ -39,4 +39,3 @@ itemListPush('値切りの腕輪', 3500, 1400);
 itemListPush('罠師の腕輪', 7500, 3000);
 itemListPush('鑑定師の腕輪', 7500, 3000);
 itemListPush('大砲強化の腕輪', 2500, 1000);
-udewaList.sort((a, b) => a.kaine - b.kaine);

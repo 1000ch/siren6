@@ -29,4 +29,3 @@ itemListPush('天使の種', 2000, 800);
 itemListPush('くねくね草', 100, 40);
 itemListPush('不幸の種', 400, 160);
 itemListPush('超不幸の種', 2000, 800);
-kusaList.sort((a, b) => a.kaine - b.kaine);

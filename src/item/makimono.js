@@ -63,4 +63,3 @@ itemListPush('ねだやしの巻物', 10000, 4000);
 itemListPush('聖域の巻物', 1000, 400);
 itemListPush('白紙の巻物', 1000, 400);
 itemListPush('ぬれた巻物', 200, 80);
-makimonoList.sort((a, b) => a.kaine - b.kaine);
