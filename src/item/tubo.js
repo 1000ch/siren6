@@ -30,7 +30,7 @@ itemListPush('換金の壺[4]', 1400, 560);
 itemListPush('換金の壺[5]', 1500, 600);
 itemListPush('合成の壺[0]', 6000, 2400, false, true);
 itemListPush('合成の壺[1]', 6100, 2440, false);
-itemListPush('合成の壺[2]', 6200, 2480); // MEMO 存在しない？
+itemListPush('合成の壺[2]', 6200, 2480, false);
 itemListPush('合成の壺[3]', 6300, 2520);
 itemListPush('合成の壺[4]', 6400, 2560);
 itemListPush('おはらいの壺[0]', 1600, 640, false, true);
