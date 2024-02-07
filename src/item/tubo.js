@@ -1,4 +1,4 @@
-import { createFuncItemListPush, grouping } from "./item";
+import { createFuncItemListPush, grouping, findAllItemGroupList } from "./item";
 
 export const tuboList = [];
 
@@ -124,5 +124,5 @@ itemListPush('魔物の壺[5]', 2500, 1000);
 const tuboGroupList = grouping(tuboList);
 
 export function findAllTuboList() {
-    return tuboGroupList.sort((a, b) => a[0].kaine - b[0].kaine).flat().filter(tubo => tubo.unused || tubo.name.endsWith('[0]'));
+    return findAllItemGroupList(tuboGroupList);
 }

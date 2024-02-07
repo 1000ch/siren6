@@ -1,4 +1,4 @@
-import { createFuncItemListPush, grouping } from './item';
+import { createFuncItemListPush, grouping, findAllItemGroupList } from './item';
 
 export const tueList = [];
 const itemListPush = createFuncItemListPush(tueList, false);
@@ -158,20 +158,7 @@ const tueBaseList = tueGroupList.map(tueGroup => ({
 export const tueNameList = tueBaseList.map(tue => tue.name);
 
 export function findAllTueList() {
-    return tueGroupList.sort((a, b) => a[0].kaine - b[0].kaine).map(group => {
-        let minCount = 0;
-        for (const tue of group) {
-            if (tue.unused) {
-                minCount = tue.name.at(-2);
-                break;
-            }
-        }
-        return {
-            name: group[0].name.slice(0, -3),
-            kaine: group[0].kaine,
-            count: `${minCount}～${group.at(-1).name.at(-2)}`,
-        };
-    });
+    return findAllItemGroupList(tueGroupList);
 }
 
 export function findTueCountList(name, nedan, searchNedanType) {
