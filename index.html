@@ -95,7 +95,7 @@
         </div>
         <template v-else>
           <div v-show="resultItemList.some(item => !item.unused && !isZeroTimes(item))">
-            灰色：店売りで存在しない(憶測)
+            灰色：店売りで存在しない
           </div>
           <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
             黄色：選択式巻物
@@ -104,7 +104,7 @@
             橙色：残り回数0の値段
           </div>
           <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
-            橙色：容量0の値段(利便性のために定義)
+            橙色：容量0の値段
           </div>
           <table>
             <tr>
