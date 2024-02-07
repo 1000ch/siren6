@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
-import { findAllItemList, findItemList } from './item/item'
+import { createApp } from 'vue';
+import { findAllItemList, findItemList } from './item/item';
 import { kusaList } from './item/kusa';
 import { tueList, tueNameList, findAllTueList, findTueCountList } from './item/tue';
 import { makimonoList } from './item/makimono';
-import { tuboList } from './item/tubo';
+import { tuboList, findAllTuboList } from './item/tubo';
 import { udewaList } from './item/udewa';
 import { bukiList } from './item/buki';
 import { tateList } from './item/tate';
@@ -131,6 +131,9 @@ const vm = {
             if (this.searchNedanType === 'all') {
                 if (this.searchItemType === 'tue') {
                     this.resultItemList = findAllTueList();
+                }
+                else if (this.searchItemType === 'tubo') {
+                    this.resultItemList = findAllTuboList();
                 }
                 else {
                     this.resultItemList = findAllItemList(targetList);

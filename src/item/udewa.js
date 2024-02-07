@@ -1,4 +1,4 @@
-import { createFuncItemListPush } from './item'
+import { createFuncItemListPush } from './item';
 
 export const udewaList = [];
 const itemListPush = createFuncItemListPush(udewaList, false);

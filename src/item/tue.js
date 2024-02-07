@@ -1,4 +1,4 @@
-import { createFuncItemListPush } from './item'
+import { createFuncItemListPush, grouping } from './item';
 
 export const tueList = [];
 const itemListPush = createFuncItemListPush(tueList, false);
@@ -148,20 +148,7 @@ itemListPush('桃まんの杖[4]', 2400, 960);
 itemListPush('桃まんの杖[5]', 2500, 1000);
 itemListPush('桃まんの杖[6]', 2600, 1040);
 
-function grouping() {
-    const groups = {};
-    for (const tue of tueList.filter(tue => tue.status === 'normal')) {
-        const name = tue.name.slice(0, -3);
-        if (!groups[name]) {
-            groups[name] = [];
-        }
-        groups[name].push(tue);
-    }
-    return Object.values(groups);
-}
-
-const tueGroupList = grouping();
-
+const tueGroupList = grouping(tueList);
 const tueBaseList = tueGroupList.map(tueGroup => ({
     name: tueGroup[0].name.slice(0, -3),
     kaine: tueGroup[0].kaine,

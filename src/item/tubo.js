@@ -1,3 +1,4 @@
+import { grouping } from "./item";
 
 export const tuboList = [];
 
@@ -134,3 +135,9 @@ itemListPush('魔物の壺[5]', 2500, 1000);
 // itemListPush('ビックリの壺[3]', 2300, 920);
 // itemListPush('ビックリの壺[4]', 2400, 960);
 // itemListPush('ビックリの壺[5]', 2500, 1000);
+
+const tuboGroupList = grouping(tuboList);
+
+export function findAllTuboList() {
+    return tuboGroupList.sort((a, b) => a[0].kaine - b[0].kaine).flat();
+}

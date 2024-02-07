@@ -1,4 +1,4 @@
-import { createFuncItemListPush } from './item'
+import { createFuncItemListPush } from './item';
 
 export const kusaList = [];
 const itemListPush = createFuncItemListPush(kusaList, true);
