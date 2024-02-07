@@ -23,9 +23,10 @@
       </div>
   
       <div id="search-nedan-container">
-        <select id="search-item-name" v-show="searchItemType === 'tuePlus'"
-                                      v-model="searchItemName"
-                                      @change="onChangeSearchItemName">
+        <select id="search-item-name"
+                v-show="searchItemType === 'tuePlus'"
+                v-model="searchItemName"
+                @change="onChangeSearchItemName">
           <template v-for="name in tueNameList">
             <option :value="name">{{name}}</option>
           </template>
