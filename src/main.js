@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { findItemList } from './item/item'
+import { findAllItemList, findItemList } from './item/item'
 import { kusaList } from './item/kusa';
 import { tueList, tueNameList, findTueCountList } from './item/tue';
 import { makimonoList } from './item/makimono';
@@ -127,7 +127,13 @@ const vm = {
                 case 'tubo': targetList = tuboList; break;
                 case 'udewa': targetList = udewaList; break;
             }
-            this.resultItemList = findItemList(targetList, this.searchNedan, this.searchNedanType);
+
+            if (this.searchNedanType === 'all') {
+                this.resultItemList = findAllItemList(targetList);
+            }
+            else {
+                this.resultItemList = findItemList(targetList, this.searchNedan, this.searchNedanType);
+            }
         },
     }
 };
