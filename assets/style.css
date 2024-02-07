@@ -205,6 +205,10 @@ ul {
   }
 }
 
+.visibility-hidden {
+  visibility: hidden;
+}
+
 #search-item-list {
   margin-top: 0.8rem;
 }

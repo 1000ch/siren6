@@ -42,10 +42,13 @@
             </template>
           </div>
           <input type="number" id="input-nedan" v-model="searchNedan"
+                 :class="{'visibility-hidden': searchNedanType === 'all'}"
                  @focus="onFocusInputNedan"
                  @blur="onBlurInputNedan"
                  @keydown.enter="onKeyDownEnterInputNedan">
-          <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png" @click="onClickClearBtn">
+          <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
+               :class="{'visibility-hidden': searchNedanType === 'all'}"
+               @click="onClickClearBtn">
         </div>
       </div>
     </div>
