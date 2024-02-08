@@ -148,6 +148,15 @@ const vm = {
                 //         item.shouldChangeBackground = true;
                 //     }
                 // }
+                let prevKaine = this.resultItemList[0].kaine;
+                let shouldChangeBackground = false;
+                for (const item of this.resultItemList) {
+                    if (item.kaine !== prevKaine) {
+                        shouldChangeBackground = !shouldChangeBackground;
+                    }
+                    item.shouldChangeBackground = shouldChangeBackground;
+                    prevKaine = item.kaine;
+                }
             }
             else {
                 this.resultItemList = findItemList(targetList, this.searchNedan, this.searchNedanType);
