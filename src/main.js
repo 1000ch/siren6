@@ -141,6 +141,13 @@ const vm = {
                 else {
                     this.resultItemList = findAllItemList(targetList);
                 }
+
+                // for (let i = 0; i < this.resultItemList.length; i++) {
+                //     const item = this.resultItemList[i];
+                //     if (i % 2 === 1) {
+                //         item.shouldChangeBackground = true;
+                //     }
+                // }
             }
             else {
                 this.resultItemList = findItemList(targetList, this.searchNedan, this.searchNedanType);
