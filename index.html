@@ -131,14 +131,12 @@
             <tr>
               <th>名前</th><th>買値</th><th>売値</th>
             </tr>
-            <tr v-for="(item, index) in resultItemList"
+            <tr v-for="item in resultItemList"
                 :class="{
                   'maybe-used': !item.unused,
                   'need-select': item.needSelect,
                   'nedan-base': isZeroTimes(item),
-                  'alternate-background':
-                    item.shouldChangeBackground ||
-                    (searchItemType === 'buki' || searchItemType === 'tate') && index % 2 === 1
+                  'alternate-background': item.shouldChangeBackground
                 }">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>
