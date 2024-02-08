@@ -15,5 +15,6 @@
     "start": "npx webpack serve --open",
     "build": "npx webpack",
     "test": "npx mocha test"
-  }
+  },
+  "type": "module"
 }
