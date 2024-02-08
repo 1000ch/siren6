@@ -3,10 +3,13 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production', // development
-  entry: './src/main.js',
+  entry: {
+    main: './src/main.js',
+    test: './test/test.js',
+  },
   output: {
     publicPath: '/dist/',
-    filename: 'main.js'
+    filename: '[name].js'
   },
   devServer: {
     static: {
