@@ -142,12 +142,6 @@ const vm = {
                     this.resultItemList = findAllItemList(targetList);
                 }
 
-                // for (let i = 0; i < this.resultItemList.length; i++) {
-                //     const item = this.resultItemList[i];
-                //     if (i % 2 === 1) {
-                //         item.shouldChangeBackground = true;
-                //     }
-                // }
                 let prevKaine = this.resultItemList[0].kaine;
                 let shouldChangeBackground = false;
                 for (const item of this.resultItemList) {
