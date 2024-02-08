@@ -120,7 +120,10 @@
               <th>名前</th><th>買値</th><th>売値</th><th>{{searchItemType === 'tue' ? '回数' : '容量'}}</th>
             </tr>
             <tr v-for="item in resultItemList"
-                :class="{'alternate-background': item.shouldChangeBackground}">
+                :class="{
+                  'alternate-background': item.shouldChangeBackground,
+                  'borderline': item.needBorderline
+                }">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>
               <td class="right">{{item.urine}}</td>
@@ -136,7 +139,8 @@
                   'maybe-used': !item.unused,
                   'need-select': item.needSelect,
                   'nedan-base': isZeroTimes(item),
-                  'alternate-background': item.shouldChangeBackground
+                  'alternate-background': item.shouldChangeBackground,
+                  'borderline': item.needBorderline
                 }">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>
