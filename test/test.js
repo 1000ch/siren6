@@ -1,10 +1,14 @@
 import { assert } from 'chai';
 import { findAllItemList, findItemList } from '../src/item/item.js';
+import { kusaList } from '../src/item/kusa.js';
 
 // assert.strictEqual(1, 1);
 
 describe('草', function () {
     it('検索 通常 買値', function () {
+        const resultList = findItemList(kusaList, 50)
+
+
         assert.fail();
     });
     it('検索 通常 売値', function () {
@@ -20,6 +24,12 @@ describe('草', function () {
         assert.fail();
     });
     it('検索 祝福 売値', function () {
+        assert.fail();
+    });
+    it('検索 通常＆祝福 買値', function () {
+        assert.fail();
+    });
+    it('検索 通常＆祝福 売値', function () {
         assert.fail();
     });
     it('検索 該当なし 買値', function () {
@@ -80,6 +90,12 @@ describe('巻物', function () {
         assert.fail();
     });
     it('検索 祝福 売値', function () {
+        assert.fail();
+    });
+    it('検索 通常＆祝福 買値', function () {
+        assert.fail();
+    });
+    it('検索 通常＆祝福 売値', function () {
         assert.fail();
     });
     it('検索 該当なし 買値', function () {
