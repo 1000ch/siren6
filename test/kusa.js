@@ -31,22 +31,42 @@ describe('草', function () {
         assert.strictEqual(resultList[0].name, 'ドラゴン草💀');
     });
     it('検索 祝福 買値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 4000, 'kaine');
+        assert.strictEqual(resultList.length, 2);
+        assert.strictEqual(resultList[0].name, '天使の種🔔');
+        assert.strictEqual(resultList[1].name, '超不幸の種🔔');
     });
     it('検索 祝福 売値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 320, 'urine');
+        assert.strictEqual(resultList.length, 3);
+        assert.strictEqual(resultList[0].name, '復活の草🔔');
+        assert.strictEqual(resultList[1].name, '無敵草🔔');
+        assert.strictEqual(resultList[2].name, '不幸の種🔔');
     });
     it('検索 通常＆祝福 買値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 1000, 'kaine');
+        assert.strictEqual(resultList.length, 2);
+        assert.strictEqual(resultList[0].name, 'しあわせ草');
+        assert.strictEqual(resultList[1].name, '命の草🔔');
     });
     it('検索 通常＆祝福 売値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 160, 'urine');
+        assert.strictEqual(resultList.length, 7);
+        assert.strictEqual(resultList[0].name, '復活の草');
+        assert.strictEqual(resultList[1].name, '無敵草');
+        assert.strictEqual(resultList[2].name, '不幸の種');
+        assert.strictEqual(resultList[3].name, 'いやし草🔔');
+        assert.strictEqual(resultList[4].name, 'かぐわし草🔔');
+        assert.strictEqual(resultList[5].name, '胃拡張の種🔔');
+        assert.strictEqual(resultList[6].name, '胃縮小の種🔔');
     });
     it('検索 該当なし 買値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 300, 'kaine');
+        assert.strictEqual(resultList.length, 0);
     });
     it('検索 該当なし 売値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 300, 'urine');
+        assert.strictEqual(resultList.length, 0);
     });
     it('検索 一覧', function () {
         assert.fail();
