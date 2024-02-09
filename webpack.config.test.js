@@ -3,10 +3,12 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './test/test.js',
+  entry: {
+    kusa: './test/kusa.js',
+  },
   output: {
-    publicPath: '/dist/',
-    filename: 'test.js'
+    path: path.resolve(__dirname, 'dist', 'test'),
+    filename: '[name].js'
   },
   module: {
     rules: [
