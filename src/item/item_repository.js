@@ -16,21 +16,19 @@ export class ItemRepository {
     static add(item) {
         this.itemList.push(item);
         if (this.canSyukufuku) {
-            this.itemList.push({
-                status: 'syukufuku',
-                name: item.name + '🔔',
-                kaine: item.kaine * 2,
-                urine: item.urine * 2,
-                unused: item.unused
-            });
+            const syukufukuItem = {...item};
+            syukufukuItem.status = 'syukufuku';
+            syukufukuItem.name = item.name + '🔔';
+            syukufukuItem.kaine = item.kaine * 2;
+            syukufukuItem.urine = item.urine * 2;
+            this.itemList.push(syukufukuItem);
         }
-        this.itemList.push({
-            status: 'noroi',
-            name: item.name + '💀',
-            kaine: Math.floor(item.kaine * 0.87),
-            urine: Math.floor(item.urine * 0.87),
-            unused: item.unused
-        });
+        const noroiItem = {...item};
+        noroiItem.status = 'noroi';
+        noroiItem.name = item.name + '💀';
+        noroiItem.kaine = Math.floor(item.kaine * 0.87);
+        noroiItem.urine = Math.floor(item.urine * 0.87);
+        this.itemList.push(noroiItem);
     }
 
     static findItemList(nedan, searchNedanType) {
