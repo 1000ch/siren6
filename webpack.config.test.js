@@ -5,6 +5,11 @@ module.exports = {
   mode: 'production',
   entry: {
     kusa: './test/kusa.js',
+    tue: './test/tue.js',
+    makimono: './test/makimono.js',
+    tubo: './test/tubo.js',
+    udewa: './test/udewa.js',
+    tuePlus: './test/tuePlus.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist', 'test'),
