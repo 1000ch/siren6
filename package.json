@@ -15,6 +15,7 @@
   "scripts": {
     "start": "npx webpack serve --open",
     "build": "npx webpack",
-    "test": "npx webpack --config webpack.config.test.js && npx mocha dist/test"
+    "build-test": "npx webpack --config webpack.config.test.js",
+    "test": "npx mocha dist/test"
   }
 }
