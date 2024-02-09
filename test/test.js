@@ -6,10 +6,9 @@ import { kusaList } from '../src/item/kusa.js';
 
 describe('草', function () {
     it('検索 通常 買値', function () {
-        const resultList = findItemList(kusaList, 50)
-
-
-        assert.fail();
+        const resultList = findItemList(kusaList, 50, 'kaine');
+        assert.strictEqual(resultList[0].name, '毒草');
+        assert.strictEqual(resultList[1].name, '暴走の種');
     });
     it('検索 通常 売値', function () {
         assert.fail();
