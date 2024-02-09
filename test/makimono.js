@@ -1,10 +1,9 @@
 import { assert } from 'chai';
-import { findAllItemList, findItemList } from '../src/item/item.js';
-import { makimonoList } from '../src/item/makimono.js';
+import { MakimonoRepository } from '../src/item/makimono_repository';
 
 describe('巻物', function () {
     it('検索 通常 買値', function () {
-        const resultList = findItemList(makimonoList, 300, 'kaine');
+        const resultList = MakimonoRepository.findItemList(300, 'kaine');
         assert.strictEqual(resultList.length, 9);
         assert.strictEqual(resultList[0].name, '混乱の巻物');
         assert.strictEqual(resultList[1].name, 'バクスイの巻物');
@@ -17,17 +16,17 @@ describe('巻物', function () {
         assert.strictEqual(resultList[8].name, '困った時の巻物');
     });
     it('検索 通常 売値', function () {
-        const resultList = findItemList(makimonoList, 1200, 'urine');
+        const resultList = MakimonoRepository.findItemList(1200, 'urine');
         assert.strictEqual(resultList.length, 1);
         assert.strictEqual(resultList[0].name, '全滅の巻物');
     });
     it('検索 呪い 買値', function () {
-        const resultList = findItemList(makimonoList, 8700, 'kaine');
+        const resultList = MakimonoRepository.findItemList(8700, 'kaine');
         assert.strictEqual(resultList.length, 1);
         assert.strictEqual(resultList[0].name, 'ねだやしの巻物💀');
     });
     it('検索 呪い 売値', function () {
-        const resultList = findItemList(makimonoList, 208, 'urine');
+        const resultList = MakimonoRepository.findItemList(208, 'urine');
         assert.strictEqual(resultList.length, 4);
         assert.strictEqual(resultList[0].name, 'おはらいの巻物💀');
         assert.strictEqual(resultList[1].name, 'あかりの巻物💀');
@@ -35,7 +34,7 @@ describe('巻物', function () {
         assert.strictEqual(resultList[3].name, '罠消しの巻物💀');
     });
     it('検索 祝福 買値', function () {
-        const resultList = findItemList(makimonoList, 1200, 'kaine');
+        const resultList = MakimonoRepository.findItemList(1200, 'kaine');
         assert.strictEqual(resultList.length, 4);
         assert.strictEqual(resultList[0].name, 'おはらいの巻物🔔');
         assert.strictEqual(resultList[1].name, 'あかりの巻物🔔');
@@ -43,12 +42,12 @@ describe('巻物', function () {
         assert.strictEqual(resultList[3].name, '罠消しの巻物🔔');
     });
     it('検索 祝福 売値', function () {
-        const resultList = findItemList(makimonoList, 2400, 'urine');
+        const resultList = MakimonoRepository.findItemList(2400, 'urine');
         assert.strictEqual(resultList.length, 1);
         assert.strictEqual(resultList[0].name, '全滅の巻物🔔');
     });
     it('検索 通常＆祝福 買値', function () {
-        const resultList = findItemList(makimonoList, 400, 'kaine');
+        const resultList = MakimonoRepository.findItemList(400, 'kaine');
         assert.strictEqual(resultList.length, 7);
         assert.strictEqual(resultList[0].name, '天の恵みの巻物');
         assert.strictEqual(resultList[1].name, '地の恵みの巻物');
@@ -59,7 +58,7 @@ describe('巻物', function () {
         assert.strictEqual(resultList[6].name, 'ぬれた巻物🔔');
     });
     it('検索 通常＆祝福 売値', function () {
-        const resultList = findItemList(makimonoList, 240, 'urine');
+        const resultList = MakimonoRepository.findItemList(240, 'urine');
         assert.strictEqual(resultList.length, 13);
         assert.strictEqual(resultList[0].name, 'おはらいの巻物');
         assert.strictEqual(resultList[1].name, 'あかりの巻物');
@@ -76,15 +75,15 @@ describe('巻物', function () {
         assert.strictEqual(resultList[12].name, '困った時の巻物🔔');
     });
     it('検索 該当なし 買値', function () {
-        const resultList = findItemList(makimonoList, 1234, 'kaine');
+        const resultList = MakimonoRepository.findItemList(1234, 'kaine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 該当なし 売値', function () {
-        const resultList = findItemList(makimonoList, 1234, 'urine');
+        const resultList = MakimonoRepository.findItemList(1234, 'urine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 一覧', function () {
-        const resultList = findAllItemList(makimonoList);
+        const resultList = MakimonoRepository.findAllItemList();
         assert.strictEqual(resultList.length, 37);
         assert.strictEqual(resultList[0].name, 'ぬれた巻物');
         assert.strictEqual(resultList[1].name, '混乱の巻物');
