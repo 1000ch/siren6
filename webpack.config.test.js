@@ -9,6 +9,8 @@ module.exports = {
     makimono: './test/makimono.js',
     tubo: './test/tubo.js',
     udewa: './test/udewa.js',
+    buki: './test/buki.js',
+    tate: './test/tate.js',
     tuePlus: './test/tuePlus.js',
   },
   output: {

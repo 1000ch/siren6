@@ -1,0 +1,42 @@
+import { assert } from 'chai';
+import { tateList } from '../src/item/tate.js';
+
+describe('盾', function () {
+    it('検索 一覧', function () {
+        const resultList = tateList;
+        assert.strictEqual(resultList.length, 33);
+        assert.strictEqual(resultList[0].name, '木甲の盾');
+        assert.strictEqual(resultList[1].name, '青銅甲の盾');
+        assert.strictEqual(resultList[2].name, '鉄甲の盾');
+        assert.strictEqual(resultList[3].name, 'おにおおかみ');
+        assert.strictEqual(resultList[4].name, 'オトトの盾');
+        assert.strictEqual(resultList[5].name, 'ハラモチの盾');
+        assert.strictEqual(resultList[6].name, 'バトルカウンター');
+        assert.strictEqual(resultList[7].name, '金の盾');
+        assert.strictEqual(resultList[8].name, 'ミノタウロスの盾');
+        assert.strictEqual(resultList[9].name, '不動の盾');
+        assert.strictEqual(resultList[10].name, 'トドよけの盾');
+        assert.strictEqual(resultList[11].name, 'ガマラよけの盾');
+        assert.strictEqual(resultList[12].name, 'いたずらよけの盾');
+        assert.strictEqual(resultList[13].name, 'ドラゴンシールド');
+        assert.strictEqual(resultList[14].name, 'ざぶとん');
+        assert.strictEqual(resultList[15].name, '爆発隠の盾');
+        assert.strictEqual(resultList[16].name, '使い捨ての盾');
+        assert.strictEqual(resultList[17].name, 'にぎりよけの盾');
+        assert.strictEqual(resultList[18].name, '見切りの盾');
+        assert.strictEqual(resultList[19].name, 'ゲイズの盾');
+        assert.strictEqual(resultList[20].name, '山姥の鍋ぶた');
+        assert.strictEqual(resultList[21].name, '鉄塊の大盾');
+        assert.strictEqual(resultList[22].name, 'ステーキプレート');
+        assert.strictEqual(resultList[23].name, '根性の盾');
+        assert.strictEqual(resultList[24].name, 'カッパのお皿');
+        assert.strictEqual(resultList[25].name, '絶好調の盾');
+        assert.strictEqual(resultList[26].name, 'めでたい御守');
+        assert.strictEqual(resultList[27].name, '風魔の盾');
+        assert.strictEqual(resultList[28].name, '金食い虫の盾');
+        assert.strictEqual(resultList[29].name, 'お告げの盾');
+        assert.strictEqual(resultList[30].name, '魔法よけの盾');
+        assert.strictEqual(resultList[31].name, 'サトリの盾');
+        assert.strictEqual(resultList[32].name, '螺旋風魔の盾');
+    });
+});
