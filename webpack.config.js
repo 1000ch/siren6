@@ -11,6 +11,9 @@ module.exports = {
   devServer: {
     static: {
       directory: path.resolve(__dirname),
+      watch: {
+        ignored: '**/test',
+      },
     },
     hot: true,
     open: true,
