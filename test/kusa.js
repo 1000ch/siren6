@@ -9,7 +9,13 @@ describe('草', function () {
         assert.strictEqual(resultList[1].name, '暴走の種');
     });
     it('検索 通常 売値', function () {
-        assert.fail();
+        const resultList = findItemList(kusaList, 25, 'urine');
+        assert.strictEqual(resultList[0].name, '混乱草');
+        assert.strictEqual(resultList[1].name, '睡眠草');
+        assert.strictEqual(resultList[2].name, '目つぶし草');
+        assert.strictEqual(resultList[3].name, 'めぐすり草');
+        assert.strictEqual(resultList[4].name, 'すばやさ草');
+        assert.strictEqual(resultList[5].name, 'パワーアップ草');
     });
     it('検索 呪い 買値', function () {
         assert.fail();
