@@ -1,10 +1,10 @@
 
 export class ItemRepository {
-    canSyukufuku = true;
-    itemList = [];
+    static canSyukufuku = true;
+    static itemList = [];
 
     static addItem(name, kaine, urine, unused = true) {
-        itemList.push({
+        this.itemList.push({
             status: 'normal',
             name: name,
             kaine: kaine,
@@ -12,7 +12,7 @@ export class ItemRepository {
             unused: unused
         });
         if (this.canSyukufuku) {
-            itemList.push({
+            this.itemList.push({
                 status: 'syukufuku',
                 name: name + '🔔',
                 kaine: kaine * 2,
@@ -20,7 +20,7 @@ export class ItemRepository {
                 unused: unused
             });
         }
-        itemList.push({
+        this.itemList.push({
             status: 'noroi',
             name: name + '💀',
             kaine: Math.floor(kaine * 0.87),
