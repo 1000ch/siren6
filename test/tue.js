@@ -1,4 +1,6 @@
 import { assert } from 'chai';
+import { findAllItemList, findItemList } from '../src/item/item.js';
+import { tueList, findAllTueList } from '../src/item/tue';
 
 describe('杖', function () {
     it('検索 通常 買値', function () {
