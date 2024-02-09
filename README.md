@@ -3,6 +3,9 @@
 
 https://mogamoga1024.github.io/siren6/
 
+## TODO
+びっくり、脱出、白紙は一覧だけ出すようにしようかな
+
 ## 参考元
 
 * [AppMedia: シレン6攻略｜不思議のダンジョン](https://appmedia.jp/shiren6/)
