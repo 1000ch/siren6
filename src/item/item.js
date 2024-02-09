@@ -1,4 +1,6 @@
 
+// TODO 削除
+
 export function createFuncItemListPush(list, canSyukufuku) {
     return function(name, kaine, urine, unused = true) {
         list.push({

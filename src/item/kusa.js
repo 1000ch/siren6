@@ -1,5 +1,7 @@
 import { createFuncItemListPush } from './item';
 
+// TODO 削除
+
 export const kusaList = [];
 const itemListPush = createFuncItemListPush(kusaList, true);
 itemListPush('雑草', 10, 4);
