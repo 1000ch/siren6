@@ -48,12 +48,16 @@ describe('杖', function () {
         assert.strictEqual(resultList[12].name, '鈍足の杖[1]💀');
     });
     it('検索 祝福は存在しない 買値', function () {
-        const resultList = findItemList(tueList, 4000, 'kaine');
-        assert.strictEqual(resultList.length, 0);
+        const resultList1 = findItemList(tueList, 2000, 'kaine');
+        const resultList2 = findItemList(tueList, 4000, 'kaine');
+        assert.notStrictEqual(resultList1.length, 0);
+        assert.strictEqual(resultList2.length, 0);
     });
     it('検索 祝福は存在しない 売値', function () {
-        const resultList = findItemList(tueList, 1600, 'urine');
-        assert.strictEqual(resultList.length, 0);
+        const resultList1 = findItemList(tueList, 800, 'urine');
+        const resultList2 = findItemList(tueList, 1600, 'urine');
+        assert.notStrictEqual(resultList1.length, 0);
+        assert.strictEqual(resultList2.length, 0);
     });
     it('検索 該当なし 買値', function () {
         const resultList = findItemList(tueList, 1234, 'kaine');
