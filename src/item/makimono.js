@@ -1,6 +1,8 @@
 
 export const makimonoList = [];
 
+// TODO 削除
+
 function itemListPush(name, kaine, urine, needSelect = false) {
     makimonoList.push({
         status: 'normal',

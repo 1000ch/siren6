@@ -3,29 +3,33 @@ export class ItemRepository {
     static canSyukufuku = true;
     static itemList = [];
 
-    static addItem(name, kaine, urine, unused = true) {
-        this.itemList.push({
+    static create(name, kaine, urine, unused = true) {
+        return {
             status: 'normal',
             name: name,
             kaine: kaine,
             urine: urine,
             unused: unused
-        });
+        }
+    }
+
+    static add(item) {
+        this.itemList.push(item);
         if (this.canSyukufuku) {
             this.itemList.push({
                 status: 'syukufuku',
-                name: name + '🔔',
-                kaine: kaine * 2,
-                urine: urine * 2,
-                unused: unused
+                name: item.name + '🔔',
+                kaine: item.kaine * 2,
+                urine: item.urine * 2,
+                unused: item.unused
             });
         }
         this.itemList.push({
             status: 'noroi',
-            name: name + '💀',
-            kaine: Math.floor(kaine * 0.87),
-            urine: Math.floor(urine * 0.87),
-            unused: unused
+            name: item.name + '💀',
+            kaine: Math.floor(item.kaine * 0.87),
+            urine: Math.floor(item.urine * 0.87),
+            unused: item.unused
         });
     }
 
