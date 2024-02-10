@@ -149,23 +149,25 @@
           </table>
         </template>
         <div id="tips" v-show="searchItemType === 'tubo'">
-          <h3>TIPS</h3>
-          <h4>容量2～3</h4>
-          <ul>
-            <li>強化の壺</li>
-            <li>弱化の壺</li>
-            <li>笑いの壺</li>
-          </ul>
-          <h4>容量2～4</h4>
-          <ul>
-            <li>おはらいの壺</li>
-            <li>呪いの壺</li>
-            <li>底抜けの壺</li>
-          </ul>
-          <h4>容量3～4</h4>
-          <ul>
-            <li>合成の壺</li>
-          </ul>
+          <h3 class="collapse" @click="onClickTips">TIPS{{shouldDisplayTips ? '▲' : '▼'}}</h3>
+          <div v-show="shouldDisplayTips">
+            <h4>容量2～3</h4>
+            <ul>
+              <li>強化の壺</li>
+              <li>弱化の壺</li>
+              <li>笑いの壺</li>
+            </ul>
+            <h4>容量2～4</h4>
+            <ul>
+              <li>おはらいの壺</li>
+              <li>呪いの壺</li>
+              <li>底抜けの壺</li>
+            </ul>
+            <h4>容量3～4</h4>
+            <ul>
+              <li>合成の壺</li>
+            </ul>
+          </div>
         </div>
       </template>
     </div>
