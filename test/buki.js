@@ -1,9 +1,9 @@
 import { assert } from 'chai';
-import { bukiList } from '../src/item/buki.js';
+import { BukiRepository } from '../src/item/buki_repository';
 
 describe('武器', function () {
     it('検索 一覧', function () {
-        const resultList = bukiList;
+        const resultList = BukiRepository.findAllItemList();
         assert.strictEqual(resultList.length, 37);
         assert.strictEqual(resultList[0].name, '木刀');
         assert.strictEqual(resultList[1].name, '青銅の太刀');

@@ -1,6 +1,7 @@
 
 export class ItemRepository {
     static canSyukufuku = true;
+    static canNoroi = true;
     static itemList = [];
 
     static create(name, kaine, urine, unused = true) {
@@ -23,12 +24,14 @@ export class ItemRepository {
             syukufukuItem.urine = this.syukufukuNedan(item.urine);
             this.itemList.push(syukufukuItem);
         }
-        const noroiItem = {...item};
-        noroiItem.status = 'noroi';
-        noroiItem.name = item.name + '💀';
-        noroiItem.kaine = this.noroiNedan(item.kaine);
-        noroiItem.urine = this.noroiNedan(item.urine);
-        this.itemList.push(noroiItem);
+        if (this.canNoroi) {
+            const noroiItem = {...item};
+            noroiItem.status = 'noroi';
+            noroiItem.name = item.name + '💀';
+            noroiItem.kaine = this.noroiNedan(item.kaine);
+            noroiItem.urine = this.noroiNedan(item.urine);
+            this.itemList.push(noroiItem);
+        }
     }
 
     static syukufukuNedan(nedan) {
