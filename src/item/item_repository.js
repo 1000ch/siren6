@@ -19,16 +19,23 @@ export class ItemRepository {
             const syukufukuItem = {...item};
             syukufukuItem.status = 'syukufuku';
             syukufukuItem.name = item.name + '🔔';
-            syukufukuItem.kaine = item.kaine * 2;
-            syukufukuItem.urine = item.urine * 2;
+            syukufukuItem.kaine = this.syukufukuNedan(item.kaine);
+            syukufukuItem.urine = this.syukufukuNedan(item.urine);
             this.itemList.push(syukufukuItem);
         }
         const noroiItem = {...item};
         noroiItem.status = 'noroi';
         noroiItem.name = item.name + '💀';
-        noroiItem.kaine = Math.floor(item.kaine * 0.87);
-        noroiItem.urine = Math.floor(item.urine * 0.87);
+        noroiItem.kaine = this.noroiNedan(item.kaine);
+        noroiItem.urine = this.noroiNedan(item.urine);
         this.itemList.push(noroiItem);
+    }
+
+    static syukufukuNedan(nedan) {
+        return nedan * 2;
+    }
+    static noroiNedan(nedan) {
+        return Math.floor(nedan * 0.87);
     }
 
     static findItemList(nedan, searchNedanType) {
