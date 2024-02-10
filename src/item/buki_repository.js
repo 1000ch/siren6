@@ -1,7 +1,8 @@
 import { ItemRepository } from "./item_repository";
 
-export class BukiRepository extends ItemRepository {
-    static init() {
+class BukiRepository extends ItemRepository {
+    constructor() {
+        super();
         this.canSyukufuku = false;
         this.canNoroi = false;
         const c = this.create;
@@ -45,4 +46,4 @@ export class BukiRepository extends ItemRepository {
     }
 }
 
-BukiRepository.init();
+export const bukiRepository = new BukiRepository();

@@ -1,7 +1,8 @@
 import { ItemRepository } from "./item_repository";
 
-export class UdewaRepository extends ItemRepository {
-    static init() {
+class UdewaRepository extends ItemRepository {
+    constructor() {
+        super();
         this.canSyukufuku = false;
         const c = this.create;
         this.add(c('回復の腕輪', 5000, 2000));
@@ -44,4 +45,4 @@ export class UdewaRepository extends ItemRepository {
     }
 }
 
-UdewaRepository.init();
+export const udewaRepository = new UdewaRepository();

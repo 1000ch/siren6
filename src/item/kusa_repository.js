@@ -1,7 +1,8 @@
 import { ItemRepository } from "./item_repository";
 
-export class KusaRepository extends ItemRepository {
-    static init() {
+class KusaRepository extends ItemRepository {
+    constructor() {
+        super();
         const c = this.create;
         this.add(c('雑草', 10, 4));
         this.add(c('薬草', 40, 10));
@@ -33,4 +34,4 @@ export class KusaRepository extends ItemRepository {
     }
 }
 
-KusaRepository.init();
+export const kusaRepository = new KusaRepository();

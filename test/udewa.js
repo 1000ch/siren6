@@ -1,15 +1,15 @@
 import { assert } from 'chai';
-import { UdewaRepository } from '../src/item/udewa_repository';
+import { udewaRepository } from '../src/item/udewa_repository';
 
 describe('腕輪', function () {
     it('検索 通常 買値', function () {
-        const resultList = UdewaRepository.findItemList(7500, 'kaine');
+        const resultList = udewaRepository.findItemList(7500, 'kaine');
         assert.strictEqual(resultList.length, 2);
         assert.strictEqual(resultList[0].name, '罠師の腕輪');
         assert.strictEqual(resultList[1].name, '鑑定師の腕輪');
     });
     it('検索 通常 売値', function () {
-        const resultList = UdewaRepository.findItemList(1200, 'urine');
+        const resultList = udewaRepository.findItemList(1200, 'urine');
         assert.strictEqual(resultList.length, 4);
         assert.strictEqual(resultList[0].name, '呪いよけの腕輪');
         assert.strictEqual(resultList[1].name, '水グモの腕輪');
@@ -17,7 +17,7 @@ describe('腕輪', function () {
         assert.strictEqual(resultList[3].name, '魔物呼びの腕輪');
     });
     it('検索 呪い 買値', function () {
-        const resultList = UdewaRepository.findItemList(2175, 'kaine');
+        const resultList = udewaRepository.findItemList(2175, 'kaine');
         assert.strictEqual(resultList.length, 4);
         assert.strictEqual(resultList[0].name, '睡眠よけの腕輪💀');
         assert.strictEqual(resultList[1].name, '気配察知の腕輪💀');
@@ -25,7 +25,7 @@ describe('腕輪', function () {
         assert.strictEqual(resultList[3].name, '大砲強化の腕輪💀');
     });
     it('検索 呪い 売値', function () {
-        const resultList = UdewaRepository.findItemList(1218, 'urine');
+        const resultList = udewaRepository.findItemList(1218, 'urine');
         assert.strictEqual(resultList.length, 4);
         assert.strictEqual(resultList[0].name, '胃拡張の腕輪💀');
         assert.strictEqual(resultList[1].name, '胃縮小の腕輪💀');
@@ -33,27 +33,27 @@ describe('腕輪', function () {
         assert.strictEqual(resultList[3].name, '値切りの腕輪💀');
     });
     it('検索 祝福は存在しない 買値', function () {
-        const resultList1 = UdewaRepository.findItemList(4000, 'kaine');
-        const resultList2 = UdewaRepository.findItemList(8000, 'kaine');
+        const resultList1 = udewaRepository.findItemList(4000, 'kaine');
+        const resultList2 = udewaRepository.findItemList(8000, 'kaine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 祝福は存在しない 売値', function () {
-        const resultList1 = UdewaRepository.findItemList(6000, 'urine');
-        const resultList2 = UdewaRepository.findItemList(12000, 'urine');
+        const resultList1 = udewaRepository.findItemList(6000, 'urine');
+        const resultList2 = udewaRepository.findItemList(12000, 'urine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 該当なし 買値', function () {
-        const resultList = UdewaRepository.findItemList(1234, 'kaine');
+        const resultList = udewaRepository.findItemList(1234, 'kaine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 該当なし 売値', function () {
-        const resultList = UdewaRepository.findItemList(1234, 'urine');
+        const resultList = udewaRepository.findItemList(1234, 'urine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 一覧', function () {
-        const resultList = UdewaRepository.findAllItemList();
+        const resultList = udewaRepository.findAllItemList();
         assert.strictEqual(resultList.length, 37);
         assert.strictEqual(resultList[0].name, '遠投の腕輪');
         assert.strictEqual(resultList[1].name, 'ヘタ投げの腕輪');

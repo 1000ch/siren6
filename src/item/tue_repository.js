@@ -1,12 +1,13 @@
 import { ItemRepository } from "./item_repository";
 import { grouping, findAllItemGroupList } from "./reusable";
 
-export class TueRepository extends ItemRepository {
-    static #itemGroupList = [];
-    static #itemBaseList = [];
-    static nameList = [];
+class TueRepository extends ItemRepository {
+    #itemGroupList = [];
+    #itemBaseList = [];
+    nameList = [];
 
-    static init() {
+    constructor() {
+        super();
         this.canSyukufuku = false;
         const c = this.create;
         this.add(c('ただの杖[0]', 500, 200, false));
@@ -165,11 +166,11 @@ export class TueRepository extends ItemRepository {
         this.nameList = this.#itemBaseList.map(tue => tue.name);
     }
 
-    static findAllItemList() {
+    findAllItemList() {
         return findAllItemGroupList(this.#itemGroupList);
     }
 
-    static findCountList(name, nedan, searchNedanType) {
+    findCountList(name, nedan, searchNedanType) {
         let nedan0 = 0;
         for (const item of this.#itemBaseList) {
             if (item.name === name) {
@@ -198,4 +199,4 @@ export class TueRepository extends ItemRepository {
     }
 }
 
-TueRepository.init();
+export const tueRepository = new TueRepository();

@@ -1,10 +1,11 @@
 import { ItemRepository } from "./item_repository";
 import { grouping, findAllItemGroupList } from "./reusable";
 
-export class TuboRepository extends ItemRepository {
-    static #itemGroupList = [];
+class TuboRepository extends ItemRepository {
+    #itemGroupList = [];
 
-    static init() {
+    constructor() {
+        super();
         this.canSyukufuku = false;
         const c = this.create;
         // コメントアウトは意図的に残している
@@ -128,9 +129,9 @@ export class TuboRepository extends ItemRepository {
         this.#itemGroupList = grouping(this.itemList);
     }
 
-    static findAllItemList() {
+    findAllItemList() {
         return findAllItemGroupList(this.#itemGroupList);
     }
 }
 
-TuboRepository.init();
+export const tuboRepository = new TuboRepository();

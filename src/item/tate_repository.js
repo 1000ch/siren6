@@ -1,7 +1,8 @@
 import { ItemRepository } from "./item_repository";
 
-export class TateRepository extends ItemRepository {
-    static init() {
+class TateRepository extends ItemRepository {
+    constructor() {
+        super();
         this.canSyukufuku = false;
         this.canNoroi = false;
         const c = this.create;
@@ -41,4 +42,4 @@ export class TateRepository extends ItemRepository {
     }
 }
 
-TateRepository.init();
+export const tateRepository = new TateRepository();

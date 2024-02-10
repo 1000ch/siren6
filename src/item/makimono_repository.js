@@ -1,7 +1,7 @@
 import { ItemRepository } from "./item_repository";
 
-export class MakimonoRepository extends ItemRepository {
-    static create(name, kaine, urine, needSelect = false) {
+class MakimonoRepository extends ItemRepository {
+    create(name, kaine, urine, needSelect = false) {
         return {
             status: 'normal',
             name, kaine, urine,
@@ -10,7 +10,8 @@ export class MakimonoRepository extends ItemRepository {
         };
     }
 
-    static init() {
+    constructor() {
+        super();
         const c = this.create;
         this.add(c('混乱の巻物', 300, 120));
         this.add(c('バクスイの巻物', 300, 120));
@@ -52,4 +53,4 @@ export class MakimonoRepository extends ItemRepository {
     }
 }
 
-MakimonoRepository.init();
+export const makimonoRepository = new MakimonoRepository();

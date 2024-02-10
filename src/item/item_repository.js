@@ -1,10 +1,10 @@
 
 export class ItemRepository {
-    static canSyukufuku = true;
-    static canNoroi = true;
-    static itemList = [];
+    canSyukufuku = true;
+    canNoroi = true;
+    itemList = [];
 
-    static create(name, kaine, urine, unused = true) {
+    create(name, kaine, urine, unused = true) {
         return {
             status: 'normal',
             name: name,
@@ -14,7 +14,7 @@ export class ItemRepository {
         }
     }
 
-    static add(item) {
+    add(item) {
         this.itemList.push(item);
         if (this.canSyukufuku) {
             const syukufukuItem = {...item};
@@ -34,14 +34,14 @@ export class ItemRepository {
         }
     }
 
-    static syukufukuNedan(nedan) {
+    syukufukuNedan(nedan) {
         return nedan * 2;
     }
-    static noroiNedan(nedan) {
+    noroiNedan(nedan) {
         return Math.floor(nedan * 0.87);
     }
 
-    static findItemList(nedan, searchNedanType) {
+    findItemList(nedan, searchNedanType) {
         return this.itemList.filter(item => item[searchNedanType] === nedan).sort((a, b) => {
             if (a.status === b.status) {
                 return 0;
@@ -62,7 +62,7 @@ export class ItemRepository {
         });
     }
 
-    static findAllItemList() {
+    findAllItemList() {
         return this.itemList.filter(item => item.status === 'normal').sort((a, b) => a.kaine - b.kaine);
     }
 }
