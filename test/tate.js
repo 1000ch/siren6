@@ -1,9 +1,9 @@
 import { assert } from 'chai';
-import { tateList } from '../src/item/tate.js';
+import { TateRepository } from '../src/item/tate_repository';
 
 describe('盾', function () {
     it('検索 一覧', function () {
-        const resultList = tateList;
+        const resultList = TateRepository.findAllItemList();
         assert.strictEqual(resultList.length, 33);
         assert.strictEqual(resultList[0].name, '木甲の盾');
         assert.strictEqual(resultList[1].name, '青銅甲の盾');
