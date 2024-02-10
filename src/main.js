@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { tensyu } from './tensyu';
 import { kusaRepository } from './item/kusa_repository';
 import { tueRepository } from './item/tue_repository';
 import { makimonoRepository } from './item/makimono_repository';
@@ -35,6 +36,7 @@ const vm = {
         }
     },
     created() {
+        tensyu();
         this.tueNameList = tueRepository.nameList;
     },
     methods: {
