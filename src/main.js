@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
-import { KusaRepository } from './item/kusa_repository';
-import { TueRepository } from './item/tue_repository';
-import { MakimonoRepository } from './item/makimono_repository';
-import { TuboRepository } from './item/tubo_repository';
-import { UdewaRepository } from './item/udewa_repository';
-import { BukiRepository } from './item/buki_repository';
-import { TateRepository } from './item/tate_repository';
+import { kusaRepository } from './item/kusa_repository';
+import { tueRepository } from './item/tue_repository';
+import { makimonoRepository } from './item/makimono_repository';
+import { tuboRepository } from './item/tubo_repository';
+import { udewaRepository } from './item/udewa_repository';
+import { bukiRepository } from './item/buki_repository';
+import { tateRepository } from './item/tate_repository';
 
 const vm = {
     data() {
@@ -35,7 +35,7 @@ const vm = {
         }
     },
     created() {
-        this.tueNameList = TueRepository.tueNameList;
+        this.tueNameList = tueRepository.nameList;
     },
     methods: {
         onChangeSearchItemName() {
@@ -109,27 +109,27 @@ const vm = {
         },
         findItemList() {
             if (this.searchItemType === 'buki') {
-                this.resultItemList = BukiRepository.findAllItemList();
+                this.resultItemList = bukiRepository.findAllItemList();
                 return;
             }
             if (this.searchItemType === 'tate') {
-                this.resultItemList = TateRepository.findAllItemList();
+                this.resultItemList = tateRepository.findAllItemList();
                 return;
             }
             if (this.searchItemType === 'tuePlus') {
-                this.resultTueCountList = TueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType)
+                this.resultTueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType)
                 return;
             }
 
             let repo = null;
             switch (this.searchItemType) {
-                case 'kusa': repo = KusaRepository; break;
-                case 'tue': repo = TueRepository; break;
-                case 'makimono': repo = MakimonoRepository; break;
-                case 'tubo': repo = TuboRepository; break;
-                case 'udewa': repo = UdewaRepository; break;
-                case 'buki': repo = BukiRepository; break;
-                case 'tate': repo = TateRepository; break;
+                case 'kusa': repo = kusaRepository; break;
+                case 'tue': repo = tueRepository; break;
+                case 'makimono': repo = makimonoRepository; break;
+                case 'tubo': repo = tuboRepository; break;
+                case 'udewa': repo = udewaRepository; break;
+                case 'buki': repo = bukiRepository; break;
+                case 'tate': repo = tateRepository; break;
             }
 
             if (this.searchNedanType === 'all') {
