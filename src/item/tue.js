@@ -1,5 +1,7 @@
 import { createFuncItemListPush, grouping, findAllItemGroupList } from './item';
 
+// TODO 削除
+
 export const tueList = [];
 const itemListPush = createFuncItemListPush(tueList, false);
 itemListPush('ただの杖[0]', 500, 200, false);
