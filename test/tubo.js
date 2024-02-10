@@ -1,10 +1,9 @@
 import { assert } from 'chai';
-import { findItemList } from '../src/item/item.js';
-import { tuboList, findAllTuboList } from '../src/item/tubo.js';
+import { TuboRepository } from '../src/item/tubo_repository';
 
 describe('壺', function () {
     it('検索 通常 買値', function () {
-        const resultList = findItemList(tuboList, 1100, 'kaine');
+        const resultList = TuboRepository.findItemList(1100, 'kaine');
         assert.strictEqual(resultList.length, 7);
         assert.strictEqual(resultList[0].name, '保存の壺[3]');
         assert.strictEqual(resultList[1].name, '識別の壺[3]');
@@ -15,13 +14,13 @@ describe('壺', function () {
         assert.strictEqual(resultList[6].name, '倉庫の壺[1]');
     });
     it('検索 通常 売値', function () {
-        const resultList = findItemList(tuboList, 720, 'urine');
+        const resultList = TuboRepository.findItemList(720, 'urine');
         assert.strictEqual(resultList.length, 2);
         assert.strictEqual(resultList[0].name, 'おはらいの壺[2]');
         assert.strictEqual(resultList[1].name, '呪いの壺[2]');
     });
     it('検索 呪い 買値', function () {
-        const resultList = findItemList(tuboList, 2001, 'kaine');
+        const resultList = TuboRepository.findItemList(2001, 'kaine');
         assert.strictEqual(resultList.length, 5);
         assert.strictEqual(resultList[0].name, '背中の壺[3]💀');
         assert.strictEqual(resultList[1].name, 'トドの壺[3]💀');
@@ -30,33 +29,33 @@ describe('壺', function () {
         assert.strictEqual(resultList[4].name, '魔物の壺[3]💀');
     });
     it('検索 呪い 売値', function () {
-        const resultList = findItemList(tuboList, 3584, 'urine');
+        const resultList = TuboRepository.findItemList(3584, 'urine');
         assert.strictEqual(resultList.length, 2);
         assert.strictEqual(resultList[0].name, '強化の壺[3]💀');
         assert.strictEqual(resultList[1].name, '弱化の壺[3]💀');
     });
     it('検索 祝福は存在しない 買値', function () {
-        const resultList1 = findItemList(tuboList, 1300, 'kaine');
-        const resultList2 = findItemList(tuboList, 2600, 'kaine');
+        const resultList1 = TuboRepository.findItemList(1300, 'kaine');
+        const resultList2 = TuboRepository.findItemList(2600, 'kaine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 祝福は存在しない 売値', function () {
-        const resultList1 = findItemList(tuboList, 1000, 'urine');
-        const resultList2 = findItemList(tuboList, 2000, 'urine');
+        const resultList1 = TuboRepository.findItemList(1000, 'urine');
+        const resultList2 = TuboRepository.findItemList(2000, 'urine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 該当なし 買値', function () {
-        const resultList = findItemList(tuboList, 1234, 'kaine');
+        const resultList = TuboRepository.findItemList(1234, 'kaine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 該当なし 売値', function () {
-        const resultList = findItemList(tuboList, 1234, 'urine');
+        const resultList = TuboRepository.findItemList(1234, 'urine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 一覧', function () {
-        const resultList = findAllTuboList();
+        const resultList = TuboRepository.findAllItemList();
         assert.strictEqual(resultList.length, 20);
         assert.strictEqual(tuboToString(resultList[0]), '保存の壺/800/320/3～5');
         assert.strictEqual(tuboToString(resultList[1]), '識別の壺/800/320/3～5');

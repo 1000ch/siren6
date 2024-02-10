@@ -1,5 +1,7 @@
 import { createFuncItemListPush, grouping, findAllItemGroupList } from "./item";
 
+// TODO 削除
+
 export const tuboList = [];
 
 // コメントアウトは意図的に残している
@@ -114,7 +116,6 @@ itemListPush('弱化の壺[0]', 10000, 4000, false);
 // itemListPush('弱化の壺[1]', 10100, 4040, false);
 itemListPush('弱化の壺[2]', 10200, 4080);
 itemListPush('弱化の壺[3]', 10300, 4120);
-
 // itemListPush('ビックリの壺[0]', 2000, 800, false);
 // itemListPush('ビックリの壺[1]', 2100, 840, false);
 // itemListPush('ビックリの壺[2]', 2200, 880, false);
