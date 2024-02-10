@@ -1,10 +1,9 @@
 import { assert } from 'chai';
-import { findItemList } from '../src/item/item.js';
-import { tueList, findAllTueList } from '../src/item/tue';
+import { TueRepository } from '../src/item/tue_repository';
 
 describe('杖', function () {
     it('検索 通常 買値', function () {
-        const resultList = findItemList(tueList, 1500, 'kaine');
+        const resultList = TueRepository.findItemList(1500, 'kaine');
         assert.strictEqual(resultList.length, 5);
         assert.strictEqual(resultList[0].name, '痛み分けの杖[5]');
         assert.strictEqual(resultList[1].name, '一時しのぎの杖[5]');
@@ -13,13 +12,13 @@ describe('杖', function () {
         assert.strictEqual(resultList[4].name, '不幸の杖[5]');
     });
     it('検索 通常 売値', function () {
-        const resultList = findItemList(tueList, 1000, 'urine');
+        const resultList = TueRepository.findItemList(1000, 'urine');
         assert.strictEqual(resultList.length, 2);
         assert.strictEqual(resultList[0].name, '身代わりの杖[5]');
         assert.strictEqual(resultList[1].name, '桃まんの杖[5]');
     });
     it('検索 呪い 買値', function () {
-        const resultList = findItemList(tueList, 435, 'kaine');
+        const resultList = TueRepository.findItemList(435, 'kaine');
         assert.strictEqual(resultList.length, 8);
         assert.strictEqual(resultList[0].name, 'ただの杖[0]💀');
         assert.strictEqual(resultList[1].name, 'かなしばりの杖[0]💀');
@@ -31,7 +30,7 @@ describe('杖', function () {
         assert.strictEqual(resultList[7].name, '転ばぬ先の杖[0]💀');
     });
     it('検索 呪い 売値', function () {
-        const resultList = findItemList(tueList, 278, 'urine');
+        const resultList = TueRepository.findItemList(278, 'urine');
         assert.strictEqual(resultList.length, 13);
         assert.strictEqual(resultList[0].name, 'ただの杖[3]💀');
         assert.strictEqual(resultList[1].name, 'かなしばりの杖[3]💀');
@@ -48,27 +47,27 @@ describe('杖', function () {
         assert.strictEqual(resultList[12].name, '鈍足の杖[1]💀');
     });
     it('検索 祝福は存在しない 買値', function () {
-        const resultList1 = findItemList(tueList, 2000, 'kaine');
-        const resultList2 = findItemList(tueList, 4000, 'kaine');
+        const resultList1 = TueRepository.findItemList(2000, 'kaine');
+        const resultList2 = TueRepository.findItemList(4000, 'kaine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 祝福は存在しない 売値', function () {
-        const resultList1 = findItemList(tueList, 800, 'urine');
-        const resultList2 = findItemList(tueList, 1600, 'urine');
+        const resultList1 = TueRepository.findItemList(800, 'urine');
+        const resultList2 = TueRepository.findItemList(1600, 'urine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
     it('検索 該当なし 買値', function () {
-        const resultList = findItemList(tueList, 1234, 'kaine');
+        const resultList = TueRepository.findItemList(1234, 'kaine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 該当なし 売値', function () {
-        const resultList = findItemList(tueList, 1234, 'urine');
+        const resultList = TueRepository.findItemList(1234, 'urine');
         assert.strictEqual(resultList.length, 0);
     });
     it('検索 一覧', function () {
-        const resultList = findAllTueList();
+        const resultList = TueRepository.findAllItemList();
         assert.strictEqual(resultList.length, 20);
         assert.strictEqual(tueToString(resultList[0]), 'ただの杖/500/200/5～7');
         assert.strictEqual(tueToString(resultList[1]), 'かなしばりの杖/500/200/4～6');
