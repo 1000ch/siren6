@@ -106,6 +106,12 @@ class TuboRepository extends ItemRepository {
         this.add(c('魔物の壺[3]', 2300, 920));
         this.add(c('魔物の壺[4]', 2400, 960));
         this.add(c('魔物の壺[5]', 2500, 1000));
+        this.add(c('ビックリの壺[0]', 2000, 800, false));
+        // this.add(c('ビックリの壺[1]', 2100, 840, false));
+        // this.add(c('ビックリの壺[2]', 2200, 880, false));
+        this.add(c('ビックリの壺[3]', 2300, 920));
+        this.add(c('ビックリの壺[4]', 2400, 960));
+        this.add(c('ビックリの壺[5]', 2500, 1000));
         this.add(c('合成の壺[0]', 6000, 2400, false));
         this.add(c('合成の壺[1]', 6100, 2440, false));
         this.add(c('合成の壺[2]', 6200, 2480, false));
@@ -119,12 +125,6 @@ class TuboRepository extends ItemRepository {
         // this.add(c('弱化の壺[1]', 10100, 4040, false));
         this.add(c('弱化の壺[2]', 10200, 4080));
         this.add(c('弱化の壺[3]', 10300, 4120));
-        // this.add(c('ビックリの壺[0]', 2000, 800, false));
-        // this.add(c('ビックリの壺[1]', 2100, 840, false));
-        // this.add(c('ビックリの壺[2]', 2200, 880, false));
-        // this.add(c('ビックリの壺[3]', 2300, 920));
-        // this.add(c('ビックリの壺[4]', 2400, 960));
-        // this.add(c('ビックリの壺[5]', 2500, 1000));
 
         this.#itemGroupList = grouping(this.itemList);
     }
