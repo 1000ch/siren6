@@ -1,4 +1,6 @@
 
+// https://html-css-javascript.com/console-dot/
+
 export function tensyu() {
     const userAgent = window.navigator.userAgent.toLowerCase();
     if (userAgent.indexOf('chrome') != -1 || userAgent.indexOf('firefox') != -1) {
