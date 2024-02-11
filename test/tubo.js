@@ -65,7 +65,7 @@ describe('壺', function () {
         assert.strictEqual(tuboToString(resultList[4]), 'やりすごしの壺/800/320/3～5');
         assert.strictEqual(tuboToString(resultList[5]), '換金の壺/1000/400/3～5');
         assert.strictEqual(tuboToString(resultList[6]), '底抜けの壺/1000/400/2～4');
-        assert.strictEqual(tuboToString(resultList[7]), '倉庫の壺/1000/400/3～5');
+        assert.strictEqual(tuboToString(resultList[7]), '倉庫の壺/1000/400/2～5');
         assert.strictEqual(tuboToString(resultList[8]), '手封じの壺/1000/400/3～5');
         assert.strictEqual(tuboToString(resultList[9]), '割れない壺/1000/400/3～5');
         assert.strictEqual(tuboToString(resultList[10]), 'おはらいの壺/1600/640/2～4');

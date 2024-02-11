@@ -52,7 +52,7 @@ class TuboRepository extends ItemRepository {
         this.add(c('底抜けの壺[4]', 1400, 560));
         this.add(c('倉庫の壺[0]', 1000, 400, false));
         this.add(c('倉庫の壺[1]', 1100, 440, false));
-        this.add(c('倉庫の壺[2]', 1200, 480, false));
+        this.add(c('倉庫の壺[2]', 1200, 480));
         this.add(c('倉庫の壺[3]', 1300, 520));
         this.add(c('倉庫の壺[4]', 1400, 560));
         this.add(c('倉庫の壺[5]', 1500, 600));
