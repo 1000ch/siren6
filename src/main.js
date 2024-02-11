@@ -33,6 +33,7 @@ const vm = {
             resultItemList: [],
             resultTueCountList: [],
             shouldDisplayTips: false,
+            shouldDisplaySearchHint: false,
         }
     },
     created() {
@@ -152,6 +153,9 @@ const vm = {
             }
             else {
                 this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType);
+                if (this.resultItemList.length === 0) {
+                    this.shouldDisplaySearchHint = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine').length > 0;
+                }
             }
         },
     }
