@@ -281,3 +281,7 @@ tr {
   cursor: pointer;
 }
 
+h3.collapse {
+  display: inline-block;
+  width: max-content;
+}
