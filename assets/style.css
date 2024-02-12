@@ -217,6 +217,13 @@ ul {
   padding-bottom: 2rem;
 }
 
+#buki-tate-explanation {
+  font-size: 0.9rem;
+  .source {
+    font-size: 0.8rem;
+  }
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
