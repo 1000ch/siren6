@@ -148,11 +148,11 @@
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{
+                  'alternate-background': item.shouldChangeBackground && !item.needSelect,
+                  'borderline': item.needBorderline,
                   'maybe-used': !item.unused,
-                  'need-select': item.needSelect,
                   'nedan-base': isZeroTimes(item),
-                  'alternate-background': item.shouldChangeBackground,
-                  'borderline': item.needBorderline
+                  'need-select': item.needSelect,
                 }">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>
