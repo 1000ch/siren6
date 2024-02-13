@@ -111,6 +111,9 @@
             <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
               橙色：容量0の値段
             </div>
+            <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.needTuboZoudai)">
+              紫色：壺増大使用
+            </div>
             <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
               買値：下1桁が0であれば呪いではない<br>
               売値：下1桁が0か5であれば呪いではない<br>
@@ -151,6 +154,7 @@
                   'maybe-used': !item.unused,
                   'nedan-base': isZeroTimes(item),
                   'need-select': item.needSelect,
+                  'need-tubo-zoudai': item.needTuboZoudai,
                 }">
               <td>{{item.name}}</td>
               <td class="right">{{item.kaine}}</td>

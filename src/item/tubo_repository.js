@@ -168,6 +168,33 @@ class TuboRepository extends ItemRepository {
         this.#itemGroupList = grouping(this.itemList);
     }
 
+    findItemList(nedan, searchNedanType) {
+        return this.itemList.filter(item => item[searchNedanType] === nedan).sort((a, b) => {
+            if (!a.needTuboZoudai && b.needTuboZoudai) {
+                return -1;
+            }
+            else if (a.needTuboZoudai && !b.needTuboZoudai) {
+                return 1;
+            }
+            else if (a.status === b.status) {
+                return 0;
+            }
+            else if (a.status === 'noroi') {
+                return -1;
+            }
+            else if (b.status === 'noroi') {
+                return 1;
+            }
+            else if (a.status === 'syukufuku') {
+                return 1;
+            }
+            else if (b.status === 'syukufuku') {
+                return -1;
+            }
+            throw new Error('ここが実行されることはありえない');
+        });
+    }
+
     findAllItemList() {
         return this.#itemGroupList.sort((a, b) => a[0].kaine - b[0].kaine).map(group => {
             let minCount = -1;
