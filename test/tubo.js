@@ -36,8 +36,8 @@ describe('壺', function () {
         assert.strictEqual(resultList[1].name, '弱化の壺[3]💀');
     });
     it('検索 祝福は存在しない 買値', function () {
-        const resultList1 = tuboRepository.findItemList(1300, 'kaine');
-        const resultList2 = tuboRepository.findItemList(2600, 'kaine');
+        const resultList1 = tuboRepository.findItemList(1400, 'kaine');
+        const resultList2 = tuboRepository.findItemList(2800, 'kaine');
         assert.notStrictEqual(resultList1.length, 0);
         assert.strictEqual(resultList2.length, 0);
     });
