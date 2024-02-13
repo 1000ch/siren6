@@ -7,10 +7,7 @@ export class ItemRepository {
     create(name, kaine, urine, unused = true) {
         return {
             status: 'normal',
-            name: name,
-            kaine: kaine,
-            urine: urine,
-            unused: unused
+            name, kaine, urine, unused
         }
     }
 

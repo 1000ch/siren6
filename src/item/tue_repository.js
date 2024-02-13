@@ -1,5 +1,5 @@
 import { ItemRepository } from "./item_repository";
-import { grouping, findAllItemGroupList } from "./reusable";
+import { grouping } from "./reusable";
 
 class TueRepository extends ItemRepository {
     #itemGroupList = [];
@@ -167,7 +167,21 @@ class TueRepository extends ItemRepository {
     }
 
     findAllItemList() {
-        return findAllItemGroupList(this.#itemGroupList);
+        return this.#itemGroupList.sort((a, b) => a[0].kaine - b[0].kaine).map(group => {
+            let minCount = 0;
+            for (const item of group) {
+                if (item.unused) {
+                    minCount = item.name.at(-2);
+                    break;
+                }
+            }
+            return {
+                name: group[0].name.slice(0, -3),
+                kaine: group[0].kaine,
+                urine: group[0].urine,
+                count: `${minCount}～${group.at(-1).name.at(-2)}`,
+            };
+        });
     }
 
     findCountList(name, nedan, searchNedanType) {
