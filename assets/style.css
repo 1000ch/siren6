@@ -242,7 +242,7 @@ th, td {
 }
 
 th {
-  background-color: #5d8397;
+  background-color: #5a3182;
   color: #fff;
   border-bottom-width: 2px;
   text-transform: uppercase;
@@ -259,7 +259,7 @@ td.right {
 }
 
 tr {
-  background-color: #f0f8ff;
+  background-color: #fff;
 }
 
 .maybe-used {
@@ -275,7 +275,7 @@ tr {
 }
 
 .alternate-background {
-  background-color: #fff;
+  background-color: #cfe7ed;
 }
 
 .borderline td {
