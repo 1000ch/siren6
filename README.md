@@ -3,6 +3,10 @@
 
 https://mogamoga1024.github.io/siren6/
 
+とーどー
+つぼ6のやつほしい
+クロンの試練で壺のよーりょーふえるやつあるから
+
 ## 参考元
 
 * [AppMedia: シレン6攻略｜不思議のダンジョン](https://appmedia.jp/shiren6/)
