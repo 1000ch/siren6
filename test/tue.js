@@ -2,6 +2,19 @@ import { assert } from 'chai';
 import { tueRepository } from '../src/item/tue_repository';
 
 describe('杖', function () {
+    it('値段増加幅が正しいか', function () {
+        for (const group of tueRepository.itemGroupList) {
+            const base = group[0];
+            for (let i = 1; i < group.length; i++) {
+                const item = group[i];
+                const count = Number(item.name.at(-2));
+                const expectedKaine = base.kaine + 100 * count;
+                const expectedUrine = base.urine + 40 * count;
+                assert.strictEqual(item.kaine, expectedKaine);
+                assert.strictEqual(item.urine, expectedUrine);
+            }
+        }
+    });
     it('検索 通常 買値', function () {
         const resultList = tueRepository.findItemList(1500, 'kaine');
         assert.strictEqual(resultList.length, 5);

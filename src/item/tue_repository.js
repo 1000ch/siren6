@@ -6,6 +6,10 @@ class TueRepository extends ItemRepository {
     #itemBaseList = [];
     nameList = [];
 
+    get itemGroupList() {
+        return this.#itemGroupList;
+    }
+
     constructor() {
         super();
         this.canSyukufuku = false;

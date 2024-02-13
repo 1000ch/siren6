@@ -2,6 +2,19 @@ import { assert } from 'chai';
 import { tuboRepository } from '../src/item/tubo_repository';
 
 describe('壺', function () {
+    it('値段増加幅が正しいか', function () {
+        for (const group of tuboRepository.itemGroupList) {
+            const base = group[0];
+            for (let i = 1; i < group.length; i++) {
+                const item = group[i];
+                const count = Number(item.name.at(-2));
+                const expectedKaine = base.kaine + 100 * count;
+                const expectedUrine = base.urine + 40 * count;
+                assert.strictEqual(item.kaine, expectedKaine);
+                assert.strictEqual(item.urine, expectedUrine);
+            }
+        }
+    });
     it('検索 通常 買値', function () {
         const resultList = tuboRepository.findItemList(1100, 'kaine');
         assert.strictEqual(resultList.length, 7);

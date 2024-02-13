@@ -4,6 +4,10 @@ import { grouping } from "./reusable";
 class TuboRepository extends ItemRepository {
     #itemGroupList = [];
 
+    get itemGroupList() {
+        return this.#itemGroupList;
+    }
+
     create(name, kaine, urine, unused = true, needTuboZoudai = false) {
         return {
             status: 'normal',
