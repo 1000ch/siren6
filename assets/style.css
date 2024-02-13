@@ -217,11 +217,13 @@ ul {
   padding-bottom: 2rem;
 }
 
-#buki-tate-explanation {
-  font-size: 0.9rem;
-  .source {
-    font-size: 0.8rem;
-  }
+#message {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.source {
+  font-size: 0.8rem;
 }
 
 table {

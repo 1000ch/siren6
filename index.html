@@ -98,33 +98,34 @@
           </template>
         </div>
         <template v-else>
-          <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
-            灰色：店売りで存在しない
-          </div>
-          <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
-            黄色：選択式巻物
-          </div>
-          <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
-            橙色：残り回数0の値段
-          </div>
-          <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
-            橙色：容量0の値段
-          </div>
-          <div v-show="searchItemType === 'buki' || searchItemType === 'tate'"
-               id="buki-tate-explanation">
-            買値：下1桁が0であれば呪いではない<br>
-            売値：下1桁が0か5であれば呪いではない<br>
-            <div class="source">
-              (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
+          <div id="message">
+            <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
+              灰色：店売りで存在しない
             </div>
-          </div>
-          <div v-show="searchNedanType === 'all' && searchItemType === 'tue'">
-            値段は残り回数0のもの<br>
-            回数1増加で買値+100、売値+40
-          </div>
-          <div v-show="searchNedanType === 'all' && searchItemType === 'tubo'">
-            値段は容量0のもの<br>
-            容量1増加で買値+100、売値+40
+            <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+              黄色：選択式巻物
+            </div>
+            <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
+              橙色：残り回数0の値段
+            </div>
+            <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
+              橙色：容量0の値段
+            </div>
+            <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
+              買値：下1桁が0であれば呪いではない<br>
+              売値：下1桁が0か5であれば呪いではない<br>
+              <div class="source">
+                (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
+              </div>
+            </div>
+            <div v-show="searchNedanType === 'all' && searchItemType === 'tue'">
+              値段は残り回数0のもの<br>
+              回数1増加で買値+100、売値+40
+            </div>
+            <div v-show="searchNedanType === 'all' && searchItemType === 'tubo'">
+              値段は容量0のもの<br>
+              容量1増加で買値+100、売値+40
+            </div>
           </div>
           <table id="all-item-list" v-if="searchNedanType === 'all' && (searchItemType === 'tue' || searchItemType === 'tubo')">
             <tr>
