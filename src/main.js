@@ -141,13 +141,10 @@ const vm = {
                 this.resultItemList = repo.findAllItemList();
 
                 let prevKaine = this.resultItemList[0].kaine;
-                let shouldChangeBackground = false;
                 for (const item of this.resultItemList) {
                     if (item.kaine !== prevKaine) {
-                        shouldChangeBackground = !shouldChangeBackground;
                         item.needBorderline = true;
                     }
-                    item.shouldChangeBackground = shouldChangeBackground;
                     prevKaine = item.kaine;
                 }
             }

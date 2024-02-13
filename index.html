@@ -133,7 +133,6 @@
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{
-                  'alternate-background': item.shouldChangeBackground,
                   'borderline': item.needBorderline
                 }">
               <td>{{item.name}}</td>
@@ -148,8 +147,7 @@
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{
-                  'alternate-background': item.shouldChangeBackground && !item.needSelect,
-                  'borderline': item.needBorderline,
+                  'borderline': this.searchNedanType === 'all' && item.needBorderline,
                   'maybe-used': !item.unused,
                   'nedan-base': isZeroTimes(item),
                   'need-select': item.needSelect,

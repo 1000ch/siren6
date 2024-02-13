@@ -242,7 +242,7 @@ th, td {
 }
 
 th {
-  background-color: #5a3182;
+  background-color: #5d8397;
   color: #fff;
   border-bottom-width: 2px;
   text-transform: uppercase;
@@ -259,7 +259,7 @@ td.right {
 }
 
 tr {
-  background-color: #fefefe;
+  background-color: #f8fbfe;
 }
 
 .maybe-used {
@@ -274,12 +274,9 @@ tr {
   background-color: #ffb366;
 }
 
-.alternate-background {
-  background-color: #cfe7ed;
-}
-
 .borderline td {
   border-top-width: 2px;
+  border-top-color: #999;
 }
 
 .tue-noroi {
