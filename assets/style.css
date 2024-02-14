@@ -41,6 +41,10 @@ h3, h4 {
   margin: 16px 0 0 0;
 }
 
+#tips h3.collapse {
+  margin: 0;
+}
+
 ul {
   margin: 0;
 }
