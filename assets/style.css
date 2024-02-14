@@ -37,18 +37,6 @@ h1 {
   color: #774c1b;
 }
 
-h3, h4 {
-  margin: 16px 0 0 0;
-}
-
-#tips h3.collapse {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-}
-
 #item-type-container {
   display: flex;
 }
@@ -289,13 +277,4 @@ tr {
 
 .tue-noroi {
   background-color: #ffcccc;
-}
-
-.collapse {
-  cursor: pointer;
-}
-
-h3.collapse {
-  display: inline-block;
-  width: max-content;
 }
