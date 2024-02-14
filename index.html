@@ -108,9 +108,6 @@
             <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
               灰色：店売りで存在しない
             </div>
-            <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
-              黄色：選択式巻物
-            </div>
             <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
               橙色：残り回数0の値段
             </div>
@@ -119,6 +116,11 @@
             </div>
             <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.needTuboZoudai)">
               紫色：壺増大しないと存在しない
+            </div>
+          </div>
+          <div class="message">
+            <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+              黄色：選択式巻物
             </div>
             <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
               買値：下1桁が0であれば呪いではない<br>
