@@ -113,6 +113,8 @@ const vm = {
             return item.name.endsWith('[0]');
         },
         findItemList() {
+            this.shouldDisplaySearchHint = false;
+            
             if (this.searchItemType === 'buki') {
                 this.resultItemList = bukiRepository.findAllItemList();
                 return;
@@ -151,7 +153,8 @@ const vm = {
             else {
                 this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType);
                 if (this.resultItemList.length === 0) {
-                    this.shouldDisplaySearchHint = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine').length > 0;
+                    this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
+                    this.shouldDisplaySearchHint = this.resultItemList.length > 0;
                 }
             }
         },
