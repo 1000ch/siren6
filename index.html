@@ -82,7 +82,7 @@
       <!-- 杖+以外 -->
       <template v-else>
         <div id="message-container">
-          <template v-if="!existsResult">
+          <div v-show="!existsResult">
             <div class="message">
               <template v-if="isFirstTime">
                 <template v-if="searchItemType !== 'tue'">
@@ -97,38 +97,14 @@
               <template v-else>
                 しかし、なにも起きなかった。
               </template>
-              <div v-show="shouldDisplaySearchHint">
-                もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
-              </div>
-              <div id="tips" v-show="searchItemType === 'tubo'">
-                <h3 class="collapse" @click="onClickTips">TIPS{{shouldDisplayTips ? '▲' : '▼'}}</h3>
-                <div v-show="shouldDisplayTips">
-                  <h4>容量2～3</h4>
-                  <ul>
-                    <li>強化の壺</li>
-                    <li>弱化の壺</li>
-                    <li>笑いの壺</li>
-                  </ul>
-                  <h4>容量2～4</h4>
-                  <ul>
-                    <li>おはらいの壺</li>
-                    <li>呪いの壺</li>
-                    <li>底抜けの壺</li>
-                  </ul>
-                  <h4>容量2～5</h4>
-                  <ul>
-                    <li>倉庫の壺</li>
-                  </ul>
-                  <h4>容量3～4</h4>
-                  <ul>
-                    <li>合成の壺</li>
-                  </ul>
-                </div>
-              </div>
             </div>
             <hr>
-          </template>
-          <div class="message" v-else>
+          </div>
+          <div class="message" v-show="shouldDisplaySearchHint">
+            もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
+            <hr>
+          </div>
+          <div class="message" v-show="existsResult || shouldDisplaySearchHint">
             <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
               灰色：店売りで存在しない
             </div>
