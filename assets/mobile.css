@@ -60,7 +60,7 @@
     }
   }
 
-  #message, #tips {
+  .message, #tips {
     padding: 0 8px;
   }
 }

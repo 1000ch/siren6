@@ -59,13 +59,15 @@
     <div id="result">
       <!-- 杖+ -->
       <template v-if="searchItemType === 'tuePlus'">
-        <div id="message" v-if="resultTueCountList.length === 0">
-          <template v-if="isTuePlusFirstTime">
-            アイテムと値段を入力すると残り回数が分かります。
-          </template>
-          <template v-else>
-            しかし、なにも起きなかった。
-          </template>
+        <div id="message-container" v-if="resultTueCountList.length === 0">
+          <div class="message">
+            <template v-if="isTuePlusFirstTime">
+              アイテムと値段を入力すると残り回数が分かります。
+            </template>
+            <template v-else>
+              しかし、なにも起きなかった。
+            </template>
+          </div>
         </div>
         <table v-else>
           <tr>
@@ -79,52 +81,54 @@
       </template>
       <!-- 杖+以外 -->
       <template v-else>
-        <div id="message">
+        <div id="message-container">
           <template v-if="!existsResult">
-            <template v-if="isFirstTime">
-              <template v-if="searchItemType !== 'tue'">
-                値段を入力するとアイテムが分かります。
+            <div class="message">
+              <template v-if="isFirstTime">
+                <template v-if="searchItemType !== 'tue'">
+                  値段を入力するとアイテムが分かります。
+                </template>
+                <template v-else>
+                  値段を入力するとアイテムが分かります。<br>
+                  合成した杖の回数を知りたい場合は、<br>
+                  「杖+」の項目を利用してください。
+                </template>
               </template>
               <template v-else>
-                値段を入力するとアイテムが分かります。<br>
-                合成した杖の回数を知りたい場合は、<br>
-                「杖+」の項目を利用してください。
+                しかし、なにも起きなかった。
               </template>
-            </template>
-            <template v-else>
-              しかし、なにも起きなかった。
-            </template>
-            <div v-show="shouldDisplaySearchHint">
-              もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
-            </div>
-            <div id="tips" v-show="searchItemType === 'tubo'">
-              <h3 class="collapse" @click="onClickTips">TIPS{{shouldDisplayTips ? '▲' : '▼'}}</h3>
-              <div v-show="shouldDisplayTips">
-                <h4>容量2～3</h4>
-                <ul>
-                  <li>強化の壺</li>
-                  <li>弱化の壺</li>
-                  <li>笑いの壺</li>
-                </ul>
-                <h4>容量2～4</h4>
-                <ul>
-                  <li>おはらいの壺</li>
-                  <li>呪いの壺</li>
-                  <li>底抜けの壺</li>
-                </ul>
-                <h4>容量2～5</h4>
-                <ul>
-                  <li>倉庫の壺</li>
-                </ul>
-                <h4>容量3～4</h4>
-                <ul>
-                  <li>合成の壺</li>
-                </ul>
+              <div v-show="shouldDisplaySearchHint">
+                もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
+              </div>
+              <div id="tips" v-show="searchItemType === 'tubo'">
+                <h3 class="collapse" @click="onClickTips">TIPS{{shouldDisplayTips ? '▲' : '▼'}}</h3>
+                <div v-show="shouldDisplayTips">
+                  <h4>容量2～3</h4>
+                  <ul>
+                    <li>強化の壺</li>
+                    <li>弱化の壺</li>
+                    <li>笑いの壺</li>
+                  </ul>
+                  <h4>容量2～4</h4>
+                  <ul>
+                    <li>おはらいの壺</li>
+                    <li>呪いの壺</li>
+                    <li>底抜けの壺</li>
+                  </ul>
+                  <h4>容量2～5</h4>
+                  <ul>
+                    <li>倉庫の壺</li>
+                  </ul>
+                  <h4>容量3～4</h4>
+                  <ul>
+                    <li>合成の壺</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <hr>
           </template>
-          <template v-else>
+          <div class="message" v-else>
             <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
               灰色：店売りで存在しない
             </div>
@@ -147,7 +151,7 @@
                 (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
               </div>
             </div>
-          </template>
+          </div>
           <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tue'">
             値段は残り回数0のもの<br>
             回数1増加で買値+100、売値+40
