@@ -148,12 +148,12 @@ const vm = {
             else {
                 this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType);
                 if (this.resultItemList.length === 0) {
+                    this.existsResult = false;
                     this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
                     if (this.resultItemList.length > 0) {
                         this.shouldDisplaySearchHint = true;
                     }
                     else {
-                        this.existsResult = false;
                         this.findAllItemList(repo);
                     }
                 }

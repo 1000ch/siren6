@@ -94,11 +94,12 @@
             <template v-else>
               しかし、なにも起きなかった。
             </template>
-          </template>
-          <template v-else>
             <div v-show="shouldDisplaySearchHint">
               もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
             </div>
+            <hr>
+          </template>
+          <template v-else>
             <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
               灰色：店売りで存在しない
             </div>
