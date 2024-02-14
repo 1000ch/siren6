@@ -129,14 +129,14 @@
                 (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
               </div>
             </div>
-          </div>
-          <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tue'">
-            値段は残り回数0のもの<br>
-            回数1増加で買値+100、売値+40
-          </div>
-          <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tubo'">
-            値段は容量0のもの<br>
-            容量1増加で買値+100、売値+40
+            <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tue'">
+              値段は残り回数0のもの<br>
+              回数1増加で買値+100、売値+40
+            </div>
+            <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tubo'">
+              値段は容量0のもの<br>
+              容量1増加で買値+100、売値+40
+            </div>
           </div>
         </div>
         <table id="all-item-list"
