@@ -79,23 +79,23 @@
       </template>
       <!-- 杖+以外 -->
       <template v-else>
-        <div id="message" v-if="resultItemList.length === 0">
-          <template v-if="isFirstTime">
-            <template v-if="searchItemType !== 'tue'">
-              値段を入力するとアイテムが分かります。
+        <div id="message">
+          <template v-if="!existsResult">
+            <template v-if="isFirstTime">
+              <template v-if="searchItemType !== 'tue'">
+                値段を入力するとアイテムが分かります。
+              </template>
+              <template v-else>
+                値段を入力するとアイテムが分かります。<br>
+                合成した杖の回数を知りたい場合は、<br>
+                「杖+」の項目を利用してください。
+              </template>
             </template>
             <template v-else>
-              値段を入力するとアイテムが分かります。<br>
-              合成した杖の回数を知りたい場合は、<br>
-              「杖+」の項目を利用してください。
+              しかし、なにも起きなかった。
             </template>
           </template>
           <template v-else>
-            しかし、なにも起きなかった。
-          </template>
-        </div>
-        <template v-else>
-          <div id="message">
             <div v-show="shouldDisplaySearchHint">
               もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
             </div>
@@ -121,47 +121,46 @@
                 (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
               </div>
             </div>
-            <div v-show="searchNedanType === 'all' && searchItemType === 'tue'">
-              値段は残り回数0のもの<br>
-              回数1増加で買値+100、売値+40
-            </div>
-            <div v-show="searchNedanType === 'all' && searchItemType === 'tubo'">
-              値段は容量0のもの<br>
-              容量1増加で買値+100、売値+40
-            </div>
+          </template>
+          <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tue'">
+            値段は残り回数0のもの<br>
+            回数1増加で買値+100、売値+40
           </div>
-          <table id="all-item-list" v-if="searchNedanType === 'all' && (searchItemType === 'tue' || searchItemType === 'tubo')">
-            <tr>
-              <th>名前</th><th>買値</th><th>売値</th><th>{{searchItemType === 'tue' ? '回数' : '容量'}}</th>
-            </tr>
-            <tr v-for="item in resultItemList"
-                :class="{
-                  'borderline': item.needBorderline
-                }">
-              <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
-              <td class="center">{{item.count}}</td>
-            </tr>
-          </table>
-          <table v-else>
-            <tr>
-              <th>名前</th><th>買値</th><th>売値</th>
-            </tr>
-            <tr v-for="item in resultItemList"
-                :class="{
-                  'borderline': this.searchNedanType === 'all' && item.needBorderline,
-                  'maybe-used': !item.unused,
-                  'nedan-base': isZeroTimes(item),
-                  'need-select': item.needSelect,
-                  'need-tubo-zoudai': item.needTuboZoudai,
-                }">
-              <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
-            </tr>
-          </table>
-        </template>
+          <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tubo'">
+            値段は容量0のもの<br>
+            容量1増加で買値+100、売値+40
+          </div>
+        </div>
+        <table id="all-item-list"
+               v-if="(searchNedanType === 'all' || !existsResult) && (searchItemType === 'tue' || searchItemType === 'tubo')">
+          <tr>
+            <th>名前</th><th>買値</th><th>売値</th><th>{{searchItemType === 'tue' ? '回数' : '容量'}}</th>
+          </tr>
+          <tr v-for="item in resultItemList"
+              :class="{'borderline': item.needBorderline}">
+            <td>{{item.name}}</td>
+            <td class="right">{{item.kaine}}</td>
+            <td class="right">{{item.urine}}</td>
+            <td class="center">{{item.count}}</td>
+          </tr>
+        </table>
+        <table v-else>
+          <tr>
+            <th>名前</th><th>買値</th><th>売値</th>
+          </tr>
+          <tr v-for="item in resultItemList"
+              :class="{
+                'borderline': (searchNedanType === 'all' || !existsResult) && item.needBorderline,
+                'maybe-used': !item.unused,
+                'nedan-base': isZeroTimes(item),
+                'need-select': item.needSelect,
+                'need-tubo-zoudai': item.needTuboZoudai,
+              }">
+            <td>{{item.name}}</td>
+            <td class="right">{{item.kaine}}</td>
+            <td class="right">{{item.urine}}</td>
+          </tr>
+        </table>
         <div id="tips" v-show="searchItemType === 'tubo'">
           <h3 class="collapse" @click="onClickTips">TIPS{{shouldDisplayTips ? '▲' : '▼'}}</h3>
           <div v-show="shouldDisplayTips">
