@@ -71,9 +71,10 @@
                  @click="onClickClearBtn">
           </template>
           <div id="item-status-container" v-else>
-            <div class="radio-btn item-status">通常</div>
-            <div class="radio-btn item-status">呪い</div>
-            <div class="radio-btn item-status">祝福</div>
+            <template v-for="status in itemStatusList">
+              <div class="radio-btn item-status"
+                   :class="{'selected': searchItemStatusList.includes(status)}">{{itemStatusName[status]}}</div>
+            </template>
           </div>
         </div>
       </div>
