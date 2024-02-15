@@ -189,16 +189,26 @@ h1 {
   }
   @media screen and (min-width: 481px) {
     &:hover {
-      background-color: #6a0dad;
+      background-color: #914ebe;
       opacity: 1;
       color: #fff;
+    }
+    &.selected:hover {
+      background-color: #914ebe;
+      opacity: 1;
+      color: #000;
     }
   }
   @media screen and (max-width: 480px) {
     &:active {
-      background-color: #6a0dad;
+      background-color: #914ebe;
       opacity: 1;
       color: #fff;
+    }
+    &.selected:active {
+      background-color: #914ebe;
+      opacity: 1;
+      color: #000;
     }
   }
 }
