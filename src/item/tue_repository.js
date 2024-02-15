@@ -170,8 +170,10 @@ class TueRepository extends ItemRepository {
         this.nameList = this.#itemBaseList.map(tue => tue.name);
     }
 
-    findAllItemList() {
-        return this.#itemGroupList.sort((a, b) => this.findAllItemListSortRule(a[0], b[0])).map(group => {
+    findAllItemList(searchItemStatusList = ['normal']) {
+        return this.#itemGroupList.filter(group => searchItemStatusList.includes(group[0].status))
+                                  .sort((a, b) => this.findAllItemListSortRule(a[0], b[0]))
+                                  .map(group => {
             let minCount = 0;
             let offset = group[0].status === 'normal' ? 0 : -2;
             for (const item of group) {
