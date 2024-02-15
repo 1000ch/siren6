@@ -70,6 +70,17 @@ const vm = {
             this.searchNedanType = type;
             this.findItemList();
         },
+        onClickItemStatus(status) {
+            if (this.searchItemStatusList.includes(status)) {
+                if (this.searchItemStatusList.length > 1) {
+                    this.searchItemStatusList = this.searchItemStatusList.filter(s => s !== status);
+                }
+            }
+            else {
+                this.searchItemStatusList.push(status);
+            }
+            // todo
+        },
         onFocusInputNedan(event) {
             event.target.select();
         },

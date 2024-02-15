@@ -71,7 +71,8 @@
           <div id="item-status-container" v-else>
             <template v-for="status in itemStatusList">
               <div class="radio-btn item-status"
-                   :class="{'selected': searchItemStatusList.includes(status)}">{{itemStatusName[status]}}</div>
+                   :class="{'selected': searchItemStatusList.includes(status)}"
+                   @click="onClickItemStatus(status)">{{itemStatusName[status]}}</div>
             </template>
           </div>
         </div>
