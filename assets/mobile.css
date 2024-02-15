@@ -35,10 +35,14 @@
   #input-nedan-container.exists-itiran {
     width: 329px;
   }
+
+  #nedan-type-container {
+    display: flex;
+    margin-right: 7px;
+  }
   
   #input-nedan {
     width: 130px;
-    margin-left: 7px;
   }
 
   #clear-btn {

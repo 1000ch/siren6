@@ -70,8 +70,10 @@
                  :class="{'visibility-hidden': searchNedanType === 'all'}"
                  @click="onClickClearBtn">
           </template>
-          <div v-else>
-            hogehgoe
+          <div id="item-status-container" v-else>
+            <div class="radio-btn item-status">通常</div>
+            <div class="radio-btn item-status">呪い</div>
+            <div class="radio-btn item-status">祝福</div>
           </div>
         </div>
       </div>
