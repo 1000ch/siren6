@@ -199,22 +199,25 @@ class TuboRepository extends ItemRepository {
         });
     }
 
-    findAllItemList() {
-        return this.#itemGroupList.sort((a, b) => a[0].kaine - b[0].kaine).map(group => {
+    findAllItemList(searchItemStatusList = ['normal']) {
+        return this.#itemGroupList.filter(group => searchItemStatusList.includes(group[0].status))
+                                  .sort((a, b) => this.findAllItemListSortRule(a[0], b[0]))
+                                  .map(group => {
             let minCount = -1;
             let maxCount = -1;
+            const offset = group[0].status === 'normal' ? 0 : -2;
             for (let i = 0; i < group.length; i++) {
                 const item = group[i];
                 if (minCount === -1 && item.unused) {
-                    minCount = item.name.at(-2);
+                    minCount = item.name.at(-2 + offset);
                 }
                 else if (item.needTuboZoudai) {
-                    maxCount = group[i - 1].name.at(-2);
+                    maxCount = group[i - 1].name.at(-2 + offset);
                     break;
                 }
             }
             return {
-                name: group[0].name.slice(0, -3),
+                name: group[0].name.replace(/\[\d+\]/, ''),
                 kaine: group[0].kaine,
                 urine: group[0].urine,
                 count: `${minCount}～${maxCount}`,

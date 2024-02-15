@@ -63,7 +63,7 @@ export class ItemRepository {
         return this.itemList.filter(item => searchItemStatusList.includes(item.status)).sort(this.findAllItemListSortRule);
     }
 
-    findAllItemListSortRule(a, b) { // todo memo tubo,tueで利用しないならメソッドにするのを止める。
+    findAllItemListSortRule(a, b) {
         if (a.kaine !== b.kaine) {
             return a.kaine - b.kaine;
         }

@@ -175,7 +175,7 @@ class TueRepository extends ItemRepository {
                                   .sort((a, b) => this.findAllItemListSortRule(a[0], b[0]))
                                   .map(group => {
             let minCount = 0;
-            let offset = group[0].status === 'normal' ? 0 : -2;
+            const offset = group[0].status === 'normal' ? 0 : -2;
             for (const item of group) {
                 if (item.unused) {
                     minCount = item.name.at(-2 + offset);
