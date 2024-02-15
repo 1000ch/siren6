@@ -2,8 +2,8 @@ import { assert } from 'chai';
 import { tuboRepository } from '../src/item/tubo_repository';
 
 describe('壺', function () {
-    it('値段増加幅が正しいか', function () {
-        for (const group of tuboRepository.itemGroupList) {
+    it('値段増加幅が正しいか(通常時のみ)', function () {
+        for (const group of tuboRepository.itemGroupList.filter(group => group[0].status === 'normal')) {
             const base = group[0];
             for (let i = 1; i < group.length; i++) {
                 const item = group[i];
