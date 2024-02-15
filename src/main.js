@@ -171,9 +171,7 @@ const vm = {
             this.resultItemList = repo.findAllItemList(this.searchItemStatusList);
             let prevKaine = this.resultItemList[0].kaine;
             for (const item of this.resultItemList) {
-                if (item.kaine !== prevKaine) {
-                    item.needBorderline = true;
-                }
+                item.needBorderline = item.kaine !== prevKaine;
                 prevKaine = item.kaine;
             }
         }
