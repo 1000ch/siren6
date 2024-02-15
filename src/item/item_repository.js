@@ -59,7 +59,7 @@ export class ItemRepository {
         });
     }
 
-    findAllItemList() {
-        return this.itemList.filter(item => item.status === 'normal').sort((a, b) => a.kaine - b.kaine);
+    findAllItemList(searchItemStatusList = ['normal']) {
+        return this.itemList.filter(item => searchItemStatusList.includes(item.status)).sort((a, b) => a.kaine - b.kaine);
     }
 }
