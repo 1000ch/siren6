@@ -79,7 +79,7 @@ const vm = {
             else {
                 this.searchItemStatusList.push(status);
             }
-            // todo
+            this.findItemList();
         },
         onFocusInputNedan(event) {
             event.target.select();
@@ -168,7 +168,7 @@ const vm = {
             }
         },
         findAllItemList(repo) {
-            this.resultItemList = repo.findAllItemList();
+            this.resultItemList = repo.findAllItemList(this.searchItemStatusList);
             let prevKaine = this.resultItemList[0].kaine;
             for (const item of this.resultItemList) {
                 if (item.kaine !== prevKaine) {
