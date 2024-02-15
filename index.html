@@ -60,14 +60,19 @@
                    @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
           </div>
-          <input type="number" id="input-nedan" v-model="searchNedan"
+          <template v-if="searchNedanType !== 'all'">
+            <input type="number" id="input-nedan" v-model="searchNedan"
+                   :class="{'visibility-hidden': searchNedanType === 'all'}"
+                   @focus="onFocusInputNedan"
+                   @blur="onBlurInputNedan"
+                   @keydown.enter="onKeyDownEnterInputNedan">
+            <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
                  :class="{'visibility-hidden': searchNedanType === 'all'}"
-                 @focus="onFocusInputNedan"
-                 @blur="onBlurInputNedan"
-                 @keydown.enter="onKeyDownEnterInputNedan">
-          <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
-               :class="{'visibility-hidden': searchNedanType === 'all'}"
-               @click="onClickClearBtn">
+                 @click="onClickClearBtn">
+          </template>
+          <div v-else>
+            hogehgoe
+          </div>
         </div>
       </div>
     </div>
