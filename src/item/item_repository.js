@@ -71,16 +71,16 @@ export class ItemRepository {
             return 0;
         }
         else if (a.status === 'noroi') {
-            return 1;
+            return -1;
         }
         else if (b.status === 'noroi') {
-            return -1;
+            return 1;
         }
         else if (a.status === 'syukufuku') {
-            return -1;
+            return 1;
         }
         else if (b.status === 'syukufuku') {
-            return 1;
+            return -1;
         }
         throw new Error('ここが実行されることはありえない');
     }
