@@ -99,7 +99,7 @@
       <!-- 杖+以外 -->
       <template v-else>
         <div id="message-container">
-          <div v-show="!existsResult">
+          <div v-if="resultItemList.length === 0">
             <div class="message">
               <template v-if="isFirstTime">
                 <template v-if="searchItemType !== 'tue'">
@@ -114,81 +114,83 @@
                 しかし、なにも起きなかった。
               </template>
             </div>
-            <hr>
           </div>
-          <div class="message" v-show="shouldDisplaySearchHint">
-            もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
-            <hr>
-          </div>
-          <div class="message" v-show="existsResult || shouldDisplaySearchHint">
-            <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
-              灰色：店売りで存在しない
+          <template v-else>
+            <div class="message" v-show="shouldDisplaySearchHint">
+              もしかして… 「{{searchNedanType === 'kaine' ? '売値' : '買値'}}」？
+              <hr>
             </div>
-            <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
-              橙色：残り回数0の値段
-            </div>
-            <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
-              橙色：容量0の値段
-            </div>
-            <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.needTuboZoudai)">
-              紫色：壺増大しないと存在しない
-            </div>
-          </div>
-          <div class="message">
-            <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
-              黄色：選択式巻物
-            </div>
-            <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
-              買値：下1桁が0であれば呪いではない<br>
-              売値：下1桁が0か5であれば呪いではない<br>
-              <div class="source">
-                (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
+            <div class="message">
+              <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
+                灰色：店売りで存在しない
+              </div>
+              <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
+                橙色：残り回数0の値段
+              </div>
+              <div v-show="searchItemType === 'tubo' && resultItemList.some(item => isZeroTimes(item))">
+                橙色：容量0の値段
+              </div>
+              <div v-show="searchItemType === 'tubo' && resultItemList.some(item => item.needTuboZoudai)">
+                紫色：壺増大しないと存在しない
+              </div>
+              <div v-show="searchItemType === 'makimono' && resultItemList.some(item => item.needSelect)">
+                黄色：選択式巻物
+              </div>
+              <div v-show="searchItemType === 'buki' || searchItemType === 'tate'">
+                買値：下1桁が0であれば呪いではない<br>
+                売値：下1桁が0か5であれば呪いではない<br>
+                <div class="source">
+                  (出典：<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>)
+                </div>
+              </div>
+              <div v-show="searchNedanType === 'all' && searchItemType === 'tue'">
+                値段は残り回数0のもの<br>
+                回数1増加で買値+100、売値+40
+              </div>
+              <div v-show="searchNedanType === 'all' && searchItemType === 'tubo'">
+                値段は容量0のもの<br>
+                容量1増加で買値+100、売値+40
               </div>
             </div>
-            <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tue'">
-              値段は残り回数0のもの<br>
-              回数1増加で買値+100、売値+40
-            </div>
-            <div v-show="(searchNedanType === 'all' || !existsResult) && searchItemType === 'tubo'">
-              値段は容量0のもの<br>
-              容量1増加で買値+100、売値+40
-            </div>
-          </div>
+          </template>
         </div>
-        <table id="all-item-list"
-               v-if="(searchNedanType === 'all' || !existsResult) && (searchItemType === 'tue' || searchItemType === 'tubo')">
-          <tr>
-            <th>名前</th><th>買値</th><th>売値</th><th>{{searchItemType === 'tue' ? '回数' : '容量'}}</th>
-          </tr>
-          <tr v-for="item in resultItemList"
-              :class="{'borderline': item.needBorderline}">
-            <td>{{item.name}}</td>
-            <td class="right">{{item.kaine}}</td>
-            <td class="right">{{item.urine}}</td>
-            <td class="center">{{item.count}}</td>
-          </tr>
-        </table>
-        <table v-else>
-          <tr>
-            <th>名前</th><th>買値</th><th>売値</th>
-          </tr>
-          <tr v-for="item in resultItemList"
-              :class="{
-                'borderline': (searchNedanType === 'all' || !existsResult) && item.needBorderline,
-                'maybe-used': !item.unused,
-                'nedan-base': isZeroTimes(item),
-                'need-select': item.needSelect,
-                'need-tubo-zoudai': item.needTuboZoudai,
-              }">
-            <td>{{item.name}}</td>
-            <td class="right">{{item.kaine}}</td>
-            <td class="right">{{item.urine}}</td>
-          </tr>
-        </table>
+        <div v-show="resultItemList.length > 0">
+          <!-- 検索結果一覧 -->
+          <table id="all-item-list"
+                 v-if="searchNedanType === 'all' && (searchItemType === 'tue' || searchItemType === 'tubo')">
+            <tr>
+              <th>名前</th><th>買値</th><th>売値</th><th>{{searchItemType === 'tue' ? '回数' : '容量'}}</th>
+            </tr>
+            <tr v-for="item in resultItemList"
+                :class="{'borderline': item.needBorderline}">
+              <td>{{item.name}}</td>
+              <td class="right">{{item.kaine}}</td>
+              <td class="right">{{item.urine}}</td>
+              <td class="center">{{item.count}}</td>
+            </tr>
+          </table>
+          <table v-else>
+            <tr>
+              <th>名前</th><th>買値</th><th>売値</th>
+            </tr>
+            <tr v-for="item in resultItemList"
+                :class="{
+                  'borderline': searchNedanType === 'all' && item.needBorderline,
+                  'maybe-used': !item.unused,
+                  'nedan-base': isZeroTimes(item),
+                  'need-select': item.needSelect,
+                  'need-tubo-zoudai': item.needTuboZoudai,
+                }">
+              <td>{{item.name}}</td>
+              <td class="right">{{item.kaine}}</td>
+              <td class="right">{{item.urine}}</td>
+            </tr>
+          </table>
+        </div>
       </template>
     </div>
 
-    <div style="padding-bottom: 2rem; word-break: break-all;">
+    <div id="poem">
       <hr>
       Googleのインデックス対策として書きたくもないポエムを書きます。
       (現状、オリジナリティがないと判定されて検索しても出てこない。)<br>

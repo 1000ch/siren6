@@ -278,3 +278,11 @@ tr {
 .tue-noroi {
   background-color: #ffcccc;
 }
+
+#poem {
+  margin-top: 10rem;
+  padding-bottom: 2rem;
+  word-break: break-all;
+  font-size: 0.94rem;
+}
+

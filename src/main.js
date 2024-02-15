@@ -30,7 +30,6 @@ const vm = {
             currentTuePlusNedanType: 'urine',
             currentNedan: 0,
             currentTuePlusNedan: 0,
-            existsResult: false,
             resultItemList: [],
             resultTueCountList: [],
             shouldDisplayTips: false,
@@ -115,7 +114,6 @@ const vm = {
             return item.name.endsWith('[0]');
         },
         findItemList() {
-            this.existsResult = true;
             this.shouldDisplaySearchHint = false;
             
             if (this.searchItemType === 'buki') {
@@ -151,10 +149,6 @@ const vm = {
                     this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
                     if (this.resultItemList.length > 0) {
                         this.shouldDisplaySearchHint = true;
-                    }
-                    else {
-                        this.existsResult = false;
-                        this.findAllItemList(repo);
                     }
                 }
             }
