@@ -161,7 +161,7 @@ class TueRepository extends ItemRepository {
         this.add(c('桃まんの杖[6]', 2600, 1040));
 
         this.#itemGroupList = grouping(this.itemList);
-        this.#itemBaseList = this.#itemGroupList.map(group => ({
+        this.#itemBaseList = this.#itemGroupList.filter(group => group[0].status === 'normal').map(group => ({
             name: group[0].name.slice(0, -3),
             kaine: group[0].kaine,
             urine: group[0].urine
@@ -171,19 +171,20 @@ class TueRepository extends ItemRepository {
     }
 
     findAllItemList() {
-        return this.#itemGroupList.sort((a, b) => a[0].kaine - b[0].kaine).map(group => {
+        return this.#itemGroupList.sort((a, b) => this.findAllItemListSortRule(a[0], b[0])).map(group => {
             let minCount = 0;
+            let offset = group[0].status === 'normal' ? 0 : -2;
             for (const item of group) {
                 if (item.unused) {
-                    minCount = item.name.at(-2);
+                    minCount = item.name.at(-2 + offset);
                     break;
                 }
             }
             return {
-                name: group[0].name.slice(0, -3),
+                name: group[0].name.replace(/\[\d+\]/, ''),
                 kaine: group[0].kaine,
                 urine: group[0].urine,
-                count: `${minCount}～${group.at(-1).name.at(-2)}`,
+                count: `${minCount}～${group.at(-1).name.at(-2 + offset)}`,
             };
         });
     }
