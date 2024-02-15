@@ -178,6 +178,31 @@ h1 {
   display: flex;
 }
 
+.item-status {
+  border-color: #6a0dad;
+  background-color: #b78fcf;
+  opacity: 0.5;
+  &.selected {
+    background-color: #6a0dad;
+    opacity: 1;
+    color: #fff;
+  }
+  @media screen and (min-width: 481px) {
+    &:hover {
+      background-color: #6a0dad;
+      opacity: 1;
+      color: #fff;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    &:active {
+      background-color: #6a0dad;
+      opacity: 1;
+      color: #fff;
+    }
+  }
+}
+
 .jump {
   animation: jump 2s linear;
 }
