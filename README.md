@@ -3,6 +3,9 @@
 
 https://mogamoga1024.github.io/siren6/
 
+とぅーどゅー  
+武器盾値段識別呪い判定作る
+
 ## 参考元
 
 * [AppMedia: シレン6攻略｜不思議のダンジョン](https://appmedia.jp/shiren6/)
