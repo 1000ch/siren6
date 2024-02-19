@@ -42,7 +42,7 @@ export const BukiSearch = {
 
         <select id="in-name-select"
                 @change="onChangeInNameSelect">
-          <option value="none">印の追加</option>
+          <option value="" hidden>印の追加</option>
           <template v-for="inn in inList">
             <option :value="inn.name">{{inn.fullName}}</option>
           </template>
