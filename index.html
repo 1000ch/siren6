@@ -40,35 +40,36 @@
       </div>
   
       <div id="search-nedan-container">
+        <div v-show="searchItemType === 'buki'">
+          <buki-search></buki-search>
+        </div>
         <div v-show="searchItemType === 'tuePlus'">
           <tue-plus-search @result="onResultTuePlusSearch"></tue-plus-search>
         </div>
-        <div v-show="searchItemType !== 'tuePlus'">
-          <div v-show="searchItemType !== 'buki' && searchItemType !== 'tate'"
-               id="input-nedan-container" class="exists-itiran">
-            <div id="nedan-type-container">
-              <template v-for="nedanType in nedanTypeList">
-                <div class="radio-btn nedan-type"
-                     :class="{'selected': searchNedanType === nedanType}"
-                     @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
-              </template>
-            </div>
-            <template v-if="searchNedanType !== 'all'">
-              <input type="number" id="input-nedan" v-model="searchNedan"
-                     @focus="onFocusInputNedan"
-                     @blur="onBlurInputNedan"
-                     @keydown.enter="onKeyDownEnterInputNedan">
-              <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
-                   @click="onClickClearBtn">
+        <div v-show="!['buki', 'tate', 'tuePlus'].includes(searchItemType)"
+             id="input-nedan-container" class="exists-itiran">
+          <div id="nedan-type-container">
+            <template v-for="nedanType in nedanTypeList">
+              <div class="radio-btn nedan-type"
+                   :class="{'selected': searchNedanType === nedanType}"
+                   @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
-            <div id="item-status-container" v-else>
-              <template v-for="status in itemStatusList">
-                <div class="radio-btn item-status"
-                     v-if="!((searchItemType === 'tue' || searchItemType === 'tubo' || searchItemType === 'udewa') && status === 'syukufuku')"
-                     :class="{'selected': searchItemStatusList.includes(status)}"
-                     @click="onClickItemStatus(status)">{{itemStatusName[status]}}</div>
-              </template>
-            </div>
+          </div>
+          <template v-if="searchNedanType !== 'all'">
+            <input type="number" id="input-nedan" v-model="searchNedan"
+                   @focus="onFocusInputNedan"
+                   @blur="onBlurInputNedan"
+                   @keydown.enter="onKeyDownEnterInputNedan">
+            <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
+                 @click="onClickClearBtn">
+          </template>
+          <div id="item-status-container" v-else>
+            <template v-for="status in itemStatusList">
+              <div class="radio-btn item-status"
+                   v-if="!((searchItemType === 'tue' || searchItemType === 'tubo' || searchItemType === 'udewa') && status === 'syukufuku')"
+                   :class="{'selected': searchItemStatusList.includes(status)}"
+                   @click="onClickItemStatus(status)">{{itemStatusName[status]}}</div>
+            </template>
           </div>
         </div>
       </div>

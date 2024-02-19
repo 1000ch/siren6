@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { BukiSearch } from './components/buki_search';
 import { TuePlusSearch } from './components/tue_plus_search';
 import { kusaRepository } from './item/kusa_repository';
 import { tueRepository } from './item/tue_repository';
@@ -10,6 +11,7 @@ import { tateRepository } from './item/tate_repository';
 
 const vm = {
     components: {
+        BukiSearch,
         TuePlusSearch
     },
     data() {
