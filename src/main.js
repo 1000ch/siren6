@@ -107,8 +107,7 @@ const vm = {
                 return;
             }
             if (this.searchItemType === 'tuePlus') {
-                this.resultTueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType)
-                return;
+                throw new Error('ここが実行されることはない');
             }
 
             let repo = null;
