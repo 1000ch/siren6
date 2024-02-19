@@ -34,7 +34,7 @@ export const BukiSearch = {
             searchItemName: '木刀',
             nedanTypeList: ['kaine', 'urine'],
             nedanTypeName: {kaine: '買値', urine: '売値'},
-            searchNedanType: 'urine',
+            searchNedanType: 'kaine',
             searchNedan: 0,
         }
     },
