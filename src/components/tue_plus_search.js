@@ -2,8 +2,6 @@ import { tueRepository } from '../item/tue_repository';
 
 export const TuePlusSearch = {
     template: `
-        <div>Hello, World!</div>
-        <!--
         <select id="search-item-name"
                 v-model="searchItemName"
                 @change="onChangeSearchItemName">
@@ -28,7 +26,6 @@ export const TuePlusSearch = {
           <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
                @click="onClickClearBtn">
         </div>
-        -->
     `,
     data() {
         return {
@@ -40,5 +37,31 @@ export const TuePlusSearch = {
     },
     created() {
         this.tueNameList = tueRepository.nameList;
+    },
+    onChangeSearchItemName() {
+        // todo イベント発火
+        // this.findItemList();
+    },
+    onFocusInputNedan(event) {
+        event.target.select();
+    },
+    onBlurInputNedan(event) {
+        this.searchNedan = Number(this.searchNedan);
+        event.target.value = this.searchNedan;
+        // this.findItemList(); todo
+    },
+    onKeyDownEnterInputNedan(event) {
+        event.target.blur();
+    },
+    onClickClearBtn() {
+        const clearBtnClassList = this.$refs.clearBtn.classList;
+        if (!clearBtnClassList.contains('jump')) {
+            clearBtnClassList.add('jump');
+            setTimeout(() => {
+                clearBtnClassList.remove('jump');
+            }, 2000);
+        }
+        this.searchNedan = 0;
+        // this.findItemList(); // todo
     },
 };

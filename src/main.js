@@ -47,9 +47,6 @@ const vm = {
         this.findItemList();
     },
     methods: {
-        onChangeSearchItemName() {
-            this.findItemList();
-        },
         onClickItemType(type) {
             this.searchItemType = type;
 
