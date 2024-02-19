@@ -44,7 +44,6 @@ const vm = {
         }
     },
     created() {
-        this.tueNameList = tueRepository.nameList;
         this.findItemList();
     },
     methods: {

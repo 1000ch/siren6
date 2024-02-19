@@ -1,3 +1,4 @@
+import { tueRepository } from '../item/tue_repository';
 
 export const TuePlusSearch = {
     template: `
@@ -29,4 +30,15 @@ export const TuePlusSearch = {
         </div>
         -->
     `,
+    data() {
+        return {
+            tueNameList: [],
+            searchItemName: 'ただの杖',
+            searchNedanType: 'urine',
+            searchNedan: 0,
+        }
+    },
+    created() {
+        this.tueNameList = tueRepository.nameList;
+    },
 };
