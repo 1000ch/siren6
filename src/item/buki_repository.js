@@ -1,10 +1,12 @@
 import { ItemRepository } from "./item_repository";
 
 class BukiRepository extends ItemRepository {
+    nameList = [];
+
     constructor() {
         super();
         this.canSyukufuku = false;
-        this.canNoroi = false;
+        this.canNoroi = false; // todo
         const c = this.create;
         this.add(c('木刀', 250, 100));
         this.add(c('青銅の太刀', 550, 220));
@@ -43,6 +45,8 @@ class BukiRepository extends ItemRepository {
         this.add(c('かつおぶし', 1800, 720));
         this.add(c('山姥包丁', 4000, 1600));
         this.add(c('使い捨て刀', 3000, 1200));
+
+        this.nameList = this.itemList.map(item => item.name);
     }
 }
 
