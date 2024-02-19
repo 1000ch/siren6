@@ -41,7 +41,7 @@
   
       <div id="search-nedan-container">
         <template v-if="searchItemType === 'tuePlus'">
-          <tue-plus-search />
+          <tue-plus-search @result="onResultTuePlusSearch"></tue-plus-search>
         </template>
         <template v-else>
           <div v-show="searchItemType !== 'buki' && searchItemType !== 'tate'"

@@ -39,7 +39,6 @@ const vm = {
             currentTuePlusNedan: 0,
             resultItemList: [],
             resultTueCountList: [],
-            shouldDisplayTips: false,
             shouldDisplaySearchHint: false,
         }
     },
@@ -121,8 +120,8 @@ const vm = {
                 this.isFirstTime = true;
             }
         },
-        onClickTips() {
-            this.shouldDisplayTips = !this.shouldDisplayTips;
+        onResultTuePlusSearch(resultTueCountList) {
+            this.resultTueCountList = resultTueCountList;
         },
         isZeroTimes(item) {
             return item.name.endsWith('[0]');

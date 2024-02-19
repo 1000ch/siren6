@@ -26,6 +26,7 @@ export const TuePlusSearch = {
                @click="onClickClearBtn">
         </div>
     `,
+    emits: ['result'],
     data() {
         return {
             tueNameList: [],
@@ -41,12 +42,11 @@ export const TuePlusSearch = {
     },
     methods: {
         onChangeSearchItemName() {
-            // todo イベント発火
-            // this.findItemList();
+            this.findItemList();
         },
         onClickNedanType(type) {
             this.searchNedanType = type;
-            // this.findItemList(); todo
+            this.findItemList();
         },
         onFocusInputNedan(event) {
             event.target.select();
@@ -54,7 +54,7 @@ export const TuePlusSearch = {
         onBlurInputNedan(event) {
             this.searchNedan = Number(this.searchNedan);
             event.target.value = this.searchNedan;
-            // this.findItemList(); todo
+            this.findItemList();
         },
         onKeyDownEnterInputNedan(event) {
             event.target.blur();
@@ -68,7 +68,11 @@ export const TuePlusSearch = {
                 }, 2000);
             }
             this.searchNedan = 0;
-            // this.findItemList(); // todo
+            this.findItemList();
         },
+        findItemList() {
+            const resultTueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
+            this.$emit('result', resultTueCountList);
+        }
     }
 };
