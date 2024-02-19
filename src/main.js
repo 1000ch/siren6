@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { TuePlusSearch } from './components/tue_plus_search';
 import { kusaRepository } from './item/kusa_repository';
 import { tueRepository } from './item/tue_repository';
 import { makimonoRepository } from './item/makimono_repository';
@@ -8,6 +9,9 @@ import { bukiRepository } from './item/buki_repository';
 import { tateRepository } from './item/tate_repository';
 
 const vm = {
+    components: {
+        TuePlusSearch
+    },
     data() {
         return {
             isFirstTime: true,

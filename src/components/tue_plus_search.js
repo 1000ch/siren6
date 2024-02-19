@@ -1,6 +1,8 @@
 
 export const TuePlusSearch = {
     template: `
+        <div>Hello, World!</div>
+        <!--
         <select id="search-item-name"
                 v-model="searchItemName"
                 @change="onChangeSearchItemName">
@@ -25,5 +27,6 @@ export const TuePlusSearch = {
           <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
                @click="onClickClearBtn">
         </div>
+        -->
     `,
 };
