@@ -39,30 +39,36 @@ export const TuePlusSearch = {
     created() {
         this.tueNameList = tueRepository.nameList;
     },
-    onChangeSearchItemName() {
-        // todo イベント発火
-        // this.findItemList();
-    },
-    onFocusInputNedan(event) {
-        // event.target.select();
-    },
-    onBlurInputNedan(event) {
-        // this.searchNedan = Number(this.searchNedan);
-        // event.target.value = this.searchNedan;
-        // this.findItemList(); todo
-    },
-    onKeyDownEnterInputNedan(event) {
-        // event.target.blur();
-    },
-    onClickClearBtn() {
-        // const clearBtnClassList = this.$refs.clearBtn.classList;
-        // if (!clearBtnClassList.contains('jump')) {
-        //     clearBtnClassList.add('jump');
-        //     setTimeout(() => {
-        //         clearBtnClassList.remove('jump');
-        //     }, 2000);
-        // }
-        // this.searchNedan = 0;
-        // this.findItemList(); // todo
-    },
+    methods: {
+        onChangeSearchItemName() {
+            // todo イベント発火
+            // this.findItemList();
+        },
+        onClickNedanType(type) {
+            this.searchNedanType = type;
+            // this.findItemList(); todo
+        },
+        onFocusInputNedan(event) {
+            event.target.select();
+        },
+        onBlurInputNedan(event) {
+            this.searchNedan = Number(this.searchNedan);
+            event.target.value = this.searchNedan;
+            // this.findItemList(); todo
+        },
+        onKeyDownEnterInputNedan(event) {
+            event.target.blur();
+        },
+        onClickClearBtn() {
+            const clearBtnClassList = this.$refs.clearBtn.classList;
+            if (!clearBtnClassList.contains('jump')) {
+                clearBtnClassList.add('jump');
+                setTimeout(() => {
+                    clearBtnClassList.remove('jump');
+                }, 2000);
+            }
+            this.searchNedan = 0;
+            // this.findItemList(); // todo
+        },
+    }
 };
