@@ -32,11 +32,6 @@ const vm = {
             searchNedanType: 'kaine',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
-            prevItemType: 'kusa',
-            currentNedanType: 'kaine',
-            currentTuePlusNedanType: 'urine',
-            currentNedan: 0,
-            currentTuePlusNedan: 0,
             resultItemList: [],
             resultTueCountList: [],
             shouldDisplaySearchHint: false,
@@ -48,22 +43,9 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.searchItemType = type;
-
-            if (this.prevItemType === 'tuePlus') {
-                this.currentTuePlusNedanType = this.searchNedanType;
-                this.currentTuePlusNedan = this.searchNedan;
-                this.searchNedanType = this.currentNedanType;
-                this.searchNedan = this.currentNedan;
+            if (this.searchItemType !== 'tuePlus') {
+                this.findItemList();
             }
-            else if (this.searchItemType === 'tuePlus') {
-                this.currentNedanType = this.searchNedanType;
-                this.currentNedan = this.searchNedan;
-                this.searchNedanType = this.currentTuePlusNedanType;
-                this.searchNedan = this.currentTuePlusNedan;
-            }
-            this.prevItemType = this.searchItemType;
-
-            this.findItemList();
         },
         onClickNedanType(type) {
             this.searchNedanType = type;
@@ -88,16 +70,7 @@ const vm = {
             event.target.value = this.searchNedan;
             this.findItemList();
             if (this.searchNedan !== 0) {
-                if (this.searchItemType === 'tuePlus') {
-                    if (this.isTuePlusFirstTime) {
-                        this.isTuePlusFirstTime = false;
-                    }
-                }
-                else {
-                    if (this.isFirstTime) {
-                        this.isFirstTime = false;
-                    }
-                }
+                this.isFirstTime = false;
             }
         },
         onKeyDownEnterInputNedan(event) {
@@ -113,12 +86,7 @@ const vm = {
             }
             this.searchNedan = 0;
             this.findItemList();
-            if (this.searchItemType === 'tuePlus') {
-                this.isTuePlusFirstTime = true;
-            }
-            else {
-                this.isFirstTime = true;
-            }
+            this.isFirstTime = true;
         },
         onResultTuePlusSearch(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
