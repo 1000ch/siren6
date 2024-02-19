@@ -39,12 +39,21 @@ export const BukiSearch = {
             </template>
           </div>
         </div>
+
+        <select id="in-name-select"
+                @change="onChangeInNameSelect">
+          <option value="none">印の追加</option>
+          <template v-for="inn in inList">
+            <option :value="inn.name">{{inn.fullName}}</option>
+          </template>
+        </select>
     `,
     emits: ['result'],
     data() {
         return {
             isFirstTime: true,
             bukiNameList: [],
+            inList: [],
             searchItemName: '木刀',
             isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
@@ -58,6 +67,7 @@ export const BukiSearch = {
     },
     created() {
         this.bukiNameList = bukiRepository.nameList;
+        this.inList = bukiRepository.inList;
     },
     methods: {
         onChangeSearchItemName() {
@@ -106,6 +116,10 @@ export const BukiSearch = {
             }
             this.searchNedan = 0;
             this.isFirstTime = true;
+            this.findItemList();
+        },
+        onChangeInNameSelect() {
+            // todo
             this.findItemList();
         },
         findItemList() {

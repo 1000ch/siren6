@@ -268,8 +268,9 @@ h1 {
   }
 }
 
-#search-item-list {
-  margin-top: 0.8rem;
+#in-name-select {
+  padding: 2px 4px;
+  margin-top: 6px;
 }
 
 #result {
