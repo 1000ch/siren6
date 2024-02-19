@@ -2,14 +2,17 @@ import { bukiRepository } from '../item/buki_repository';
 
 export const BukiSearch = {
     template: `
-        <select id="search-item-name"
-                v-model="searchItemName"
-                @change="onChangeSearchItemName">
-          <template v-for="name in bukiNameList">
-            <option :value="name">{{name}}</option>
-          </template>
-        </select>
-
+        <div id="search-item-name-container">
+          <select id="search-item-name"
+                  v-model="searchItemName"
+                  @change="onChangeSearchItemName">
+            <template v-for="name in bukiNameList">
+              <option :value="name">{{name}}</option>
+            </template>
+          </select>
+          <div id="jingi-btn" class="radio-btn">神器</div>
+        </div>
+        
         <div id="input-nedan-container">
           <div id="nedan-type-container">
             <template v-for="nedanType in nedanTypeList">

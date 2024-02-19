@@ -108,9 +108,41 @@ h1 {
   margin-top: 0.8rem;
 }
 
-#search-item-name {
+#search-item-name-container {
+  display: flex;
   margin-bottom: 6px;
+  align-items: center;
+}
+
+#search-item-name {
   padding: 2px 4px;
+}
+
+#jingi-btn {
+  margin-left: 25px;
+  border-radius: 2px;
+  border-color: #6a0dad;
+  background-color: #b78fcf;
+  opacity: 0.5;
+  &.selected {
+    background-color: #6a0dad;
+    opacity: 1;
+    color: #fff;
+  }
+  @media screen and (min-width: 481px) {
+    &:hover {
+      background-color: #914ebe;
+      opacity: 1;
+      color: #fff;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    &:active {
+      background-color: #914ebe;
+      opacity: 1;
+      color: #fff;
+    }
+  }
 }
 
 #input-nedan-container {

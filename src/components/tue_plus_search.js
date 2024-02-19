@@ -2,13 +2,15 @@ import { tueRepository } from '../item/tue_repository';
 
 export const TuePlusSearch = {
     template: `
-        <select id="search-item-name"
-                v-model="searchItemName"
-                @change="onChangeSearchItemName">
-          <template v-for="name in tueNameList">
-            <option :value="name">{{name}}</option>
-          </template>
-        </select>
+        <div id="search-item-name-container">
+          <select id="search-item-name"
+                  v-model="searchItemName"
+                  @change="onChangeSearchItemName">
+            <template v-for="name in tueNameList">
+              <option :value="name">{{name}}</option>
+            </template>
+          </select>
+        </div>
 
         <div id="input-nedan-container">
           <div id="nedan-type-container">
