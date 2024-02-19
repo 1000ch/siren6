@@ -18,12 +18,21 @@ export const BukiSearch = {
                    @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
           </div>
-          <input type="number" id="input-nedan" v-model="searchNedan"
+          <template v-if="searchNedanType !== 'all'">
+            <input type="number" id="input-nedan" v-model="searchNedan"
                  @focus="onFocusInputNedan"
                  @blur="onBlurInputNedan"
                  @keydown.enter="onKeyDownEnterInputNedan">
-          <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
-               @click="onClickClearBtn">
+            <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
+                 @click="onClickClearBtn">
+          </template>
+          <div id="item-status-container" v-else>
+            <template v-for="status in itemStatusList">
+              <div class="radio-btn item-status"
+                   :class="{'selected': searchItemStatusList.includes(status)}"
+                   @click="onClickItemStatus(status)">{{itemStatusName[status]}}</div>
+            </template>
+          </div>
         </div>
     `,
     emits: ['result'],
@@ -32,10 +41,13 @@ export const BukiSearch = {
             isFirstTime: true,
             bukiNameList: [],
             searchItemName: '木刀',
-            nedanTypeList: ['kaine', 'urine'],
-            nedanTypeName: {kaine: '買値', urine: '売値'},
+            nedanTypeList: ['kaine', 'urine', 'all'],
+            nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
+            itemStatusList: ['normal', 'noroi'],
+            itemStatusName: {normal: '通常', noroi: '呪い'},
             searchNedanType: 'kaine',
             searchNedan: 0,
+            searchItemStatusList: ['normal'],
         }
     },
     created() {
@@ -47,6 +59,17 @@ export const BukiSearch = {
         },
         onClickNedanType(type) {
             this.searchNedanType = type;
+            this.findItemList();
+        },
+        onClickItemStatus(status) {
+            if (this.searchItemStatusList.includes(status)) {
+                if (this.searchItemStatusList.length > 1) {
+                    this.searchItemStatusList = this.searchItemStatusList.filter(s => s !== status);
+                }
+            }
+            else {
+                this.searchItemStatusList.push(status);
+            }
             this.findItemList();
         },
         onFocusInputNedan(event) {
