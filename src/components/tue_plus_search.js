@@ -14,7 +14,6 @@ export const TuePlusSearch = {
           <div id="nedan-type-container">
             <template v-for="nedanType in nedanTypeList">
               <div class="radio-btn nedan-type"
-                   v-if="nedanType !== 'all'"
                    :class="{'selected': searchNedanType === nedanType}"
                    @click="onClickNedanType(nedanType)">{{nedanTypeName[nedanType]}}</div>
             </template>
@@ -31,6 +30,8 @@ export const TuePlusSearch = {
         return {
             tueNameList: [],
             searchItemName: 'ただの杖',
+            nedanTypeList: ['kaine', 'urine'],
+            nedanTypeName: {kaine: '買値', urine: '売値'},
             searchNedanType: 'urine',
             searchNedan: 0,
         }
@@ -43,25 +44,25 @@ export const TuePlusSearch = {
         // this.findItemList();
     },
     onFocusInputNedan(event) {
-        event.target.select();
+        // event.target.select();
     },
     onBlurInputNedan(event) {
-        this.searchNedan = Number(this.searchNedan);
-        event.target.value = this.searchNedan;
+        // this.searchNedan = Number(this.searchNedan);
+        // event.target.value = this.searchNedan;
         // this.findItemList(); todo
     },
     onKeyDownEnterInputNedan(event) {
-        event.target.blur();
+        // event.target.blur();
     },
     onClickClearBtn() {
-        const clearBtnClassList = this.$refs.clearBtn.classList;
-        if (!clearBtnClassList.contains('jump')) {
-            clearBtnClassList.add('jump');
-            setTimeout(() => {
-                clearBtnClassList.remove('jump');
-            }, 2000);
-        }
-        this.searchNedan = 0;
+        // const clearBtnClassList = this.$refs.clearBtn.classList;
+        // if (!clearBtnClassList.contains('jump')) {
+        //     clearBtnClassList.add('jump');
+        //     setTimeout(() => {
+        //         clearBtnClassList.remove('jump');
+        //     }, 2000);
+        // }
+        // this.searchNedan = 0;
         // this.findItemList(); // todo
     },
 };
