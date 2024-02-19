@@ -120,8 +120,9 @@ const vm = {
                 this.isFirstTime = true;
             }
         },
-        onResultTuePlusSearch(resultTueCountList) {
-            this.resultTueCountList = resultTueCountList;
+        onResultTuePlusSearch(result) {
+            this.isTuePlusFirstTime = result.isFirstTime;
+            this.resultTueCountList = result.tueCountList;
         },
         isZeroTimes(item) {
             return item.name.endsWith('[0]');

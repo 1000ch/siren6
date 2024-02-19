@@ -29,6 +29,7 @@ export const TuePlusSearch = {
     emits: ['result'],
     data() {
         return {
+            isFirstTime: true,
             tueNameList: [],
             searchItemName: 'ただの杖',
             nedanTypeList: ['kaine', 'urine'],
@@ -54,6 +55,9 @@ export const TuePlusSearch = {
         onBlurInputNedan(event) {
             this.searchNedan = Number(this.searchNedan);
             event.target.value = this.searchNedan;
+            if (this.searchNedan !== 0) {
+                this.isFirstTime = false;
+            }
             this.findItemList();
         },
         onKeyDownEnterInputNedan(event) {
@@ -68,11 +72,12 @@ export const TuePlusSearch = {
                 }, 2000);
             }
             this.searchNedan = 0;
+            this.isFirstTime = true;
             this.findItemList();
         },
         findItemList() {
-            const resultTueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
-            this.$emit('result', resultTueCountList);
+            const tueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
+            this.$emit('result', {tueCountList, isFirstTime: this.isFirstTime});
         }
     }
 };
