@@ -10,7 +10,9 @@ export const BukiSearch = {
               <option :value="name">{{name}}</option>
             </template>
           </select>
-          <div id="jingi-btn" class="radio-btn">神器</div>
+          <div id="jingi-btn" class="radio-btn"
+               :class="{'selected': isJingi}"
+               @click="onClickJingiBtn">神器</div>
         </div>
         
         <div id="input-nedan-container">
@@ -44,6 +46,7 @@ export const BukiSearch = {
             isFirstTime: true,
             bukiNameList: [],
             searchItemName: '木刀',
+            isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
             itemStatusList: ['normal', 'noroi'],
@@ -58,6 +61,10 @@ export const BukiSearch = {
     },
     methods: {
         onChangeSearchItemName() {
+            this.findItemList();
+        },
+        onClickJingiBtn() {
+            this.isJingi = !this.isJingi;
             this.findItemList();
         },
         onClickNedanType(type) {
