@@ -85,7 +85,8 @@
         <div id="message-container" v-if="resultBukiList.length === 0">
           <div class="message">
             <template v-if="isBukiFirstTime">
-              アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。
+              アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
+              値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
             </template>
             <template v-else>
               しかし、なにも起きなかった。
