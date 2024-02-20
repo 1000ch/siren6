@@ -2,7 +2,8 @@ import { bukiRepository } from '../item/buki_repository';
 
 export const BukiSearch = {
     template: `
-        <div id="search-item-name-container">
+        <div v-show="searchNedanType !== 'all'"
+             id="search-item-name-container">
           <select id="search-item-name"
                   v-model="searchItemName"
                   @change="onChangeSearchItemName">
@@ -40,7 +41,8 @@ export const BukiSearch = {
           </div>
         </div>
 
-        <select id="in-name-select"
+        <select v-show="searchNedanType !== 'all'"
+                id="in-name-select"
                 v-model="selectedIn"
                 @change="onChangeInNameSelect">
           <option value="null" hidden>印の追加</option>
@@ -49,7 +51,8 @@ export const BukiSearch = {
           </template>
         </select>
 
-        <div id="in-tag-list" v-if="searchInList.length > 0">
+        <div v-show="searchNedanType !== 'all' && searchInList.length > 0"
+             id="in-tag-list">
           <div class="in-tag" v-for="inn in searchInList">
             <span class="in-tag-name">{{inn.fullName}}</span>
             <span class="in-tag-close" @click="onClickInTagClose(inn)">❎</span>
