@@ -47,6 +47,10 @@ export const BukiSearch = {
             <option :value="inn.name">{{inn.fullName}}</option>
           </template>
         </select>
+
+        <div id="in-tag-list" v-if="searchInList.length > 0">
+          Hello, World!
+        </div>
     `,
     emits: ['result'],
     data() {
@@ -54,6 +58,7 @@ export const BukiSearch = {
             isFirstTime: true,
             bukiNameList: [],
             inList: [],
+            searchInList: [114514],
             searchItemName: '木刀',
             isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
