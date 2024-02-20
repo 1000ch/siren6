@@ -4,10 +4,10 @@ export class ItemRepository {
     canNoroi = true;
     itemList = [];
 
-    create(name, kaine, urine, unused = true) {
+    create(name, kaine, urine, isMiseUri = true) {
         return {
             status: 'normal',
-            name, kaine, urine, unused
+            name, kaine, urine, isMiseUri
         }
     }
 
