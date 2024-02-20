@@ -45,7 +45,7 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.searchItemType = type;
-            if (this.searchItemType !== 'tuePlus') {
+            if (!['buki', 'tuePlus'].includes(this.searchItemType)) {
                 this.findItemList();
             }
         },
@@ -90,6 +90,10 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
+        onFoundAllBukiList(allBukiList) {
+            this.resultItemList = allBukiList;
+            this.decorateResultItemList();
+        },
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
             this.resultTueCountList = result.tueCountList;
@@ -105,8 +109,7 @@ const vm = {
                 return;
             }
             if (this.searchItemType === 'tate') {
-                this.resultItemList = tateRepository.findAllItemList();
-                return;
+                throw new Error('ここが実行されることはない');
             }
             if (this.searchItemType === 'tuePlus') {
                 throw new Error('ここが実行されることはない');
@@ -138,12 +141,15 @@ const vm = {
         },
         findAllItemList(repo) {
             this.resultItemList = repo.findAllItemList(this.searchItemStatusList);
+            this.decorateResultItemList();
+        },
+        decorateResultItemList() {
             let prevKaine = this.resultItemList[0].kaine;
             for (const item of this.resultItemList) {
                 item.needBorderline = item.kaine !== prevKaine;
                 prevKaine = item.kaine;
             }
-        }
+        },
     }
 };
 

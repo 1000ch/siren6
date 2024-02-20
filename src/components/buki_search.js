@@ -59,7 +59,7 @@ export const BukiSearch = {
           </div>
         </div>
     `,
-    emits: ['foundItemList', 'foundAllItemList'],
+    emits: ['foundBukiList', 'foundAllBukiList'],
     data() {
         return {
             isFirstTime: true,
@@ -92,7 +92,12 @@ export const BukiSearch = {
         },
         onClickNedanType(type) {
             this.searchNedanType = type;
-            this.findItemList();
+            if (this.searchNedanType === 'all') {
+                this.findAllItemList();
+            }
+            else {
+                this.findItemList();
+            }
         },
         onClickItemStatus(status) {
             if (this.searchItemStatusList.includes(status)) {
@@ -103,7 +108,7 @@ export const BukiSearch = {
             else {
                 this.searchItemStatusList.push(status);
             }
-            this.findItemList();
+            this.findAllItemList();
         },
         onFocusInputNedan(event) {
             event.target.select();
@@ -150,6 +155,10 @@ export const BukiSearch = {
         },
         findItemList() {
             // todo
-        }
+        },
+        findAllItemList() {
+            const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
+            this.$emit('foundAllBukiList', allBukiList);
+        },
     }
 };
