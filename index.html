@@ -130,8 +130,11 @@
               <hr>
             </div>
             <div class="message">
-              <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.unused && !isZeroTimes(item))">
+              <div v-show="searchNedanType !== 'all' && resultItemList.some(item => !item.isMiseUri && !isZeroTimes(item))">
                 灰色：店売りで存在しない
+              </div>
+              <div v-show="searchItemType === 'udewa' && resultItemList.some(item => !item.isMiseUri)">
+                灰色：確定呪い
               </div>
               <div v-show="searchItemType === 'tue' && resultItemList.some(item => isZeroTimes(item))">
                 橙色：残り回数0の値段
@@ -181,7 +184,7 @@
             <tr v-for="item in resultItemList"
                 :class="{
                   'borderline': searchNedanType === 'all' && item.needBorderline,
-                  'maybe-used': !item.unused,
+                  'maybe-used': !item.isMiseUri,
                   'nedan-base': isZeroTimes(item),
                   'need-select': item.needSelect,
                   'need-tubo-zoudai': item.needTuboZoudai,

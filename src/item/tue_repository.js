@@ -177,7 +177,7 @@ class TueRepository extends ItemRepository {
             let minCount = 0;
             const offset = group[0].status === 'normal' ? 0 : -2;
             for (const item of group) {
-                if (item.unused) {
+                if (item.isMiseUri) {
                     minCount = item.name.at(-2 + offset);
                     break;
                 }

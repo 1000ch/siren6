@@ -8,10 +8,10 @@ class TuboRepository extends ItemRepository {
         return this.#itemGroupList;
     }
 
-    create(name, kaine, urine, unused = true, needTuboZoudai = false) {
+    create(name, kaine, urine, isMiseUri = true, needTuboZoudai = false) {
         return {
             status: 'normal',
-            name, kaine, urine, unused,
+            name, kaine, urine, isMiseUri,
             needTuboZoudai
         }
     }
@@ -208,7 +208,7 @@ class TuboRepository extends ItemRepository {
             const offset = group[0].status === 'normal' ? 0 : -2;
             for (let i = 0; i < group.length; i++) {
                 const item = group[i];
-                if (minCount === -1 && item.unused) {
+                if (minCount === -1 && item.isMiseUri) {
                     minCount = item.name.at(-2 + offset);
                 }
                 else if (item.needTuboZoudai) {
