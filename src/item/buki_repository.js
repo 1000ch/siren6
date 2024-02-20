@@ -107,6 +107,12 @@ class BukiRepository extends ItemRepository {
 
     findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
         // todo
+
+        // isNoroi, syuseiti
+
+        return [{
+            isNoroi: false, syuseiti: 3
+        }];
     }
 }
 

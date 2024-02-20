@@ -34,6 +34,7 @@ const vm = {
             searchNedan: 0,
             searchItemStatusList: ['normal'],
             resultItemList: [],
+            resultBukiList: [],
             resultTueCountList: [],
             shouldDisplaySearchHint: false,
         }
@@ -95,11 +96,15 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
+        onFoundBukiList(result) {
+            this.resultBukiList = result.bukiList;
+            this.searchNedanType = result.searchNedanType;
+        },
         onFoundAllBukiList(result) {
-            this.resultItemList = result.allBukiList;
+            this.resultBukiList = result.allBukiList;
             this.searchItemStatusList = result.searchItemStatusList;
             this.searchNedanType = 'all';
-            this.decorateResultItemList();
+            this.decorateResultItemList(); // todo
         },
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;

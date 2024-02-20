@@ -160,6 +160,9 @@ export const BukiSearch = {
                 this.searchInList
             );
             // todo
+
+
+            this.$emit('foundBukiList', {bukiList, searchNedanType: this.searchNedanType});
         },
         findAllItemList() {
             const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
