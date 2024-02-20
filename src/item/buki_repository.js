@@ -1,4 +1,5 @@
 import { ItemRepository } from "./item_repository";
+import { calcNedan } from "./buki_tate_kantei";
 
 class BukiRepository extends ItemRepository {
     nameList = [];
@@ -106,13 +107,41 @@ class BukiRepository extends ItemRepository {
     }
 
     findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
-        // todo
+        const result = [];
+        let searchItem = null;
+        for (const item of this.itemList) {
+            if (item.name === searchItemName) {
+                searchItem = item;
+                break;
+            }
+        }
 
-        // isNoroi, syuseiti
+        let existsNoroi = false;
+        let prevNormalNedan = 0;
+        for (let syuseiti = -99; syuseiti <= 99; syuseiti++) {
+            if (!existsNoroi) {
+                const noroiNedan = calcNedan(searchNedanType, searchItem, isJingi, syuseiti, searchInList, true);
+                if (noroiNedan === searchNedan) {
+                    existsNoroi = true;
+                    result.push({isNoroi: true, syuseiti});
+                }
+                else if (noroiNedan > searchNedan) {
+                    break;
+                }
+            }
+            
+            if (prevNormalNedan < searchNedan) {
+                const normalNedan = calcNedan(searchNedanType, searchItem, isJingi, syuseiti, searchInList, false);
+                if (normalNedan === searchNedan) {
+                    result.push({isNoroi: false, syuseiti});
+                }
+            }
+            else if (existsNoroi) {
+                break;
+            }
+        }
 
-        return [{
-            isNoroi: false, syuseiti: 3
-        }];
+        return result;
     }
 }
 

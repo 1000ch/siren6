@@ -159,9 +159,6 @@ export const BukiSearch = {
                 this.searchNedan, this.searchNedanType,
                 this.searchInList
             );
-            // todo
-
-
             this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList, searchNedanType: this.searchNedanType});
         },
         findAllItemList() {
