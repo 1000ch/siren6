@@ -5,7 +5,7 @@ class MakimonoRepository extends ItemRepository {
         return {
             status: 'normal',
             name, kaine, urine,
-            unused: true,
+            isMiseUri: true,
             needSelect
         };
     }

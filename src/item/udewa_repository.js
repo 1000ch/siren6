@@ -8,7 +8,7 @@ class UdewaRepository extends ItemRepository {
         this.add(c('回復の腕輪', 5000, 2000));
         this.add(c('ちからの腕輪', 2000, 800));
         this.add(c('胃拡張の腕輪', 3500, 1400));
-        this.add(c('胃縮小の腕輪', 3500, 1400));
+        this.#addKakuteiNoroi(c('胃縮小の腕輪', 3500, 1400, false));
         this.add(c('しあわせの腕輪', 4000, 1600));
         this.add(c('毒消しの腕輪', 6500, 2600));
         this.add(c('混乱よけの腕輪', 4000, 1600));
@@ -34,14 +34,25 @@ class UdewaRepository extends ItemRepository {
         this.add(c('壁抜けの腕輪', 6500, 2600));
         this.add(c('忍び足の腕輪', 6500, 2600));
         this.add(c('すれちがいの腕輪', 5000, 2000));
-        this.add(c('垂れ流しの腕輪', 1500, 600));
-        this.add(c('金垂れ流しの腕輪', 1500, 600));
+        this.#addKakuteiNoroi(c('垂れ流しの腕輪', 1500, 600, false));
+        this.#addKakuteiNoroi(c('金垂れ流しの腕輪', 1500, 600, false));
         this.add(c('魔物呼びの腕輪', 3000, 1200));
         this.add(c('罠増しの腕輪', 1500, 600));
         this.add(c('値切りの腕輪', 3500, 1400));
         this.add(c('罠師の腕輪', 7500, 3000));
         this.add(c('鑑定師の腕輪', 7500, 3000));
         this.add(c('大砲強化の腕輪', 2500, 1000));
+    }
+
+    #addKakuteiNoroi(item) {
+        this.itemList.push(item);
+        const noroiItem = {};
+        noroiItem.status = 'noroi';
+        noroiItem.name = item.name + '💀';
+        noroiItem.kaine = this.noroiNedan(item.kaine);
+        noroiItem.urine = this.noroiNedan(item.urine);
+        noroiItem.isMiseUri = true;
+        this.itemList.push(noroiItem);
     }
 }
 
