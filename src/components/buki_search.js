@@ -59,6 +59,7 @@ export const BukiSearch = {
           </div>
         </div>
     `,
+    props: ['searchNedanType'],
     emits: ['foundBukiList', 'foundAllBukiList'],
     data() {
         return {
@@ -73,7 +74,6 @@ export const BukiSearch = {
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
             itemStatusList: ['normal', 'noroi'],
             itemStatusName: {normal: '通常', noroi: '呪い'},
-            searchNedanType: 'kaine',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
         }

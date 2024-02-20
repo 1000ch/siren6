@@ -41,7 +41,8 @@
   
       <div id="search-nedan-container">
         <div v-show="searchItemType === 'buki'">
-          <buki-search @found-all-buki-list="onFoundAllBukiList"></buki-search>
+          <buki-search :search-nedan-type="searchNedanType"
+                       @found-all-buki-list="onFoundAllBukiList"></buki-search>
         </div>
         <div v-show="searchItemType === 'tuePlus'">
           <tue-plus-search @found-tue-count-list="onFoundTueCountList"></tue-plus-search>
