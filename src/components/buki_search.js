@@ -15,7 +15,7 @@ export const BukiSearch = {
                @click="onClickJingiBtn">神器</div>
         </div>
         
-        <div id="input-nedan-container">
+        <div id="input-nedan-container" class="exists-itiran">
           <div id="nedan-type-container">
             <template v-for="nedanType in nedanTypeList">
               <div class="radio-btn nedan-type"
