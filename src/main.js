@@ -46,10 +46,13 @@ const vm = {
         onClickItemType(type) {
             this.searchItemType = type;
             if (this.searchItemType === 'buki') {
+                console.log('onClickItemType buki');
                 const bukiSearch = this.$refs.bukiSearch;
                 bukiSearch.$data.searchNedanType = this.searchNedanType;
                 bukiSearch.$data.searchItemStatusList = this.searchItemStatusList;
-                bukiSearch.findAllItemList();
+                if (this.searchNedanType === 'all') {
+                    bukiSearch.findAllItemList();
+                }
             }
             else if (this.searchItemType !== 'tuePlus') {
                 this.findItemList();
@@ -101,6 +104,7 @@ const vm = {
             this.searchNedanType = result.searchNedanType;
         },
         onFoundAllBukiList(result) {
+            console.log('onFoundAllBukiList');
             this.resultBukiList = result.allBukiList;
             this.searchItemStatusList = result.searchItemStatusList;
             this.searchNedanType = 'all';
