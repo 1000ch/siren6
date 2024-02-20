@@ -44,7 +44,7 @@
           <buki-search></buki-search>
         </div>
         <div v-show="searchItemType === 'tuePlus'">
-          <tue-plus-search @result="onResultTuePlusSearch"></tue-plus-search>
+          <tue-plus-search @found-tue-count-list="onFoundTueCountList"></tue-plus-search>
         </div>
         <div v-show="!['buki', 'tate', 'tuePlus'].includes(searchItemType)"
              id="input-nedan-container" class="exists-itiran">

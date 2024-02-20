@@ -59,7 +59,7 @@ export const BukiSearch = {
           </div>
         </div>
     `,
-    emits: ['result'],
+    emits: ['foundItemList', 'foundAllItemList'],
     data() {
         return {
             isFirstTime: true,

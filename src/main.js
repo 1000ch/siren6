@@ -90,7 +90,7 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
-        onResultTuePlusSearch(result) {
+        onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
             this.resultTueCountList = result.tueCountList;
         },

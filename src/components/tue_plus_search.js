@@ -28,7 +28,7 @@ export const TuePlusSearch = {
                @click="onClickClearBtn">
         </div>
     `,
-    emits: ['result'],
+    emits: ['foundTueCountList'],
     data() {
         return {
             isFirstTime: true,
@@ -79,7 +79,7 @@ export const TuePlusSearch = {
         },
         findItemList() {
             const tueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
-            this.$emit('result', {tueCountList, isFirstTime: this.isFirstTime});
+            this.$emit('foundTueCountList', {tueCountList, isFirstTime: this.isFirstTime});
         }
     }
 };
