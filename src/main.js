@@ -16,6 +16,7 @@ const vm = {
     data() {
         return {
             isFirstTime: true,
+            isBukiFirstTime: true,
             isTuePlusFirstTime: true,
             itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
@@ -46,12 +47,14 @@ const vm = {
         onClickItemType(type) {
             this.searchItemType = type;
             if (this.searchItemType === 'buki') {
-                console.log('onClickItemType buki');
                 const bukiSearch = this.$refs.bukiSearch;
                 bukiSearch.$data.searchNedanType = this.searchNedanType;
                 bukiSearch.$data.searchItemStatusList = this.searchItemStatusList;
                 if (this.searchNedanType === 'all') {
                     bukiSearch.findAllItemList();
+                }
+                else {
+                    bukiSearch.findItemList();
                 }
             }
             else if (this.searchItemType !== 'tuePlus') {
@@ -100,11 +103,11 @@ const vm = {
             this.isFirstTime = true;
         },
         onFoundBukiList(result) {
+            this.isBukiFirstTime = result.isFirstTime;
             this.resultBukiList = result.bukiList;
             this.searchNedanType = result.searchNedanType;
         },
         onFoundAllBukiList(result) {
-            console.log('onFoundAllBukiList');
             this.resultBukiList = result.allBukiList;
             this.searchItemStatusList = result.searchItemStatusList;
             this.searchNedanType = 'all';

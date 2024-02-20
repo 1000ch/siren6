@@ -82,25 +82,25 @@
     <div id="result">
       <!-- 武器 かつ 一覧以外 -->
       <template v-if="searchItemType === 'buki' && searchNedanType !== 'all'">
-        <div id="message-container" v-if="resultTueCountList.length === 0">
+        <div id="message-container" v-if="resultBukiList.length === 0">
           <div class="message">
-            <template v-if="isFirstTime"> <!--todo-->
-              アイテムと値段を入力すると呪いの有無と残り回数が分かります。(todo)
+            <template v-if="isBukiFirstTime">
+              アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。
             </template>
             <template v-else>
               しかし、なにも起きなかった。
             </template>
           </div>
         </div>
-        <!-- <table v-else>
+        <table v-else>
           <tr>
-            <th>呪い</th><th>回数</th>
+            <th>呪い</th><th>修正値</th>
           </tr>
-          <tr v-for="tue in resultTueCountList"
-              :class="{'tue-noroi': tue.isNoroi}">
-            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
+          <tr v-for="buki in resultBukiList"
+              :class="{'exists-noroi': buki.isNoroi}">
+            <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
           </tr>
-        </table> -->
+        </table>
       </template>
       <!-- 武器 かつ 一覧 -->
       <template v-else-if="searchItemType === 'buki'">
@@ -130,7 +130,7 @@
         <div id="message-container" v-if="resultTueCountList.length === 0">
           <div class="message">
             <template v-if="isTuePlusFirstTime">
-              アイテムと値段を入力すると呪いの有無と残り回数が分かります。
+              アイテム名と値段を入力すると呪いの有無と残り回数が分かります。
             </template>
             <template v-else>
               しかし、なにも起きなかった。
@@ -142,7 +142,7 @@
             <th>呪い</th><th>回数</th>
           </tr>
           <tr v-for="tue in resultTueCountList"
-              :class="{'tue-noroi': tue.isNoroi}">
+              :class="{'exists-noroi': tue.isNoroi}">
             <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
           </tr>
         </table>

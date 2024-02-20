@@ -162,7 +162,7 @@ export const BukiSearch = {
             // todo
 
 
-            this.$emit('foundBukiList', {bukiList, searchNedanType: this.searchNedanType});
+            this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList, searchNedanType: this.searchNedanType});
         },
         findAllItemList() {
             const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
