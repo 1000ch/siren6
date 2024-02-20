@@ -92,6 +92,7 @@ const vm = {
         },
         onFoundAllBukiList(allBukiList) {
             this.resultItemList = allBukiList;
+            this.searchNedanType = 'all';
             this.decorateResultItemList();
         },
         onFoundTueCountList(result) {
