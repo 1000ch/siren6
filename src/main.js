@@ -19,6 +19,7 @@ const vm = {
         return {
             isFirstTime: true,
             isBukiFirstTime: true,
+            isTateFirstTime: true,
             isTuePlusFirstTime: true,
             itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
@@ -38,6 +39,7 @@ const vm = {
             searchItemStatusList: ['normal'],
             resultItemList: [],
             resultBukiList: [],
+            resultTateList: [],
             resultTueCountList: [],
             shouldDisplaySearchHint: false,
         }
@@ -57,6 +59,17 @@ const vm = {
                 }
                 else {
                     bukiSearch.findItemList();
+                }
+            }
+            else if (this.searchItemType === 'tate') {
+                const tateSearch = this.$refs.tateSearch;
+                tateSearch.$data.searchNedanType = this.searchNedanType;
+                tateSearch.$data.searchItemStatusList = this.searchItemStatusList;
+                if (this.searchNedanType === 'all') {
+                    tateSearch.findAllItemList();
+                }
+                else {
+                    tateSearch.findItemList();
                 }
             }
             else if (this.searchItemType !== 'tuePlus') {
@@ -115,6 +128,17 @@ const vm = {
             this.searchNedanType = 'all';
             this.decorateResultItemList(this.resultBukiList);
         },
+        onFoundTateList(result) {
+            this.isTateFirstTime = result.isFirstTime;
+            this.resultTateList = result.tateList;
+            this.searchNedanType = result.searchNedanType;
+        },
+        onFoundAllTateList(result) {
+            this.resultTateList = result.allTateList;
+            this.searchItemStatusList = result.searchItemStatusList;
+            this.searchNedanType = 'all';
+            this.decorateResultItemList(this.resultTateList);
+        },
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
             this.resultTueCountList = result.tueCountList;
@@ -129,8 +153,7 @@ const vm = {
                 throw new Error('ここが実行されることはない');
             }
             if (this.searchItemType === 'tate') {
-                this.resultItemList = tateRepository.findAllItemList();
-                return;
+                throw new Error('ここが実行されることはない');
             }
             if (this.searchItemType === 'tuePlus') {
                 throw new Error('ここが実行されることはない');
