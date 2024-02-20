@@ -45,9 +45,10 @@ const vm = {
         onClickItemType(type) {
             this.searchItemType = type;
             if (this.searchItemType === 'buki') {
-                const bukiSearchData = this.$refs.bukiSearch.$data;
-                bukiSearchData.searchNedanType = this.searchNedanType;
-                bukiSearchData.searchItemStatusList = this.searchItemStatusList;
+                const bukiSearch = this.$refs.bukiSearch;
+                bukiSearch.$data.searchNedanType = this.searchNedanType;
+                bukiSearch.$data.searchItemStatusList = this.searchItemStatusList;
+                bukiSearch.findAllItemList();
             }
             else if (this.searchItemType !== 'tuePlus') {
                 this.findItemList();
