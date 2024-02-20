@@ -104,7 +104,7 @@ const vm = {
             this.resultBukiList = result.allBukiList;
             this.searchItemStatusList = result.searchItemStatusList;
             this.searchNedanType = 'all';
-            this.decorateResultItemList(); // todo
+            this.decorateResultItemList(this.resultBukiList);
         },
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
@@ -152,11 +152,11 @@ const vm = {
         },
         findAllItemList(repo) {
             this.resultItemList = repo.findAllItemList(this.searchItemStatusList);
-            this.decorateResultItemList();
+            this.decorateResultItemList(this.resultItemList);
         },
-        decorateResultItemList() {
-            let prevKaine = this.resultItemList[0].kaine;
-            for (const item of this.resultItemList) {
+        decorateResultItemList(resultItemList) {
+            let prevKaine = resultItemList[0].kaine;
+            for (const item of resultItemList) {
                 item.needBorderline = item.kaine !== prevKaine;
                 prevKaine = item.kaine;
             }
