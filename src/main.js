@@ -6,7 +6,6 @@ import { tueRepository } from './item/tue_repository';
 import { makimonoRepository } from './item/makimono_repository';
 import { tuboRepository } from './item/tubo_repository';
 import { udewaRepository } from './item/udewa_repository';
-import { bukiRepository } from './item/buki_repository';
 import { tateRepository } from './item/tate_repository';
 
 const vm = {
@@ -106,11 +105,11 @@ const vm = {
             this.shouldDisplaySearchHint = false;
             
             if (this.searchItemType === 'buki') {
-                this.resultItemList = bukiRepository.findAllItemList();
-                return;
+                throw new Error('ここが実行されることはない');
             }
             if (this.searchItemType === 'tate') {
-                throw new Error('ここが実行されることはない');
+                this.resultItemList = tateRepository.findAllItemList();
+                return;
             }
             if (this.searchItemType === 'tuePlus') {
                 throw new Error('ここが実行されることはない');
@@ -123,8 +122,7 @@ const vm = {
                 case 'makimono': repo = makimonoRepository; break;
                 case 'tubo': repo = tuboRepository; break;
                 case 'udewa': repo = udewaRepository; break;
-                case 'buki': repo = bukiRepository; break;
-                case 'tate': repo = tateRepository; break;
+                default: throw new Error('ここが実行されることはない');
             }
 
             if (this.searchNedanType === 'all') {
