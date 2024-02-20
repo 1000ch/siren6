@@ -132,12 +132,13 @@
         </div>
       </template>
       <!-- 盾 かつ 一覧以外 -->
-      <template v-if="searchItemType === 'tate' && searchNedanType !== 'all'">
+      <template v-else-if="searchItemType === 'tate' && searchNedanType !== 'all'">
         <div id="message-container" v-if="resultTateList.length === 0">
           <div class="message">
             <template v-if="isTateFirstTime">
               アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
-              値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
+              値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。<br>
+              また、魔法反射の印の値段が分からないため抜けています。ご了承ください。
             </template>
             <template v-else>
               しかし、なにも起きなかった。
