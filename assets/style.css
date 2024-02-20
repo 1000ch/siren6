@@ -274,7 +274,26 @@ h1 {
 }
 
 #in-tag-list {
+  display: flex;
+  padding: 5px;
   margin-top: 8px;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.in-tag {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 3px 6px;
+  margin: 3px;
+  border-radius: 3px;
+}
+.in-tag-name {
+  margin-right: 5px;
+}
+.in-tag-close {
+  cursor: pointer;
 }
 
 #result {

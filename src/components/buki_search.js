@@ -41,15 +41,19 @@ export const BukiSearch = {
         </div>
 
         <select id="in-name-select"
+                v-model="selectedIn"
                 @change="onChangeInNameSelect">
-          <option value="" hidden>印の追加</option>
+          <option value="null" hidden>印の追加</option>
           <template v-for="inn in inList">
-            <option :value="inn.name">{{inn.fullName}}</option>
+            <option :value="inn">{{inn.fullName}}</option>
           </template>
         </select>
 
         <div id="in-tag-list" v-if="searchInList.length > 0">
-          Hello, World!
+          <div class="in-tag" v-for="inn in searchInList">
+            <span class="in-tag-name">{{inn.fullName}}</span>
+            <span class="in-tag-close" @click="onClickInTagClose(inn)">❎</span>
+          </div>
         </div>
     `,
     emits: ['result'],
@@ -58,7 +62,8 @@ export const BukiSearch = {
             isFirstTime: true,
             bukiNameList: [],
             inList: [],
-            searchInList: [114514],
+            searchInList: [],
+            selectedIn: null,
             searchItemName: '木刀',
             isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
@@ -124,7 +129,20 @@ export const BukiSearch = {
             this.findItemList();
         },
         onChangeInNameSelect() {
-            // todo
+            const selectedIn = this.selectedIn;
+            this.selectedIn = null;
+            if (this.searchInList.includes(selectedIn)) {
+                return;
+            }
+            this.searchInList.push(selectedIn);
+            this.findItemList();
+        },
+        onClickInTagClose(inn) {
+            const removeIndex = this.searchInList.indexOf(inn);
+            if (removeIndex === -1) {
+                return;
+            }
+            this.searchInList.splice(removeIndex, 1);
             this.findItemList();
         },
         findItemList() {
