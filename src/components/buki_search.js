@@ -158,7 +158,7 @@ export const BukiSearch = {
         },
         findAllItemList() {
             const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
-            this.$emit('foundAllBukiList', allBukiList);
+            this.$emit('foundAllBukiList', {allBukiList, searchItemStatusList: this.searchItemStatusList});
         },
     }
 };

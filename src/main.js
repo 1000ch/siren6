@@ -95,8 +95,9 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
-        onFoundAllBukiList(allBukiList) {
-            this.resultItemList = allBukiList;
+        onFoundAllBukiList(result) {
+            this.resultItemList = result.allBukiList;
+            this.searchItemStatusList = result.searchItemStatusList;
             this.searchNedanType = 'all';
             this.decorateResultItemList();
         },
