@@ -104,6 +104,10 @@ class BukiRepository extends ItemRepository {
 
         this.nameList = this.itemList.filter(item => item.status === 'normal').map(item => item.name);
     }
+
+    findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
+        // todo
+    }
 }
 
 export const bukiRepository = new BukiRepository();

@@ -154,6 +154,11 @@ export const BukiSearch = {
             this.findItemList();
         },
         findItemList() {
+            const bukiList = bukiRepository.findItemList(
+                this.searchItemName, this.isJingi,
+                this.searchNedan, this.searchNedanType,
+                this.searchInList
+            );
             // todo
         },
         findAllItemList() {
