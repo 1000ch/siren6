@@ -3,8 +3,9 @@
 
 https://mogamoga1024.github.io/siren6/
 
-とぅーどゅー  
-武器盾値段識別呪い判定作る
+## TODO
+
+魔反の値段
 
 ## 参考元
 
