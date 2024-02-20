@@ -154,11 +154,14 @@ export const BukiSearch = {
             this.findItemList();
         },
         findItemList() {
-            const bukiList = bukiRepository.findItemList(
-                this.searchItemName, this.isJingi,
-                this.searchNedan, this.searchNedanType,
-                this.searchInList
-            );
+            let bukiList = [];
+            if (!this.isFirstTime) {
+                bukiList = bukiRepository.findItemList(
+                    this.searchItemName, this.isJingi,
+                    this.searchNedan, this.searchNedanType,
+                    this.searchInList
+                );
+            }
             this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList, searchNedanType: this.searchNedanType});
         },
         findAllItemList() {
