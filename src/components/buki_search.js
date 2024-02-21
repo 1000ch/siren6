@@ -5,10 +5,10 @@ export const BukiSearch = {
         <div v-show="searchNedanType !== 'all'"
              id="search-item-name-container">
           <select id="search-item-name"
-                  v-model="searchItemName"
+                  v-model="searchItem"
                   @change="onChangeSearchItemName">
-            <template v-for="name in bukiNameList">
-              <option :value="name">{{name}}</option>
+            <template v-for="item in normalItemList">
+              <option :value="item">{{item.name}}</option>
             </template>
           </select>
           <div id="jingi-btn" class="radio-btn"
@@ -63,11 +63,11 @@ export const BukiSearch = {
     data() {
         return {
             isFirstTime: true,
-            bukiNameList: [],
+            normalItemList: [],
             inList: [],
             searchInList: [],
             selectedIn: null,
-            searchItemName: '木刀',
+            searchItem: null,
             isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
@@ -80,7 +80,8 @@ export const BukiSearch = {
         }
     },
     created() {
-        this.bukiNameList = bukiRepository.nameList;
+        this.normalItemList = bukiRepository.normalItemList;
+        this.searchItem = this.normalItemList[0];
         this.inList = bukiRepository.inList;
         this.findAllItemList();
     },
@@ -160,13 +161,13 @@ export const BukiSearch = {
             let bukiList = [];
             if (!this.isFirstTime) {
                 bukiList = bukiRepository.findItemList(
-                    this.searchItemName, this.isJingi,
+                    this.searchItem, this.isJingi,
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
                 if (bukiList.length === 0) {
                     bukiList = bukiRepository.findItemList(
-                        this.searchItemName, this.isJingi,
+                        this.searchItem, this.isJingi,
                         this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                         this.searchInList
                     );

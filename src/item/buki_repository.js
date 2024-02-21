@@ -2,7 +2,7 @@ import { ItemRepository } from "./item_repository";
 import { calcNedan } from "./buki_tate_kantei";
 
 class BukiRepository extends ItemRepository {
-    nameList = [];
+    normalItemList = [];
     inList = [
         {name: 'サビ', fullName: 'サビよけ', kaine: 500, urine: 175},
         {name: '三', fullName: '三方向攻撃', kaine: 3000, urine: 1050},
@@ -103,7 +103,7 @@ class BukiRepository extends ItemRepository {
         this.add(c('山姥包丁', 4000, 1600, '呪'));
         this.add(c('使い捨て刀', 3000, 1200, '劣'));
 
-        this.nameList = this.itemList.filter(item => item.status === 'normal').map(item => item.name);
+        this.normalItemList = this.itemList.filter(item => item.status === 'normal');
     }
 
     create(name, kaine, urine, innName = '') {
@@ -126,16 +126,8 @@ class BukiRepository extends ItemRepository {
         throw new Error(`未定義の印：${name}`);
     }
 
-    findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
+    findItemList(searchItem, isJingi, searchNedan, searchNedanType, searchInList) {
         const result = [];
-        let searchItem = null;
-        for (const item of this.itemList) {
-            if (item.name === searchItemName) {
-                searchItem = item;
-                break;
-            }
-        }
-
         let existsNoroi = false;
         let prevNormalNedan = 0;
         for (let syuseiti = -99; syuseiti <= 99; syuseiti++) {
