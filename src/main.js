@@ -35,8 +35,8 @@ const vm = {
             itemStatusName: {normal: '通常', noroi: '呪い', syukufuku: '祝福'},
             searchItemType: 'kusa',
             searchNedanType: 'kaine',
-            isSearchBukiNedanTypeAll: false,
-            isSearchTateNedanTypeAll: false,
+            searchBukiNedanType: 'all',
+            searchTateNedanType: 'all',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
             resultItemList: [],
@@ -44,6 +44,8 @@ const vm = {
             resultTateList: [],
             resultTueCountList: [],
             shouldDisplaySearchHint: false,
+            shouldDisplaySearchBukiHint: false,
+            shouldDisplaySearchTateHint: false,
         }
     },
     created() {
@@ -101,22 +103,24 @@ const vm = {
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
             this.resultBukiList = result.bukiList;
-            this.isSearchBukiNedanTypeAll = false;
+            this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
+            this.searchBukiNedanType = result.searchNedanType;
         },
         onFoundAllBukiList(allBukiList) {
             this.resultBukiList = allBukiList;
-            this.isSearchBukiNedanTypeAll = true;
+            this.searchBukiNedanType = 'all';
             this.decorateResultItemList(this.resultBukiList);
         },
         // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
             this.resultTateList = result.tateList;
-            this.isSearchTateNedanTypeAll = false;
+            this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
+            this.searchTateNedanType = result.searchNedanType;
         },
         onFoundAllTateList(allTateList) {
             this.resultTateList = allTateList;
-            this.isSearchTateNedanTypeAll = true;
+            this.searchTateNedanType = 'all';
             this.decorateResultItemList(this.resultTateList);
         },
         // 杖+の検索結果

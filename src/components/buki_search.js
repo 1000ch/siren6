@@ -76,6 +76,7 @@ export const BukiSearch = {
             searchNedanType: 'all',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
+            shouldDisplaySearchHint: false,
         }
     },
     created() {
@@ -155,6 +156,7 @@ export const BukiSearch = {
             this.findItemList();
         },
         findItemList() {
+            this.shouldDisplaySearchHint = false;
             let bukiList = [];
             if (!this.isFirstTime) {
                 bukiList = bukiRepository.findItemList(
@@ -162,8 +164,23 @@ export const BukiSearch = {
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
+                if (bukiList.length === 0) {
+                    bukiList = bukiRepository.findItemList(
+                        this.searchItemName, this.isJingi,
+                        this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
+                        this.searchInList
+                    );
+                    if (bukiList.length > 0) {
+                        this.shouldDisplaySearchHint = true;
+                    }
+                }
             }
-            this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList});
+            this.$emit('foundBukiList', {
+                isFirstTime: this.isFirstTime,
+                bukiList,
+                shouldDisplaySearchHint: this.shouldDisplaySearchHint,
+                searchNedanType: this.searchNedanType
+            });
         },
         findAllItemList() {
             const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);

@@ -86,7 +86,7 @@
 
     <div id="result">
       <!-- 武器 かつ 一覧以外 -->
-      <template v-if="searchItemType === 'buki' && !isSearchBukiNedanTypeAll">
+      <template v-if="searchItemType === 'buki' && searchBukiNedanType !== 'all'">
         <div id="message-container" v-if="resultBukiList.length === 0">
           <div class="message">
             <template v-if="isBukiFirstTime">
@@ -98,15 +98,23 @@
             </template>
           </div>
         </div>
-        <table v-else>
-          <tr>
-            <th>呪い</th><th>修正値</th>
-          </tr>
-          <tr v-for="buki in resultBukiList"
-              :class="{'exists-noroi': buki.isNoroi}">
-            <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
-          </tr>
-        </table>
+        <template v-else>
+          <div id="message-container">
+            <div class="message" v-show="shouldDisplaySearchBukiHint">
+              もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
+              <hr>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <th>呪い</th><th>修正値</th>
+            </tr>
+            <tr v-for="buki in resultBukiList"
+                :class="{'exists-noroi': buki.isNoroi}">
+              <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+            </tr>
+          </table>
+        </template>
       </template>
       <!-- 武器 かつ 一覧 -->
       <template v-else-if="searchItemType === 'buki'">
@@ -132,7 +140,7 @@
         </div>
       </template>
       <!-- 盾 かつ 一覧以外 -->
-      <template v-else-if="searchItemType === 'tate' && !isSearchTateNedanTypeAll">
+      <template v-else-if="searchItemType === 'tate' && searchTateNedanType !== 'all'">
         <div id="message-container" v-if="resultTateList.length === 0">
           <div class="message">
             <template v-if="isTateFirstTime">
@@ -145,15 +153,23 @@
             </template>
           </div>
         </div>
-        <table v-else>
-          <tr>
-            <th>呪い</th><th>修正値</th>
-          </tr>
-          <tr v-for="tate in resultTateList"
-              :class="{'exists-noroi': tate.isNoroi}">
-            <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
-          </tr>
-        </table>
+        <template v-else>
+          <div id="message-container">
+            <div class="message" v-show="shouldDisplaySearchTateHint">
+              もしかして… 「{{searchTateNedanType === 'kaine' ? '売値' : '買値'}}」？
+              <hr>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <th>呪い</th><th>修正値</th>
+            </tr>
+            <tr v-for="tate in resultTateList"
+                :class="{'exists-noroi': tate.isNoroi}">
+              <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
+            </tr>
+          </table>
+        </template>
       </template>
       <!-- 盾 かつ 一覧 -->
       <template v-else-if="searchItemType === 'tate'">
@@ -203,21 +219,19 @@
       <!-- 武器、盾、杖+以外 -->
       <template v-else>
         <div id="message-container">
-          <div v-if="resultItemList.length === 0">
-            <div class="message">
-              <template v-if="isFirstTime">
-                <template v-if="searchItemType !== 'tue'">
-                  値段を入力すると祝福、呪いの有無とアイテムが分かります。
-                </template>
-                <template v-else>
-                  値段を入力すると祝福、呪いの有無でアイテムが分かります。
-                  合成した杖の回数を知りたい場合は、「杖+」の項目を利用してください。
-                </template>
+          <div class="message" v-if="resultItemList.length === 0">
+            <template v-if="isFirstTime">
+              <template v-if="searchItemType !== 'tue'">
+                値段を入力すると祝福、呪いの有無とアイテムが分かります。
               </template>
               <template v-else>
-                しかし、なにも起きなかった。
+                値段を入力すると祝福、呪いの有無でアイテムが分かります。
+                合成した杖の回数を知りたい場合は、「杖+」の項目を利用してください。
               </template>
-            </div>
+            </template>
+            <template v-else>
+              しかし、なにも起きなかった。
+            </template>
           </div>
           <template v-else>
             <div class="message" v-show="shouldDisplaySearchHint">

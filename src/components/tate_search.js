@@ -76,6 +76,7 @@ export const TateSearch = {
             searchNedanType: 'all',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
+            shouldDisplaySearchHint: false,
         }
     },
     created() {
@@ -155,6 +156,7 @@ export const TateSearch = {
             this.findItemList();
         },
         findItemList() {
+            this.shouldDisplaySearchHint = false;
             let tateList = [];
             if (!this.isFirstTime) {
                 tateList = tateRepository.findItemList(
@@ -162,8 +164,23 @@ export const TateSearch = {
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
+                if (tateList.length === 0) {
+                    tateList = tateRepository.findItemList(
+                        this.searchItemName, this.isJingi,
+                        this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
+                        this.searchInList
+                    );
+                    if (tateList.length > 0) {
+                        this.shouldDisplaySearchHint = true;
+                    }
+                }
             }
-            this.$emit('foundTateList', {isFirstTime: this.isFirstTime, tateList});
+            this.$emit('foundTateList', {
+                isFirstTime: this.isFirstTime,
+                tateList,
+                shouldDisplaySearchHint: this.shouldDisplaySearchHint,
+                searchNedanType: this.searchNedanType
+            });
         },
         findAllItemList() {
             const allTateList = tateRepository.findAllItemList(this.searchItemStatusList);
