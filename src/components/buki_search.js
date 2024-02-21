@@ -47,7 +47,10 @@ export const BukiSearch = {
                 @change="onChangeInNameSelect">
           <option value="null" hidden>印の追加</option>
           <template v-for="inn in inList">
-            <option :value="inn" :disabled="false">「{{inn.name}}」{{inn.fullName}}</option>
+            <option :value="inn"
+                    :disabled="inn === searchItem.in || searchInList.includes(inn)">
+              「{{inn.name}}」{{inn.fullName}}
+            </option>
           </template>
         </select>
 
