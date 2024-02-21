@@ -302,7 +302,7 @@ h1 {
   padding-bottom: 2rem;
 }
 
-#message-container {
+.message {
   font-size: 0.94rem;
 }
 
