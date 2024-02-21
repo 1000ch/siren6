@@ -123,21 +123,19 @@
             神器は値段が2倍になります。
           </div>
         </div>
-        <div v-show="resultBukiList.length > 0">
-          <table>
-            <tr>
-              <th>名前</th><th>買値</th><th>売値</th>
-            </tr>
-            <tr v-for="item in resultBukiList"
-                :class="{
-                  'borderline': item.needBorderline,
-                }">
-              <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
-            </tr>
-          </table>
-        </div>
+        <table v-show="resultBukiList.length > 0">
+          <tr>
+            <th>名前</th><th>買値</th><th>売値</th>
+          </tr>
+          <tr v-for="item in resultBukiList"
+              :class="{
+                'borderline': item.needBorderline,
+              }">
+            <td>{{item.name}}</td>
+            <td class="right">{{item.kaine}}</td>
+            <td class="right">{{item.urine}}</td>
+          </tr>
+        </table>
       </template>
       <!-- 盾 かつ 一覧以外 -->
       <template v-else-if="searchItemType === 'tate' && searchTateNedanType !== 'all'">
@@ -178,21 +176,19 @@
             神器は値段が2倍になります。
           </div>
         </div>
-        <div v-show="resultTateList.length > 0">
-          <table>
-            <tr>
-              <th>名前</th><th>買値</th><th>売値</th>
-            </tr>
-            <tr v-for="item in resultTateList"
-                :class="{
-                  'borderline': item.needBorderline,
-                }">
-              <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
-            </tr>
-          </table>
-        </div>
+        <table v-show="resultTateList.length > 0">
+          <tr>
+            <th>名前</th><th>買値</th><th>売値</th>
+          </tr>
+          <tr v-for="item in resultTateList"
+              :class="{
+                'borderline': item.needBorderline,
+              }">
+            <td>{{item.name}}</td>
+            <td class="right">{{item.kaine}}</td>
+            <td class="right">{{item.urine}}</td>
+          </tr>
+        </table>
       </template>
       <!-- 杖+ -->
       <template v-else-if="searchItemType === 'tuePlus'">
