@@ -86,7 +86,7 @@
 
     <div id="result">
       <!-- 武器 かつ 一覧以外 -->
-      <template v-if="searchItemType === 'buki' && searchNedanType !== 'all'">
+      <template v-if="searchItemType === 'buki' && !isSearchBukiNedanTypeAll">
         <div id="message-container" v-if="resultBukiList.length === 0">
           <div class="message">
             <template v-if="isBukiFirstTime">
@@ -132,7 +132,7 @@
         </div>
       </template>
       <!-- 盾 かつ 一覧以外 -->
-      <template v-else-if="searchItemType === 'tate' && searchNedanType !== 'all'">
+      <template v-else-if="searchItemType === 'tate' && !isSearchTateNedanTypeAll">
         <div id="message-container" v-if="resultTateList.length === 0">
           <div class="message">
             <template v-if="isTateFirstTime">

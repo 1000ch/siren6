@@ -73,7 +73,7 @@ export const TateSearch = {
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
             itemStatusList: ['normal', 'noroi'],
             itemStatusName: {normal: '通常', noroi: '呪い'},
-            searchNedanType: 'kaine',
+            searchNedanType: 'all',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
         }
@@ -162,11 +162,11 @@ export const TateSearch = {
                     this.searchInList
                 );
             }
-            this.$emit('foundTateList', {isFirstTime: this.isFirstTime, tateList, searchNedanType: this.searchNedanType});
+            this.$emit('foundTateList', {isFirstTime: this.isFirstTime, tateList});
         },
         findAllItemList() {
             const allTateList = tateRepository.findAllItemList(this.searchItemStatusList);
-            this.$emit('foundAllTateList', {allTateList, searchItemStatusList: this.searchItemStatusList});
+            this.$emit('foundAllTateList', allTateList);
         },
     }
 };

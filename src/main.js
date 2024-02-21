@@ -35,6 +35,8 @@ const vm = {
             itemStatusName: {normal: '通常', noroi: '呪い', syukufuku: '祝福'},
             searchItemType: 'kusa',
             searchNedanType: 'kaine',
+            isSearchBukiNedanTypeAll: false,
+            isSearchTateNedanTypeAll: false,
             searchNedan: 0,
             searchItemStatusList: ['normal'],
             resultItemList: [],
@@ -50,29 +52,7 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.searchItemType = type;
-            if (this.searchItemType === 'buki') {
-                const bukiSearch = this.$refs.bukiSearch;
-                bukiSearch.$data.searchNedanType = this.searchNedanType;
-                bukiSearch.$data.searchItemStatusList = this.searchItemStatusList;
-                if (this.searchNedanType === 'all') {
-                    bukiSearch.findAllItemList();
-                }
-                else {
-                    bukiSearch.findItemList();
-                }
-            }
-            else if (this.searchItemType === 'tate') {
-                const tateSearch = this.$refs.tateSearch;
-                tateSearch.$data.searchNedanType = this.searchNedanType;
-                tateSearch.$data.searchItemStatusList = this.searchItemStatusList;
-                if (this.searchNedanType === 'all') {
-                    tateSearch.findAllItemList();
-                }
-                else {
-                    tateSearch.findItemList();
-                }
-            }
-            else if (this.searchItemType !== 'tuePlus') {
+            if (!['buki', 'tate', 'tuePlus'].includes(this.searchItemType)) {
                 this.findItemList();
             }
         },
@@ -117,28 +97,29 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
+        // 武器の検索結果
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
             this.resultBukiList = result.bukiList;
-            this.searchNedanType = result.searchNedanType;
+            this.isSearchBukiNedanTypeAll = false;
         },
-        onFoundAllBukiList(result) {
-            this.resultBukiList = result.allBukiList;
-            this.searchItemStatusList = result.searchItemStatusList;
-            this.searchNedanType = 'all';
+        onFoundAllBukiList(allBukiList) {
+            this.resultBukiList = allBukiList;
+            this.isSearchBukiNedanTypeAll = true;
             this.decorateResultItemList(this.resultBukiList);
         },
+        // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
             this.resultTateList = result.tateList;
-            this.searchNedanType = result.searchNedanType;
+            this.isSearchTateNedanTypeAll = false;
         },
-        onFoundAllTateList(result) {
-            this.resultTateList = result.allTateList;
-            this.searchItemStatusList = result.searchItemStatusList;
-            this.searchNedanType = 'all';
+        onFoundAllTateList(allTateList) {
+            this.resultTateList = allTateList;
+            this.isSearchTateNedanTypeAll = true;
             this.decorateResultItemList(this.resultTateList);
         },
+        // 杖+の検索結果
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
             this.resultTueCountList = result.tueCountList;

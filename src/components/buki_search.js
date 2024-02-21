@@ -73,7 +73,7 @@ export const BukiSearch = {
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
             itemStatusList: ['normal', 'noroi'],
             itemStatusName: {normal: '通常', noroi: '呪い'},
-            searchNedanType: 'kaine',
+            searchNedanType: 'all',
             searchNedan: 0,
             searchItemStatusList: ['normal'],
         }
@@ -162,11 +162,11 @@ export const BukiSearch = {
                     this.searchInList
                 );
             }
-            this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList, searchNedanType: this.searchNedanType});
+            this.$emit('foundBukiList', {isFirstTime: this.isFirstTime, bukiList});
         },
         findAllItemList() {
             const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
-            this.$emit('foundAllBukiList', {allBukiList, searchItemStatusList: this.searchItemStatusList});
+            this.$emit('foundAllBukiList', allBukiList);
         },
     }
 };
