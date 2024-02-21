@@ -268,9 +268,14 @@ h1 {
   }
 }
 
+#in-name-select-container {
+  display: flex;
+  margin-top: 8px;
+  align-items: center;
+}
+
 #in-name-select {
   padding: 2px 4px;
-  margin-top: 8px;
 }
 
 #in-tag-list {
@@ -295,6 +300,12 @@ h1 {
 .in-tag-close {
   height: 27px;
   margin-left: 2px;
+  cursor: pointer;
+}
+
+#in-reset-btn {
+  margin-left: 10px;
+  height: 40px;
   cursor: pointer;
 }
 

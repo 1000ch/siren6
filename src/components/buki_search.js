@@ -41,19 +41,23 @@ export const BukiSearch = {
           </div>
         </div>
 
-        <select v-show="searchNedanType !== 'all'"
-                id="in-name-select"
-                v-model="selectedIn"
-                @change="onChangeInNameSelect">
-          <option value="null" hidden>印の追加</option>
-          <template v-for="inn in inList">
-            <option :value="inn"
-                    :disabled="inn === searchItem.in || searchInList.includes(inn)">
-              「{{inn.name}}」{{inn.fullName}}
-            </option>
-          </template>
-        </select>
-
+        <div v-show="searchNedanType !== 'all'"
+             id="in-name-select-container">
+          <select id="in-name-select"
+                  v-model="selectedIn"
+                  @change="onChangeInNameSelect">
+            <option value="null" hidden>印の追加</option>
+            <template v-for="inn in inList">
+              <option :value="inn"
+                      :disabled="inn === searchItem.in || searchInList.includes(inn)">
+                「{{inn.name}}」{{inn.fullName}}
+              </option>
+            </template>
+          </select>
+          <img id="in-reset-btn" src="./assets/tidoro.png"
+               @click="onClickInResetBtn">
+        </div>
+        
         <div v-show="searchNedanType !== 'all' && searchInList.length > 0"
              id="in-tag-list">
           <div class="in-tag" v-for="inn in searchInList">
@@ -151,6 +155,10 @@ export const BukiSearch = {
                 return;
             }
             this.searchInList.push(selectedIn);
+            this.findItemList();
+        },
+        onClickInResetBtn() {
+            this.searchInList = [];
             this.findItemList();
         },
         onClickInTagClose(inn) {

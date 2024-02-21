@@ -58,6 +58,10 @@
     justify-content: center;
   }
 
+  #in-reset-btn {
+    margin-left: 5px;
+  }
+
   #result {
     width: 361px;
     margin-left: auto;
