@@ -58,7 +58,9 @@ export const BukiSearch = {
              id="in-tag-list">
           <div class="in-tag" v-for="inn in searchInList">
             {{inn.fullName}}
-            <span class="in-tag-close" @click="onClickInTagClose(inn)">❎</span>
+            <img class="in-tag-close" 
+                 src="./assets/odoro.png"
+                 @click="onClickInTagClose(inn)">
           </div>
         </div>
     `,
