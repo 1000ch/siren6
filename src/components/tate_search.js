@@ -5,10 +5,10 @@ export const TateSearch = {
         <div v-show="searchNedanType !== 'all'"
              id="search-item-name-container">
           <select id="search-item-name"
-                  v-model="searchItemName"
+                  v-model="searchItem"
                   @change="onChangeSearchItemName">
-            <template v-for="name in tateNameList">
-              <option :value="name">{{name}}</option>
+            <template v-for="item in normalItemList">
+              <option :value="item">{{item.name}}</option>
             </template>
           </select>
           <div id="jingi-btn" class="radio-btn"
@@ -47,7 +47,10 @@ export const TateSearch = {
                 @change="onChangeInNameSelect">
           <option value="null" hidden>印の追加</option>
           <template v-for="inn in inList">
-            <option :value="inn">「{{inn.name}}」{{inn.fullName}}</option>
+            <option :value="inn"
+                    :disabled="inn === searchItem.in || searchInList.includes(inn)">
+              「{{inn.name}}」{{inn.fullName}}
+            </option>
           </template>
         </select>
 
@@ -63,11 +66,11 @@ export const TateSearch = {
     data() {
         return {
             isFirstTime: true,
-            tateNameList: [],
+            normalItemList: [],
             inList: [],
             searchInList: [],
             selectedIn: null,
-            searchItemName: '木甲の盾',
+            searchItem: null,
             isJingi: false,
             nedanTypeList: ['kaine', 'urine', 'all'],
             nedanTypeName: {kaine: '買値', urine: '売値', all: '一覧'},
@@ -80,7 +83,8 @@ export const TateSearch = {
         }
     },
     created() {
-        this.tateNameList = tateRepository.nameList;
+        this.normalItemList = tateRepository.normalItemList;
+        this.searchItem = this.normalItemList[0];
         this.inList = tateRepository.inList;
         this.findAllItemList();
     },
@@ -160,13 +164,13 @@ export const TateSearch = {
             let tateList = [];
             if (!this.isFirstTime) {
                 tateList = tateRepository.findItemList(
-                    this.searchItemName, this.isJingi,
+                    this.searchItem, this.isJingi,
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
                 if (tateList.length === 0) {
                     tateList = tateRepository.findItemList(
-                        this.searchItemName, this.isJingi,
+                        this.searchItem, this.isJingi,
                         this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                         this.searchInList
                     );
