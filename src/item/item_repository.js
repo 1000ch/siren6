@@ -8,7 +8,7 @@ export class ItemRepository {
         return {
             status: 'normal',
             name, kaine, urine, isMiseUri
-        }
+        };
     }
 
     add(item) {

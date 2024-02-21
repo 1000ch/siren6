@@ -13,7 +13,7 @@ class TuboRepository extends ItemRepository {
             status: 'normal',
             name, kaine, urine, isMiseUri,
             needTuboZoudai
-        }
+        };
     }
 
     constructor() {
