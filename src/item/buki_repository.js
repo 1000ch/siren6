@@ -47,8 +47,8 @@ class BukiRepository extends ItemRepository {
         {name: '7', fullName: '7の会心', kaine: 500, urine: 175},
         {name: '8', fullName: '8の会心', kaine: 500, urine: 175},
         {name: '9', fullName: '9の会心', kaine: 500, urine: 175},
-        {name: '堀', fullName: '壁掘り', kaine: 500, urine: 175},
-        {name: '堀∞', fullName: '壁掘り無限', kaine: 5000, urine: 1750},
+        {name: '掘', fullName: '壁掘り', kaine: 500, urine: 175},
+        {name: '掘∞', fullName: '壁掘り無限', kaine: 5000, urine: 1750},
         {name: '壊', fullName: '罠壊し', kaine: 500, urine: 175},
         {name: '壊∞', fullName: '罠壊し無限', kaine: 5000, urine: 1750},
         {name: '探', fullName: '罠探り', kaine: 500, urine: 175},
@@ -72,36 +72,36 @@ class BukiRepository extends ItemRepository {
         this.add(c('剛剣マンジカブラ', 5500, 2200));
         this.add(c('火迅風魔刀', 16000, 6400));
         this.add(c('秘剣カブラステギ', 25000, 10000));
-        this.add(c('金の剣', 3000, 1200));
-        this.add(c('妖刀かまいたち', 8400, 3360));
-        this.add(c('ミノタウロスの斧', 6500, 2600));
-        this.add(c('連撃刀', 10000, 4000));
-        this.add(c('水斬りの剣', 3300, 1320));
-        this.add(c('原始の斧', 5000, 2000));
-        this.add(c('ドラゴンキラー', 4000, 1600));
-        this.add(c('三日月刀', 3500, 1400));
-        this.add(c('空の刃', 3700, 1480));
-        this.add(c('成仏のカマ', 4200, 1680));
-        this.add(c('ドレインバスター', 3600, 1440));
-        this.add(c('一ツ目殺し', 3200, 1280));
-        this.add(c('斬鉄剣', 3100, 1240));
-        this.add(c('巨大ハリセン', 4200, 1680));
-        this.add(c('回復の剣', 4300, 1720));
-        this.add(c('桃まん棒', 4500, 1800));
-        this.add(c('金食い虫こん棒', 6000, 2400));
-        this.add(c('鉄塊の大剣', 5300, 2120));
-        this.add(c('ステーキナイフ', 5400, 2160));
-        this.add(c('スパークソード', 5500, 2200));
-        this.add(c('四ツ叉', 5600, 2240));
-        this.add(c('めでたい熊手', 5700, 2280));
-        this.add(c('つるはし', 1000, 400));
-        this.add(c('黄金のつるはし', 18000, 7200));
-        this.add(c('木づち', 1000, 400));
-        this.add(c('最強ハンマー', 15000, 6000));
-        this.add(c('罠探りの棒', 4400, 1760));
-        this.add(c('かつおぶし', 1800, 720));
-        this.add(c('山姥包丁', 4000, 1600));
-        this.add(c('使い捨て刀', 3000, 1200));
+        this.add(c('金の剣', 3000, 1200, 'サビ'));
+        this.add(c('妖刀かまいたち', 8400, 3360, '三'));
+        this.add(c('ミノタウロスの斧', 6500, 2600, '会'));
+        this.add(c('連撃刀', 10000, 4000, '連'));
+        this.add(c('水斬りの剣', 3300, 1320, '水'));
+        this.add(c('原始の斧', 5000, 2000, '獣'));
+        this.add(c('ドラゴンキラー', 4000, 1600, '竜'));
+        this.add(c('三日月刀', 3500, 1400, '爆'));
+        this.add(c('空の刃', 3700, 1480, '浮'));
+        this.add(c('成仏のカマ', 4200, 1680, '仏'));
+        this.add(c('ドレインバスター', 3600, 1440, 'ド'));
+        this.add(c('一ツ目殺し', 3200, 1280, '目'));
+        this.add(c('斬鉄剣', 3100, 1240, '斬'));
+        this.add(c('巨大ハリセン', 4200, 1680, '突'));
+        this.add(c('回復の剣', 4300, 1720, '回'));
+        this.add(c('桃まん棒', 4500, 1800, '桃'));
+        this.add(c('金食い虫こん棒', 6000, 2400, '金'));
+        this.add(c('鉄塊の大剣', 5300, 2120, '腹力'));
+        this.add(c('ステーキナイフ', 5400, 2160, '飢'));
+        this.add(c('スパークソード', 5500, 2200, 'ス'));
+        this.add(c('四ツ叉', 5600, 2240, '溜4'));
+        this.add(c('めでたい熊手', 5700, 2280, '7'));
+        this.add(c('つるはし', 1000, 400, '掘'));
+        this.add(c('黄金のつるはし', 18000, 7200, '掘∞'));
+        this.add(c('木づち', 1000, 400, '壊'));
+        this.add(c('最強ハンマー', 15000, 6000, '壊∞'));
+        this.add(c('罠探りの棒', 4400, 1760, '探'));
+        this.add(c('かつおぶし', 1800, 720, '鰹'));
+        this.add(c('山姥包丁', 4000, 1600, '呪'));
+        this.add(c('使い捨て刀', 3000, 1200, '劣'));
 
         this.nameList = this.itemList.filter(item => item.status === 'normal').map(item => item.name);
     }
@@ -115,12 +115,15 @@ class BukiRepository extends ItemRepository {
     }
 
     #findIn(name) {
+        if (name === '') {
+            return null;
+        }
         for (const inn of this.inList) {
             if (inn.name === name) {
                 return inn;
             }
         }
-        return null;
+        throw new Error(`未定義の印：${name}`);
     }
 
     findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
