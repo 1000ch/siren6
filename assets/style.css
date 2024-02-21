@@ -277,6 +277,7 @@ h1 {
   display: flex;
   padding: 2px;
   margin-top: 8px;
+  gap: 0 5px;
   flex-wrap: wrap;
   border: 1px solid #333;
   border-radius: 5px;
@@ -291,10 +292,8 @@ h1 {
   font-size: 0.8rem;
   user-select: none;
 }
-.in-tag-name {
-  margin-right: 5px;
-}
 .in-tag-close {
+  margin-left: 2px;
   cursor: pointer;
 }
 

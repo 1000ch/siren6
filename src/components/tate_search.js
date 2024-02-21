@@ -57,7 +57,7 @@ export const TateSearch = {
         <div v-show="searchNedanType !== 'all' && searchInList.length > 0"
              id="in-tag-list">
           <div class="in-tag" v-for="inn in searchInList">
-            <span class="in-tag-name">{{inn.fullName}}</span>
+            {{inn.fullName}}
             <span class="in-tag-close" @click="onClickInTagClose(inn)">❎</span>
           </div>
         </div>

@@ -55,6 +55,7 @@
 
   #in-tag-list {
     width: calc(340px - 2px * 2 - 1px * 2); /* paddingとborderを引いている */
+    justify-content: center;
   }
 
   #result {
