@@ -26,9 +26,9 @@ export const BukiSearch = {
           </div>
           <template v-if="searchNedanType !== 'all'">
             <input type="number" id="input-nedan" v-model="searchNedan"
-                 @focus="onFocusInputNedan"
-                 @blur="onBlurInputNedan"
-                 @keydown.enter="onKeyDownEnterInputNedan">
+                   @focus="onFocusInputNedan"
+                   @blur="onBlurInputNedan"
+                   @keydown.enter="onKeyDownEnterInputNedan">
             <img id="clear-btn" ref="clearBtn" src="./assets/gamara.png"
                  @click="onClickClearBtn">
           </template>
