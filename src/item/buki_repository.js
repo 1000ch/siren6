@@ -64,7 +64,7 @@ class BukiRepository extends ItemRepository {
     constructor() {
         super();
         this.canSyukufuku = false;
-        const c = this.create;
+        const c = this.create.bind(this);;
         this.add(c('木刀', 250, 100));
         this.add(c('青銅の太刀', 550, 220));
         this.add(c('カタナ', 1000, 400));
@@ -104,6 +104,23 @@ class BukiRepository extends ItemRepository {
         this.add(c('使い捨て刀', 3000, 1200));
 
         this.nameList = this.itemList.filter(item => item.status === 'normal').map(item => item.name);
+    }
+
+    create(name, kaine, urine, innName = '') {
+        return {
+            status: 'normal',
+            name, kaine, urine, isMiseUri: true,
+            in: this.#findIn(innName)
+        };
+    }
+
+    #findIn(name) {
+        for (const inn of this.inList) {
+            if (inn.name === name) {
+                return inn;
+            }
+        }
+        return null;
     }
 
     findItemList(searchItemName, isJingi, searchNedan, searchNedanType, searchInList) {
