@@ -81,6 +81,7 @@ export const BukiSearch = {
     created() {
         this.bukiNameList = bukiRepository.nameList;
         this.inList = bukiRepository.inList;
+        this.findAllItemList();
     },
     methods: {
         onChangeSearchItemName() {

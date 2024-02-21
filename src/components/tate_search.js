@@ -81,6 +81,7 @@ export const TateSearch = {
     created() {
         this.tateNameList = tateRepository.nameList;
         this.inList = tateRepository.inList;
+        this.findAllItemList();
     },
     methods: {
         onChangeSearchItemName() {
