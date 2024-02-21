@@ -90,6 +90,10 @@ export const BukiSearch = {
         }
     },
     created() {
+        // オドロ君は後から画像読み込みが発生して表示が遅いので先読みする。
+        const img = document.createElement('img');
+        img.src = "./assets/odoro.png";
+
         this.normalItemList = bukiRepository.normalItemList;
         this.searchItem = this.normalItemList[0];
         this.inList = bukiRepository.inList;
