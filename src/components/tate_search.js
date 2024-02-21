@@ -55,6 +55,7 @@ export const TateSearch = {
             </template>
           </select>
           <img id="in-reset-btn" src="./assets/tidoro.png"
+               ref="tateInResetBtn"
                @click="onClickInResetBtn">
         </div>
 
@@ -158,6 +159,13 @@ export const TateSearch = {
             this.findItemList();
         },
         onClickInResetBtn() {
+            const inResetBtnClassList = this.$refs.tateInResetBtn.classList;
+            if (!inResetBtnClassList.contains('melt')) {
+                inResetBtnClassList.add('melt');
+                setTimeout(() => {
+                    inResetBtnClassList.remove('melt');
+                }, 5000);
+            }
             this.searchInList = [];
             this.findItemList();
         },

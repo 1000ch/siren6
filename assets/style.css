@@ -309,6 +309,25 @@ h1 {
   cursor: pointer;
 }
 
+.melt {
+  animation: melt 5s linear;
+}
+
+@keyframes melt {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 #result {
   padding-bottom: 2rem;
 }
