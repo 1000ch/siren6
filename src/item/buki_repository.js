@@ -64,7 +64,7 @@ class BukiRepository extends ItemRepository {
     constructor() {
         super();
         this.canSyukufuku = false;
-        const c = this.create.bind(this);;
+        const c = this.create.bind(this);
         this.add(c('木刀', 250, 100));
         this.add(c('青銅の太刀', 550, 220));
         this.add(c('カタナ', 1000, 400));
