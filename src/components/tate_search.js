@@ -47,7 +47,7 @@ export const TateSearch = {
                 @change="onChangeInNameSelect">
           <option value="null" hidden>印の追加</option>
           <template v-for="inn in inList">
-            <option :value="inn">{{inn.fullName}}</option>
+            <option :value="inn">「{{inn.name}}」{{inn.fullName}}</option>
           </template>
         </select>
 
