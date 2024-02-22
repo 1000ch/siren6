@@ -24,7 +24,7 @@ class TateRepository extends ItemRepository {
         {name: '投', fullName: '投げものよけ', kaine: 1000, urine: 350},
         {name: '催', fullName: '催眠よけ', kaine: 1000, urine: 350},
         {name: '魔よ', fullName: '魔法弾よけ', kaine: 1000, urine: 350},
-        // {name: '魔反', fullName: '魔法弾反射', kaine: , urine: },
+        {name: '魔反', fullName: '魔法弾反射', kaine: 1000, urine: 350},
         {name: '不', fullName: '不動', kaine: 2000, urine: 700},
         {name: '受', fullName: '受け身', kaine: 1000, urine: 350},
         {name: '金', fullName: '金食い防御', kaine: 8000, urine: 2800},

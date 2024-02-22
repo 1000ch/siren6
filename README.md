@@ -3,10 +3,6 @@
 
 https://mogamoga1024.github.io/siren6/
 
-## TODO
-
-魔反の値段
-
 ## 参考元
 
 * [AppMedia: シレン6攻略｜不思議のダンジョン](https://appmedia.jp/shiren6/)
