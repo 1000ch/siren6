@@ -61,7 +61,9 @@ export const BukiSearch = {
         
         <div v-show="searchNedanType !== 'all' && searchInList.length > 0"
              id="in-tag-list">
-          <div class="in-tag" v-for="inn in searchInList">
+          <div v-for="inn in searchInList"
+               class="in-tag"
+               :class="inn.type">
             {{inn.fullName}}
             <img class="in-tag-close" 
                  src="./assets/odoro.png"

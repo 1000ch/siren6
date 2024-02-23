@@ -310,17 +310,28 @@ h1 {
 .in-tag {
   display: flex;
   align-items: center;
-  background-color: #f0f0f0;
+  /* color: #f0f0f0; */
   padding: 3px;
   margin: 3px;
   border-radius: 3px;
   font-size: 0.8rem;
+  font-weight: bold;
   user-select: none;
 }
 .in-tag-close {
   height: 27px;
   margin-left: 2px;
   cursor: pointer;
+}
+
+.in-tag.normal {
+  background-color: #5dade2;
+}
+.in-tag.isyu {
+  background-color: #82e0aa;
+}
+.in-tag.tennen {
+  background-color: #f7dc6f;
 }
 
 #in-reset-btn {
