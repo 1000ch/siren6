@@ -57,7 +57,7 @@ export const BukiSearch = {
             </optgroup>
           </select>
           <img id="in-reset-btn" src="./assets/tidoro.png"
-               ref="bukiInResetBtn"
+               ref="inResetBtn"
                @click="onClickInResetBtn">
         </div>
         
@@ -168,7 +168,7 @@ export const BukiSearch = {
             this.findItemList();
         },
         onClickInResetBtn() {
-            const inResetBtnClassList = this.$refs['bukiInResetBtn'].classList;
+            const inResetBtnClassList = this.$refs.inResetBtn.classList;
             if (!inResetBtnClassList.contains('melt')) {
                 inResetBtnClassList.add('melt');
                 setTimeout(() => {
