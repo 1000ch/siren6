@@ -102,24 +102,24 @@ const vm = {
         // 武器の検索結果
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
-            this.resultBukiList = result.bukiList;
+            this.resultBukiList = result.itemList;
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
         },
-        onFoundAllBukiList(allBukiList) {
-            this.resultBukiList = allBukiList;
+        onFoundAllBukiList(allItemList) {
+            this.resultBukiList = allItemList;
             this.searchBukiNedanType = 'all';
             this.decorateResultItemList(this.resultBukiList);
         },
         // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
-            this.resultTateList = result.tateList;
+            this.resultTateList = result.itemList;
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
         },
-        onFoundAllTateList(allTateList) {
-            this.resultTateList = allTateList;
+        onFoundAllTateList(allItemList) {
+            this.resultTateList = allItemList;
             this.searchTateNedanType = 'all';
             this.decorateResultItemList(this.resultTateList);
         },
