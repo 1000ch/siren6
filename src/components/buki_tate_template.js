@@ -1,5 +1,5 @@
 
-export function createBukiTateViewModel(repository) {
+export function createBukiTateSearchViewModel(repository) {
     return {
         template: `
             <div v-show="searchNedanType !== 'all'"
