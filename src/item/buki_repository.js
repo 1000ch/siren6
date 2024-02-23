@@ -3,7 +3,7 @@ import { calcNedan } from "./buki_tate_kantei";
 
 class BukiRepository extends ItemRepository {
     normalItemList = [];
-    inList = [
+    #inList = [
         {name: 'サビ', fullName: 'サビよけ', kaine: 500, urine: 175, type: 'normal'},
         {name: '三', fullName: '三方向攻撃', kaine: 3000, urine: 1050, type: 'normal'},
         {name: '後', fullName: '前後攻撃', kaine: 3000, urine: 1050, type: 'tennen'},
@@ -62,7 +62,7 @@ class BukiRepository extends ItemRepository {
     ];
 
     get inGroupList() {
-        const groupObj = Object.groupBy(this.inList, x => x.type);
+        const groupObj = Object.groupBy(this.#inList, x => x.type);
         return [groupObj.normal, groupObj.isyu, groupObj.tennen];
     }
 
@@ -123,7 +123,7 @@ class BukiRepository extends ItemRepository {
         if (name === '') {
             return null;
         }
-        for (const inn of this.inList) {
+        for (const inn of this.#inList) {
             if (inn.name === name) {
                 return inn;
             }
