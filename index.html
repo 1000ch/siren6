@@ -248,7 +248,7 @@
           </div>
         </template>
         <div v-show="resultItemList.length > 0">
-          <!-- 検索結果一覧 -->
+          <!-- 杖、壺の一覧 -->
           <table id="all-item-list"
                  v-if="searchNedanType === 'all' && (searchItemType === 'tue' || searchItemType === 'tubo')">
             <tr>
@@ -262,9 +262,12 @@
               <td class="center">{{item.count}}</td>
             </tr>
           </table>
+          <!-- それ以外 -->
           <table v-else>
             <tr>
-              <th>名前</th><th>買値</th><th>売値</th>
+              <th>名前</th>
+              <th :class="{'search-nedan-type': searchNedanType === 'kaine'}">買値</th>
+              <th :class="{'search-nedan-type': searchNedanType === 'urine'}">売値</th>
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{
@@ -275,8 +278,14 @@
                   'need-tubo-zoudai': item.needTuboZoudai,
                 }">
               <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
+              <td class="right"
+                  :class="{'search-nedan-type': searchNedanType === 'kaine'}">
+                {{item.kaine}}
+              </td>
+              <td class="right"
+                  :class="{'search-nedan-type': searchNedanType === 'urine'}">
+                {{item.urine}}
+              </td>
             </tr>
           </table>
         </div>

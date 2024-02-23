@@ -352,6 +352,14 @@ th, td {
   padding: 12px;
 }
 
+th.search-nedan-type {
+  background-color: #008000;
+}
+
+td.search-nedan-type {
+  font-weight: bold;
+}
+
 th {
   background-color: #5d8397;
   color: #fff;
