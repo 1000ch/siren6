@@ -47,12 +47,14 @@ export const BukiSearch = {
                   v-model="selectedIn"
                   @change="onChangeInNameSelect">
             <option value="null" hidden>印の追加</option>
-            <template v-for="inn in inList">
-              <option :value="inn"
+            <optgroup v-for="inList in inGroupList"
+                      :label="inTypeName[inList[0].type]">
+              <option v-for="inn in inList"
+                      :value="inn"
                       :disabled="inn === searchItem.in || searchInList.includes(inn)">
                 「{{inn.name}}」{{inn.fullName}}
               </option>
-            </template>
+            </optgroup>
           </select>
           <img id="in-reset-btn" src="./assets/tidoro.png"
                ref="bukiInResetBtn"
@@ -76,7 +78,8 @@ export const BukiSearch = {
         return {
             isFirstTime: true,
             normalItemList: [],
-            inList: [],
+            inGroupList: [],
+            inTypeName: {normal: '青印', isyu: '緑印', tennen: '黄印'},
             searchInList: [],
             selectedIn: null,
             searchItem: null,
@@ -98,7 +101,7 @@ export const BukiSearch = {
 
         this.normalItemList = bukiRepository.normalItemList;
         this.searchItem = this.normalItemList[0];
-        this.inList = bukiRepository.inList;
+        this.inGroupList = bukiRepository.inGroupList;
         this.findAllItemList();
     },
     methods: {

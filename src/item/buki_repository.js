@@ -61,6 +61,11 @@ class BukiRepository extends ItemRepository {
         {name: '命', fullName: 'HP+20', kaine: 3000, urine: 1050, type: 'isyu'},
     ];
 
+    get inGroupList() {
+        const groupObj = Object.groupBy(this.inList, x => x.type);
+        return [groupObj.normal, groupObj.isyu, groupObj.tennen];
+    }
+
     constructor() {
         super();
         this.canSyukufuku = false;
