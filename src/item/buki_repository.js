@@ -62,7 +62,13 @@ class BukiRepository extends ItemRepository {
     ];
 
     get inGroupList() {
-        const groupObj = Object.groupBy(this.#inList, x => x.type);
+        const groupObj = {};
+        for (let inn of this.#inList) {
+            if (!groupObj[inn.type]) {
+                groupObj[inn.type] = [];
+            }
+            groupObj[inn.type].push(inn);
+        }
         return [groupObj.normal, groupObj.isyu, groupObj.tennen];
     }
 
