@@ -131,6 +131,12 @@ const vm = {
         isZeroTimes(item) {
             return item.name.endsWith('[0]');
         },
+        isSearchedNedanType(nedanType) {
+            if (this.shouldDisplaySearchHint) {
+                return this.searchNedanType !== nedanType;
+            }
+            return this.searchNedanType === nedanType;
+        },
         findItemList() {
             this.shouldDisplaySearchHint = false;
             
