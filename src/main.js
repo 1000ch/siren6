@@ -140,13 +140,11 @@ const vm = {
         findItemList() {
             this.shouldDisplaySearchHint = false;
             
-            if (this.searchItemType === 'buki') {
-                throw new Error('ここが実行されることはない');
-            }
-            if (this.searchItemType === 'tate') {
-                throw new Error('ここが実行されることはない');
-            }
-            if (this.searchItemType === 'tuePlus') {
+            if (
+                this.searchItemType === 'buki' ||
+                this.searchItemType === 'tate' ||
+                this.searchItemType === 'tuePlus'
+            ) {
                 throw new Error('ここが実行されることはない');
             }
 
