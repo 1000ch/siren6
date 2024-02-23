@@ -42,13 +42,13 @@
       <div id="search-nedan-container">
         <div v-show="searchItemType === 'buki'">
           <buki-search ref="bukiSearch"
-                       @found-buki-list="onFoundBukiList"
-                       @found-all-buki-list="onFoundAllBukiList"></buki-search>
+                       @found-item-list="onFoundBukiList"
+                       @found-all-item-list="onFoundAllBukiList"></buki-search>
         </div>
         <div v-show="searchItemType === 'tate'">
           <tate-search ref="tateSearch"
-                       @found-tate-list="onFoundTateList"
-                       @found-all-tate-list="onFoundAllTateList"></tate-search>
+                       @found-item-list="onFoundTateList"
+                       @found-all-item-list="onFoundAllTateList"></tate-search>
         </div>
         <div v-show="searchItemType === 'tuePlus'">
           <tue-plus-search @found-tue-count-list="onFoundTueCountList"></tue-plus-search>

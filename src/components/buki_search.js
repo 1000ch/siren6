@@ -73,7 +73,7 @@ export const BukiSearch = {
           </div>
         </div>
     `,
-    emits: ['foundBukiList', 'foundAllBukiList'],
+    emits: ['foundItemList', 'foundAllItemList'],
     data() {
         return {
             isFirstTime: true,
@@ -168,7 +168,7 @@ export const BukiSearch = {
             this.findItemList();
         },
         onClickInResetBtn() {
-            const inResetBtnClassList = this.$refs.bukiInResetBtn.classList;
+            const inResetBtnClassList = this.$refs['bukiInResetBtn'].classList;
             if (!inResetBtnClassList.contains('melt')) {
                 inResetBtnClassList.add('melt');
                 setTimeout(() => {
@@ -188,34 +188,34 @@ export const BukiSearch = {
         },
         findItemList() {
             this.shouldDisplaySearchHint = false;
-            let bukiList = [];
+            let itemList = [];
             if (!this.isFirstTime) {
-                bukiList = bukiRepository.findItemList(
+                itemList = bukiRepository.findItemList(
                     this.searchItem, this.isJingi,
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
-                if (bukiList.length === 0) {
-                    bukiList = bukiRepository.findItemList(
+                if (itemList.length === 0) {
+                    itemList = bukiRepository.findItemList(
                         this.searchItem, this.isJingi,
                         this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                         this.searchInList
                     );
-                    if (bukiList.length > 0) {
+                    if (itemList.length > 0) {
                         this.shouldDisplaySearchHint = true;
                     }
                 }
             }
-            this.$emit('foundBukiList', {
+            this.$emit('foundItemList', {
                 isFirstTime: this.isFirstTime,
-                bukiList,
+                itemList,
                 shouldDisplaySearchHint: this.shouldDisplaySearchHint,
                 searchNedanType: this.searchNedanType
             });
         },
         findAllItemList() {
-            const allBukiList = bukiRepository.findAllItemList(this.searchItemStatusList);
-            this.$emit('foundAllBukiList', allBukiList);
+            const allItemList = bukiRepository.findAllItemList(this.searchItemStatusList);
+            this.$emit('foundAllItemList', allItemList);
         },
     }
 };

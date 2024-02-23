@@ -73,7 +73,7 @@ export const TateSearch = {
           </div>
         </div>
     `,
-    emits: ['foundTateList', 'foundAllTateList'],
+    emits: ['foundItemList', 'foundAllItemList'],
     data() {
         return {
             isFirstTime: true,
@@ -168,7 +168,7 @@ export const TateSearch = {
             this.findItemList();
         },
         onClickInResetBtn() {
-            const inResetBtnClassList = this.$refs.tateInResetBtn.classList;
+            const inResetBtnClassList = this.$refs['tateInResetBtn'].classList;
             if (!inResetBtnClassList.contains('melt')) {
                 inResetBtnClassList.add('melt');
                 setTimeout(() => {
@@ -188,34 +188,34 @@ export const TateSearch = {
         },
         findItemList() {
             this.shouldDisplaySearchHint = false;
-            let tateList = [];
+            let itemList = [];
             if (!this.isFirstTime) {
-                tateList = tateRepository.findItemList(
+                itemList = tateRepository.findItemList(
                     this.searchItem, this.isJingi,
                     this.searchNedan, this.searchNedanType,
                     this.searchInList
                 );
-                if (tateList.length === 0) {
-                    tateList = tateRepository.findItemList(
+                if (itemList.length === 0) {
+                    itemList = tateRepository.findItemList(
                         this.searchItem, this.isJingi,
                         this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                         this.searchInList
                     );
-                    if (tateList.length > 0) {
+                    if (itemList.length > 0) {
                         this.shouldDisplaySearchHint = true;
                     }
                 }
             }
-            this.$emit('foundTateList', {
+            this.$emit('foundItemList', {
                 isFirstTime: this.isFirstTime,
-                tateList,
+                itemList,
                 shouldDisplaySearchHint: this.shouldDisplaySearchHint,
                 searchNedanType: this.searchNedanType
             });
         },
         findAllItemList() {
-            const allTateList = tateRepository.findAllItemList(this.searchItemStatusList);
-            this.$emit('foundAllTateList', allTateList);
+            const allItemList = tateRepository.findAllItemList(this.searchItemStatusList);
+            this.$emit('foundAllItemList', allItemList);
         },
     }
 };
