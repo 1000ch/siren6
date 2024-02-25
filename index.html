@@ -63,7 +63,7 @@
             </template>
           </div>
           <template v-if="searchNedanType !== 'all'">
-            <input type="number" id="input-nedan" v-model="searchNedan"
+            <input type="number" id="input-nedan" :value="searchNedan"
                    @focus="onFocusInputNedan"
                    @blur="onBlurInputNedan"
                    @keydown.enter="onKeyDownEnterInputNedan">
@@ -283,11 +283,11 @@
                 }">
               <td>{{item.name}}</td>
               <td class="right"
-                  :class="{'search-nedan-type': isSearchedNedanType('kaine')}">
+                  :class="{'search-nedan-type': item.kaine === searchNedan}">
                 {{item.kaine}}
               </td>
               <td class="right"
-                  :class="{'search-nedan-type': isSearchedNedanType('urine')}">
+                  :class="{'search-nedan-type': item.urine === searchNedan}">
                 {{item.urine}}
               </td>
             </tr>

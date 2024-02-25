@@ -78,7 +78,7 @@ const vm = {
             event.target.select();
         },
         onBlurInputNedan(event) {
-            this.searchNedan = Number(this.searchNedan);
+            this.searchNedan = Number(event.target.value);
             event.target.value = this.searchNedan;
             this.findItemList();
             if (this.searchNedan !== 0) {
