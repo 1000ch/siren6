@@ -300,7 +300,9 @@
       <hr>
       <h2>設定</h2>
       <div class="config-row">
-        <input type="checkbox" id="config1" v-model="shouldKubetuKaineAndUrine">
+        <input type="checkbox" id="config1"
+               v-model="shouldKubetuKaineAndUrine"
+               @change="onChangeShouldKubetuKaineAndUrineCheckBox">
         <label for="config1">買値と売値を区別して検索する</label>
       </div>
     </div>

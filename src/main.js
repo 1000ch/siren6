@@ -99,6 +99,11 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
+        onChangeShouldKubetuKaineAndUrineCheckBox() {
+            if (this.searchNedanType !== 'all') {
+                this.findItemList();
+            }
+        },
         // 武器の検索結果
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
