@@ -119,7 +119,7 @@
             <template v-for="result in resultMultiBukiList">
               <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
               <div v-if="result.itemList.length === 0">
-                データなし
+                <div class="result-text">データなし</div>
               </div>
               <table v-else>
                 <tr>
@@ -184,7 +184,7 @@
             <template v-for="result in resultMultiTateList">
               <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
               <div v-if="result.itemList.length === 0">
-                データなし
+                <div class="result-text">データなし</div>
               </div>
               <table v-else>
                 <tr>

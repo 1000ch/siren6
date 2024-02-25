@@ -62,8 +62,22 @@
     margin-left: 5px;
   }
 
+  .message {
+    padding: 0 8px;
+  }
+
   #result {
     width: 361px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .item-list-title {
+    margin-left: 20%;
+  }
+
+  .result-text {
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
   }
@@ -81,7 +95,8 @@
     }
   }
 
-  .message {
-    padding: 0 8px;
+  #config, #poem {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
