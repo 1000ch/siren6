@@ -94,7 +94,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="resultBukiList.length === 0 && resultMultiBukiList.length === 0">
+        <div class="message" v-else-if="resultBukiList.length === 0 && resultMultiBukiList.every(e => e.itemList.length === 0)">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -157,7 +157,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="resultTateList.length === 0 && resultMultiTateList.length === 0">
+        <div class="message" v-else-if="resultTateList.length === 0 && resultMultiTateList.every(e => e.itemList.length === 0)">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -219,7 +219,7 @@
         <div class="message" v-if="isTuePlusFirstTime">
           アイテム名と値段を入力すると呪いの有無と残り回数が分かります。
         </div>
-        <div class="message" v-else-if="resultTueCountList.length === 0 && resultMultiTueCountList.length === 0">
+        <div class="message" v-else-if="resultTueCountList.length === 0 && resultMultiTueCountList.every(e => e.itemList.length === 0)">
           しかし、なにも起きなかった。
         </div>
         <template v-else-if="useBothKaineAndUrine">
