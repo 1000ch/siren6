@@ -98,10 +98,10 @@ const vm = {
         onBlurInputNedan(event) {
             this.searchNedan = Number(event.target.value);
             event.target.value = this.searchNedan;
-            this.findItemList();
             if (this.searchNedan !== 0) {
                 this.isFirstTime = false;
             }
+            this.findItemList();
         },
         onKeyDownEnterInputNedan(event) {
             event.target.blur();
@@ -115,8 +115,8 @@ const vm = {
                 }, 2000);
             }
             this.searchNedan = 0;
-            this.findItemList();
             this.isFirstTime = true;
+            this.findItemList();
         },
         onChangeUseBothKaineAndUrineCheckBox() {
             Cookies.set('useBothKaineAndUrine', String(this.useBothKaineAndUrine), {expires: 365});
@@ -205,14 +205,18 @@ const vm = {
             return this.searchNedanType === nedanType;
         },
         findItemList() {
-            this.shouldDisplaySearchHint = false;
-            
             if (
                 this.searchItemType === 'buki' ||
                 this.searchItemType === 'tate' ||
                 this.searchItemType === 'tuePlus'
             ) {
                 throw new Error('ここが実行されることはない');
+            }
+
+            this.shouldDisplaySearchHint = false;
+            if (this.isFirstTime) {
+                this.resultItemList = [];
+                return;
             }
 
             let repo = null;
