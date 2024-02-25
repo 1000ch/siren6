@@ -21,6 +21,7 @@ const vm = {
             isBukiFirstTime: true,
             isTateFirstTime: true,
             isTuePlusFirstTime: true,
+            shouldKubetuKaineAndUrine: true,
             itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
                 kusa: '草', tue: '杖', tuePlus: '杖+',

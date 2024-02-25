@@ -438,6 +438,15 @@ tr {
   background-color: #ffcccc;
 }
 
+#config input[type="checkbox"] {
+  transform: scale(1.4);
+}
+
+.config-row {
+  display: flex;
+  align-items: center;
+}
+
 #poem {
   padding-bottom: 2rem;
   word-break: break-all;
