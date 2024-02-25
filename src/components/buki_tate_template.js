@@ -205,7 +205,25 @@ export function createBukiTateSearchViewModel(itemType, repository) {
                         this.searchNedan, this.searchNedanType,
                         this.searchInList
                     );
-                    if (!this.useBothKaineAndUrine) {
+                    if (this.useBothKaineAndUrine) {
+                        const otherNedanType = this.searchNedanType === 'kaine' ? 'urine' : 'kaine';
+                        const otherItemList = repository.findItemList(
+                            this.searchItem, this.isJingi,
+                            this.searchNedan, otherNedanType,
+                            this.searchInList
+                        );
+                        itemList = [
+                            {
+                                nedanType: this.searchNedanType,
+                                itemList: itemList
+                            },
+                            {
+                                nedanType: otherNedanType,
+                                itemList: otherItemList
+                            }
+                        ];
+                    }
+                    else {
                         if (itemList.length === 0) {
                             itemList = repository.findItemList(
                                 this.searchItem, this.isJingi,
@@ -215,26 +233,6 @@ export function createBukiTateSearchViewModel(itemType, repository) {
                             if (itemList.length > 0) {
                                 this.shouldDisplaySearchHint = true;
                             }
-                        }
-                    }
-                    else {
-                        const otherNedanType = this.searchNedanType === 'kaine' ? 'urine' : 'kaine';
-                        const otherItemList = repository.findItemList(
-                            this.searchItem, this.isJingi,
-                            this.searchNedan, otherNedanType,
-                            this.searchInList
-                        );
-                        if (itemList.length > 0 || otherItemList.length > 0) {
-                            itemList = [
-                                {
-                                    nedanType: this.searchNedanType,
-                                    itemList: itemList
-                                },
-                                {
-                                    nedanType: otherNedanType,
-                                    itemList: otherItemList
-                                }
-                            ];
                         }
                     }
                 }
