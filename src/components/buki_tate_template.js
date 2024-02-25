@@ -1,6 +1,6 @@
 import emitter from 'tiny-emitter/instance';
 
-export function createBukiTateSearchViewModel(repository) {
+export function createBukiTateSearchViewModel(itemType, repository) {
     return {
         props: {
             shouldKubetuKaineAndUrine: Boolean
@@ -108,7 +108,7 @@ export function createBukiTateSearchViewModel(repository) {
             this.inGroupList = repository.inGroupList;
             this.findAllItemList();
 
-            emitter.on('findBukiList', this.findItemList); // todo name
+            emitter.on(`find${itemType}List`, this.findItemList);
         },
         methods: {
             onChangeSearchItemName() {

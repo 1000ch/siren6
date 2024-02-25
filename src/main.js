@@ -65,7 +65,7 @@ const vm = {
                 emitter.emit('findBukiList');
             }
             else if (this.searchItemType === 'tate') {
-                // todo
+                emitter.emit('findTateList');
             }
             else if (this.searchItemType === 'tuePlus') {
                 // todo
@@ -120,7 +120,7 @@ const vm = {
                 emitter.emit('findBukiList');
             }
             else if (this.searchItemType === 'tate') {
-                // todo
+                emitter.emit('findTateList');
             }
             else if (this.searchItemType === 'tuePlus') {
                 // todo
@@ -155,8 +155,18 @@ const vm = {
         // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
-            // todo
-            this.resultTateList = result.itemList;
+            if (!this.isTateFirstTime) {
+                if (this.shouldKubetuKaineAndUrine) {
+                    this.resultTateList = result.itemList;
+                    this.resultTateList1 = []; // メモリ開放
+                    this.resultTateList2 = []; // メモリ開放
+                }
+                else {
+                    this.resultTateList = []; // メモリ開放
+                    this.resultTateList1 = result.itemList[0];
+                    this.resultTateList2 = result.itemList[1];
+                }
+            }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
         },
