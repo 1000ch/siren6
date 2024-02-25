@@ -108,7 +108,11 @@ export function createBukiTateSearchViewModel(itemType, repository) {
             this.inGroupList = repository.inGroupList;
             this.findAllItemList();
 
-            emitter.on(`find${itemType}List`, this.findItemList);
+            emitter.on(`find${itemType}List`, () => {
+                if (this.searchNedanType !== 'all') {
+                    this.findItemList();
+                }
+            });
         },
         methods: {
             onChangeSearchItemName() {
