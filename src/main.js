@@ -164,11 +164,17 @@ const vm = {
             }
             else {
                 this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType);
-                if (this.resultItemList.length === 0) {
-                    this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
-                    if (this.resultItemList.length > 0) {
-                        this.shouldDisplaySearchHint = true;
+
+                if (this.shouldKubetuKaineAndUrine) {
+                    if (this.resultItemList.length === 0) {
+                        this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
+                        if (this.resultItemList.length > 0) {
+                            this.shouldDisplaySearchHint = true;
+                        }
                     }
+                }
+                else {
+                    this.resultItemList = this.resultItemList.concat(repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine'));
                 }
             }
         },
