@@ -94,7 +94,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultBukiList.length === 0 || !shouldKubetuKaineAndUrine && resultBukiList1.length === 0 && resultBukiList2.length === 0">
+        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultBukiList.length === 0">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -116,16 +116,16 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="[nedanType, itemList] in [[searchBukiNedanType, resultBukiList1], [searchBukiNedanType === 'kaine' ? 'urine' : 'kaine', resultBukiList2]]">
-              <div class="item-list-title">{{nedanTypeName[nedanType]}}の場合</div>
-              <div v-if="itemList.length === 0">
+            <template v-for="result in resultBukiList">
+              <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
+              <div v-if="result.itemList.length === 0">
                 データなし
               </div>
               <table v-else>
                 <tr>
                   <th>呪い</th><th>修正値</th>
                 </tr>
-                <tr v-for="buki in itemList"
+                <tr v-for="buki in result.itemList"
                     :class="{'exists-noroi': buki.isNoroi}">
                   <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
                 </tr>
@@ -159,7 +159,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultTateList.length === 0 || !shouldKubetuKaineAndUrine && resultTateList1.length === 0 && resultTateList2.length === 0">
+        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultTateList.length === 0">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -181,16 +181,16 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="[nedanType, itemList] in [[searchTateNedanType, resultTateList1], [searchTateNedanType === 'kaine' ? 'urine' : 'kaine', resultTateList2]]">
-              <div class="item-list-title">{{nedanTypeName[nedanType]}}の場合</div>
-              <div v-if="itemList.length === 0">
+            <template v-for="result in resultTateList">
+              <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
+              <div v-if="result.itemList.length === 0">
                 データなし
               </div>
               <table v-else>
                 <tr>
                   <th>呪い</th><th>修正値</th>
                 </tr>
-                <tr v-for="tate in itemList"
+                <tr v-for="tate in result.itemList"
                     :class="{'exists-noroi': tate.isNoroi}">
                   <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
                 </tr>

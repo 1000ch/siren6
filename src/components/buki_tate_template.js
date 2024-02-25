@@ -214,12 +214,22 @@ export function createBukiTateSearchViewModel(itemType, repository) {
                         }
                     }
                     else {
+                        const otherNedanType = this.searchNedanType === 'kaine' ? 'urine' : 'kaine';
                         const otherItemList = repository.findItemList(
                             this.searchItem, this.isJingi,
-                            this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
+                            this.searchNedan, otherNedanType,
                             this.searchInList
                         );
-                        itemList = [itemList, otherItemList];
+                        itemList = [
+                            {
+                                nedanType: this.searchNedanType,
+                                itemList: itemList
+                            },
+                            {
+                                nedanType: otherNedanType,
+                                itemList: otherItemList
+                            }
+                        ];
                     }
                 }
 

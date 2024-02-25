@@ -42,14 +42,8 @@ const vm = {
             searchItemStatusList: ['normal'],
             resultItemList: [],
             resultBukiList: [],
-            resultBukiList1: [],
-            resultBukiList2: [],
             resultTateList: [],
-            resultTateList1: [],
-            resultTateList2: [],
             resultTueCountList: [],
-            resultTueCountList1: [],
-            resultTueCountList2: [],
             shouldDisplaySearchHint: false,
             shouldDisplaySearchBukiHint: false,
             shouldDisplaySearchTateHint: false,
@@ -133,16 +127,7 @@ const vm = {
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
             if (!this.isBukiFirstTime) {
-                if (this.shouldKubetuKaineAndUrine) {
-                    this.resultBukiList = result.itemList;
-                    this.resultBukiList1 = []; // メモリ開放
-                    this.resultBukiList2 = []; // メモリ開放
-                }
-                else {
-                    this.resultBukiList = []; // メモリ開放
-                    this.resultBukiList1 = result.itemList[0];
-                    this.resultBukiList2 = result.itemList[1];
-                }
+                this.resultBukiList = result.itemList;
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
@@ -156,16 +141,7 @@ const vm = {
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
             if (!this.isTateFirstTime) {
-                if (this.shouldKubetuKaineAndUrine) {
-                    this.resultTateList = result.itemList;
-                    this.resultTateList1 = []; // メモリ開放
-                    this.resultTateList2 = []; // メモリ開放
-                }
-                else {
-                    this.resultTateList = []; // メモリ開放
-                    this.resultTateList1 = result.itemList[0];
-                    this.resultTateList2 = result.itemList[1];
-                }
+                this.resultTateList = result.itemList;
             }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
