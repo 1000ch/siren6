@@ -360,7 +360,7 @@ h1 {
 }
 
 #result {
-  padding-bottom: 2rem;
+  min-height: 18rem;
 }
 
 .message {
@@ -439,7 +439,6 @@ tr {
 }
 
 #poem {
-  margin-top: 10rem;
   padding-bottom: 2rem;
   word-break: break-all;
   font-size: 0.94rem;
