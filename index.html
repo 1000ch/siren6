@@ -116,8 +116,8 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="itemList in [resultBukiList1, resultBukiList2]">
-              <div class="item-list-title">{{nedanTypeName[searchBukiNedanType]}}の場合</div>
+            <template v-for="[nedanType, itemList] in [[searchBukiNedanType, resultBukiList1], [searchBukiNedanType === 'kaine' ? 'urine' : 'kaine', resultBukiList2]]">
+              <div class="item-list-title">{{nedanTypeName[nedanType]}}の場合</div>
               <div v-if="itemList.length === 0">
                 データなし
               </div>
@@ -181,8 +181,8 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="itemList in [resultTateList1, resultTateList2]">
-              <div class="item-list-title">{{nedanTypeName[searchTateNedanType]}}の場合</div>
+            <template v-for="[nedanType, itemList] in [[searchTateNedanType, resultTateList1], [searchTateNedanType === 'kaine' ? 'urine' : 'kaine', resultTateList2]]">
+              <div class="item-list-title">{{nedanTypeName[nedanType]}}の場合</div>
               <div v-if="itemList.length === 0">
                 データなし
               </div>
