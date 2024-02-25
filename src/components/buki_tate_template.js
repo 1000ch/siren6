@@ -1,3 +1,4 @@
+import emitter from 'tiny-emitter/instance';
 
 export function createBukiTateSearchViewModel(repository) {
     return {
@@ -106,6 +107,8 @@ export function createBukiTateSearchViewModel(repository) {
             this.searchItem = this.normalItemList[0];
             this.inGroupList = repository.inGroupList;
             this.findAllItemList();
+
+            emitter.on('findBukiList', this.findItemList); // todo name
         },
         methods: {
             onChangeSearchItemName() {

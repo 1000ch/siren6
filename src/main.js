@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import emitter from 'tiny-emitter/instance';
 import { BukiSearch } from './components/buki_search';
 import { TateSearch } from './components/tate_search';
 import { TuePlusSearch } from './components/tue_plus_search';
@@ -60,7 +61,16 @@ const vm = {
     methods: {
         onClickItemType(type) {
             this.searchItemType = type;
-            if (!['buki', 'tate', 'tuePlus'].includes(this.searchItemType)) {
+            if (this.searchItemType === 'buki') {
+                emitter.emit('findBukiList');
+            }
+            else if (this.searchItemType === 'tate') {
+                // todo
+            }
+            else if (this.searchItemType === 'tuePlus') {
+                // todo
+            }
+            else {
                 this.findItemList();
             }
         },
@@ -107,7 +117,7 @@ const vm = {
         },
         onChangeShouldKubetuKaineAndUrineCheckBox() {
             if (this.searchItemType === 'buki') {
-                // todo
+                emitter.emit('findBukiList');
             }
             else if (this.searchItemType === 'tate') {
                 // todo
@@ -121,7 +131,6 @@ const vm = {
         },
         // 武器の検索結果
         onFoundBukiList(result) {
-            console.log(result);
             this.isBukiFirstTime = result.isFirstTime;
             if (!this.isBukiFirstTime) {
                 if (this.shouldKubetuKaineAndUrine) {
