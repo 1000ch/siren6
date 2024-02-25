@@ -331,11 +331,11 @@
                 }">
               <td>{{item.name}}</td>
               <td class="right"
-                  :class="{'search-nedan-type': item.kaine === searchNedan}">
+                  :class="{'search-nedan-type': searchNedanType !== 'all' && item.kaine === searchNedan}">
                 {{item.kaine}}
               </td>
               <td class="right"
-                  :class="{'search-nedan-type': item.urine === searchNedan}">
+                  :class="{'search-nedan-type': searchNedanType !== 'all' &&item.urine === searchNedan}">
                 {{item.urine}}
               </td>
             </tr>
