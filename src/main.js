@@ -100,7 +100,16 @@ const vm = {
             this.isFirstTime = true;
         },
         onChangeShouldKubetuKaineAndUrineCheckBox() {
-            if (this.searchNedanType !== 'all') {
+            if (this.searchItemType === 'buki') {
+                // todo
+            }
+            else if (this.searchItemType === 'tate') {
+                // todo
+            }
+            else if (this.searchItemType === 'tuePlus') {
+                // todo
+            }
+            else if (this.searchNedanType !== 'all') {
                 this.findItemList();
             }
         },

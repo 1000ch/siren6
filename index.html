@@ -42,16 +42,19 @@
       <div id="search-nedan-container">
         <div v-show="searchItemType === 'buki'">
           <buki-search ref="bukiSearch"
+                       :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"
                        @found-item-list="onFoundBukiList"
                        @found-all-item-list="onFoundAllBukiList"></buki-search>
         </div>
         <div v-show="searchItemType === 'tate'">
           <tate-search ref="tateSearch"
+                       :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"
                        @found-item-list="onFoundTateList"
                        @found-all-item-list="onFoundAllTateList"></tate-search>
         </div>
         <div v-show="searchItemType === 'tuePlus'">
-          <tue-plus-search @found-tue-count-list="onFoundTueCountList"></tue-plus-search>
+          <tue-plus-search @found-tue-count-list="onFoundTueCountList"
+                           :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"></tue-plus-search>
         </div>
         <div v-show="!['buki', 'tate', 'tuePlus'].includes(searchItemType)"
              id="input-nedan-container" class="exists-itiran">

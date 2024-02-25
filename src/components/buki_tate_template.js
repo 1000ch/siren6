@@ -1,6 +1,9 @@
 
 export function createBukiTateSearchViewModel(repository) {
     return {
+        props: {
+            shouldKubetuKaineAndUrine: Boolean
+        },
         template: `
             <div v-show="searchNedanType !== 'all'"
                  id="search-item-name-container">
