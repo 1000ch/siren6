@@ -94,7 +94,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultBukiList.length === 0">
+        <div class="message" v-else-if="resultBukiList.length === 0 && resultMultiBukiList.length === 0">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -116,7 +116,7 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="result in resultBukiList">
+            <template v-for="result in resultMultiBukiList">
               <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
               <div v-if="result.itemList.length === 0">
                 データなし
@@ -159,7 +159,7 @@
           アイテム名、神器かどうか、値段、印を入力すると呪いの有無と修正値が分かります。<br>
           値段の計算は<a href="https://note.com/shiny_llama970/n/n8469520feb5f" target="_blank" rel="noopener noreferrer">風来のシレン６　武器・盾の値段計算式</a>を参考にさせてもらいました。
         </div>
-        <div class="message" v-else-if="shouldKubetuKaineAndUrine && resultTateList.length === 0">
+        <div class="message" v-else-if="resultTateList.length === 0 && resultMultiTateList.length === 0">
           しかし、なにも起きなかった。<br>
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
@@ -181,7 +181,7 @@
             </table>
           </template>
           <template v-else>
-            <template v-for="result in resultTateList">
+            <template v-for="result in resultMultiTateList">
               <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
               <div v-if="result.itemList.length === 0">
                 データなし

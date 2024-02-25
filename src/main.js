@@ -42,8 +42,11 @@ const vm = {
             searchItemStatusList: ['normal'],
             resultItemList: [],
             resultBukiList: [],
+            resultMultiBukiList: [],
             resultTateList: [],
+            resultMultiTateList: [],
             resultTueCountList: [],
+            resultMultiTueCountList: [],
             shouldDisplaySearchHint: false,
             shouldDisplaySearchBukiHint: false,
             shouldDisplaySearchTateHint: false,
@@ -127,7 +130,14 @@ const vm = {
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
             if (!this.isBukiFirstTime) {
-                this.resultBukiList = result.itemList;
+                if (this.shouldKubetuKaineAndUrine) {
+                    this.resultBukiList = result.itemList;
+                    this.resultMultiBukiList = [];
+                }
+                else {
+                    this.resultBukiList = [];
+                    this.resultMultiBukiList = result.itemList;
+                }
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
@@ -141,7 +151,14 @@ const vm = {
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
             if (!this.isTateFirstTime) {
-                this.resultTateList = result.itemList;
+                if (this.shouldKubetuKaineAndUrine) {
+                    this.resultTateList = result.itemList;
+                    this.resultMultiTateList = [];
+                }
+                else {
+                    this.resultTateList = [];
+                    this.resultMultiTateList = result.itemList;
+                }
             }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;

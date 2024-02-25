@@ -220,16 +220,18 @@ export function createBukiTateSearchViewModel(itemType, repository) {
                             this.searchNedan, otherNedanType,
                             this.searchInList
                         );
-                        itemList = [
-                            {
-                                nedanType: this.searchNedanType,
-                                itemList: itemList
-                            },
-                            {
-                                nedanType: otherNedanType,
-                                itemList: otherItemList
-                            }
-                        ];
+                        if (itemList.length > 0 || otherItemList.length > 0) {
+                            itemList = [
+                                {
+                                    nedanType: this.searchNedanType,
+                                    itemList: itemList
+                                },
+                                {
+                                    nedanType: otherNedanType,
+                                    itemList: otherItemList
+                                }
+                            ];
+                        }
                     }
                 }
 
