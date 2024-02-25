@@ -21,7 +21,7 @@ const vm = {
             isBukiFirstTime: true,
             isTateFirstTime: true,
             isTuePlusFirstTime: true,
-            shouldKubetuKaineAndUrine: true,
+            useBothKaineAndUrine: true,
             itemTypeList: ['kusa', 'tue', 'makimono', 'tubo', 'udewa', 'buki', 'tate', 'tuePlus'],
             itemTypeName: {
                 kusa: '草', tue: '杖', tuePlus: '杖+',
@@ -112,7 +112,7 @@ const vm = {
             this.findItemList();
             this.isFirstTime = true;
         },
-        onChangeShouldKubetuKaineAndUrineCheckBox() {
+        onChangeUseBothKaineAndUrineCheckBox() {
             if (this.searchItemType === 'buki') {
                 emitter.emit('findBukiList');
             }
@@ -130,13 +130,13 @@ const vm = {
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
             if (!this.isBukiFirstTime) {
-                if (this.shouldKubetuKaineAndUrine) {
-                    this.resultBukiList = result.itemList;
-                    this.resultMultiBukiList = [];
-                }
-                else {
+                if (this.useBothKaineAndUrine) {
                     this.resultBukiList = [];
                     this.resultMultiBukiList = result.itemList;
+                }
+                else {
+                    this.resultBukiList = result.itemList;
+                    this.resultMultiBukiList = [];
                 }
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
@@ -151,13 +151,13 @@ const vm = {
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
             if (!this.isTateFirstTime) {
-                if (this.shouldKubetuKaineAndUrine) {
-                    this.resultTateList = result.itemList;
-                    this.resultMultiTateList = [];
-                }
-                else {
+                if (this.useBothKaineAndUrine) {
                     this.resultTateList = [];
                     this.resultMultiTateList = result.itemList;
+                }
+                else {
+                    this.resultTateList = result.itemList;
+                    this.resultMultiTateList = [];
                 }
             }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
@@ -210,16 +210,16 @@ const vm = {
             else {
                 this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType);
 
-                if (this.shouldKubetuKaineAndUrine) {
+                if (this.useBothKaineAndUrine) {
+                    this.resultItemList = this.resultItemList.concat(repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine'));
+                }
+                else {
                     if (this.resultItemList.length === 0) {
                         this.resultItemList = repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine');
                         if (this.resultItemList.length > 0) {
                             this.shouldDisplaySearchHint = true;
                         }
                     }
-                }
-                else {
-                    this.resultItemList = this.resultItemList.concat(repo.findItemList(this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine'));
                 }
             }
         },

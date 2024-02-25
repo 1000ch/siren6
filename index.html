@@ -42,19 +42,19 @@
       <div id="search-nedan-container">
         <div v-show="searchItemType === 'buki'">
           <buki-search ref="bukiSearch"
-                       :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"
+                       :use-both-kaine-and-urine="useBothKaineAndUrine"
                        @found-item-list="onFoundBukiList"
                        @found-all-item-list="onFoundAllBukiList"></buki-search>
         </div>
         <div v-show="searchItemType === 'tate'">
           <tate-search ref="tateSearch"
-                       :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"
+                       :use-both-kaine-and-urine="useBothKaineAndUrine"
                        @found-item-list="onFoundTateList"
                        @found-all-item-list="onFoundAllTateList"></tate-search>
         </div>
         <div v-show="searchItemType === 'tuePlus'">
           <tue-plus-search @found-tue-count-list="onFoundTueCountList"
-                           :should-kubetu-kaine-and-urine="shouldKubetuKaineAndUrine"></tue-plus-search>
+                           :use-both-kaine-and-urine="useBothKaineAndUrine"></tue-plus-search>
         </div>
         <div v-show="!['buki', 'tate', 'tuePlus'].includes(searchItemType)"
              id="input-nedan-container" class="exists-itiran">
@@ -99,39 +99,37 @@
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
         </div>
-        <template v-else>
-          <template v-if="shouldKubetuKaineAndUrine">
-            <div class="message" v-show="shouldDisplaySearchBukiHint">
-              もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
-              <hr>
+        <template v-else-if="useBothKaineAndUrine">
+          <template v-for="result in resultMultiBukiList">
+            <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
+            <div v-if="result.itemList.length === 0">
+              <div class="result-text">データなし</div>
             </div>
-            <table>
+            <table v-else>
               <tr>
                 <th>呪い</th><th>修正値</th>
               </tr>
-              <tr v-for="buki in resultBukiList"
+              <tr v-for="buki in result.itemList"
                   :class="{'exists-noroi': buki.isNoroi}">
                 <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
               </tr>
             </table>
           </template>
-          <template v-else>
-            <template v-for="result in resultMultiBukiList">
-              <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
-              <div v-if="result.itemList.length === 0">
-                <div class="result-text">データなし</div>
-              </div>
-              <table v-else>
-                <tr>
-                  <th>呪い</th><th>修正値</th>
-                </tr>
-                <tr v-for="buki in result.itemList"
-                    :class="{'exists-noroi': buki.isNoroi}">
-                  <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
-                </tr>
-              </table>
-            </template>
-          </template>
+        </template>
+        <template v-else>
+          <div class="message" v-show="shouldDisplaySearchBukiHint">
+            もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
+            <hr>
+          </div>
+          <table>
+            <tr>
+              <th>呪い</th><th>修正値</th>
+            </tr>
+            <tr v-for="buki in resultBukiList"
+                :class="{'exists-noroi': buki.isNoroi}">
+              <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+            </tr>
+          </table>
         </template>
       </template>
       <!-- 武器 かつ 一覧 -->
@@ -164,39 +162,37 @@
           神器の有無があっているか、ご確認ください。
           また銀封印されている印も入力する必要があります。
         </div>
-        <template v-else>
-          <template v-if="shouldKubetuKaineAndUrine">
-            <div class="message" v-show="shouldDisplaySearchTateHint">
-              もしかして… 「{{searchTateNedanType === 'kaine' ? '売値' : '買値'}}」？
-              <hr>
+        <template v-else-if="useBothKaineAndUrine">
+          <template v-for="result in resultMultiTateList">
+            <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
+            <div v-if="result.itemList.length === 0">
+              <div class="result-text">データなし</div>
             </div>
-            <table>
+            <table v-else>
               <tr>
                 <th>呪い</th><th>修正値</th>
               </tr>
-              <tr v-for="tate in resultTateList"
+              <tr v-for="tate in result.itemList"
                   :class="{'exists-noroi': tate.isNoroi}">
                 <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
               </tr>
             </table>
           </template>
-          <template v-else>
-            <template v-for="result in resultMultiTateList">
-              <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
-              <div v-if="result.itemList.length === 0">
-                <div class="result-text">データなし</div>
-              </div>
-              <table v-else>
-                <tr>
-                  <th>呪い</th><th>修正値</th>
-                </tr>
-                <tr v-for="tate in result.itemList"
-                    :class="{'exists-noroi': tate.isNoroi}">
-                  <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
-                </tr>
-              </table>
-            </template>
-          </template>
+        </template>
+        <template v-else>
+          <div class="message" v-show="shouldDisplaySearchTateHint">
+            もしかして… 「{{searchTateNedanType === 'kaine' ? '売値' : '買値'}}」？
+            <hr>
+          </div>
+          <table>
+            <tr>
+              <th>呪い</th><th>修正値</th>
+            </tr>
+            <tr v-for="tate in resultTateList"
+                :class="{'exists-noroi': tate.isNoroi}">
+              <td class="center">{{tate.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tate.syuseiti}}</td>
+            </tr>
+          </table>
         </template>
       </template>
       <!-- 盾 かつ 一覧 -->
@@ -338,9 +334,9 @@
       <h2>設定</h2>
       <div class="config-row">
         <input type="checkbox" id="config1"
-               v-model="shouldKubetuKaineAndUrine"
-               @change="onChangeShouldKubetuKaineAndUrineCheckBox">
-        <label for="config1">買値と売値を区別して検索する</label>
+               v-model="useBothKaineAndUrine"
+               @change="onChangeUseBothKaineAndUrineCheckBox">
+        <label for="config1">常に買値と売値の両方で検索する</label>
       </div>
     </div>
 

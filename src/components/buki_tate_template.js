@@ -3,7 +3,7 @@ import emitter from 'tiny-emitter/instance';
 export function createBukiTateSearchViewModel(itemType, repository) {
     return {
         props: {
-            shouldKubetuKaineAndUrine: Boolean
+            useBothKaineAndUrine: Boolean
         },
         template: `
             <div v-show="searchNedanType !== 'all'"
@@ -205,7 +205,7 @@ export function createBukiTateSearchViewModel(itemType, repository) {
                         this.searchNedan, this.searchNedanType,
                         this.searchInList
                     );
-                    if (this.shouldKubetuKaineAndUrine) {
+                    if (!this.useBothKaineAndUrine) {
                         if (itemList.length === 0) {
                             itemList = repository.findItemList(
                                 this.searchItem, this.isJingi,

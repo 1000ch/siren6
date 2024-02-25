@@ -2,7 +2,7 @@ import { tueRepository } from '../item/tue_repository';
 
 export const TuePlusSearch = {
     props: {
-        shouldKubetuKaineAndUrine: Boolean
+        useBothKaineAndUrine: Boolean
     },
     template: `
         <div id="search-item-name-container">
