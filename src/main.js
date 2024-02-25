@@ -7,7 +7,6 @@ import { tueRepository } from './item/tue_repository';
 import { makimonoRepository } from './item/makimono_repository';
 import { tuboRepository } from './item/tubo_repository';
 import { udewaRepository } from './item/udewa_repository';
-import { tateRepository } from './item/tate_repository';
 
 const vm = {
     components: {
