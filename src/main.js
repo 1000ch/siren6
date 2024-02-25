@@ -137,10 +137,6 @@ const vm = {
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
-
-            console.log(this.resultBukiList);
-            console.log(this.resultBukiList1);
-            console.log(this.resultBukiList2);
         },
         onFoundAllBukiList(allItemList) {
             this.resultBukiList = allItemList;

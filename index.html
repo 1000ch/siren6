@@ -116,28 +116,21 @@
             </table>
           </template>
           <template v-else>
-            <!-- todo -->
-            <div class="item-list-title">{{nedanTypeName[searchBukiNedanType]}}{{searchNedan}}の場合</div>
-            <table>
-              <tr>
-                <th>呪い</th><th>修正値</th>
-              </tr>
-              <tr v-for="buki in resultBukiList1"
-                  :class="{'exists-noroi': buki.isNoroi}">
-                <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
-              </tr>
-            </table>
-            <!-- todo -->
-            <div class="item-list-title">{{nedanTypeName[searchBukiNedanType === 'kaine' ? 'urine' : 'kaine']}}{{searchNedan}}の場合</div>
-            <table>
-              <tr>
-                <th>呪い</th><th>修正値</th>
-              </tr>
-              <tr v-for="buki in resultBukiList2"
-                  :class="{'exists-noroi': buki.isNoroi}">
-                <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
-              </tr>
-            </table>
+            <template v-for="itemList in [resultBukiList1, resultBukiList2]">
+              <div class="item-list-title">{{nedanTypeName[searchBukiNedanType]}}の場合</div>
+              <div v-if="itemList.length === 0">
+                データなし
+              </div>
+              <table v-else>
+                <tr>
+                  <th>呪い</th><th>修正値</th>
+                </tr>
+                <tr v-for="buki in itemList"
+                    :class="{'exists-noroi': buki.isNoroi}">
+                  <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+                </tr>
+              </table>
+            </template>
           </template>
         </template>
 
