@@ -214,7 +214,7 @@ const vm = {
             }
 
             this.shouldDisplaySearchHint = false;
-            if (this.isFirstTime) {
+            if (this.isFirstTime && this.searchNedanType !== 'all') {
                 this.resultItemList = [];
                 return;
             }
