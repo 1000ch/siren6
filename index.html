@@ -216,14 +216,29 @@
       </template>
       <!-- 杖+ -->
       <template v-else-if="searchItemType === 'tuePlus'">
-        <div class="message" v-if="resultTueCountList.length === 0">
-          <template v-if="isTuePlusFirstTime">
-            アイテム名と値段を入力すると呪いの有無と残り回数が分かります。
-          </template>
-          <template v-else>
-            しかし、なにも起きなかった。
-          </template>
+        <div class="message" v-if="isTuePlusFirstTime">
+          アイテム名と値段を入力すると呪いの有無と残り回数が分かります。
         </div>
+        <div class="message" v-else-if="resultTueCountList.length === 0 && resultMultiTueCountList.length === 0">
+          しかし、なにも起きなかった。
+        </div>
+        <template v-else-if="useBothKaineAndUrine">
+          <template v-for="result in resultMultiTueCountList">
+            <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
+            <div v-if="result.itemList.length === 0">
+              <div class="result-text">データなし</div>
+            </div>
+            <table v-else>
+              <tr>
+                <th>呪い</th><th>回数</th>
+              </tr>
+              <tr v-for="tue in result.itemList"
+                  :class="{'exists-noroi': tue.isNoroi}">
+                <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
+              </tr>
+            </table>
+          </template>
+        </template>
         <table v-else>
           <tr>
             <th>呪い</th><th>回数</th>

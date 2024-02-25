@@ -1,3 +1,4 @@
+import emitter from 'tiny-emitter/instance';
 import { tueRepository } from '../item/tue_repository';
 
 export const TuePlusSearch = {
@@ -45,6 +46,8 @@ export const TuePlusSearch = {
     },
     created() {
         this.tueNameList = tueRepository.nameList;
+
+        emitter.on(`findTuePlusList`, this.findItemList);
     },
     methods: {
         onChangeSearchItemName() {
@@ -81,7 +84,24 @@ export const TuePlusSearch = {
             this.findItemList();
         },
         findItemList() {
-            const tueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
+            let tueCountList = [];
+            if (!this.isFirstTime) {
+                tueCountList = tueRepository.findCountList(this.searchItemName, this.searchNedan, this.searchNedanType);
+                if (this.useBothKaineAndUrine) {
+                    const otherNedanType = this.searchNedanType === 'kaine' ? 'urine' : 'kaine';
+                    const otherItemList = tueRepository.findCountList(this.searchItemName, this.searchNedan, otherNedanType);
+                    tueCountList = [
+                        {
+                            nedanType: this.searchNedanType,
+                            itemList: tueCountList
+                        },
+                        {
+                            nedanType: otherNedanType,
+                            itemList: otherItemList
+                        }
+                    ];
+                }
+            }
             this.$emit('foundTueCountList', {tueCountList, isFirstTime: this.isFirstTime});
         }
     }

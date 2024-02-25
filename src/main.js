@@ -71,7 +71,7 @@ const vm = {
                 emitter.emit('findTateList');
             }
             else if (this.searchItemType === 'tuePlus') {
-                // todo
+                emitter.emit('findTuePlusList');
             }
             else {
                 this.findItemList();
@@ -127,7 +127,7 @@ const vm = {
                 emitter.emit('findTateList');
             }
             else if (this.searchItemType === 'tuePlus') {
-                // todo
+                emitter.emit('findTuePlusList');
             }
             else if (this.searchNedanType !== 'all') {
                 this.findItemList();
@@ -136,15 +136,17 @@ const vm = {
         // 武器の検索結果
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
-            if (!this.isBukiFirstTime) {
-                if (this.useBothKaineAndUrine) {
-                    this.resultBukiList = [];
-                    this.resultMultiBukiList = result.itemList;
-                }
-                else {
-                    this.resultBukiList = result.itemList;
-                    this.resultMultiBukiList = [];
-                }
+            if (this.isBukiFirstTime) {
+                this.resultBukiList = [];
+                this.resultMultiBukiList = [];
+            }
+            else if (this.useBothKaineAndUrine) {
+                this.resultBukiList = [];
+                this.resultMultiBukiList = result.itemList;
+            }
+            else {
+                this.resultBukiList = result.itemList;
+                this.resultMultiBukiList = [];
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
@@ -157,15 +159,17 @@ const vm = {
         // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
-            if (!this.isTateFirstTime) {
-                if (this.useBothKaineAndUrine) {
-                    this.resultTateList = [];
-                    this.resultMultiTateList = result.itemList;
-                }
-                else {
-                    this.resultTateList = result.itemList;
-                    this.resultMultiTateList = [];
-                }
+            if (this.isTateFirstTime) {
+                this.resultTateList = [];
+                this.resultMultiTateList = [];
+            }
+            else if (this.useBothKaineAndUrine) {
+                this.resultTateList = [];
+                this.resultMultiTateList = result.itemList;
+            }
+            else {
+                this.resultTateList = result.itemList;
+                this.resultMultiTateList = [];
             }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
@@ -178,8 +182,18 @@ const vm = {
         // 杖+の検索結果
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
-            // todo
-            this.resultTueCountList = result.tueCountList;
+            if (this.isTuePlusFirstTime) {
+                this.resultTueCountList = [];
+                this.resultMultiTueCountList = [];
+            }
+            else if (this.useBothKaineAndUrine) {
+                this.resultTueCountList = [];
+                this.resultMultiTueCountList = result.tueCountList;
+            }
+            else {
+                this.resultTueCountList = result.tueCountList;
+                this.resultMultiTueCountList = [];
+            }
         },
         isZeroTimes(item) {
             return item.name.endsWith('[0]');
