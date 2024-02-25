@@ -121,16 +121,26 @@ const vm = {
         },
         // 武器の検索結果
         onFoundBukiList(result) {
+            console.log(result);
             this.isBukiFirstTime = result.isFirstTime;
-            if (this.shouldKubetuKaineAndUrine) {
-                this.resultBukiList = result.itemList;
-            }
-            else {
-                this.resultBukiList1 = result.itemList[0];
-                this.resultBukiList2 = result.itemList[1];
+            if (!this.isBukiFirstTime) {
+                if (this.shouldKubetuKaineAndUrine) {
+                    this.resultBukiList = result.itemList;
+                    this.resultBukiList1 = []; // メモリ開放
+                    this.resultBukiList2 = []; // メモリ開放
+                }
+                else {
+                    this.resultBukiList = []; // メモリ開放
+                    this.resultBukiList1 = result.itemList[0];
+                    this.resultBukiList2 = result.itemList[1];
+                }
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
+
+            console.log(this.resultBukiList);
+            console.log(this.resultBukiList1);
+            console.log(this.resultBukiList2);
         },
         onFoundAllBukiList(allItemList) {
             this.resultBukiList = allItemList;

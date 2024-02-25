@@ -216,11 +216,10 @@ export function createBukiTateSearchViewModel(repository) {
                             this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                             this.searchInList
                         );
-                        if (itemList.length > 0 || otherItemList.length > 0) {
-                            itemList = [itemList, otherItemList];
-                        }
+                        itemList = [itemList, otherItemList];
                     }
                 }
+
                 this.$emit('foundItemList', {
                     isFirstTime: this.isFirstTime,
                     itemList,

@@ -369,7 +369,7 @@ h1 {
 
 .item-list-title {
   font-weight: bold;
-  margin-top: 8px;
+  margin-top: 16px;
   &:first-of-type {
     margin-top: 4px;
   }
