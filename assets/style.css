@@ -367,6 +367,17 @@ h1 {
   font-size: 0.94rem;
 }
 
+.item-list-title {
+  font-weight: bold;
+  margin-top: 8px;
+  &:first-of-type {
+    margin-top: 4px;
+  }
+  + table {
+    margin-top: 0;
+  }
+}
+
 table {
   margin-top: 4px;
   border-collapse: collapse;

@@ -41,8 +41,14 @@ const vm = {
             searchItemStatusList: ['normal'],
             resultItemList: [],
             resultBukiList: [],
+            resultBukiList1: [],
+            resultBukiList2: [],
             resultTateList: [],
+            resultTateList1: [],
+            resultTateList2: [],
             resultTueCountList: [],
+            resultTueCountList1: [],
+            resultTueCountList2: [],
             shouldDisplaySearchHint: false,
             shouldDisplaySearchBukiHint: false,
             shouldDisplaySearchTateHint: false,
@@ -116,7 +122,13 @@ const vm = {
         // 武器の検索結果
         onFoundBukiList(result) {
             this.isBukiFirstTime = result.isFirstTime;
-            this.resultBukiList = result.itemList;
+            if (this.shouldKubetuKaineAndUrine) {
+                this.resultBukiList = result.itemList;
+            }
+            else {
+                this.resultBukiList1 = result.itemList[0];
+                this.resultBukiList2 = result.itemList[1];
+            }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
         },
@@ -128,6 +140,7 @@ const vm = {
         // 盾の検索結果
         onFoundTateList(result) {
             this.isTateFirstTime = result.isFirstTime;
+            // todo
             this.resultTateList = result.itemList;
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
@@ -140,6 +153,7 @@ const vm = {
         // 杖+の検索結果
         onFoundTueCountList(result) {
             this.isTuePlusFirstTime = result.isFirstTime;
+            // todo
             this.resultTueCountList = result.tueCountList;
         },
         isZeroTimes(item) {

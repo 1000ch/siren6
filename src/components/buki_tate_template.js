@@ -198,14 +198,26 @@ export function createBukiTateSearchViewModel(repository) {
                         this.searchNedan, this.searchNedanType,
                         this.searchInList
                     );
-                    if (itemList.length === 0) {
-                        itemList = repository.findItemList(
+                    if (this.shouldKubetuKaineAndUrine) {
+                        if (itemList.length === 0) {
+                            itemList = repository.findItemList(
+                                this.searchItem, this.isJingi,
+                                this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
+                                this.searchInList
+                            );
+                            if (itemList.length > 0) {
+                                this.shouldDisplaySearchHint = true;
+                            }
+                        }
+                    }
+                    else {
+                        const otherItemList = repository.findItemList(
                             this.searchItem, this.isJingi,
                             this.searchNedan, this.searchNedanType === 'kaine' ? 'urine' : 'kaine',
                             this.searchInList
                         );
-                        if (itemList.length > 0) {
-                            this.shouldDisplaySearchHint = true;
+                        if (itemList.length > 0 || otherItemList.length > 0) {
+                            itemList = [itemList, otherItemList];
                         }
                     }
                 }

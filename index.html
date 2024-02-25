@@ -102,20 +102,47 @@
           </template>
         </div>
         <template v-else>
-          <div class="message" v-show="shouldDisplaySearchBukiHint">
-            もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
-            <hr>
-          </div>
-          <table>
-            <tr>
-              <th>呪い</th><th>修正値</th>
-            </tr>
-            <tr v-for="buki in resultBukiList"
-                :class="{'exists-noroi': buki.isNoroi}">
-              <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
-            </tr>
-          </table>
+          <template v-if="shouldKubetuKaineAndUrine">
+            <div class="message" v-show="shouldDisplaySearchBukiHint">
+              もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
+              <hr>
+            </div>
+            <table>
+              <tr>
+                <th>呪い</th><th>修正値</th>
+              </tr>
+              <tr v-for="buki in resultBukiList"
+                  :class="{'exists-noroi': buki.isNoroi}">
+                <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+              </tr>
+            </table>
+          </template>
+          <template v-else>
+            <!-- todo -->
+            <div class="item-list-title">{{nedanTypeName[searchBukiNedanType]}}{{searchNedan}}の場合</div>
+            <table>
+              <tr>
+                <th>呪い</th><th>修正値</th>
+              </tr>
+              <tr v-for="buki in resultBukiList1"
+                  :class="{'exists-noroi': buki.isNoroi}">
+                <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+              </tr>
+            </table>
+            <!-- todo -->
+            <div class="item-list-title">{{nedanTypeName[searchBukiNedanType === 'kaine' ? 'urine' : 'kaine']}}{{searchNedan}}の場合</div>
+            <table>
+              <tr>
+                <th>呪い</th><th>修正値</th>
+              </tr>
+              <tr v-for="buki in resultBukiList2"
+                  :class="{'exists-noroi': buki.isNoroi}">
+                <td class="center">{{buki.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{buki.syuseiti}}</td>
+              </tr>
+            </table>
+          </template>
         </template>
+
       </template>
       <!-- 武器 かつ 一覧 -->
       <template v-else-if="searchItemType === 'buki'">
