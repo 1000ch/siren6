@@ -8,6 +8,7 @@ import { tueRepository } from './item/tue_repository';
 import { makimonoRepository } from './item/makimono_repository';
 import { tuboRepository } from './item/tubo_repository';
 import { udewaRepository } from './item/udewa_repository';
+import Cookies from 'js-cookie';
 
 const vm = {
     components: {
@@ -53,6 +54,11 @@ const vm = {
         }
     },
     created() {
+        const strUseBothKaineAndUrine = Cookies.get('useBothKaineAndUrine');
+        if (strUseBothKaineAndUrine !== undefined) {
+            this.useBothKaineAndUrine = strUseBothKaineAndUrine === 'true';
+        }
+
         this.findItemList();
     },
     methods: {
@@ -113,6 +119,7 @@ const vm = {
             this.isFirstTime = true;
         },
         onChangeUseBothKaineAndUrineCheckBox() {
+            Cookies.set('useBothKaineAndUrine', String(this.useBothKaineAndUrine), {expires: 365});
             if (this.searchItemType === 'buki') {
                 emitter.emit('findBukiList');
             }
