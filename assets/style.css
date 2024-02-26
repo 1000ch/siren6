@@ -453,6 +453,10 @@ tr {
   background-color: #ffcccc;
 }
 
+#config {
+  font-size: 0.94rem;
+}
+
 #config input[type="checkbox"] {
   transform: scale(1.4);
 }
