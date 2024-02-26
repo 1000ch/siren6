@@ -100,6 +100,13 @@
           また銀封印されている印も入力する必要があります。
         </div>
         <template v-else-if="useBothKaineAndUrine">
+          <div class="alert-box" v-show="shouldDisplayBukiWarning">
+            <img src="./assets/warning.svg">
+            <div class="alert-text">
+              店売り・床落ちではありえないデータです。
+              神器かどうか、印（銀封印含む）があっているか確認してください。
+            </div>
+          </div>
           <template v-for="result in resultMultiBukiList">
             <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
             <div v-if="result.itemList.length === 0">
@@ -120,6 +127,13 @@
           <div class="message" v-show="shouldDisplaySearchBukiHint">
             もしかして… 「{{searchBukiNedanType === 'kaine' ? '売値' : '買値'}}」？
             <hr>
+          </div>
+          <div class="alert-box" v-show="shouldDisplayBukiWarning">
+            <img src="./assets/warning.svg">
+            <div class="alert-text">
+              店売り・床落ちではありえないデータです。
+              神器かどうか、印（銀封印含む）があっているか確認してください。
+            </div>
           </div>
           <table>
             <tr>
@@ -163,6 +177,13 @@
           また銀封印されている印も入力する必要があります。
         </div>
         <template v-else-if="useBothKaineAndUrine">
+          <div class="alert-box" v-show="shouldDisplayTateWarning">
+            <img src="./assets/warning.svg">
+            <div class="alert-text">
+              店売り・床落ちではありえないデータです。
+              神器かどうか、印（銀封印含む）があっているか確認してください。
+            </div>
+          </div>
           <template v-for="result in resultMultiTateList">
             <div class="item-list-title">{{nedanTypeName[result.nedanType]}}の場合</div>
             <div v-if="result.itemList.length === 0">
@@ -183,6 +204,13 @@
           <div class="message" v-show="shouldDisplaySearchTateHint">
             もしかして… 「{{searchTateNedanType === 'kaine' ? '売値' : '買値'}}」？
             <hr>
+          </div>
+          <div class="alert-box" v-show="shouldDisplayTateWarning">
+            <img src="./assets/warning.svg">
+            <div class="alert-text">
+              店売り・床落ちではありえないデータです。
+              神器かどうか、印（銀封印含む）があっているか確認してください。
+            </div>
           </div>
           <table>
             <tr>

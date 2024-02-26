@@ -51,6 +51,8 @@ const vm = {
             shouldDisplaySearchHint: false,
             shouldDisplaySearchBukiHint: false,
             shouldDisplaySearchTateHint: false,
+            shouldDisplayBukiWarning: false,
+            shouldDisplayTateWarning: false,
         }
     },
     created() {
@@ -135,18 +137,28 @@ const vm = {
         },
         // 武器の検索結果
         onFoundBukiList(result) {
+            this.shouldDisplayBukiWarning = false;
             this.isBukiFirstTime = result.isFirstTime;
             if (this.isBukiFirstTime) {
                 this.resultBukiList = [];
                 this.resultMultiBukiList = [];
             }
-            else if (this.useBothKaineAndUrine) {
-                this.resultBukiList = [];
-                this.resultMultiBukiList = result.itemList;
-            }
             else {
-                this.resultBukiList = result.itemList;
-                this.resultMultiBukiList = [];
+                let targetItemList = [];
+                if (this.useBothKaineAndUrine) {
+                    this.resultBukiList = [];
+                    this.resultMultiBukiList = result.itemList;
+                    targetItemList = this.resultMultiBukiList[0].itemList;
+                    if (targetItemList.length === 0) {
+                        targetItemList = this.resultMultiBukiList[1].itemList;
+                    }
+                }
+                else {
+                    this.resultBukiList = result.itemList;
+                    this.resultMultiBukiList = [];
+                    targetItemList = this.resultBukiList;
+                }
+                this.shouldDisplayBukiWarning = targetItemList.every(item => !this.isVaildDefaultYukaOtiBukiTate(item));
             }
             this.shouldDisplaySearchBukiHint = result.shouldDisplaySearchHint;
             this.searchBukiNedanType = result.searchNedanType;
@@ -158,18 +170,28 @@ const vm = {
         },
         // 盾の検索結果
         onFoundTateList(result) {
+            this.shouldDisplayTateWarning = false;
             this.isTateFirstTime = result.isFirstTime;
             if (this.isTateFirstTime) {
                 this.resultTateList = [];
                 this.resultMultiTateList = [];
             }
-            else if (this.useBothKaineAndUrine) {
-                this.resultTateList = [];
-                this.resultMultiTateList = result.itemList;
-            }
             else {
-                this.resultTateList = result.itemList;
-                this.resultMultiTateList = [];
+                let targetItemList = [];
+                if (this.useBothKaineAndUrine) {
+                    this.resultTateList = [];
+                    this.resultMultiTateList = result.itemList;
+                    targetItemList = this.resultMultiTateList[0].itemList;
+                    if (targetItemList.length === 0) {
+                        targetItemList = this.resultMultiTateList[1].itemList;
+                    }
+                }
+                else {
+                    this.resultTateList = result.itemList;
+                    this.resultMultiTateList = [];
+                    targetItemList = this.resultTateList;
+                }
+                this.shouldDisplayTateWarning = targetItemList.every(item => !this.isVaildDefaultYukaOtiBukiTate(item));
             }
             this.shouldDisplaySearchTateHint = result.shouldDisplaySearchHint;
             this.searchTateNedanType = result.searchNedanType;
@@ -203,6 +225,14 @@ const vm = {
                 return this.searchNedanType !== nedanType;
             }
             return this.searchNedanType === nedanType;
+        },
+        isVaildDefaultYukaOtiBukiTate(item) {
+            if (item.isNoroi) {
+                return item.syuseiti === -1;
+            }
+            else {
+                return item.syuseiti >= 0 && item.syuseiti <= 3;
+            }
         },
         findItemList() {
             if (
