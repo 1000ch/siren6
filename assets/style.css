@@ -372,22 +372,12 @@ h2, h3 {
 }
 
 .alert-box {
-  display: flex;
   max-width: 500px;
-  align-items: center;
-  padding: 4px 8px;
-  border-radius: 2px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.94rem;
   color: #000;
   background-color: #f1bd13;
-}
-.alert-box img {
-  width: 30px;
-  height: 30px;
-}
-.alert-text {
-  margin: 8px 0;
-  margin-left: 8px;
-  font-size: 0.94rem;
 }
 
 .item-list-title {
