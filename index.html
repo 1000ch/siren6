@@ -142,7 +142,8 @@
       <!-- 武器 かつ 一覧 -->
       <template v-else-if="searchItemType === 'buki'">
         <div class="message">
-          神器は値段が2倍になります。
+          神器は値段が2倍になります。<br>
+          修正値1増加で買値+100、売値+40
         </div>
         <table v-show="resultBukiList.length > 0">
           <tr>
@@ -212,7 +213,8 @@
       <!-- 盾 かつ 一覧 -->
       <template v-else-if="searchItemType === 'tate'">
         <div class="message">
-          神器は値段が2倍になります。
+          神器は値段が2倍になります。<br>
+          修正値1増加で買値+100、売値+40
         </div>
         <table v-show="resultTateList.length > 0">
           <tr>
