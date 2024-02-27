@@ -96,8 +96,7 @@
         </div>
         <div class="message" v-else-if="resultBukiList.length === 0 && resultMultiBukiList.every(e => e.itemList.length === 0)">
           しかし、なにも起きなかった。<br>
-          神器の有無があっているか、ご確認ください。
-          また銀封印されている印も入力する必要があります。
+          神器かどうか、印（銀封印含む）があっているか確認してください。
         </div>
         <template v-else-if="useBothKaineAndUrine">
           <div class="alert-box" v-show="shouldDisplayBukiWarning">
@@ -167,8 +166,7 @@
         </div>
         <div class="message" v-else-if="resultTateList.length === 0 && resultMultiTateList.every(e => e.itemList.length === 0)">
           しかし、なにも起きなかった。<br>
-          神器の有無があっているか、ご確認ください。
-          また銀封印されている印も入力する必要があります。
+          神器かどうか、印（銀封印含む）があっているか確認してください。
         </div>
         <template v-else-if="useBothKaineAndUrine">
           <div class="alert-box" v-show="shouldDisplayTateWarning">
