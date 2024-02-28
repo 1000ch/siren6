@@ -83,6 +83,12 @@ const vm = {
             this.searchNedanType = type;
             this.findItemList();
         },
+        onClickHeaderNedanType(type) {
+            if (this.useBothKaineAndUrine) {
+                this.searchNedanType = type;
+                this.findItemList();
+            }
+        },
         onClickItemStatus(status) {
             if (this.searchItemStatusList.includes(status)) {
                 if (this.searchItemStatusList.length > 1) {

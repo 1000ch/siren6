@@ -334,8 +334,20 @@
           <table v-else>
             <tr>
               <th>名前</th>
-              <th :class="{'search-nedan-type': isSearchedNedanType('kaine')}">買値</th>
-              <th :class="{'search-nedan-type': isSearchedNedanType('urine')}">売値</th>
+              <th :class="{
+                    'search-nedan-type': isSearchedNedanType('kaine'),
+                    'clickable': searchNedanType !== 'all' && useBothKaineAndUrine
+                  }"
+                  @click="onClickHeaderNedanType('kaine')">
+                買値
+              </th>
+              <th :class="{
+                    'search-nedan-type': isSearchedNedanType('urine'),
+                    'clickable': searchNedanType !== 'all' && useBothKaineAndUrine
+                  }"
+                  @click="onClickHeaderNedanType('urine')">
+                売値
+              </th>
             </tr>
             <tr v-for="item in resultItemList"
                 :class="{

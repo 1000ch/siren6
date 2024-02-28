@@ -407,6 +407,10 @@ th, td {
   padding: 12px;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 th.search-nedan-type {
   background-color: #008000;
 }
