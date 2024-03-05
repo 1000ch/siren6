@@ -84,7 +84,7 @@ const vm = {
             this.findItemList();
         },
         onClickHeaderNedanType(type) {
-            if (this.useBothKaineAndUrine) {
+            if (this.useBothKaineAndUrine && this.searchNedanType !== 'all') {
                 this.searchNedanType = type;
                 this.findItemList();
             }
