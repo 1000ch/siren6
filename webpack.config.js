@@ -3,10 +3,13 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index/main.js',
+  entry: {
+    index: './src/index/main.js',
+    byyn: './src/byyn/main.js'
+  },
   output: {
-    path: path.resolve(__dirname, 'dist/index'),
-    filename: 'main.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]/main.js'
   },
   devServer: {
     static: {
