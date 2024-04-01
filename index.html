@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="./assets/style.css">
   <link rel="stylesheet" href="./assets/mobile.css">
 </head>
+<!--
+  「body onclick=""」の理由
+  iPhoneのGoogleアプリのブラウザだとinputのフォーカスが背景を押しても外れない仕様のため、それに対応するためのハック
+-->
 <body onclick="">
   <div id="app" v-cloak>
     <h1>シレン6 簡単値段識別ツール</h1>
