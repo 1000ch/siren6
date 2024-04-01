@@ -3,9 +3,9 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './src/main.js',
+  entry: './src/index/main.js',
   output: {
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, 'dist/index'),
     filename: 'main.js'
   },
   devServer: {
