@@ -404,7 +404,7 @@ th, td {
   max-width: 200px;
   border: 1px solid #ccc;
   border-bottom-width: 0;
-  padding: 12px;
+  padding: 12px 8px;
 }
 
 .clickable {
