@@ -14,7 +14,7 @@ module.exports = {
     tuePlus: './test/tuePlus.js',
   },
   output: {
-    path: path.resolve(__dirname, 'dist', 'test'),
+    path: path.resolve(__dirname, 'dist/test'),
     filename: '[name].js'
   },
   module: {
@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   performance: {
-    maxEntrypointSize: 500_000,
-    maxAssetSize: 500_000,
+    maxEntrypointSize: 600_000,
+    maxAssetSize: 600_000,
   },
 };
