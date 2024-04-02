@@ -54,6 +54,7 @@ h2, h3 {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   user-select: none;
+  -webkit-user-select: none;
 
   &:first-of-type {
     border-radius: 2px 0 0 2px;
@@ -316,6 +317,7 @@ h2, h3 {
   font-size: 0.8rem;
   font-weight: bold;
   user-select: none;
+  -webkit-user-select: none;
 }
 .in-tag-close {
   height: 27px;

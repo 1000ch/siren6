@@ -52,13 +52,14 @@
       </div>
       <div class="item">
         <input type="checkbox" id="chkbox-udewa" v-model="useUdewa">
-        <label for="chkbox-udewa">ボヨヨン腕輪あり</label>
+        <label for="chkbox-udewa">ボヨヨン腕輪</label>
       </div>
     </div>
     
     <table ref="table">
       <tr v-for="(roomRow, rowIndex) in room">
-        <td v-for="(cell, colIndex) in roomRow"
+        <td v-for="(type, colIndex) in roomRow"
+            :class="type"
             :data-row="rowIndex"
             :data-col="colIndex"
             @mousedown="onMouseDownCell"

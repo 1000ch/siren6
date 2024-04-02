@@ -1,16 +1,19 @@
 import { createApp } from 'vue';
 
+const NONE = 'none';
+const BYYN = 'byyn';
+
 // const isMobile = (() => {
 //     const mobileRegex = /iphone;|(android|nokia|blackberry|bb10;).+mobile|android.+fennec|opera.+mobi|windows phone|symbianos/i;
 //     const isMobileByUa = mobileRegex.test(navigator.userAgent);;
 //     const isMobileByClientHint = navigator.userAgentData && navigator.userAgentData.mobile;
 //     return isMobileByUa || isMobileByClientHint;
 // })();
-const isMobile = true;
+const isMobile = true; // todo
 
 let isFisrt = true;
 let isMouseDown = false;
-let mode = 'none'; // 何で塗りつぶすかの判定に使う
+let mode = NONE; // 何で塗りつぶすかの判定に使う
 
 let timerId = 0;
 
@@ -80,91 +83,78 @@ const vm = {
         },
 
         onMouseDownCell(event) {
-            const t = event.target;
-            if (t.classList.contains('byyn')) {
-                mode = 'none';
-                t.classList.remove('byyn');
+            const {row, col} = this.elementToRowCol(event.target);
+            
+            if (this.room[row][col] === BYYN) {
+                mode = NONE;
             }
             else {
-                mode = 'byyn';
-                t.classList.add('byyn');
+                mode = BYYN;
             }
-            this.updateRoom(t);
-
+            this.room[row][col] = mode;
+            
             isFisrt = false;
         },
         onMouseEnterCell(event) {
-            const t = event.target;
+            const {row, col} = this.elementToRowCol(event.target);
 
             if (isFisrt) {
-                if (t.classList.contains('byyn')) {
-                    mode = 'none';
+                if (this.room[row][col] === BYYN) {
+                    mode = NONE;
                 }
                 else {
-                    mode = 'byyn';
+                    mode = BYYN;
                 }
                 isFisrt = false;
             }
 
             if (isMouseDown) {
-                if (mode === 'none') {
-                    t.classList.remove('byyn');
-                }
-                else if (mode === 'byyn') {
-                    t.classList.add('byyn');
-                }
-                this.updateRoom(t);
+                this.room[row][col] = mode;
             }
         },
 
         onTouchMoveCell(event) {
             const touch = event.touches[0];
-            const t = document.elementFromPoint(touch.clientX, touch.clientY);
+            const target = document.elementFromPoint(touch.clientX, touch.clientY);
 
-            if (t.tagName !== 'TD') {
+            if (target.tagName !== 'TD') {
                 return;
             }
 
+            const {row, col} = this.elementToRowCol(target);
+
             if (isFisrt) {
-                if (t.classList.contains('byyn')) {
-                    mode = 'none';
+                if (this.room[row][col] === BYYN) {
+                    mode = NONE;
                 }
                 else {
-                    mode = 'byyn';
+                    mode = BYYN;
                 }
                 isFisrt = false;
             }
-
-            if (mode === 'none') {
-                t.classList.remove('byyn');
-            }
-            else if (mode === 'byyn') {
-                t.classList.add('byyn');
-            }
-            this.updateRoom(t);
+            this.room[row][col] = mode;
         },
 
         createRoom() {
             this.$refs.table.style.visibility = 'hidden';
+            // const tdList = this.$refs.table.getElementsByTagName("td");
+            // const prevRoomSize = Math.sqrt(tdList.length);
+
+            // const rowColToIndex = (row, col) => row * prevRoomSize + col;
 
             this.room = [];
             const row = [];
             for (let i = 0; i < this.roomSize; i++) {
-                row.push('none');
+                row.push(NONE);
             }
             for (let i = 0; i < this.roomSize; i++) {
-                this.room.push(row);
+                this.room.push([...row]);
             }
         },
-        updateRoom(element) {
+        elementToRowCol(element) {
             const row = Number(element.dataset.row);
             const col = Number(element.dataset.col);
-            if (this.room[row][col] === 'none') {
-                this.room[row][col] = 'byyn';
-            }
-            else {
-                this.room[row][col] = 'none';
-            }
+            return {row, col};
         },
         cellToSquare() {
             timerId = setTimeout(() => {

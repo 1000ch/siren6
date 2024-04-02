@@ -9,6 +9,7 @@
   background-color: #eecfaa;
 
   user-select: none; /* ドラッグされるとmouseupが発火しない */
+  -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
 }
