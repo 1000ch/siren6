@@ -58,7 +58,9 @@
     
     <table>
       <tr v-for="_ in roomSize">
-        <td v-for="_ in roomSize"></td>
+        <td v-for="_ in roomSize"
+            @mousedown="onMouseDownCell"
+            @mouseenter="onMouseEnterCell"></td>
       </tr>
     </table>
   </div>

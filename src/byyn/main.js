@@ -1,5 +1,14 @@
 import { createApp } from 'vue';
 
+let isMouseDown = false;
+
+window.addEventListener('mousedown', () => {
+    isMouseDown = true;
+});
+window.addEventListener('mouseup', () => {
+    isMouseDown = false;
+});
+
 const vm = {
     data() {
         return {
@@ -25,6 +34,16 @@ const vm = {
         },
         onKeyDownEnterInputSize(event) {
             event.target.blur();
+        },
+        onMouseDownCell(event) {
+            console.log('down');
+            event.target.classList.toggle('byyn');
+        },
+        onMouseEnterCell(event) {
+            if (isMouseDown) {
+                console.log('enter');
+                event.target.classList.toggle('byyn');
+            }
         },
     }
 };

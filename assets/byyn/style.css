@@ -76,6 +76,8 @@ table {
   border-spacing: 0;
   border: 2px solid #ccc;
   border-radius: 2px;
+
+  user-select: none; /* ドラッグされるとmouseupが発火しない */
 }
 
 td {
@@ -84,5 +86,9 @@ td {
   box-sizing:border-box;
   border: 2px solid #ccc;
   background-color: white;
+}
+
+.byyn {
+  background-color: #C8A2C8;
 }
 
