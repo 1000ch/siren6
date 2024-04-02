@@ -120,6 +120,10 @@ const vm = {
             const touch = event.touches[0];
             const t = document.elementFromPoint(touch.clientX, touch.clientY);
 
+            if (t.tagName !== 'TD') {
+                return;
+            }
+
             if (isFisrt) {
                 if (t.classList.contains('byyn')) {
                     mode = 'none';
