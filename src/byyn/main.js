@@ -60,6 +60,7 @@ const vm = {
         onKeyDownEnterInputSize(event) {
             event.target.blur();
         },
+
         onMouseDownCell(event) {
             const t = event.target;
             if (t.classList.contains('byyn')) {
@@ -96,6 +97,49 @@ const vm = {
                 this.updateRoom(t);
             }
         },
+
+        // onTouchStartCell(event) {
+        //     const t = event.target;
+        //     if (t.classList.contains('byyn')) {
+        //         mode = 'none';
+        //         t.classList.remove('byyn');
+        //     }
+        //     else {
+        //         mode = 'byyn';
+        //         t.classList.add('byyn');
+        //     }
+        //     this.updateRoom(t);
+
+        //     isFisrt = false;
+        // },
+        onTouchMoveCell(event) {
+            // const t = event.target;
+
+            // window.hoge = event;
+
+            const touch = event.touches[0];
+            const t = document.elementFromPoint(touch.clientX, touch.clientY);
+
+            // if (isFisrt) {
+            //     if (t.classList.contains('byyn')) {
+            //         mode = 'none';
+            //     }
+            //     else {
+            //         mode = 'byyn';
+            //     }
+            // }
+
+            if (isMouseDown) {
+                if (mode === 'none') {
+                    t.classList.remove('byyn');
+                }
+                else if (mode === 'byyn') {
+                    t.classList.add('byyn');
+                }
+                this.updateRoom(t);
+            }
+        },
+
         createRoom() {
             this.$refs.table.style.visibility = 'hidden';
 
