@@ -106,6 +106,9 @@ const vm = {
             else {
                 this.room[row][col] = 'none';
             }
+        },
+        cellToSeihokei() {
+            
         }
     }
 };
