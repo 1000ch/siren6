@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { bukiRepository } from '../src/item/buki_repository';
+import { bukiRepository } from '../src/logic/item/buki_repository';
 
 describe('武器', function () {
     it('検索 一覧', function () {

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { makimonoRepository } from '../src/item/makimono_repository';
+import { makimonoRepository } from '../src/logic/item/makimono_repository';
 
 describe('巻物', function () {
     it('検索 通常 買値', function () {

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { tateRepository } from '../src/item/tate_repository';
+import { tateRepository } from '../src/logic/item/tate_repository';
 
 describe('盾', function () {
     it('検索 一覧', function () {

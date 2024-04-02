@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { udewaRepository } from '../src/item/udewa_repository';
+import { udewaRepository } from '../src/logic/item/udewa_repository';
 
 describe('腕輪', function () {
     it('検索 通常 買値', function () {

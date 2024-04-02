@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { tueRepository } from '../src/item/tue_repository';
+import { tueRepository } from '../src/logic/item/tue_repository';
 
 describe('杖+', function () {
     it('検索 通常 買値', function () {

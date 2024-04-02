@@ -1,5 +1,5 @@
 import emitter from 'tiny-emitter/instance';
-import { tueRepository } from '../item/tue_repository';
+import { tueRepository } from '../logic/item/tue_repository';
 
 export const TuePlusSearch = {
     props: {

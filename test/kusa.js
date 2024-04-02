@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { kusaRepository } from '../src/item/kusa_repository.js';
+import { kusaRepository } from '../src/logic/item/kusa_repository.js';
 
 describe('草', function () {
     it('検索 通常 買値', function () {

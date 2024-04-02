@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { tueRepository } from '../src/item/tue_repository';
+import { tueRepository } from '../src/logic/item/tue_repository';
 
 describe('杖', function () {
     it('値段増加幅が正しいか(通常時のみ)', function () {

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { tuboRepository } from '../src/item/tubo_repository';
+import { tuboRepository } from '../src/logic/item/tubo_repository';
 
 describe('壺', function () {
     it('値段増加幅が正しいか(通常時のみ)', function () {

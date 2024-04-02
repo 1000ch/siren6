@@ -3,11 +3,11 @@ import emitter from 'tiny-emitter/instance';
 import { BukiSearch } from '../components/buki_search';
 import { TateSearch } from '../components/tate_search';
 import { TuePlusSearch } from '../components/tue_plus_search';
-import { kusaRepository } from '../item/kusa_repository';
-import { tueRepository } from '../item/tue_repository';
-import { makimonoRepository } from '../item/makimono_repository';
-import { tuboRepository } from '../item/tubo_repository';
-import { udewaRepository } from '../item/udewa_repository';
+import { kusaRepository } from '../logic/item/kusa_repository';
+import { tueRepository } from '../logic/item/tue_repository';
+import { makimonoRepository } from '../logic/item/makimono_repository';
+import { tuboRepository } from '../logic/item/tubo_repository';
+import { udewaRepository } from '../logic/item/udewa_repository';
 import Cookies from 'js-cookie';
 
 const vm = {
