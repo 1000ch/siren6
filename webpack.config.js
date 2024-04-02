@@ -8,7 +8,7 @@ module.exports = {
     byyn: './src/byyn/main.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: '[name]/main.js'
   },
   devServer: {
