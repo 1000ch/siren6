@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 
 let isMouseDown = false;
+let mode = 'none'; // 何で塗りつぶすかの判定に使う
 
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
@@ -42,13 +43,27 @@ const vm = {
             event.target.blur();
         },
         onMouseDownCell(event) {
-            event.target.classList.toggle('byyn');
-            this.updateRoom(event.target);
+            const t = event.target;
+            if (t.classList.contains('byyn')) {
+                mode = 'none';
+                t.classList.remove('byyn');
+            }
+            else {
+                mode = 'byyn';
+                t.classList.add('byyn');
+            }
+            this.updateRoom(t);
         },
         onMouseEnterCell(event) {
+            const t = event.target;
             if (isMouseDown) {
-                event.target.classList.toggle('byyn');
-                this.updateRoom(event.target);
+                if (mode === 'none') {
+                    t.classList.remove('byyn');
+                }
+                else if (mode === 'byyn') {
+                    t.classList.add('byyn');
+                }
+                this.updateRoom(t);
             }
         },
         createRoom() {
