@@ -42,13 +42,13 @@ const vm = {
             event.target.blur();
         },
         onMouseDownCell(event) {
-            console.log('down');
             event.target.classList.toggle('byyn');
+            this.updateRoom(event.target);
         },
         onMouseEnterCell(event) {
             if (isMouseDown) {
-                console.log('enter');
                 event.target.classList.toggle('byyn');
+                this.updateRoom(event.target);
             }
         },
         createRoom() {
@@ -59,6 +59,16 @@ const vm = {
             }
             for (let i = 0; i < this.roomSize; i++) {
                 this.room.push(row);
+            }
+        },
+        updateRoom(element) {
+            const row = Number(element.dataset.row);
+            const col = Number(element.dataset.col);
+            if (this.room[row][col] === 'none') {
+                this.room[row][col] = 'byyn';
+            }
+            else {
+                this.room[row][col] = 'none';
             }
         }
     }

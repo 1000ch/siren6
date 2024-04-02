@@ -57,8 +57,10 @@
     </div>
     
     <table>
-      <tr v-for="row in room">
-        <td v-for="cell in row"
+      <tr v-for="(roomRow, rowIndex) in room">
+        <td v-for="(cell, colIndex) in roomRow"
+            :data-row="rowIndex"
+            :data-col="colIndex"
             @mousedown="onMouseDownCell"
             @mouseenter="onMouseEnterCell"></td>
       </tr>
