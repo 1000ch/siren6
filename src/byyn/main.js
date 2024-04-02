@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 
+let isFisrt = true;
 let isMouseDown = false;
 let mode = 'none'; // 何で塗りつぶすかの判定に使う
 
@@ -8,6 +9,7 @@ window.addEventListener('mousedown', () => {
 });
 window.addEventListener('mouseup', () => {
     isMouseDown = false;
+    isFisrt = true;
 });
 
 const vm = {
@@ -53,9 +55,21 @@ const vm = {
                 t.classList.add('byyn');
             }
             this.updateRoom(t);
+
+            isFisrt = false;
         },
         onMouseEnterCell(event) {
             const t = event.target;
+
+            if (isFisrt) {
+                if (t.classList.contains('byyn')) {
+                    mode = 'none';
+                }
+                else {
+                    mode = 'byyn';
+                }
+            }
+
             if (isMouseDown) {
                 if (mode === 'none') {
                     t.classList.remove('byyn');
