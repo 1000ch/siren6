@@ -17,6 +17,10 @@ input {
   font-size: 1.4rem;
 }
 
+input[type="checkbox"] {
+  transform: scale(1.4);
+}
+
 /* select {
   font-size: 1rem;
 } */
@@ -34,6 +38,17 @@ h1 {
 /* h2, h3 {
   margin: 16px 0;
 } */
+
+.item-container {
+  display: flex;
+  column-gap: 64px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
 
 #input-size {
   padding-left: 4px;
@@ -54,4 +69,6 @@ h1 {
     border-color: #007bff;
   }
 }
+
+
 

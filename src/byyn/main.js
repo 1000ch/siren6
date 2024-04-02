@@ -6,6 +6,7 @@ const vm = {
             roomSize: 10,
             roomSizeMin: 10,
             roomSizeMax: 18,
+            useUdewa: false,
         }
     },
     methods: {

@@ -38,14 +38,25 @@
   <div id="app" v-cloak>
     <h1>シレン6 簡単ボヨヨンチェッカー</h1>
 
-    <input type="number"
-           id="input-size"
-           :value="roomSize"
-           :min="roomSizeMin"
-           :max="roomSizeMax"
-           @focus="onFocusInputSize"
-           @blur="onBlurInputSize"
-           @keydown.enter="onKeyDownEnterInputSize">
+    <div class="item-container">
+      <div class="item">
+        <label for="input-size">幅</label>
+        <input type="number"
+               id="input-size"
+               :value="roomSize"
+               :min="roomSizeMin"
+               :max="roomSizeMax"
+               @focus="onFocusInputSize"
+               @blur="onBlurInputSize"
+               @keydown.enter="onKeyDownEnterInputSize">
+      </div>
+      <div class="item">
+        <input type="checkbox" id="chkbox-udewa" v-model="useUdewa">
+        <label for="chkbox-udewa">ボヨヨン腕輪あり</label>
+      </div>
+    </div>
+    
+    
   </div>
 
   <script src="./dist/byyn/main.js"></script>
