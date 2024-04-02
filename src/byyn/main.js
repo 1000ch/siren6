@@ -16,7 +16,11 @@ const vm = {
             roomSizeMin: 10,
             roomSizeMax: 18,
             useUdewa: false,
+            room: [],
         }
+    },
+    created() {
+        this.createRoom();
     },
     methods: {
         onFocusInputSize(event) {
@@ -31,6 +35,8 @@ const vm = {
                 this.roomSize = this.roomSizeMax;
             }
             event.target.value = this.roomSize;
+
+            this.createRoom();
         },
         onKeyDownEnterInputSize(event) {
             event.target.blur();
@@ -45,6 +51,16 @@ const vm = {
                 event.target.classList.toggle('byyn');
             }
         },
+        createRoom() {
+            this.room = [];
+            const row = [];
+            for (let i = 0; i < this.roomSize; i++) {
+                row.push('none');
+            }
+            for (let i = 0; i < this.roomSize; i++) {
+                this.room.push(row);
+            }
+        }
     }
 };
 
