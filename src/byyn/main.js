@@ -6,6 +6,7 @@ import { createApp } from 'vue';
 //     const isMobileByClientHint = navigator.userAgentData && navigator.userAgentData.mobile;
 //     return isMobileByUa || isMobileByClientHint;
 // })();
+const isMobile = true;
 
 let isFisrt = true;
 let isMouseDown = false;
@@ -40,19 +41,19 @@ const vm = {
     },
     created() {
         window.addEventListener('resize', () => {
-            // if (isMobile) {
-            //     const elApp = document.querySelector('#app');
-            //     elApp.style.width = window.innerWidth + 'px';
-            // }
+            if (isMobile) {
+                const elApp = document.querySelector('#app');
+                elApp.style.width = window.clientWidth + 'px';
+            }
             this.cellToSquare();
         });
     },
     mounted() {
-        // if (isMobile) {
-        //     const elApp = document.querySelector('#app');
-        //     elApp.style.position = 'fixed';
-        //     elApp.style.width = window.innerWidth + 'px';
-        // }
+        if (isMobile) {
+            const elApp = document.querySelector('#app');
+            elApp.style.position = 'fixed';
+            elApp.style.width = window.clientWidth + 'px';
+        }
 
         this.createRoom();
         this.cellToSquare();
