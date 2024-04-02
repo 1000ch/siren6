@@ -26,12 +26,6 @@ select {
   max-width: 600px;
 }
 
-@media screen and (max-width: 770px) {
-  #app {
-    margin-left: 24px;
-  }
-}
-
 h1 {
   margin: 16px 0;
   color: #774c1b;
