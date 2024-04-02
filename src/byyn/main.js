@@ -1,5 +1,12 @@
 import { createApp } from 'vue';
 
+// const isMobile = (() => {
+//     const mobileRegex = /iphone;|(android|nokia|blackberry|bb10;).+mobile|android.+fennec|opera.+mobi|windows phone|symbianos/i;
+//     const isMobileByUa = mobileRegex.test(navigator.userAgent);;
+//     const isMobileByClientHint = navigator.userAgentData && navigator.userAgentData.mobile;
+//     return isMobileByUa || isMobileByClientHint;
+// })();
+
 let isFisrt = true;
 let isMouseDown = false;
 let mode = 'none'; // 何で塗りつぶすかの判定に使う
@@ -17,6 +24,10 @@ window.addEventListener('touchend', () => {
     isFisrt = true;
 });
 
+// window.addEventListener('touchmove', event => {
+//     event.preventDefault();
+// });
+
 const vm = {
     data() {
         return {
@@ -29,10 +40,20 @@ const vm = {
     },
     created() {
         window.addEventListener('resize', () => {
+            // if (isMobile) {
+            //     const elApp = document.querySelector('#app');
+            //     elApp.style.width = window.innerWidth + 'px';
+            // }
             this.cellToSquare();
         });
     },
     mounted() {
+        // if (isMobile) {
+        //     const elApp = document.querySelector('#app');
+        //     elApp.style.position = 'fixed';
+        //     elApp.style.width = window.innerWidth + 'px';
+        // }
+
         this.createRoom();
         this.cellToSquare();
     },
