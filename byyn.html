@@ -62,7 +62,9 @@
             :data-row="rowIndex"
             :data-col="colIndex"
             @mousedown="onMouseDownCell"
-            @mouseenter="onMouseEnterCell"></td>
+            @mouseenter="onMouseEnterCell"
+            @touchstart="onMouseDownCell"
+            @touchmove="onMouseEnterCell"></td>
       </tr>
     </table>
   </div>

@@ -7,7 +7,14 @@ let mode = 'none'; // 何で塗りつぶすかの判定に使う
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
 });
+window.addEventListener('touchstart', () => {
+    isMouseDown = true;
+});
 window.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    isFisrt = true;
+});
+window.addEventListener('touchend', () => {
     isMouseDown = false;
     isFisrt = true;
 });

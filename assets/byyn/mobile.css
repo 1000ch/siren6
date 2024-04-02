@@ -1,0 +1,40 @@
+
+@media screen and (max-width: 770px) {
+  #app {
+    margin-left: 24px;
+  }
+}
+
+/* @media screen and (max-width: 630px) {
+  h1 {
+    font-size: 32px;
+  }
+} */
+
+@media screen and (max-width: 480px) {
+  :root {
+    font-size: 1.2rem;
+  }
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  #input-size {
+    height: 1.2rem;
+  }
+  
+  #app {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
