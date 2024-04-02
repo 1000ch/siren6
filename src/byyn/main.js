@@ -4,6 +4,8 @@ let isFisrt = true;
 let isMouseDown = false;
 let mode = 'none'; // 何で塗りつぶすかの判定に使う
 
+let timerId = 0;
+
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
 });
@@ -30,7 +32,13 @@ const vm = {
         }
     },
     created() {
+        window.addEventListener('resize', () => {
+            this.cellToSquare();
+        });
+    },
+    mounted() {
         this.createRoom();
+        this.cellToSquare();
     },
     methods: {
         onFocusInputSize(event) {
@@ -47,6 +55,7 @@ const vm = {
             event.target.value = this.roomSize;
 
             this.createRoom();
+            this.cellToSquare();
         },
         onKeyDownEnterInputSize(event) {
             event.target.blur();
@@ -88,6 +97,8 @@ const vm = {
             }
         },
         createRoom() {
+            this.$refs.table.style.visibility = 'hidden';
+
             this.room = [];
             const row = [];
             for (let i = 0; i < this.roomSize; i++) {
@@ -107,8 +118,15 @@ const vm = {
                 this.room[row][col] = 'none';
             }
         },
-        cellToSeihokei() {
-            
+        cellToSquare() {
+            timerId = setTimeout(() => {
+                clearTimeout(timerId);
+                const tdList = document.querySelectorAll('td');
+                for (const td of tdList) {
+                    td.style.height = td.offsetWidth + 'px';
+                }
+                this.$refs.table.style.visibility = 'visible';
+            }, 50);
         }
     }
 };

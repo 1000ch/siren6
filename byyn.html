@@ -56,7 +56,7 @@
       </div>
     </div>
     
-    <table>
+    <table ref="table">
       <tr v-for="(roomRow, rowIndex) in room">
         <td v-for="(cell, colIndex) in roomRow"
             :data-row="rowIndex"
