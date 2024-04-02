@@ -37,6 +37,15 @@
 <body onclick="">
   <div id="app" v-cloak>
     <h1>シレン6 簡単ボヨヨンチェッカー</h1>
+
+    <input type="number"
+           id="input-size"
+           :value="roomSize"
+           :min="roomSizeMin"
+           :max="roomSizeMax"
+           @focus="onFocusInputSize"
+           @blur="onBlurInputSize"
+           @keydown.enter="onKeyDownEnterInputSize">
   </div>
 
   <script src="./dist/byyn/main.js"></script>
