@@ -54,8 +54,12 @@
         <div class="item" style="margin-top: 8px;">
           <label for="fill-type">仮</label>
           <div class="radio-btn-container">
-            <div class="radio-btn fill-type-byyn">ボ</div>
-            <div class="radio-btn fill-type-tuti">土</div>
+            <div class="radio-btn fill-type-byyn"
+                 :class="{selected: mainFillType === BYYN}"
+                 @click="mainFillType = BYYN">ボ</div>
+            <div class="radio-btn fill-type-tuti"
+                 :class="{selected: mainFillType === TUTI}"
+                 @click="mainFillType = TUTI">土</div>
           </div>
         </div>
       </div>

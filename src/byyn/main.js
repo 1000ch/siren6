@@ -2,10 +2,10 @@ import { createApp } from 'vue';
 
 const NONE = 'none';
 const BYYN = 'byyn';
+const TUTI = 'tuti';
 
 let isFisrt = true;
 let isMouseDown = false;
-let fillType = NONE; // 何で塗りつぶすかの判定に使う
 
 let timerId = 0;
 
@@ -23,9 +23,12 @@ window.addEventListener('touchend', () => {
 const vm = {
     data() {
         return {
+            BYYN: BYYN, TUTI: TUTI,
             roomSize: 10,
             roomSizeMin: 10,
             roomSizeMax: 18,
+            fillType: NONE,
+            mainFillType: BYYN,
             useUdewa: false,
             shouldCheckBreakTubo: false,
             room: [],
@@ -64,13 +67,13 @@ const vm = {
         onMouseDownCell(event) {
             const {row, col} = this.elementToRowCol(event.target);
             
-            if (this.room[row][col] === BYYN) {
-                fillType = NONE;
+            if (this.room[row][col] === this.mainFillType) {
+                this.fillType = NONE;
             }
             else {
-                fillType = BYYN;
+                this.fillType = this.mainFillType;
             }
-            this.room[row][col] = fillType;
+            this.room[row][col] = this.fillType;
             
             isFisrt = false;
         },
@@ -78,17 +81,17 @@ const vm = {
             const {row, col} = this.elementToRowCol(event.target);
 
             if (isFisrt) {
-                if (this.room[row][col] === BYYN) {
-                    fillType = NONE;
+                if (this.room[row][col] === this.mainFillType) {
+                    this.fillType = NONE;
                 }
                 else {
-                    fillType = BYYN;
+                    this.fillType = this.mainFillType;
                 }
                 isFisrt = false;
             }
 
             if (isMouseDown) {
-                this.room[row][col] = fillType;
+                this.room[row][col] = this.fillType;
             }
         },
 
@@ -105,15 +108,15 @@ const vm = {
             const {row, col} = this.elementToRowCol(target);
 
             if (isFisrt) {
-                if (this.room[row][col] === BYYN) {
-                    fillType = NONE;
+                if (this.room[row][col] === this.mainFillType) {
+                    this.fillType = NONE;
                 }
                 else {
-                    fillType = BYYN;
+                    this.fillType = this.mainFillType;
                 }
                 isFisrt = false;
             }
-            this.room[row][col] = fillType;
+            this.room[row][col] = this.fillType;
         },
 
         onClickReset() {
@@ -128,12 +131,12 @@ const vm = {
             this.$refs.table.style.visibility = 'hidden';
 
             const newRoom = [];
+            const prevRoomSize = this.room.length;
             for (let row = 0; row < this.roomSize; row++) {
                 newRoom.push([]);
                 for (let col = 0; col < this.roomSize; col++) {
-                    // JSの配列は範囲外を参照されるとundefinedを返すためエラーは発生しない
-                    if (this.room[row] && this.room[row][col] === BYYN) {
-                        newRoom[row].push(BYYN);
+                    if (row < prevRoomSize && col < prevRoomSize) {
+                        newRoom[row].push(this.room[row][col]);
                     }
                     else {
                         newRoom[row].push(NONE);

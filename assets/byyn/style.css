@@ -124,16 +124,22 @@ h1 {
   background-color: #C8A2C8;
   opacity: 0.5;
 
+  &.selected {
+    background-color: #ab2ad6;
+    opacity: 1;
+    color: #fff;
+  }
+
   @media (any-hover: hover) {
     &:hover {
-      background-color: #8E649C;
+      background-color: #ab2ad6;
       color: #fff;
       opacity: 1;
     }
   }
   @media (any-hover: none) {
     &:active {
-      background-color: #8E649C;
+      background-color: #ab2ad6;
       color: #fff;
       opacity: 1;
     }
@@ -141,13 +147,19 @@ h1 {
 }
 
 .byyn {
-  background-color: #8E649C;
+  background-color: #ab2ad6;
 }
 
 .fill-type-tuti {
   border-color: #666;
-  background-color: #B8860B;
+  background-color: #e2bc5b;
   opacity: 0.5;
+
+  &.selected {
+    background-color: #8B4513;
+    opacity: 1;
+    color: #fff;
+  }
 
   @media (any-hover: hover) {
     &:hover {
