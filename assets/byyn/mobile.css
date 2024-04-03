@@ -1,17 +1,23 @@
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 800px) {
   #app {
     margin-left: 24px;
   }
 }
 
-/* @media screen and (max-width: 630px) {
+@media screen and (max-width: 700px) {
   h1 {
     font-size: 32px;
   }
-} */
+}
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 510px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
   :root {
     font-size: 1.2rem;
   }
@@ -32,6 +38,11 @@
   h1 {
     font-size: 1.2rem;
     text-align: center;
+  }
+
+  #config-area {
+    width: fit-content;
+    margin: 0 auto;
   }
 
   table {
