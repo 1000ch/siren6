@@ -27,6 +27,7 @@ const vm = {
             roomSizeMin: 10,
             roomSizeMax: 18,
             useUdewa: false,
+            shouldCheckBreakTubo: false,
             room: [],
         }
     },
