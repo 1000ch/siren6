@@ -153,6 +153,13 @@ const vm = {
             }
             this.room = newRoom;
         },
+        resetRoom() {
+            for (let row = 0; row < this.roomSize; row++) {
+                for (let col = 0; col < this.roomSize; col++) {
+                    this.room[row][col] = NONE;
+                }
+            }
+        },
         elementToRowCol(element) {
             const row = Number(element.dataset.row);
             const col = Number(element.dataset.col);
