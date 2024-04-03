@@ -83,10 +83,11 @@ h1 {
 .radio-btn {
   display: flex;
   min-width: 30px;
+  height: 33.6px;
+  line-height: 33.6px;
   padding: 2px 4px;
   border: 1px solid #00008b;
   border-right-width: 0;
-  align-items: center;
   justify-content: center;
   text-align: center;
   color: #000;
