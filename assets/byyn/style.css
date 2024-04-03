@@ -75,8 +75,60 @@ h1 {
   }
 }
 
+#action-btn-area {
+  display: flex;
+  max-width: 400px;
+  justify-content: space-between;
+}
+
+.action-btn {
+  display: inline-block;
+  height: 36px;
+  padding: 0 8px;
+  line-height: 36px;
+  border-radius: 5px;
+  border: 2px solid green;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  color: green;
+  background-color: white;
+  text-align: center;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+@media (any-hover: hover) {
+  .action-btn:hover {
+    background-color: palegreen;
+  }
+}
+@media (any-hover: none) {
+  .action-btn:active {
+    background-color: palegreen;
+    transform: scale(0.9);
+  }
+}
+
+.action-btn.reset {
+  border: 2px solid #ff5733;
+  color: #ff5733;
+}
+
+@media (any-hover: hover) {
+  .action-btn.reset:hover {
+    background-color: #f7ff7f;
+  }
+}
+@media (any-hover: none) {
+  .action-btn.reset:active {
+    background-color: #f7ff7f;
+    transform: scale(0.9);
+  }
+}
+
 table {
-  margin-top: 16px;
+  margin-top: 8px;
   border-collapse: collapse;
   border-spacing: 0;
 }
