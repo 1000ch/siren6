@@ -5,7 +5,7 @@ const BYYN = 'byyn';
 
 let isFisrt = true;
 let isMouseDown = false;
-let mode = NONE; // 何で塗りつぶすかの判定に使う
+let fillType = NONE; // 何で塗りつぶすかの判定に使う
 
 let timerId = 0;
 
@@ -65,12 +65,12 @@ const vm = {
             const {row, col} = this.elementToRowCol(event.target);
             
             if (this.room[row][col] === BYYN) {
-                mode = NONE;
+                fillType = NONE;
             }
             else {
-                mode = BYYN;
+                fillType = BYYN;
             }
-            this.room[row][col] = mode;
+            this.room[row][col] = fillType;
             
             isFisrt = false;
         },
@@ -79,16 +79,16 @@ const vm = {
 
             if (isFisrt) {
                 if (this.room[row][col] === BYYN) {
-                    mode = NONE;
+                    fillType = NONE;
                 }
                 else {
-                    mode = BYYN;
+                    fillType = BYYN;
                 }
                 isFisrt = false;
             }
 
             if (isMouseDown) {
-                this.room[row][col] = mode;
+                this.room[row][col] = fillType;
             }
         },
 
@@ -106,14 +106,14 @@ const vm = {
 
             if (isFisrt) {
                 if (this.room[row][col] === BYYN) {
-                    mode = NONE;
+                    fillType = NONE;
                 }
                 else {
-                    mode = BYYN;
+                    fillType = BYYN;
                 }
                 isFisrt = false;
             }
-            this.room[row][col] = mode;
+            this.room[row][col] = fillType;
         },
 
         onClickReset() {

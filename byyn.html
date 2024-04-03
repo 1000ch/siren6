@@ -39,16 +39,25 @@
     <h1>シレン6 簡単ボヨヨンチェッカー</h1>
 
     <div id="config-area" class="item-container">
-      <div class="item">
-        <label for="input-size">幅</label>
-        <input type="number"
-               id="input-size"
-               :value="roomSize"
-               :min="roomSizeMin"
-               :max="roomSizeMax"
-               @focus="onFocusInputSize"
-               @blur="onBlurInputSize"
-               @keydown.enter="onKeyDownEnterInputSize">
+      <div>
+        <div class="item">
+          <label for="input-size">幅</label>
+          <input type="number"
+                 id="input-size"
+                 :value="roomSize"
+                 :min="roomSizeMin"
+                 :max="roomSizeMax"
+                 @focus="onFocusInputSize"
+                 @blur="onBlurInputSize"
+                 @keydown.enter="onKeyDownEnterInputSize">
+        </div>
+        <div class="item" style="margin-top: 8px;">
+          <label for="fill-type">仮</label>
+          <div class="radio-btn-container">
+            <div class="radio-btn fill-type-byyn">ボ</div>
+            <div class="radio-btn fill-type-tuti">土</div>
+          </div>
+        </div>
       </div>
       <div>
         <div class="item">

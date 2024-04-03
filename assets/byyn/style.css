@@ -75,6 +75,100 @@ h1 {
   }
 }
 
+.radio-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.radio-btn {
+  display: flex;
+  min-width: 30px;
+  padding: 2px 4px;
+  border: 1px solid #00008b;
+  border-right-width: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  background-color: #add8e6;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:first-of-type {
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #00008b;
+      color: #fff;
+    }
+  }
+  @media (any-hover: none) {
+    &:active {
+      background-color: #00008b;
+      color: #fff;
+    }
+  }
+}
+
+.fill-type-byyn {
+  border-color: #666;
+  background-color: #C8A2C8;
+  opacity: 0.5;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #8E649C;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+  @media (any-hover: none) {
+    &:active {
+      background-color: #8E649C;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+}
+
+.byyn {
+  background-color: #8E649C;
+}
+
+.fill-type-tuti {
+  border-color: #666;
+  background-color: #B8860B;
+  opacity: 0.5;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #8B4513;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+  @media (any-hover: none) {
+    &:active {
+      background-color: #8B4513;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+}
+
+.tuti {
+  background-color: #8B4513;
+}
+
 #action-btn-area {
   display: flex;
   max-width: 400px;
@@ -140,8 +234,3 @@ td {
   border: 2px solid #ccc;
   background-color: white;
 }
-
-.byyn {
-  background-color: #C8A2C8;
-}
-
