@@ -137,19 +137,21 @@ const vm = {
 
         createRoom() {
             this.$refs.table.style.visibility = 'hidden';
-            // const tdList = this.$refs.table.getElementsByTagName("td");
-            // const prevRoomSize = Math.sqrt(tdList.length);
 
-            // const rowColToIndex = (row, col) => row * prevRoomSize + col;
-
-            this.room = [];
-            const row = [];
-            for (let i = 0; i < this.roomSize; i++) {
-                row.push(NONE);
+            const newRoom = [];
+            for (let row = 0; row < this.roomSize; row++) {
+                newRoom.push([]);
+                for (let col = 0; col < this.roomSize; col++) {
+                    // JSの配列は範囲外を参照されるとundefinedを返すためエラーは発生しない
+                    if (this.room[row] && this.room[row][col] === BYYN) {
+                        newRoom[row].push(BYYN);
+                    }
+                    else {
+                        newRoom[row].push(NONE);
+                    }
+                }
             }
-            for (let i = 0; i < this.roomSize; i++) {
-                this.room.push([...row]);
-            }
+            this.room = newRoom;
         },
         elementToRowCol(element) {
             const row = Number(element.dataset.row);
