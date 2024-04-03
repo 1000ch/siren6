@@ -46,7 +46,7 @@ const vm = {
         window.addEventListener('resize', () => {
             if (isMobile) {
                 const elApp = document.querySelector('#app');
-                elApp.style.width = window.clientWidth + 'px';
+                elApp.style.width = document.documentElement.clientWidth + 'px';
             }
             this.cellToSquare();
         });
@@ -55,7 +55,7 @@ const vm = {
         if (isMobile) {
             const elApp = document.querySelector('#app');
             elApp.style.position = 'fixed';
-            elApp.style.width = window.clientWidth + 'px';
+            elApp.style.width = document.documentElement.clientWidth + 'px';
         }
 
         this.createRoom();
