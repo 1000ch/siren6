@@ -116,6 +116,14 @@ const vm = {
             this.room[row][col] = mode;
         },
 
+        onClickReset() {
+            for (let row = 0; row < this.room.length; row++) {
+                for (let col = 0; col < this.room.length; col++) {
+                    this.room[row][col] = NONE;
+                }
+            }
+        },
+
         createRoom() {
             this.$refs.table.style.visibility = 'hidden';
 
