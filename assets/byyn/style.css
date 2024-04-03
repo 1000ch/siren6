@@ -55,6 +55,11 @@ h1 {
   column-gap: 8px;
 }
 
+label {
+  height: 39.5px;
+  line-height: 39.5px;
+}
+
 #input-size {
   padding-left: 4px;
   width: 60px;
