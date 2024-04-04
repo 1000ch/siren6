@@ -152,26 +152,6 @@ label {
   }
 }
 
-#input-size {
-  padding-left: 4px;
-  width: 60px;
-  height: 1.4rem;
-  border: 2px solid #ccc;
-  border-radius: 2px;
-
-  -moz-appearance: textfield;
-  appearance: none;
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-}
-
 .radio-btn-container {
   display: flex;
   align-items: center;

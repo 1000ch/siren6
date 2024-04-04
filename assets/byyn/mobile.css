@@ -19,10 +19,6 @@
   input, .plus-minus-input-numbur input[type="number"] {
     font-size: 1.2rem;
   }
-
-  #input-size {
-    height: 1.2rem;
-  }
   
   #app {
     margin: 0;

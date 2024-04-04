@@ -48,10 +48,7 @@ const vm = {
         this.cellToSquare();
     },
     methods: {
-        onFocusInputSize(event) {
-            event.target.select();
-        },
-        onBlurInputSize(event) {
+        onChangeRoomSize(event) {
             this.roomSize = Number(event.target.value);
             if (this.roomSize < this.roomSizeMin) {
                 this.roomSize = this.roomSizeMin;
@@ -63,13 +60,6 @@ const vm = {
 
             this.createRoom();
             this.cellToSquare();
-        },
-        onKeyDownEnterInputSize(event) {
-            event.target.blur();
-        },
-
-        onChangeRoomSize() {
-            // todo
         },
 
         onMouseDownCell(event) {

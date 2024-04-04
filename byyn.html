@@ -42,17 +42,8 @@
       <div>
         <div class="item">
           <label for="input-size">幅</label>
-          <!--
-          <input type="number"
-                 id="input-size"
-                 :value="roomSize"
-                 :min="roomSizeMin"
-                 :max="roomSizeMax"
-                 @focus="onFocusInputSize"
-                 @blur="onBlurInputSize"
-                 @keydown.enter="onKeyDownEnterInputSize">
-          -->
           <plus-minus-input-numbur
+            id="input-size"
             :min="roomSizeMin"
             :max="roomSizeMax"
             v-model="roomSize"

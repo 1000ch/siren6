@@ -20,7 +20,8 @@ export const PlusMinusInputNumbur = {
                  :max="max"
                  :value="modelValue"
                  @focus="$event.target.select()"
-                 @blur="onBlurInputNumber">
+                 @blur="onBlurInputNumber"
+                 @keydown.enter="onKeyDownEnterInputNumber">
           <div class="plus-btn"
                ontouchstart=""
                @click="onClickPlusButton">+</div>
@@ -92,6 +93,9 @@ export const PlusMinusInputNumbur = {
                 this.$emit("update:modelValue", newModelValue);
                 this.$emit("change", newModelValue);
             }
-        }
+        },
+        onKeyDownEnterInputNumber(event) {
+            event.target.blur();
+        },
     }
 };
