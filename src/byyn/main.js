@@ -1,10 +1,7 @@
 import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
-import { byynCheck } from '../logic/item/byynCheck';
-
-const NONE = 'none';
-const BYYN = 'byyn';
-const TUTI = 'tuti';
+import { NONE, BYYN, TUTI } from '../logic/byyn/cell';
+import { byynCheck } from '../logic/byyn/byyn_check';
 
 let isFisrt = true;
 let isMouseDown = false;
