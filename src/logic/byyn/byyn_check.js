@@ -7,17 +7,24 @@ import { NONE, BYYN, TUTI, OUT_OF_RANGE } from './cell';
 */
 
 let room = [];
+let useUdewa = false;
 
-export function byynCheck(_room, useUdewa, isTubo) {
+export function byynCheck(_room, _useUdewa, isTubo) {
     room = _room;
+    useUdewa = _useUdewa;
 }
 
-function byynCheck1(startPos, dir, useUdewa, isTubo) {
+function byynCheck1(startPos, dir, isTubo) {
     if (typeFrom(startPos) !== NONE) {
         return false;
     }
     
     let pos = pos = startPos.move(dir);
+
+    const isHit = {
+        top: false, bottom: false,
+        left: false, right: false
+    };
 
     while (true) {
         const type = typeFrom(pos);
@@ -31,8 +38,13 @@ function byynCheck1(startPos, dir, useUdewa, isTubo) {
             // todo
         }
         else if (type === TUTI) {
-            // todo udewa
-            // todo 条件を満たしている場合はOK そうでない場合はNG
+            if (
+                isHit.top && isHit.bottom &&
+                isHit.left && isHit.right
+            ) {
+                return []; // todo 道筋
+            }
+            return false;
         }
         else {
             throw new Error(`想定外のtype: ${type}`);
@@ -45,7 +57,11 @@ function typeFrom(pos) {
         0 <= pos.row && pos.row < room.length &&
         0 <= pos.col && pos.col < room.length
     ) {
-        return room[pos.row][pos.col];
+        const type = room[pos.row][pos.col];
+        if (useUdewa && type === TUTI) {
+            return BYYN;
+        }
+        return type;
     }
     return OUT_OF_RANGE;
 }
