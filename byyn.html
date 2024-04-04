@@ -42,6 +42,7 @@
       <div>
         <div class="item">
           <label for="input-size">幅</label>
+          <!--
           <input type="number"
                  id="input-size"
                  :value="roomSize"
@@ -50,16 +51,22 @@
                  @focus="onFocusInputSize"
                  @blur="onBlurInputSize"
                  @keydown.enter="onKeyDownEnterInputSize">
+          -->
+          <plus-minus-input-numbur
+            :min="roomSizeMin"
+            :max="roomSizeMax"
+            v-model="roomSize"
+            @change="onChangeRoomSize">
         </div>
         <div class="item" style="margin-top: 8px;">
           <label for="fill-type">塗</label>
           <div class="radio-btn-container">
             <div class="radio-btn fill-type-byyn"
                  :class="{selected: mainFillType === BYYN}"
-                 @click="mainFillType = BYYN">ボ</div>
+                 @click="mainFillType = BYYN">ボヨヨン</div>
             <div class="radio-btn fill-type-tuti"
                  :class="{selected: mainFillType === TUTI}"
-                 @click="mainFillType = TUTI">土</div>
+                 @click="mainFillType = TUTI">土塊</div>
           </div>
         </div>
       </div>

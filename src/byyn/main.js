@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
 
 const NONE = 'none';
 const BYYN = 'byyn';
@@ -21,6 +22,9 @@ window.addEventListener('touchend', () => {
 });
 
 const vm = {
+    components: {
+        PlusMinusInputNumbur
+    },
     data() {
         return {
             BYYN: BYYN, TUTI: TUTI,
@@ -62,6 +66,10 @@ const vm = {
         },
         onKeyDownEnterInputSize(event) {
             event.target.blur();
+        },
+
+        onChangeRoomSize() {
+            // todo
         },
 
         onMouseDownCell(event) {

@@ -8,6 +8,7 @@
   font-size: 1.4rem;
   background-color: #eecfaa;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 body {
