@@ -8,7 +8,8 @@ const TUTI = 'tuti';
 let isFisrt = true;
 let isMouseDown = false;
 
-let timerId = 0;
+let timerId1 = 0;
+let timerId2 = 0;
 
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
@@ -36,6 +37,7 @@ const vm = {
             useUdewa: false,
             shouldCheckBreakTubo: false,
             room: [],
+            dummyRoom: [],
         }
     },
     created() {
@@ -124,7 +126,10 @@ const vm = {
         },
 
         createRoom() {
-            this.$refs.table.style.visibility = 'hidden';
+            this.$refs.room.style.visibility = 'hidden';
+            this.$refs.dummyRoom.style.visibility = 'visible';
+
+            this.dummyRoom = [...this.dummyRoom];
 
             const newRoom = [];
             const prevRoomSize = this.room.length;
@@ -154,13 +159,26 @@ const vm = {
             return {row, col};
         },
         cellToSquare() {
-            timerId = setTimeout(() => {
-                clearTimeout(timerId);
-                const tdList = document.querySelectorAll('td');
+            timerId1 = setTimeout(() => {
+                clearTimeout(timerId1);
+                clearTimeout(timerId2);
+                const tdList = document.querySelectorAll('#room td');
+                const tdOffsetWidth = tdList[0].offsetWidth;
                 for (const td of tdList) {
-                    td.style.height = td.offsetWidth + 'px';
+                    td.style.height = tdOffsetWidth + 'px';
                 }
-                this.$refs.table.style.visibility = 'visible';
+
+                this.$refs.room.style.visibility = 'visible';
+                this.$refs.dummyRoom.style.visibility = 'hidden';
+
+                this.dummyRoom = this.room;
+
+                timerId2 = setTimeout(() => {
+                    const dummyTdList = document.querySelectorAll('#dummy-room td');
+                    for (const td of dummyTdList) {
+                        td.style.height = tdOffsetWidth + 'px';
+                    }
+                }, 50);
             }, 50);
         }
     }

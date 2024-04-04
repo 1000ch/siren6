@@ -82,12 +82,13 @@
     </div>
     
     <div id="room-container">
-      <table id="dummy-room" ref="dummyTable">
-        <tr v-for="roomRow in room">
-          <td v-for="_ in roomRow"></td>
+      <table id="dummy-room" ref="dummyRoom">
+        <tr v-for="roomRow in dummyRoom">
+          <td v-for="(type) in roomRow"
+              :class="type"></td>
         </tr>
       </table>
-      <table id="room" ref="table">
+      <table id="room" ref="room">
         <tr v-for="(roomRow, rowIndex) in room">
           <td v-for="(type, colIndex) in roomRow"
               :class="type"
