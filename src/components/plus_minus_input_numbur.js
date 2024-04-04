@@ -1,5 +1,6 @@
 
 export const PlusMinusInputNumbur = {
+    inheritAttrs: false,
     props: {
         modelValue: Number,
         min: Number,
@@ -19,6 +20,7 @@ export const PlusMinusInputNumbur = {
                  :min="min"
                  :max="max"
                  :value="modelValue"
+                 v-bind="$attrs"
                  @focus="$event.target.select()"
                  @blur="onBlurInputNumber"
                  @keydown.enter="onKeyDownEnterInputNumber">
