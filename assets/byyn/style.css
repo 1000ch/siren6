@@ -311,8 +311,15 @@ label {
   }
 }
 
-table {
+#room-container {
+  position: relative;
   margin-top: 8px;
+}
+
+table {
+  position: absolute;
+  top: 0;
+  left: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
