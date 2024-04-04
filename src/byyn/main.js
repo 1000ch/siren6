@@ -48,15 +48,13 @@ const vm = {
         this.cellToSquare();
     },
     methods: {
-        onChangeRoomSize(event) {
-            this.roomSize = Number(event.target.value);
+        onChangeRoomSize() {
             if (this.roomSize < this.roomSizeMin) {
                 this.roomSize = this.roomSizeMin;
             }
             else if (this.roomSize > this.roomSizeMax) {
                 this.roomSize = this.roomSizeMax;
             }
-            event.target.value = this.roomSize;
 
             this.createRoom();
             this.cellToSquare();
