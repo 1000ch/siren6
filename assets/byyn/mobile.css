@@ -16,7 +16,7 @@
     font-size: 1.2rem;
   }
 
-  input {
+  input, .plus-minus-input-numbur input[type="number"] {
     font-size: 1.2rem;
   }
 
