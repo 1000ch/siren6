@@ -11,6 +11,10 @@ export class Position {
     }
 }
 
+export const T = new Position(-1, 0);
+export const B = new Position(1, 0);
+export const L = new Position(0, -1);
+export const R = new Position(0, 1);
 export const TL = new Position(-1, -1);
 export const TR = new Position(-1, 1);
 export const BL = new Position(1, -1);

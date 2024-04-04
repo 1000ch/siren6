@@ -1,4 +1,4 @@
-import { Position, TL, TR, BL, BR } from "./position";
+import { Position, T, B, L, R, TL, TR, BL, BR } from "./position";
 import { NONE, BYYN, TUTI, OUT_OF_RANGE } from './cell';
 
 /*
