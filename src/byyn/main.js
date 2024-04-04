@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
+import { byynCheck } from '../logic/item/byynCheck';
 
 const NONE = 'none';
 const BYYN = 'byyn';
@@ -115,6 +116,11 @@ const vm = {
                 isFisrt = false;
             }
             this.room[row][col] = this.fillType;
+        },
+
+        onClickSearch() {
+            // todo
+            byynCheck();
         },
 
         onClickReset() {
