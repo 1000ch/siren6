@@ -36,7 +36,7 @@ const vm = {
             fillType: NONE,
             mainFillType: BYYN,
             useUdewa: false,
-            shouldCheckBreakTubo: false,
+            isTubo: false,
             room: [],
             dummyRoom: [],
         }
@@ -120,7 +120,7 @@ const vm = {
 
         onClickSearch() {
             // todo
-            byynCheck();
+            byynCheck(this.room, this.useUdewa, this.isTubo);
         },
 
         onClickReset() {

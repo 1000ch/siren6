@@ -1,4 +1,4 @@
 
-export function byynCheck(room) {
+export function byynCheck(room, useUdewa, isTubo) {
 
 }
