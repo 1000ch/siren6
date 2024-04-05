@@ -19,7 +19,7 @@ function byynCheck1(startPos, dir, isTubo) {
         return false;
     }
     
-    let pos = pos = startPos.move(dir);
+    let pos = pos = startPos.add(dir);
 
     const isHit = {
         top: false, bottom: false,
@@ -32,9 +32,12 @@ function byynCheck1(startPos, dir, isTubo) {
             return false;
         }
         else if (type === NONE) {
-            pos = pos.move(dir);
+            pos = pos.add(dir);
         }
         else if (type === BYYN) {
+            if (dir === TL) {
+                const rightType = typeFrom(pos.add(R));
+            }
             // todo
         }
         else if (type === TUTI) {

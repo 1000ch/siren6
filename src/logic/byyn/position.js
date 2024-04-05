@@ -5,9 +5,11 @@ export class Position {
         this.col = col;
     }
 
-    move(diff) {
-        this.row += diff.row;
-        this.col += diff.col;
+    add(diff) {
+        return new Position(
+            this.row + diff.row,
+            this.col + diff.col
+        );
     }
 }
 
