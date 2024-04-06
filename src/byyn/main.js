@@ -49,6 +49,11 @@ const vm = {
         this.createRoom();
         this.cellToSquare();
     },
+    computed: {
+        existsResult() {
+            return this.pathList.length > 0;
+        }
+    },
     methods: {
         onChangeRoomSize() {
             if (this.roomSize < this.roomSizeMin) {
@@ -63,7 +68,7 @@ const vm = {
         },
 
         onMouseDownCell(event) {
-            if (this.pathList.length > 0) {
+            if (this.existsResult) {
                 return;
             }
 
@@ -80,7 +85,7 @@ const vm = {
             isFisrt = false;
         },
         onMouseEnterCell(event) {
-            if (this.pathList.length > 0) {
+            if (this.existsResult) {
                 return;
             }
 
@@ -104,7 +109,7 @@ const vm = {
         onTouchMoveCell(event) {
             event.preventDefault();
 
-            if (this.pathList.length > 0) {
+            if (this.existsResult) {
                 return;
             }
 
