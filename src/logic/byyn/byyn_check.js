@@ -27,9 +27,12 @@ function byynCheck1(startPos, dir, isTubo) {
     };
 
     while (true) {
+        // todo キャッチしたら終了
+
         const type = typeFrom(pos);
         if (type === OUT_OF_RANGE) {
-            return false;
+            // どこ行くねーん
+            return settlePath(isHit); // todo 壺割れ
         }
         else if (type === NONE) {
             pos = pos.add(dir);
@@ -37,22 +40,65 @@ function byynCheck1(startPos, dir, isTubo) {
         else if (type === BYYN) {
             if (dir === TL) {
                 const rightType = typeFrom(pos.add(R));
+                const bottomType = typeFrom(pos.add(B));
+
+                // 3つパターン
+                if (rightType === BYYN && bottomType === BYYN) {
+                    return settlePath(isHit);
+                }
+                else if (rightType === BYYN && bottomType === TUTI) {
+                    return settlePath(isHit);
+                }
+                else if (rightType === TUTI && bottomType === BYYN) {
+                    return settlePath(isHit);
+                }
+                else if (rightType === TUTI && bottomType === TUTI) {
+                    // todo 右下に反射
+                }
+                // 2つパターン
+                else if (rightType === BYYN && bottomType === NONE) {
+                    // todo 左下に反射
+                }
+                else if (rightType === TUTI && bottomType === NONE) {
+                    // todo 右下に反射
+                }
+                else if (rightType === NONE && bottomType === BYYN) {
+                    // todo 右上に反射
+                }
+                else if (rightType === NONE && bottomType === TUTI) {
+                    // todo 右下に反射
+                }
+                // 1つパターン
+                else if (rightType === NONE && bottomType === NONE) {
+                    // todo 右下に反射
+                }
+                // アサート
+                else {
+                    throw new Error(`想定外の経路 dir: ${dir.name}, r: ${rightType}, b: ${bottomType}`);
+                }
             }
             // todo
         }
         else if (type === TUTI) {
-            if (
-                isHit.top && isHit.bottom &&
-                isHit.left && isHit.right
-            ) {
-                return []; // todo 道筋
-            }
-            return false;
+            // todo 壺クラッシュ
+            return settlePath(isHit);
         }
         else {
             throw new Error(`想定外のtype: ${type}`);
         }
     }
+}
+
+// 分裂した   → アイテムが停止するまでの経路
+// 分裂しない → false
+function settlePath(isHit) {
+    if (
+        isHit.top && isHit.bottom &&
+        isHit.left && isHit.right
+    ) {
+        return []; // todo 道筋 and 壺クラッシュ？
+    }
+    return false;
 }
 
 function typeFrom(pos) {
