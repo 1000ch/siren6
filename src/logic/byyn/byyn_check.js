@@ -142,8 +142,6 @@ function findByynPath(startPos, dir, isTubo) {
     }
 }
 
-// 分裂した   → アイテムが停止するまでの経路
-// 分裂しない → false
 function canBunretu(isHit) {
     return isHit.top && isHit.bottom && isHit.left && isHit.right;
 }
