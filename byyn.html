@@ -90,6 +90,15 @@
              @click="onClickCorrect">訂正</div>
       </template>
     </div>
+
+    <div id="path-list" v-show="isClickSearch">
+      <div v-if="!existsResult">
+        アイテム増殖不可
+      </div>
+      <div v-else>
+        {{`${pathList[0].dirName}に投げる`}}
+      </div>
+    </div>
     
     <div id="room-container">
       <table id="dummy-room" ref="dummyRoom">

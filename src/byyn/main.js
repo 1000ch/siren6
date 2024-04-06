@@ -37,6 +37,7 @@ const vm = {
             isTubo: false,
             room: [],
             dummyRoom: [],
+            isClickSearch: false,
             pathList: [],
         }
     },
@@ -135,11 +136,13 @@ const vm = {
         },
 
         onClickSearch() {
+            this.isClickSearch = true;
             this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
             console.log(this.pathList);
         },
 
         onClickReset() {
+            this.isClickSearch = false;
             for (let row = 0; row < this.room.length; row++) {
                 for (let col = 0; col < this.room.length; col++) {
                     this.room[row][col] = NONE;
@@ -180,6 +183,7 @@ const vm = {
 
         onClickCorrect() {
             clearInterval(simTimer);
+            this.isClickSearch = false;
             this.pathList = [];
 
             this.removeItem();

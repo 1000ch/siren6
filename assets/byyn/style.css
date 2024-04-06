@@ -316,6 +316,10 @@ label {
   }
 }
 
+#path-list {
+  margin-top: 8px;
+}
+
 #room-container {
   position: relative;
   margin-top: 8px;
