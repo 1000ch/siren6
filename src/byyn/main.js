@@ -178,7 +178,7 @@ const vm = {
                 if (++index > lastIndex) {
                     clearInterval(simTimer);
                 }
-            }, 200);
+            }, 100);
         },
 
         onClickCorrect() {
