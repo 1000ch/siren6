@@ -45,6 +45,11 @@ h1 {
 .config-container {
   display: flex;
   column-gap: 64px;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
 .config {
