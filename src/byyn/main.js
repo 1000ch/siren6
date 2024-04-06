@@ -6,8 +6,9 @@ import { byynCheck } from '../logic/byyn/byyn_check';
 let isFisrt = true;
 let isMouseDown = false;
 
-let timerId1 = 0;
-let timerId2 = 0;
+let roomTimerId1 = 0;
+let roomTimerId2 = 0;
+let simTimer = 0;
 
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
@@ -142,13 +143,15 @@ const vm = {
         },
 
         onClickSimulate() {
-            // todo
+            clearInterval(simTimer);
+            this.removeItem();
+
             const path = this.pathList[0].path;
             const lastIndex = path.length - 1;
             let index = 0;
             let prevPos = null;
 
-            const timer = setInterval(() => {
+            simTimer = setInterval(() => {
                 if (prevPos !== null) {
                     this.room[prevPos.row][prevPos.col] = PREV_ITEM;
                 }
@@ -165,22 +168,16 @@ const vm = {
                 prevPos = pos;
 
                 if (++index > lastIndex) {
-                    clearInterval(timer);
+                    clearInterval(simTimer);
                 }
             }, 200);
         },
 
         onClickCorrect() {
+            clearInterval(simTimer);
             this.pathList = [];
 
-            for (let row = 0; row < this.room.length; row++) {
-                for (let col = 0; col < this.room.length; col++) {
-                    const type = this.room[row][col];
-                    if (type === ITEM || type === PREV_ITEM) {
-                        this.room[row][col] = NONE;
-                    }
-                }
-            }
+            this.removeItem();
         },
 
         createRoom() {
@@ -217,9 +214,9 @@ const vm = {
             return {row, col};
         },
         cellToSquare() {
-            timerId1 = setTimeout(() => {
-                clearTimeout(timerId1);
-                clearTimeout(timerId2);
+            roomTimerId1 = setTimeout(() => {
+                clearTimeout(roomTimerId1);
+                clearTimeout(roomTimerId2);
                 const tdList = document.querySelectorAll('#room td');
                 const tdOffsetWidth = tdList[0].offsetWidth;
                 for (const td of tdList) {
@@ -231,14 +228,24 @@ const vm = {
 
                 this.dummyRoom = this.room;
 
-                timerId2 = setTimeout(() => {
+                roomTimerId2 = setTimeout(() => {
                     const dummyTdList = document.querySelectorAll('#dummy-room td');
                     for (const td of dummyTdList) {
                         td.style.height = tdOffsetWidth + 'px';
                     }
                 }, 50);
             }, 50);
-        }
+        },
+        removeItem() {
+            for (let row = 0; row < this.room.length; row++) {
+                for (let col = 0; col < this.room.length; col++) {
+                    const type = this.room[row][col];
+                    if (type === ITEM || type === PREV_ITEM) {
+                        this.room[row][col] = NONE;
+                    }
+                }
+            }
+        },
     }
 };
 
