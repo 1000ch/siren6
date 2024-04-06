@@ -59,7 +59,15 @@ function byynCheck1(startPos, dir, isTubo) {
             }
             // 2つパターン
             else if (hAdjType === BYYN && vAdjType === NONE) {
-                // 横の壁で反射
+                // 横向きの壁で反射
+
+                if (dir.row > 0) {
+                    isHit.top = true;
+                }
+                else {
+                    isHit.bottom = true;
+                }
+
                 dir = dir.hReflect();
                 pos.row += dir.row;
             }
@@ -69,7 +77,15 @@ function byynCheck1(startPos, dir, isTubo) {
                 pos = pos.add(dir);
             }
             else if (hAdjType === NONE && vAdjType === BYYN) {
-                // 縦の壁で反射
+                // 縦向きの壁で反射
+
+                if (dir.col > 0) {
+                    isHit.right = true;
+                }
+                else {
+                    isHit.left = true;
+                }
+                
                 dir = dir.vReflect();
                 pos.col += dir.col;
             }
