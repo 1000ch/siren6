@@ -92,11 +92,11 @@
     </div>
 
     <div id="path-list" v-show="isClickSearch">
-      <div v-if="!existsResult">
-        アイテム増殖不可
+      <div v-if="existsResult">
+        {{`${pathList[0].dirName}に投げる`}}
       </div>
       <div v-else>
-        {{`${pathList[0].dirName}に投げる`}}
+        アイテム増殖不可
       </div>
     </div>
     
