@@ -53,24 +53,24 @@ function byynCheck1(startPos, dir, isTubo) {
                     return settlePath(isHit);
                 }
                 else if (rightType === TUTI && bottomType === TUTI) {
-                    // todo 右下に反射
+                    // todo 右下に反射 つまり戻る
                 }
                 // 2つパターン
                 else if (rightType === BYYN && bottomType === NONE) {
                     // todo 左下に反射
                 }
                 else if (rightType === TUTI && bottomType === NONE) {
-                    // todo 右下に反射
+                    // todo 右下に反射 つまり戻る
                 }
                 else if (rightType === NONE && bottomType === BYYN) {
                     // todo 右上に反射
                 }
                 else if (rightType === NONE && bottomType === TUTI) {
-                    // todo 右下に反射
+                    // todo 右下に反射 つまり戻る
                 }
                 // 1つパターン
                 else if (rightType === NONE && bottomType === NONE) {
-                    // todo 右下に反射
+                    // todo 右下に反射 つまり戻る
                 }
                 // アサート
                 else {
