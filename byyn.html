@@ -76,10 +76,18 @@
     <hr>
 
     <div id="action-btn-area">
-      <div class="action-btn"
-           @click="onClickSearch">調べる</div>
-      <div class="action-btn reset"
-           @click="onClickReset">リセット</div>
+      <template v-if="pathList.length === 0">
+        <div class="action-btn"
+             @click="onClickSearch">調べる</div>
+        <div class="action-btn reset"
+             @click="onClickReset">リセット</div>
+      </template>
+      <template v-else>
+        <div class="action-btn"
+             @click="onClickSimulate">シミュる</div>
+        <div class="action-btn reset"
+             @click="onClickCorrect">訂正</div>
+      </template>
     </div>
     
     <div id="room-container">

@@ -36,6 +36,7 @@ const vm = {
             isTubo: false,
             room: [],
             dummyRoom: [],
+            pathList: [],
         }
     },
     created() {
@@ -116,10 +117,8 @@ const vm = {
         },
 
         onClickSearch() {
-            const pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
-            console.log(pathList);
-
-            // todo
+            this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
+            console.log(this.pathList);
         },
 
         onClickReset() {
@@ -128,6 +127,15 @@ const vm = {
                     this.room[row][col] = NONE;
                 }
             }
+        },
+
+        onClickSimulate() {
+            // todo
+        },
+
+        onClickCorrect() {
+            this.pathList = [];
+            // todo
         },
 
         createRoom() {
