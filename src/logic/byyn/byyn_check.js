@@ -25,6 +25,7 @@ function byynCheck1(startPos, dir, isTubo) {
     };
 
     let pos = startPos;
+    const path = [pos];
 
     while (true) {
         // 移動
@@ -33,10 +34,12 @@ function byynCheck1(startPos, dir, isTubo) {
         const type = typeFrom(pos);
         if (type === OUT_OF_RANGE) {
             // どこ行くねーん
-            return settlePath(isHit); // todo 壺割れ
+            path.push(null);
+            return canBunretu(isHit) ? path : false;
         }
         else if (type === NONE) {
             // 何もしない
+            path.push(pos);
         }
         else if (type === BYYN) {
             const hAdjType = typeFrom(pos.add(0, -dir.col));
@@ -44,13 +47,13 @@ function byynCheck1(startPos, dir, isTubo) {
 
             // 3つパターン
             if (hAdjType === BYYN && vAdjType === BYYN) {
-                return settlePath(isHit);
+                return canBunretu(isHit) ? path : false;
             }
             else if (hAdjType === BYYN && vAdjType === TUTI) {
-                return settlePath(isHit);
+                return canBunretu(isHit) ? path : false;
             }
             else if (hAdjType === TUTI && vAdjType === BYYN) {
-                return settlePath(isHit);
+                return canBunretu(isHit) ? path : false;
             }
             else if (hAdjType === TUTI && vAdjType === TUTI) {
                 // 正反対に戻る
@@ -70,6 +73,7 @@ function byynCheck1(startPos, dir, isTubo) {
 
                 dir = dir.hReflect();
                 pos.row += dir.row;
+                path.push(pos);
             }
             else if (hAdjType === TUTI && vAdjType === NONE) {
                 // 正反対に戻る
@@ -88,6 +92,7 @@ function byynCheck1(startPos, dir, isTubo) {
                 
                 dir = dir.vReflect();
                 pos.col += dir.col;
+                path.push(pos);
             }
             else if (hAdjType === NONE && vAdjType === TUTI) {
                 // 正反対に戻る
@@ -106,8 +111,10 @@ function byynCheck1(startPos, dir, isTubo) {
             }
         }
         else if (type === TUTI) {
-            // todo 壺クラッシュ
-            return settlePath(isHit);
+            if (isTubo) {
+                return false;
+            }
+            return canBunretu(isHit) ? path : false;
         }
         else {
             throw new Error(`想定外のtype: ${type}`);
@@ -115,21 +122,15 @@ function byynCheck1(startPos, dir, isTubo) {
 
         // キャッチしたら終了
         if (pos.equal(startPos)) {
-            return settlePath(isHit);
+            return canBunretu(isHit) ? path : false;
         }
     }
 }
 
 // 分裂した   → アイテムが停止するまでの経路
 // 分裂しない → false
-function settlePath(isHit) {
-    if (
-        isHit.top && isHit.bottom &&
-        isHit.left && isHit.right
-    ) {
-        return []; // todo 道筋 and 壺クラッシュ？
-    }
-    return false;
+function canBunretu(isHit) {
+    return isHit.top && isHit.bottom && isHit.left && isHit.right;
 }
 
 function typeFrom(pos) {
