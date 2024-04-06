@@ -19,15 +19,16 @@ function byynCheck1(startPos, dir, isTubo) {
         return false;
     }
     
-    let pos = pos = startPos.add(dir);
-
     const isHit = {
         top: false, bottom: false,
         left: false, right: false
     };
 
+    let pos = startPos;
+
     while (true) {
-        // todo キャッチしたら終了
+        // 移動
+        pos = pos.add(dir);
 
         const type = typeFrom(pos);
         if (type === OUT_OF_RANGE) {
@@ -85,6 +86,11 @@ function byynCheck1(startPos, dir, isTubo) {
         }
         else {
             throw new Error(`想定外のtype: ${type}`);
+        }
+
+        // キャッチしたら終了
+        if (pos.equal(startPos)) {
+            return settlePath(isHit);
         }
     }
 }

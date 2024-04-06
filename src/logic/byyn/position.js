@@ -12,6 +12,10 @@ export class Position {
             this.col + diff.col
         );
     }
+
+    equal(pos) {
+        return this.row === pos.row && this.col === pos.col;
+    }
 }
 
 export const T = new Position(-1, 0, '上');
