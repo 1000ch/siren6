@@ -38,7 +38,8 @@
   <div id="app" v-cloak>
     <h1>シレン6 簡単ボヨヨンチェッカー</h1>
 
-    <div id="config-area" class="config-container">
+    <div id="config-area" class="config-container"
+         :style="{'pointer-events': existsResult ? 'none' : 'auto'}">
       <div>
         <div class="config">
           <label for="input-size">幅</label>
