@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
-import { NONE, BYYN, TUTI } from '../logic/byyn/cell';
+import { NONE, BYYN, TUTI, ITEM, PREV_ITEM } from '../logic/byyn/cell';
 import { byynCheck } from '../logic/byyn/byyn_check';
 
 let isFisrt = true;
@@ -62,6 +62,10 @@ const vm = {
         },
 
         onMouseDownCell(event) {
+            if (this.pathList.length > 0) {
+                return;
+            }
+
             const {row, col} = this.elementToRowCol(event.target);
             
             if (this.room[row][col] === this.mainFillType) {
@@ -75,6 +79,10 @@ const vm = {
             isFisrt = false;
         },
         onMouseEnterCell(event) {
+            if (this.pathList.length > 0) {
+                return;
+            }
+
             const {row, col} = this.elementToRowCol(event.target);
 
             if (isFisrt) {
@@ -94,6 +102,10 @@ const vm = {
 
         onTouchMoveCell(event) {
             event.preventDefault();
+
+            if (this.pathList.length > 0) {
+                return;
+            }
 
             const touch = event.touches[0];
             const target = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -131,11 +143,44 @@ const vm = {
 
         onClickSimulate() {
             // todo
+            const path = this.pathList[0].path;
+            const lastIndex = path.length - 1;
+            let index = 0;
+            let prevPos = null;
+
+            const timer = setInterval(() => {
+                if (prevPos !== null) {
+                    this.room[prevPos.row][prevPos.col] = PREV_ITEM;
+                }
+
+                const pos = path[index];
+
+                if (pos === null) {
+                    this.room[prevPos.row][prevPos.col] = PREV_ITEM;
+                }
+                else {
+                    this.room[pos.row][pos.col] = ITEM;
+                }
+
+                prevPos = pos;
+
+                if (++index > lastIndex) {
+                    clearInterval(timer);
+                }
+            }, 200);
         },
 
         onClickCorrect() {
             this.pathList = [];
-            // todo
+
+            for (let row = 0; row < this.room.length; row++) {
+                for (let col = 0; col < this.room.length; col++) {
+                    const type = this.room[row][col];
+                    if (type === ITEM || type === PREV_ITEM) {
+                        this.room[row][col] = NONE;
+                    }
+                }
+            }
         },
 
         createRoom() {

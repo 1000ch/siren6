@@ -30,7 +30,7 @@
     text-align: center;
   }
 
-  .item-container {
+  .config-container {
     column-gap: normal;
     justify-content: space-between;
   }

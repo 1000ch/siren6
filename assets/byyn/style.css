@@ -42,12 +42,12 @@ h1 {
   margin: 16px 0;
 } */
 
-.item-container {
+.config-container {
   display: flex;
   column-gap: 64px;
 }
 
-.item {
+.config {
   display: flex;
   align-items: center;
   column-gap: 8px;
@@ -330,4 +330,13 @@ td {
   box-sizing: border-box;
   border: 2px solid #ccc;
   background-color: white;
+}
+
+.item {
+  background-color: red;
+}
+
+.prev-item {
+  background-color: red;
+  opacity: 0.5;
 }

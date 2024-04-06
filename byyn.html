@@ -38,9 +38,9 @@
   <div id="app" v-cloak>
     <h1>シレン6 簡単ボヨヨンチェッカー</h1>
 
-    <div id="config-area" class="item-container">
+    <div id="config-area" class="config-container">
       <div>
-        <div class="item">
+        <div class="config">
           <label for="input-size">幅</label>
           <plus-minus-input-numbur
             id="input-size"
@@ -49,7 +49,7 @@
             v-model="roomSize"
             @change="onChangeRoomSize">
         </div>
-        <div class="item" style="margin-top: 8px;">
+        <div class="config" style="margin-top: 8px;">
           <label for="fill-type">塗</label>
           <div class="radio-btn-container">
             <div class="radio-btn fill-type-byyn"
@@ -62,11 +62,11 @@
         </div>
       </div>
       <div>
-        <div class="item">
+        <div class="config">
           <input type="checkbox" id="chkbox-udewa" v-model="useUdewa">
           <label for="chkbox-udewa">ボヨヨン腕輪</label>
         </div>
-        <div class="item">
+        <div class="config">
           <input type="checkbox" id="chkbox-tubo" v-model="isTubo">
           <label for="chkbox-tubo">壺を投げる</label>
         </div>
