@@ -93,6 +93,13 @@
 
     <div id="path-list" v-show="isClickSearch">
       <div v-if="existsResult">
+        <div v-show="pathList.length > 1"
+             class="radio-btn-container">
+          <div v-for="(_, index) in pathList"
+               class="radio-btn">
+            {{index + 1}}
+          </div>
+        </div>
         <div>{{`${pathList[0].dirName}に投げる`}}</div>
         <div v-show="pathList[0].path.at(-1) === null">
           画面外で消失する可能性あり
