@@ -30,7 +30,7 @@ const vm = {
             BYYN: BYYN, TUTI: TUTI,
             roomSize: 10,
             roomSizeMin: 10,
-            roomSizeMax: 18,
+            roomSizeMax: 30,
             fillType: NONE,
             mainFillType: BYYN,
             useUdewa: false,
