@@ -39,58 +39,55 @@ function byynCheck1(startPos, dir, isTubo) {
             // 何もしない
         }
         else if (type === BYYN) {
-            if (dir === TL) {
-                const rightType = typeFrom(pos.add(R));
-                const bottomType = typeFrom(pos.add(B));
+            const hAdjType = typeFrom(pos.add(0, -dir.col));
+            const vAdjType = typeFrom(pos.add(-dir.row, 0));
 
-                // 3つパターン
-                if (rightType === BYYN && bottomType === BYYN) {
-                    return settlePath(isHit);
-                }
-                else if (rightType === BYYN && bottomType === TUTI) {
-                    return settlePath(isHit);
-                }
-                else if (rightType === TUTI && bottomType === BYYN) {
-                    return settlePath(isHit);
-                }
-                else if (rightType === TUTI && bottomType === TUTI) {
-                    // 右下に反射 つまり戻る
-                    dir = BR;
-                    pos = pos.add(dir);
-                }
-                // 2つパターン
-                else if (rightType === BYYN && bottomType === NONE) {
-                    // 左下に反射
-                    dir = BL;
-                    pos = pos.add(B);
-                }
-                else if (rightType === TUTI && bottomType === NONE) {
-                    // 右下に反射 つまり戻る
-                    dir = BR;
-                    pos = pos.add(dir);
-                }
-                else if (rightType === NONE && bottomType === BYYN) {
-                    // 右上に反射
-                    dir = TR;
-                    pos = pos.add(R);
-                }
-                else if (rightType === NONE && bottomType === TUTI) {
-                    // 右下に反射 つまり戻る
-                    dir = BR;
-                    pos = pos.add(dir);
-                }
-                // 1つパターン
-                else if (rightType === NONE && bottomType === NONE) {
-                    // 右下に反射 つまり戻る
-                    dir = BR;
-                    pos = pos.add(dir);
-                }
-                // アサート
-                else {
-                    throw new Error(`想定外の経路 dir: ${dir.name}, r: ${rightType}, b: ${bottomType}`);
-                }
+            // 3つパターン
+            if (hAdjType === BYYN && vAdjType === BYYN) {
+                return settlePath(isHit);
             }
-            // todo
+            else if (hAdjType === BYYN && vAdjType === TUTI) {
+                return settlePath(isHit);
+            }
+            else if (hAdjType === TUTI && vAdjType === BYYN) {
+                return settlePath(isHit);
+            }
+            else if (hAdjType === TUTI && vAdjType === TUTI) {
+                // 正反対に戻る
+                dir = dir.return();
+                pos = pos.add(dir);
+            }
+            // 2つパターン
+            else if (hAdjType === BYYN && vAdjType === NONE) {
+                // 横の壁で反射
+                dir = dir.hReflect();
+                pos.row += dir.row;
+            }
+            else if (hAdjType === TUTI && vAdjType === NONE) {
+                // 正反対に戻る
+                dir = dir.return();
+                pos = pos.add(dir);
+            }
+            else if (hAdjType === NONE && vAdjType === BYYN) {
+                // 縦の壁で反射
+                dir = dir.vReflect();
+                pos.col += dir.col;
+            }
+            else if (hAdjType === NONE && vAdjType === TUTI) {
+                // 正反対に戻る
+                dir = dir.return();
+                pos = pos.add(dir);
+            }
+            // 1つパターン
+            else if (hAdjType === NONE && vAdjType === NONE) {
+                // 正反対に戻る
+                dir = dir.return();
+                pos = pos.add(dir);
+            }
+            // アサート
+            else {
+                throw new Error(`想定外の経路 dir: ${dir.toString()}, hAdjType: ${hAdjType}, vAdjType: ${vAdjType}`);
+            }
         }
         else if (type === TUTI) {
             // todo 壺クラッシュ
