@@ -36,7 +36,7 @@ function byynCheck1(startPos, dir, isTubo) {
             return settlePath(isHit); // todo 壺割れ
         }
         else if (type === NONE) {
-            pos = pos.add(dir);
+            // 何もしない
         }
         else if (type === BYYN) {
             if (dir === TL) {
@@ -54,24 +54,36 @@ function byynCheck1(startPos, dir, isTubo) {
                     return settlePath(isHit);
                 }
                 else if (rightType === TUTI && bottomType === TUTI) {
-                    // todo 右下に反射 つまり戻る
+                    // 右下に反射 つまり戻る
+                    dir = BR;
+                    pos = pos.add(dir);
                 }
                 // 2つパターン
                 else if (rightType === BYYN && bottomType === NONE) {
-                    // todo 左下に反射
+                    // 左下に反射
+                    dir = BL;
+                    pos = pos.add(B);
                 }
                 else if (rightType === TUTI && bottomType === NONE) {
-                    // todo 右下に反射 つまり戻る
+                    // 右下に反射 つまり戻る
+                    dir = BR;
+                    pos = pos.add(dir);
                 }
                 else if (rightType === NONE && bottomType === BYYN) {
-                    // todo 右上に反射
+                    // 右上に反射
+                    dir = TR;
+                    pos = pos.add(R);
                 }
                 else if (rightType === NONE && bottomType === TUTI) {
-                    // todo 右下に反射 つまり戻る
+                    // 右下に反射 つまり戻る
+                    dir = BR;
+                    pos = pos.add(dir);
                 }
                 // 1つパターン
                 else if (rightType === NONE && bottomType === NONE) {
-                    // todo 右下に反射 つまり戻る
+                    // 右下に反射 つまり戻る
+                    dir = BR;
+                    pos = pos.add(dir);
                 }
                 // アサート
                 else {
