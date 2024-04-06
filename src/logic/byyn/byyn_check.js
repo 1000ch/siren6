@@ -1,4 +1,4 @@
-import { Position, T, B, L, R, TL, TR, BL, BR } from "./position";
+import { Position, TL, TR, BL, BR } from "./position";
 import { NONE, BYYN, TUTI, OUT_OF_RANGE } from './cell';
 
 /*
@@ -12,11 +12,25 @@ let useUdewa = false;
 export function byynCheck(_room, _useUdewa, isTubo) {
     room = _room;
     useUdewa = _useUdewa;
+
+    const pathList = [];
+    for (let row = 0; row < room.length; row++) {
+        for (let col = 0; col < room.length; col++) {
+            // todo 仮 すべて左上投げ
+            const startPos = new Position(row, col);
+            const path = findByynPath(startPos, TL, isTubo);
+            if (path.length > 0) {
+                pathList.push(path);
+            }
+        }
+    }
+
+    return pathList;
 }
 
-function byynCheck1(startPos, dir, isTubo) {
+function findByynPath(startPos, dir, isTubo) {
     if (typeFrom(startPos) !== NONE) {
-        return false;
+        return [];
     }
     
     const isHit = {
@@ -35,7 +49,7 @@ function byynCheck1(startPos, dir, isTubo) {
         if (type === OUT_OF_RANGE) {
             // どこ行くねーん
             path.push(null);
-            return canBunretu(isHit) ? path : false;
+            return canBunretu(isHit) ? path : [];
         }
         else if (type === NONE) {
             // 何もしない
@@ -47,13 +61,13 @@ function byynCheck1(startPos, dir, isTubo) {
 
             // 3つパターン
             if (hAdjType === BYYN && vAdjType === BYYN) {
-                return canBunretu(isHit) ? path : false;
+                return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === BYYN && vAdjType === TUTI) {
-                return canBunretu(isHit) ? path : false;
+                return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === TUTI && vAdjType === BYYN) {
-                return canBunretu(isHit) ? path : false;
+                return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === TUTI && vAdjType === TUTI) {
                 // 正反対に戻る
@@ -112,9 +126,9 @@ function byynCheck1(startPos, dir, isTubo) {
         }
         else if (type === TUTI) {
             if (isTubo) {
-                return false;
+                return [];
             }
-            return canBunretu(isHit) ? path : false;
+            return canBunretu(isHit) ? path : [];
         }
         else {
             throw new Error(`想定外のtype: ${type}`);
@@ -122,7 +136,7 @@ function byynCheck1(startPos, dir, isTubo) {
 
         // キャッチしたら終了
         if (pos.equal(startPos)) {
-            return canBunretu(isHit) ? path : false;
+            return canBunretu(isHit) ? path : [];
         }
     }
 }

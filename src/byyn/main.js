@@ -116,8 +116,10 @@ const vm = {
         },
 
         onClickSearch() {
+            const pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
+            console.log(pathList);
+
             // todo
-            byynCheck(this.room, this.useUdewa, this.isTubo);
         },
 
         onClickReset() {
