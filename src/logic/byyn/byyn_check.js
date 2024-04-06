@@ -17,10 +17,11 @@ export function byynCheck(_room, _useUdewa, isTubo) {
     for (let row = 0; row < room.length; row++) {
         for (let col = 0; col < room.length; col++) {
             // todo 仮 すべて左上投げ
+            const dir = TL;
             const startPos = new Position(row, col);
-            const path = findByynPath(startPos, TL, isTubo);
+            const path = findByynPath(startPos, dir, isTubo);
             if (path.length > 0) {
-                pathList.push(path);
+                pathList.push({path, dirName: dir.name});
             }
         }
     }

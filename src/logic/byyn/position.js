@@ -1,8 +1,9 @@
 
 export class Position {
-    constructor(row, col) {
+    constructor(row, col, name = '') {
         this.row = row;
         this.col = col;
+        this.name = name;
     }
 
     add(...args) {
