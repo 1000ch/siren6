@@ -103,8 +103,8 @@
           </div>
         </div>
         <div class="message">
-          <div>{{`${pathList[pathIndex].dirName}に投げる`}}</div>
-          <div v-show="pathList[pathIndex].path.at(-1) === null">
+          <div>{{`${pathList[pathIndex][0].dir.name}に投げる`}}</div>
+          <div v-show="pathList[pathIndex].at(-1).pos === null">
             画面外で消失する可能性あり
           </div>
         </div>

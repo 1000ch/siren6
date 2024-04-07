@@ -162,7 +162,7 @@ const vm = {
             clearInterval(simTimer);
             this.removeItem();
 
-            const path = this.pathList[this.pathIndex].path;
+            const path = this.pathList[this.pathIndex];
             const lastIndex = path.length - 1;
             let index = 0;
             let prevPos = null;
@@ -172,7 +172,7 @@ const vm = {
                     this.room[prevPos.row][prevPos.col] = PREV_ITEM;
                 }
 
-                const pos = path[index];
+                const pos = path[index].pos;
 
                 if (pos === null) {
                     this.room[prevPos.row][prevPos.col] = PREV_ITEM;

@@ -20,7 +20,7 @@ export function byynCheck(_room, _useUdewa, isTubo) {
                 const startPos = new Position(row, col);
                 const path = findByynPath(startPos, dir, isTubo);
                 if (path.length > 0) {
-                    pathList.push({path, dirName: dir.name});
+                    pathList.push(path);
                 }
             }
         }
@@ -40,7 +40,7 @@ function findByynPath(startPos, dir, isTubo) {
     };
 
     let pos = startPos;
-    const path = [pos];
+    const path = [{pos, dir}];
 
     while (true) {
         // 移動
@@ -54,7 +54,7 @@ function findByynPath(startPos, dir, isTubo) {
         }
         else if (type === NONE) {
             // 何もしない
-            path.push(pos);
+            path.push({pos, dir});
         }
         else if (type === BYYN) {
             const hAdjType = typeFrom(pos.add(0, -dir.col));
@@ -88,7 +88,7 @@ function findByynPath(startPos, dir, isTubo) {
 
                 dir = dir.hReflect();
                 pos.row += dir.row;
-                path.push(pos);
+                path.push({pos, dir});
             }
             else if (hAdjType === TUTI && vAdjType === NONE) {
                 // 正反対に戻る
@@ -107,7 +107,7 @@ function findByynPath(startPos, dir, isTubo) {
                 
                 dir = dir.vReflect();
                 pos.col += dir.col;
-                path.push(pos);
+                path.push({pos, dir});
             }
             else if (hAdjType === NONE && vAdjType === TUTI) {
                 // 正反対に戻る
