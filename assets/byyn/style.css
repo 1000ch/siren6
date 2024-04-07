@@ -325,6 +325,10 @@ label {
   margin-top: 8px;
 }
 
+.message {
+  margin-top: 8px;
+}
+
 #room-container {
   position: relative;
   margin-top: 8px;

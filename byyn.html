@@ -97,14 +97,16 @@
              class="radio-btn-container">
           <div v-for="(_, index) in pathList"
                class="radio-btn"
-               :class="selected: pathIndex === index"
+               :class="{selected: pathIndex === index}"
                @click="onClickPathList(index)">
             {{index + 1}}
           </div>
         </div>
-        <div>{{`${pathList[pathIndex].dirName}に投げる`}}</div>
-        <div v-show="pathList[pathIndex].path.at(-1) === null">
-          画面外で消失する可能性あり
+        <div class="message">
+          <div>{{`${pathList[pathIndex].dirName}に投げる`}}</div>
+          <div v-show="pathList[pathIndex].path.at(-1) === null">
+            画面外で消失する可能性あり
+          </div>
         </div>
       </div>
       <div v-else>
