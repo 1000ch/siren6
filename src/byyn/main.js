@@ -193,6 +193,7 @@ const vm = {
             clearInterval(simTimer);
             this.isClickSearch = false;
             this.pathList = [];
+            this.pathIndex = 0;
 
             this.removeItem();
         },
