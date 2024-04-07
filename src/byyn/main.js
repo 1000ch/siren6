@@ -39,6 +39,7 @@ const vm = {
             dummyRoom: [],
             isClickSearch: false,
             pathList: [],
+            pathIndex: 0,
         }
     },
     created() {
@@ -150,11 +151,18 @@ const vm = {
             }
         },
 
+        onClickPathList(index) {
+            clearInterval(simTimer);
+            this.removeItem();
+            
+            this.pathIndex = index;
+        },
+
         onClickSimulate() {
             clearInterval(simTimer);
             this.removeItem();
 
-            const path = this.pathList[0].path;
+            const path = this.pathList[this.pathIndex].path;
             const lastIndex = path.length - 1;
             let index = 0;
             let prevPos = null;

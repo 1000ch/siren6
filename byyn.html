@@ -96,12 +96,14 @@
         <div v-show="pathList.length > 1"
              class="radio-btn-container">
           <div v-for="(_, index) in pathList"
-               class="radio-btn">
+               class="radio-btn"
+               :class="selected: pathIndex === index"
+               @click="onClickPathList(index)">
             {{index + 1}}
           </div>
         </div>
-        <div>{{`${pathList[0].dirName}に投げる`}}</div>
-        <div v-show="pathList[0].path.at(-1) === null">
+        <div>{{`${pathList[pathIndex].dirName}に投げる`}}</div>
+        <div v-show="pathList[pathIndex].path.at(-1) === null">
           画面外で消失する可能性あり
         </div>
       </div>

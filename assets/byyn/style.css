@@ -188,6 +188,11 @@ label {
     border-right-width: 1px;
   }
 
+  &.selected {
+    background-color: #00008b;
+    color: #fff;
+  }
+
   @media (any-hover: hover) {
     &:hover {
       background-color: #00008b;
