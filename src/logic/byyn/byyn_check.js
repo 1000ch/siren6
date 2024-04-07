@@ -26,6 +26,20 @@ export function byynCheck(_room, _useUdewa, isTubo) {
         }
     }
 
+    let catchablePathList = [];
+    let uncatchablePathList = [];
+
+    for (const path of pathList) {
+        if (path[0].pos.equal(path.at(-1).pos)) {
+            catchablePathList.push(path);
+        }
+        else {
+            uncatchablePathList.push(path);
+        }
+    }
+
+    // todo
+
     return pathList;
 }
 
