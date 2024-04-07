@@ -52,8 +52,6 @@ export function byynCheck(_room, _useUdewa, isTubo) {
 
     // catchablePathList1削減
 
-    console.log('catchablePathList1');
-
     while (catchablePathList1.length > 0) {
         const path = catchablePathList1.shift();
         pathList.push(path);
@@ -72,8 +70,6 @@ export function byynCheck(_room, _useUdewa, isTubo) {
 
     // catchablePathList2削減
 
-    console.log('catchablePathList2');
-
     catchablePathList2.sort((path1, path2) => {
         return path1.length - path2.length;
     });
@@ -91,8 +87,6 @@ export function byynCheck(_room, _useUdewa, isTubo) {
     }
 
     // uncatchablePathList削減
-
-    console.log('uncatchablePathList');
 
     uncatchablePathList.sort((path1, path2) => {
         const lastPos1 = path1.at(-1).pos;

@@ -160,7 +160,23 @@ const vm = {
         onClickSearch() {
             this.isClickSearch = true;
             this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
+
+            if (this.pathList.length === 0) {
+                return;
+            }
+
             this.start = this.pathList[this.pathIndex][0];
+            const path = this.pathList[this.pathIndex];
+            
+            for (let i = 0; i < path.length; i++) {
+                const pos = path[i].pos;
+                if (i === path.length - 1) {
+                    this.room[pos.row][pos.col] = ITEM;
+                }
+                else {
+                    this.room[pos.row][pos.col] = PREV_ITEM;
+                }
+            }
         },
 
         onClickReset() {
