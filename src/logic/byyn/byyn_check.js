@@ -60,6 +60,21 @@ export function byynCheck(_room, _useUdewa, isTubo) {
 
     // uncatchablePathList削減
 
+    uncatchablePathList.sort((path1, path2) => {
+        const lastPos1 = path1.at(-1).pos; 
+        const lastPos2 = path2.at(-1).pos; 
+        if (lastPos1 === null && lastPos2 === null) {
+            return 0;
+        }
+        else if (lastPos1 === null) {
+            return 1;
+        }
+        else if (lastPos2 === null) {
+            return -1;
+        }
+        return path1.length - path2.length;
+    });
+
     // todo
 
     return pathList;
