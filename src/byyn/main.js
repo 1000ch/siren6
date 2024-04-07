@@ -166,17 +166,7 @@ const vm = {
             }
 
             this.start = this.pathList[this.pathIndex][0];
-            const path = this.pathList[this.pathIndex];
-            
-            for (let i = 0; i < path.length; i++) {
-                const pos = path[i].pos;
-                if (i === path.length - 1) {
-                    this.room[pos.row][pos.col] = ITEM;
-                }
-                else {
-                    this.room[pos.row][pos.col] = PREV_ITEM;
-                }
-            }
+            this.paintPath();
         },
 
         onClickReset() {
@@ -194,6 +184,7 @@ const vm = {
             
             this.pathIndex = index;
             this.start = this.pathList[this.pathIndex][0];
+            this.paintPath();
         },
 
         onClickSimulate() {
@@ -292,6 +283,21 @@ const vm = {
                     }
                 }, 50);
             }, 50);
+        },
+        paintPath() {
+            const path = this.pathList[this.pathIndex];
+            for (let i = 0; i < path.length; i++) {
+                const pos = path[i].pos;
+                if (pos === null) {
+                    // 何もしない
+                }
+                else if (i === path.length - 1) {
+                    this.room[pos.row][pos.col] = ITEM;
+                }
+                else {
+                    this.room[pos.row][pos.col] = PREV_ITEM;
+                }
+            }
         },
         removeItem() {
             for (let row = 0; row < this.room.length; row++) {
