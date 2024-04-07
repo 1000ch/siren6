@@ -109,7 +109,29 @@ export function byynCheck(_room, _useUdewa, isTubo) {
         return path1.length - path2.length;
     });
 
-    // todo
+    while (uncatchablePathList.length > 0) {
+        const path = uncatchablePathList.shift();
+        pathList.push(path);
+
+        let pos1 = null, dir1 = null;
+        if (path.at(-1).pos === null) {
+            ({pos: pos1, dir: dir1} = path.at(-2));
+        }
+        else {
+            ({pos: pos1, dir: dir1} = path.at(-1));
+        }
+        
+        uncatchablePathList = uncatchablePathList.filter(path => {
+            let pos2 = null, dir2 = null;
+            if (path.at(-1).pos === null) {
+                ({pos: pos2, dir: dir2} = path.at(-2));
+            }
+            else {
+                ({pos: pos2, dir: dir2} = path.at(-1));
+            }
+            return !(pos1.equal(pos2) && dir1.equal(dir2));
+        });
+    }
 
     return pathList;
 }
