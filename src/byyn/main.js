@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
 import { NONE, BYYN, TUTI, ITEM, PREV_ITEM } from '../logic/byyn/cell';
 import { byynCheck } from '../logic/byyn/byyn_check';
+import { TL, TR, BL, BR } from '../logic/byyn/position';
 
 let isFisrt = true;
 let isMouseDown = false;
@@ -40,6 +41,7 @@ const vm = {
             isClickSearch: false,
             pathList: [],
             pathIndex: 0,
+            start: null,
         }
     },
     created() {
@@ -54,6 +56,25 @@ const vm = {
     computed: {
         existsResult() {
             return this.pathList.length > 0;
+        },
+        arrowClassName() {
+            if (this.start === null) {
+                return '';
+            }
+            const dir = this.start.dir;
+            if (dir.equal(TL)) {
+                return 'top-left';
+            }
+            else if (dir.equal(TR)) {
+                return 'top-right';
+            }
+            else if (dir.equal(BL)) {
+                return 'bottom-left';
+            }
+            else if (dir.equal(BR)) {
+                return 'bottom-right';
+            }
+            throw new Error(`ここに来ることはあり得ない`);
         }
     },
     methods: {
@@ -139,8 +160,7 @@ const vm = {
         onClickSearch() {
             this.isClickSearch = true;
             this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
-            
-            // todo siren
+            this.start = this.pathList[this.pathIndex][0];
         },
 
         onClickReset() {
@@ -157,6 +177,7 @@ const vm = {
             this.removeItem();
             
             this.pathIndex = index;
+            this.start = this.pathList[this.pathIndex][0];
         },
 
         onClickSimulate() {
@@ -195,6 +216,7 @@ const vm = {
             this.isClickSearch = false;
             this.pathList = [];
             this.pathIndex = 0;
+            this.start = null;
 
             this.removeItem();
         },

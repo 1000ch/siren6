@@ -122,11 +122,11 @@
         </tr>
       </table>
       <table id="room" ref="room">
-        <tr v-for="(roomRow, rowIndex) in room">
-          <td v-for="(type, colIndex) in roomRow"
-              :class="type"
-              :data-row="rowIndex"
-              :data-col="colIndex"
+        <tr v-for="(roomRow, row) in room">
+          <td v-for="(type, col) in roomRow"
+              :class="[type, start !== null && row === start.pos.row && col === start.pos.col ? arrowClassName : '']"
+              :data-row="row"
+              :data-col="col"
               @mousedown="onMouseDownCell"
               @mouseenter="onMouseEnterCell"
               @touchmove="onTouchMoveCell"></td>
