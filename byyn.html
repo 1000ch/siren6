@@ -91,12 +91,12 @@
       </template>
     </div>
 
-    <div id="path-list" v-show="isClickSearch">
-      <div v-if="existsResult">
+    <div id="path-list-container" v-show="isClickSearch">
+      <template v-if="existsResult">
         <div v-show="pathList.length > 1"
-             class="radio-btn-container">
+             id="path-list">
           <div v-for="(_, index) in pathList"
-               class="radio-btn"
+               class="path-btn"
                :class="{selected: pathIndex === index}"
                @click="onClickPathList(index)">
             {{index + 1}}
@@ -108,10 +108,10 @@
             画面外で消失する可能性あり
           </div>
         </div>
-      </div>
-      <div v-else>
+      </template>
+      <template v-else>
         アイテム増殖不可
-      </div>
+      </template>
     </div>
     
     <div id="room-container">
