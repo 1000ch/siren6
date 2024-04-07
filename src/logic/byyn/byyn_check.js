@@ -76,7 +76,7 @@ export function byynCheck(_room, _useUdewa, isTubo) {
 
     catchablePathList2.sort((path1, path2) => {
         return path1.length - path2.length;
-    })
+    });
 
     while (catchablePathList2.length > 0) {
         const path = catchablePathList2.shift();
