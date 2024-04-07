@@ -26,12 +26,22 @@ export function byynCheck(_room, _useUdewa, isTubo) {
         }
     }
 
-    let catchablePathList = [];
+    let catchablePathList1 = [];
+    let catchablePathList2 = [];
     let uncatchablePathList = [];
 
     for (const path of pathList) {
-        if (path[0].pos.equal(path.at(-1).pos)) {
-            catchablePathList.push(path);
+        const start = path[0];
+        const end = path.at(-1);
+        if (start.pos.equal(end.pos)) {
+            // 巡回してキャッチ
+            if (start.dir.equal(end.dir)) {
+                catchablePathList1.push(path);
+            }
+            // 角に当たった後、戻ってきてキャッチ
+            else {
+                catchablePathList2.push(path);
+            }
         }
         else {
             uncatchablePathList.push(path);
@@ -40,17 +50,19 @@ export function byynCheck(_room, _useUdewa, isTubo) {
 
     pathList = [];
 
-    // catchablePathList削減
+    // catchablePathList1削減
 
-    while (catchablePathList.length > 0) {
-        const path = catchablePathList.shift();
+    console.debug('catchablePathList1');
+
+    while (catchablePathList1.length > 0) {
+        const path = catchablePathList1.shift();
         pathList.push(path);
 
         const {pos: pos1, dir: dir1} = path[0];
 
-        catchablePathList = catchablePathList.filter(path => {
+        catchablePathList1 = catchablePathList1.filter(path => {
             for (const {pos: pos2, dir: dir2} of path) {
-                if (pos1.equal(pos2) && (dir1.equal(dir2) || dir1.equal(dir2.return()))) {
+                if (pos1.equal(pos2) && (dir1.equal(dir2) || dir1.equal(dir2.reverse()))) {
                     return false;
                 }
             }
@@ -58,7 +70,33 @@ export function byynCheck(_room, _useUdewa, isTubo) {
         });
     }
 
+    // catchablePathList2削減
+
+    console.debug('catchablePathList2');
+
+    while (catchablePathList2.length > 0) {
+        const path = catchablePathList2.shift();
+        pathList.push(path);
+
+        console.debug(path);
+        const {pos: pos1, dir: dir1} = path[(path.length - 1) / 2];
+        
+        catchablePathList2 = catchablePathList2.filter(path => {
+            const {pos: pos2, dir: dir2} = path[(path.length - 1) / 2];
+
+            console.debug(pos1);
+            console.debug(pos2);
+            console.debug(dir1);
+            console.debug(dir2);
+            console.debug('---');
+
+            return !(pos1.equal(pos2) && dir1.equal(dir2));
+        });
+    }
+
     // uncatchablePathList削減
+
+    console.debug('uncatchablePathList');
 
     uncatchablePathList.sort((path1, path2) => {
         const lastPos1 = path1.at(-1).pos; 
@@ -123,7 +161,7 @@ function findByynPath(startPos, dir, isTubo) {
             }
             else if (hAdjType === TUTI && vAdjType === TUTI) {
                 // 正反対に戻る
-                dir = dir.return();
+                dir = dir.reverse();
                 pos = pos.add(dir);
             }
             // 2つパターン
@@ -143,7 +181,7 @@ function findByynPath(startPos, dir, isTubo) {
             }
             else if (hAdjType === TUTI && vAdjType === NONE) {
                 // 正反対に戻る
-                dir = dir.return();
+                dir = dir.reverse();
                 pos = pos.add(dir);
             }
             else if (hAdjType === NONE && vAdjType === BYYN) {
@@ -162,13 +200,13 @@ function findByynPath(startPos, dir, isTubo) {
             }
             else if (hAdjType === NONE && vAdjType === TUTI) {
                 // 正反対に戻る
-                dir = dir.return();
+                dir = dir.reverse();
                 pos = pos.add(dir);
             }
             // 1つパターン
             else if (hAdjType === NONE && vAdjType === NONE) {
                 // 正反対に戻る
-                dir = dir.return();
+                dir = dir.reverse();
                 pos = pos.add(dir);
             }
             // アサート

@@ -20,7 +20,7 @@ export class Position {
         );
     }
 
-    return() {
+    reverse() {
         return new Position(
             this.row * -1,
             this.col * -1
