@@ -15,7 +15,7 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname),
       watch: {
-        ignored: ['**/test', '**/.git'],
+        ignored: ['**/test', '**/.git', '**/資料'],
       },
     },
     hot: true,
