@@ -13,7 +13,7 @@ export function byynCheck(_room, _useUdewa, isTubo) {
     room = _room;
     useUdewa = _useUdewa;
 
-    const pathList = [];
+    let pathList = [];
     for (let row = 0; row < room.length; row++) {
         for (let col = 0; col < room.length; col++) {
             for (const dir of [TL, TR, BL, BR]) {
@@ -37,6 +37,28 @@ export function byynCheck(_room, _useUdewa, isTubo) {
             uncatchablePathList.push(path);
         }
     }
+
+    pathList = [];
+
+    // catchablePathList削減
+
+    while (catchablePathList.length > 0) {
+        const path = catchablePathList.shift();
+        pathList.push(path);
+
+        const {pos: pos1, dir: dir1} = path[0];
+
+        catchablePathList = catchablePathList.filter(path => {
+            for (const {pos: pos2, dir: dir2} of path) {
+                if (pos1.equal(pos2) && (dir1.equal(dir2) || dir1.equal(dir2.return()))) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }
+
+    // uncatchablePathList削減
 
     // todo
 
