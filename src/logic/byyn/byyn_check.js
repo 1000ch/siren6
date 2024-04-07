@@ -98,7 +98,7 @@ export function byynCheck(_room, _useUdewa, isTubo) {
         const lastPos1 = path1.at(-1).pos;
         const lastPos2 = path2.at(-1).pos;
         if (lastPos1 === null && lastPos2 === null) {
-            return 0;
+            return path1.length - path2.length;
         }
         else if (lastPos1 === null) {
             return 1;
