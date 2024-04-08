@@ -164,7 +164,7 @@ function findByynPath(startPos, dir, isTubo) {
             const hAdjType = typeFrom(pos.add(0, -dir.col));
             const vAdjType = typeFrom(pos.add(-dir.row, 0));
 
-            if (reflectCount > maxReflectCount) {
+            if (reflectCount >= maxReflectCount) {
                 return canBunretu(isHit) ? path : [];
             }
             // 3つパターン
