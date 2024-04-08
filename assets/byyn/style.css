@@ -271,8 +271,7 @@ label {
 
 #action-btn-area {
   display: flex;
-  max-width: 400px;
-  justify-content: space-between;
+  column-gap: 8px;
 }
 
 .action-btn {
