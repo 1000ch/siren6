@@ -42,7 +42,7 @@ export class Position {
     }
 
     equal(pos) {
-        return this.row === pos.row && this.col === pos.col;
+        return pos !== null && this.row === pos.row && this.col === pos.col;
     }
 
     toString() {
