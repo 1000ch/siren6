@@ -115,7 +115,8 @@
       </template>
     </div>
     
-    <div id="room-container">
+    <div id="room-container"
+         :style="{height: roomContainerHeight + 'px'}">
       <table id="dummy-room" ref="dummyRoom">
         <tr v-for="roomRow in dummyRoom">
           <td v-for="(type) in roomRow"

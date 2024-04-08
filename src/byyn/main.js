@@ -36,6 +36,7 @@ const vm = {
             mainFillType: BYYN,
             useUdewa: false,
             isTubo: false,
+            roomContainerHeight: 40 * 18,
             room: [],
             dummyRoom: [],
             isClickSearch: false,
@@ -271,6 +272,8 @@ const vm = {
                 for (const td of tdList) {
                     td.style.height = tdOffsetWidth + 'px';
                 }
+
+                this.roomContainerHeight = tdOffsetWidth * this.roomSize;
 
                 this.$refs.room.style.visibility = 'visible';
                 this.$refs.dummyRoom.style.visibility = 'hidden';
