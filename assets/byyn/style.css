@@ -320,13 +320,8 @@ label {
   }
 }
 
-#path-list-container {
-  margin-top: 8px;
-}
-
 #path-list {
   display: flex;
-  margin-top: 8px;
   align-items: center;
   flex-wrap: wrap;
   gap: 1px;

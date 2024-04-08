@@ -77,22 +77,7 @@
 
     <hr>
 
-    <div id="action-btn-area">
-      <template v-if="pathList.length === 0">
-        <div class="action-btn"
-             @click="onClickSearch">調べる</div>
-        <div class="action-btn reset"
-             @click="onClickReset">リセット</div>
-      </template>
-      <template v-else>
-        <div class="action-btn"
-             @click="onClickSimulate">シミュる</div>
-        <div class="action-btn reset"
-             @click="onClickCorrect">訂正</div>
-      </template>
-    </div>
-
-    <div id="path-list-container" v-show="isClickSearch">
+    <template v-if="isClickSearch">
       <template v-if="existsResult">
         <div v-show="pathList.length > 1"
              id="path-list">
@@ -113,8 +98,24 @@
       <template v-else>
         アイテム増殖不可
       </template>
+      <hr>
+    </template>
+
+    <div id="action-btn-area">
+      <template v-if="pathList.length === 0">
+        <div class="action-btn"
+             @click="onClickSearch">調べる</div>
+        <div class="action-btn reset"
+             @click="onClickReset">リセット</div>
+      </template>
+      <template v-else>
+        <div class="action-btn"
+             @click="onClickSimulate">シミュる</div>
+        <div class="action-btn reset"
+             @click="onClickCorrect">訂正</div>
+      </template>
     </div>
-    
+
     <div id="room-container"
          :style="{height: roomContainerHeight + 'px'}">
       <table id="dummy-room" ref="dummyRoom">
