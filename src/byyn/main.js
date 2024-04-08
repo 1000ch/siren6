@@ -29,7 +29,7 @@ const vm = {
     data() {
         return {
             BYYN: BYYN, TUTI: TUTI,
-            roomSize: 18,
+            roomSize: 16,
             roomSizeMin: 10,
             roomSizeMax: 30,
             fillType: NONE,
