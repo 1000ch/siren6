@@ -143,6 +143,9 @@ function findByynPath(startPos, dir, isTubo) {
     let pos = startPos;
     const path = [{pos, dir}];
 
+    let reflectCount = 0;
+    const maxReflectCount = 24;
+
     while (true) {
         // 移動
         pos = pos.add(dir);
@@ -161,8 +164,11 @@ function findByynPath(startPos, dir, isTubo) {
             const hAdjType = typeFrom(pos.add(0, -dir.col));
             const vAdjType = typeFrom(pos.add(-dir.row, 0));
 
+            if (reflectCount > maxReflectCount) {
+                return canBunretu(isHit) ? path : [];
+            }
             // 3つパターン
-            if (hAdjType === BYYN && vAdjType === BYYN) {
+            else if (hAdjType === BYYN && vAdjType === BYYN) {
                 return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === BYYN && vAdjType === TUTI) {
@@ -225,6 +231,8 @@ function findByynPath(startPos, dir, isTubo) {
             else {
                 throw new Error(`想定外の経路 dir: ${dir.toString()}, hAdjType: ${hAdjType}, vAdjType: ${vAdjType}`);
             }
+
+            reflectCount++;
         }
         else if (type === TUTI) {
             if (isTubo) {
