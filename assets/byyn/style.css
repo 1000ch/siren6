@@ -38,9 +38,9 @@ h1 {
   color: #774c1b;
 }
 
-/* h2, h3 {
+h2, h3 {
   margin: 16px 0;
-} */
+}
 
 .config-container {
   display: flex;
@@ -375,6 +375,7 @@ label {
 
 #room-container {
   position: relative;
+  height: calc(40px * 18);
   margin-top: 8px;
 }
 
@@ -419,3 +420,11 @@ td {
 .prev-item {
   background-color: rgba(255, 0, 0, 0.3);
 }
+
+#poem {
+  margin-top: 16px;
+  padding-bottom: 2rem;
+  word-break: break-all;
+  font-size: 0.94rem;
+}
+
