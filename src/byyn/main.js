@@ -211,8 +211,9 @@ const vm = {
                 }
 
                 prevPos = pos;
+                index += 1;
 
-                if (++index > lastIndex) {
+                if (index > lastIndex) {
                     clearInterval(simTimer);
                 }
             }, 100);
