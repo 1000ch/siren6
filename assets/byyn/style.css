@@ -326,7 +326,6 @@ label {
 
 #path-list {
   display: flex;
-  max-width: 400px;
   margin-top: 8px;
   align-items: center;
   flex-wrap: wrap;
