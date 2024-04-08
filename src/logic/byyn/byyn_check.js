@@ -7,18 +7,16 @@ import { NONE, BYYN, TUTI, OUT_OF_RANGE } from './cell';
 */
 
 let room = [];
-let useUdewa = false;
 
-export function byynCheck(_room, _useUdewa, isTubo) {
+export function byynCheck(_room, useUdewa, isTubo) {
     room = _room;
-    useUdewa = _useUdewa;
 
     let pathList = [];
     for (let row = 0; row < room.length; row++) {
         for (let col = 0; col < room.length; col++) {
             for (const dir of [TL, TR, BL, BR]) {
                 const startPos = new Position(row, col);
-                const path = findByynPath(startPos, dir, isTubo);
+                const path = findByynPath(startPos, dir, useUdewa, isTubo);
                 if (path.length > 0) {
                     pathList.push(path);
                 }
@@ -130,8 +128,8 @@ export function byynCheck(_room, _useUdewa, isTubo) {
     return pathList;
 }
 
-function findByynPath(startPos, dir, isTubo) {
-    if (typeFrom(startPos) !== NONE) {
+function findByynPath(startPos, dir, useUdewa, isTubo) {
+    if (typeFrom(startPos, useUdewa) !== NONE) {
         return [];
     }
     
@@ -153,7 +151,7 @@ function findByynPath(startPos, dir, isTubo) {
         // 移動
         pos = pos.add(dir);
 
-        const type = typeFrom(pos);
+        const type = typeFrom(pos, useUdewa);
         if (type === OUT_OF_RANGE) {
             // どこ行くねーん
             path.push({pos: null, dir});
@@ -162,7 +160,7 @@ function findByynPath(startPos, dir, isTubo) {
         else if (type === NONE) {
             // 何もしない
             path.push({pos, dir});
-            
+
             unreflectCount++;
 
             if (unreflectCount >= maxUnreflectCount) {
@@ -170,8 +168,8 @@ function findByynPath(startPos, dir, isTubo) {
             }
         }
         else if (type === BYYN) {
-            const hAdjType = typeFrom(pos.add(0, -dir.col));
-            const vAdjType = typeFrom(pos.add(-dir.row, 0));
+            const hAdjType = typeFrom(pos.add(0, -dir.col), useUdewa);
+            const vAdjType = typeFrom(pos.add(-dir.row, 0), useUdewa);
 
             if (reflectCount >= maxReflectCount) {
                 return canBunretu(isHit) ? path : [];
@@ -195,11 +193,13 @@ function findByynPath(startPos, dir, isTubo) {
             else if (hAdjType === BYYN && vAdjType === NONE) {
                 // 横向きの壁で反射
 
-                if (dir.row > 0) {
-                    isHit.top = true;
-                }
-                else {
-                    isHit.bottom = true;
+                if (typeFrom(pos, false) === BYYN) {
+                    if (dir.row > 0) {
+                        isHit.top = true;
+                    }
+                    else {
+                        isHit.bottom = true;
+                    }
                 }
 
                 dir = dir.hReflect();
@@ -214,11 +214,13 @@ function findByynPath(startPos, dir, isTubo) {
             else if (hAdjType === NONE && vAdjType === BYYN) {
                 // 縦向きの壁で反射
 
-                if (dir.col > 0) {
-                    isHit.right = true;
-                }
-                else {
-                    isHit.left = true;
+                if (typeFrom(pos, false) === BYYN) {
+                    if (dir.col > 0) {
+                        isHit.right = true;
+                    }
+                    else {
+                        isHit.left = true;
+                    }
                 }
                 
                 dir = dir.vReflect();
@@ -265,7 +267,7 @@ function canBunretu(isHit) {
     return isHit.top && isHit.bottom && isHit.left && isHit.right;
 }
 
-function typeFrom(pos) {
+function typeFrom(pos, useUdewa) {
     if (
         0 <= pos.row && pos.row < room.length &&
         0 <= pos.col && pos.col < room.length
