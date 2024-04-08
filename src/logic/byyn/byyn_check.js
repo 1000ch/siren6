@@ -146,6 +146,9 @@ function findByynPath(startPos, dir, isTubo) {
     let reflectCount = 0;
     const maxReflectCount = 24;
 
+    let unreflectCount = 0;
+    const maxUnreflectCount = 10;
+
     while (true) {
         // 移動
         pos = pos.add(dir);
@@ -159,6 +162,12 @@ function findByynPath(startPos, dir, isTubo) {
         else if (type === NONE) {
             // 何もしない
             path.push({pos, dir});
+            
+            unreflectCount++;
+
+            if (unreflectCount >= maxUnreflectCount) {
+                return canBunretu(isHit) ? path : [];
+            }
         }
         else if (type === BYYN) {
             const hAdjType = typeFrom(pos.add(0, -dir.col));
@@ -233,6 +242,7 @@ function findByynPath(startPos, dir, isTubo) {
             }
 
             reflectCount++;
+            unreflectCount = 1;
         }
         else if (type === TUTI) {
             if (isTubo) {
