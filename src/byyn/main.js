@@ -131,11 +131,11 @@ const vm = {
         },
 
         onTouchMoveCell(event) {
-            event.preventDefault();
-
             if (this.existsResult) {
                 return;
             }
+            
+            event.preventDefault();
 
             const touch = event.touches[0];
             const target = document.elementFromPoint(touch.clientX, touch.clientY);
