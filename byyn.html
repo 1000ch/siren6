@@ -116,15 +116,8 @@
       </template>
     </div>
 
-    <div id="room-container"
-         :style="{height: roomContainerHeight + 'px'}">
-      <table id="dummy-room" ref="dummyRoom">
-        <tr v-for="roomRow in dummyRoom">
-          <td v-for="(type) in roomRow"
-              :class="type"></td>
-        </tr>
-      </table>
-      <table id="room" ref="room">
+    <div id="room-container">
+      <table :style="{'max-width': (roomSize * 40) + 'px'}">
         <tr v-for="(roomRow, row) in room">
           <td v-for="(type, col) in roomRow"
               :class="type"

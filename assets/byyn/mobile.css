@@ -1,13 +1,19 @@
 
-@media screen and (max-width: 930px) {
-  h1 {
-    font-size: 32px;
+@media screen and (max-width: 900px) {
+  #app {
+    margin-left: 24px;
+    margin-right: 24px;
   }
 }
 
-@media screen and (max-width: 770px) {
-  #app {
-    margin-left: 24px;
+@media screen and (max-width: 730px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  #room-container {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -36,13 +42,8 @@
   }
 
   #config-area {
-    max-width: 400px;
+    max-width: 400px; /* これがちょうどよい */
     margin: 0 auto;
-  }
-
-  #room-container {
-    margin-left: auto;
-    margin-right: auto;
   }
 
   #poem {

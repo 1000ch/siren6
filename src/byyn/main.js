@@ -7,8 +7,6 @@ import { TL, TR, BL, BR } from '../logic/byyn/position';
 let isFisrt = true;
 let isMouseDown = false;
 
-let roomTimerId1 = 0;
-let roomTimerId2 = 0;
 let simTimer = 0;
 
 window.addEventListener('mousedown', () => {
@@ -36,9 +34,7 @@ const vm = {
             mainFillType: BYYN,
             useUdewa: false,
             isTubo: false,
-            roomContainerHeight: 40 * 18,
             room: [],
-            dummyRoom: [],
             isClickSearch: false,
             pathList: [],
             pathIndex: 0,
@@ -46,13 +42,10 @@ const vm = {
         }
     },
     created() {
-        window.addEventListener('resize', () => {
-            this.cellToSquare();
-        });
+        // noop
     },
     mounted() {
         this.createRoom();
-        this.cellToSquare();
     },
     computed: {
         existsResult() {
@@ -88,7 +81,6 @@ const vm = {
             }
 
             this.createRoom();
-            this.cellToSquare();
         },
 
         onMouseDownCell(event) {
@@ -134,7 +126,7 @@ const vm = {
             if (this.existsResult) {
                 return;
             }
-            
+
             event.preventDefault();
 
             const touch = event.touches[0];
@@ -231,11 +223,6 @@ const vm = {
         },
 
         createRoom() {
-            this.$refs.room.style.visibility = 'hidden';
-            this.$refs.dummyRoom.style.visibility = 'visible';
-
-            this.dummyRoom = [...this.dummyRoom];
-
             const newRoom = [];
             const prevRoomSize = this.room.length;
             for (let row = 0; row < this.roomSize; row++) {
@@ -262,31 +249,6 @@ const vm = {
             const row = Number(element.dataset.row);
             const col = Number(element.dataset.col);
             return {row, col};
-        },
-        cellToSquare() {
-            roomTimerId1 = setTimeout(() => {
-                clearTimeout(roomTimerId1);
-                clearTimeout(roomTimerId2);
-                const tdList = document.querySelectorAll('#room td');
-                const tdOffsetWidth = tdList[0].offsetWidth;
-                for (const td of tdList) {
-                    td.style.height = tdOffsetWidth + 'px';
-                }
-
-                this.roomContainerHeight = tdOffsetWidth * this.roomSize;
-
-                this.$refs.room.style.visibility = 'visible';
-                this.$refs.dummyRoom.style.visibility = 'hidden';
-
-                this.dummyRoom = this.room;
-
-                roomTimerId2 = setTimeout(() => {
-                    const dummyTdList = document.querySelectorAll('#dummy-room td');
-                    for (const td of dummyTdList) {
-                        td.style.height = tdOffsetWidth + 'px';
-                    }
-                }, 50);
-            }, 50);
         },
         paintPath() {
             const path = this.pathList[this.pathIndex];
