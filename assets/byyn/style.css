@@ -8,8 +8,6 @@
   font-size: 1.4rem;
   background-color: #eecfaa;
 
-  user-select: none; /* ドラッグされるとmouseupが発火しない */
-  -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -61,6 +59,8 @@ h2, h3 {
 label {
   height: 39.5px;
   line-height: 39.5px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .plus-minus-input-numbur {
@@ -371,6 +371,9 @@ label {
   position: relative;
   height: calc(40px * 18);
   margin-top: 8px;
+
+  user-select: none; /* ドラッグされるとmouseupが発火しない */
+  -webkit-user-select: none;
 }
 
 table {
