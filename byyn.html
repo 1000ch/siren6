@@ -117,7 +117,7 @@
     </div>
 
     <div id="room-container">
-      <table :style="{width: (roomSize * 40) + 'px'}">
+      <table :style="{'max-width': (roomSize * 40) + 'px'}">
         <tr v-for="(roomRow, row) in room">
           <td v-for="(type, col) in roomRow"
               :class="type"
