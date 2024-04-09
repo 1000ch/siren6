@@ -18,6 +18,19 @@
 }
 
 @media screen and (max-width: 580px) {
+  :root {
+    font-size: 1.2rem;
+  }
+
+  input, .plus-minus-input-numbur input[type="number"] {
+    font-size: 1.2rem;
+  }
+  
+  #app {
+    margin: 0;
+    padding: 0 8px;
+  }
+
   h1 {
     font-size: 1.2rem;
     text-align: center;
@@ -29,7 +42,7 @@
   }
 
   #config-area {
-    max-width: calc(40px * 16);
+    max-width: calc(40px * 10); /* これがちょうどよい */
     margin: 0 auto;
   }
 
