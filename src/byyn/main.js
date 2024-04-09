@@ -36,7 +36,7 @@ const vm = {
             mainFillType: BYYN,
             useUdewa: false,
             isTubo: false,
-            roomContainerHeight: 40 * 16,
+            roomContainerHeight: 40 * 18,
             room: [],
             dummyRoom: [],
             isClickSearch: false,
@@ -134,7 +134,7 @@ const vm = {
             if (this.existsResult) {
                 return;
             }
-
+            
             event.preventDefault();
 
             const touch = event.touches[0];

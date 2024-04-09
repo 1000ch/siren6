@@ -1,23 +1,30 @@
 
-@media screen and (max-width: 900px) {
-  #app {
-    margin-left: 24px;
-    margin-right: 24px;
-  }
-}
-
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 930px) {
   h1 {
     font-size: 32px;
   }
+}
 
-  #room-container {
-    margin-left: auto;
-    margin-right: auto;
+@media screen and (max-width: 770px) {
+  #app {
+    margin-left: 24px;
   }
 }
 
 @media screen and (max-width: 580px) {
+  :root {
+    font-size: 1.2rem;
+  }
+
+  input, .plus-minus-input-numbur input[type="number"] {
+    font-size: 1.2rem;
+  }
+  
+  #app {
+    margin: 0;
+    padding: 0 8px;
+  }
+
   h1 {
     font-size: 1.2rem;
     text-align: center;
@@ -29,8 +36,13 @@
   }
 
   #config-area {
-    max-width: calc(40px * 16);
+    max-width: 400px;
     margin: 0 auto;
+  }
+
+  #room-container {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #poem {
