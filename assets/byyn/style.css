@@ -369,7 +369,7 @@ label {
 
 #room-container {
   position: relative;
-  height: calc(40px * 18);
+  height: calc(40px * 16);
   margin-top: 8px;
 
   user-select: none; /* ドラッグされるとmouseupが発火しない */
