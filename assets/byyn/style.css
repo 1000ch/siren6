@@ -368,8 +368,6 @@ label {
 }
 
 #room-container {
-  /* position: relative;
-  height: calc(40px * 16); */
   margin-top: 8px;
 
   user-select: none; /* ドラッグされるとmouseupが発火しない */
@@ -378,6 +376,7 @@ label {
 
 table {
   width: 100%;
+  max-width: calc(40px * 16);
   border-collapse: collapse;
   border-spacing: 0;
   table-layout: fixed;
@@ -385,8 +384,6 @@ table {
 
 td {
   position: relative;
-  width: 100%;
-  max-width: 40px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   background-color: white;

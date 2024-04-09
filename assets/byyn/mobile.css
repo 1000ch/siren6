@@ -42,7 +42,7 @@
   }
 
   #config-area {
-    max-width: calc(40px * 10); /* これがちょうどよい */
+    max-width: 400px; /* これがちょうどよい */
     margin: 0 auto;
   }
 
