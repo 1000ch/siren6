@@ -250,6 +250,7 @@ function findByynPath(startPos, dir, useUdewa, isTubo) {
             if (isTubo) {
                 return [];
             }
+            path.at(-1).isTuboCrash = true;
             return canBunretu(isHit) ? path : [];
         }
         else {

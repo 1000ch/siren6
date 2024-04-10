@@ -91,7 +91,10 @@
         <div class="message">
           <div>{{`${pathList[pathIndex][0].dir.name}に投げる`}}</div>
           <div v-show="pathList[pathIndex].at(-1).pos === null">
-            画面外で消失する可能性あり
+            注意！画面外で消失する可能性あり
+          </div>
+          <div v-show="pathList[pathIndex].at(-1).isTuboCrash">
+            注意！壺を投げると割れます
           </div>
         </div>
       </template>
