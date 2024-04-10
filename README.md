@@ -1,7 +1,11 @@
 # siren6
-シレン6 値段識別ツール
+シレン6 簡単値段識別ツール
 
 https://mogamoga1024.github.io/siren6/
+
+シレン6 簡単ボヨヨンチェッカー
+
+https://mogamoga1024.github.io/siren6/byyn.html
 
 ## 参考元
 
