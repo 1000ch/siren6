@@ -273,7 +273,7 @@ const vm = {
         removeItem() {
             for (let row = 0; row < this.room.length; row++) {
                 for (let col = 0; col < this.room.length; col++) {
-                    const type = this.room[row][col];
+                    const type = this.room[row][col].item;
                     if (type === ITEM || type === PREV_ITEM) {
                         this.room[row][col].item = NONE;
                     }

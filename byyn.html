@@ -132,6 +132,7 @@
               @mousedown="onMouseDownCell"
               @mouseenter="onMouseEnterCell"
               @touchmove="onTouchMoveCell">
+            <div v-show="cell.item !== NONE" :class="cell.item"></div>
             <img v-if="start !== null && row === start.pos.row && col === start.pos.col"
                  src="./assets/top_left_arrow.png"
                  :class="arrowClassName">
