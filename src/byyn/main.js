@@ -167,6 +167,11 @@ const vm = {
         },
 
         onClickReset() {
+            const res = confirm('本当にリセットしますか？');
+            if (!res) {
+                return;
+            }
+
             this.isClickSearch = false;
             for (let row = 0; row < this.room.length; row++) {
                 for (let col = 0; col < this.room.length; col++) {
