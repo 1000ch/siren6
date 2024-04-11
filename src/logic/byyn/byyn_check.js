@@ -1,5 +1,5 @@
 import { Position, TL, TR, BL, BR } from "./position";
-import { NONE, BYYN, TUTI, OUT_OF_RANGE } from './cell';
+import { NONE, BYYN, TUTI, MIZU, OUT_OF_RANGE } from './cell';
 
 /*
 今はさっさと実装することと拡張性を重視し、全マスから全方向に投げて調べるという方針をとる。
@@ -138,6 +138,7 @@ function findByynPath(startPos, dir, useUdewa, isTubo) {
         left: false, right: false
     };
 
+    let prevType = NONE;
     let pos = startPos;
     const path = [{pos, dir}];
 
@@ -157,31 +158,36 @@ function findByynPath(startPos, dir, useUdewa, isTubo) {
             path.push({pos: null, dir});
             return canBunretu(isHit) ? path : [];
         }
-        else if (type === NONE) {
+        else if (type === NONE || type === MIZU) {
             // 何もしない
             path.push({pos, dir});
 
             unreflectCount++;
 
             if (unreflectCount >= maxUnreflectCount) {
+                if (type === MIZU) return [];
                 return canBunretu(isHit) ? path : [];
             }
         }
         else if (type === BYYN) {
-            const hAdjType = typeFrom(pos.add(0, -dir.col), useUdewa);
-            const vAdjType = typeFrom(pos.add(-dir.row, 0), useUdewa);
+            const hAdjType = typeFrom(pos.add(0, -dir.col), useUdewa, true);
+            const vAdjType = typeFrom(pos.add(-dir.row, 0), useUdewa, true);
 
             if (reflectCount >= maxReflectCount) {
+                if (prevType === MIZU) return [];
                 return canBunretu(isHit) ? path : [];
             }
             // 3つパターン
             else if (hAdjType === BYYN && vAdjType === BYYN) {
+                if (prevType === MIZU) return [];
                 return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === BYYN && vAdjType === TUTI) {
+                if (prevType === MIZU) return [];
                 return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === TUTI && vAdjType === BYYN) {
+                if (prevType === MIZU) return [];
                 return canBunretu(isHit) ? path : [];
             }
             else if (hAdjType === TUTI && vAdjType === TUTI) {
@@ -247,7 +253,7 @@ function findByynPath(startPos, dir, useUdewa, isTubo) {
             unreflectCount = 1;
         }
         else if (type === TUTI) {
-            if (isTubo) {
+            if (isTubo || prevType === MIZU) {
                 return [];
             }
             path.at(-1).isTuboCrash = true;
@@ -261,6 +267,8 @@ function findByynPath(startPos, dir, useUdewa, isTubo) {
         if (pos.equal(startPos)) {
             return canBunretu(isHit) ? path : [];
         }
+
+        prevType = type;
     }
 }
 
@@ -268,7 +276,7 @@ function canBunretu(isHit) {
     return isHit.top && isHit.bottom && isHit.left && isHit.right;
 }
 
-function typeFrom(pos, useUdewa) {
+function typeFrom(pos, useUdewa, ignoreMizu = false) {
     if (
         0 <= pos.row && pos.row < room.length &&
         0 <= pos.col && pos.col < room.length
@@ -276,6 +284,9 @@ function typeFrom(pos, useUdewa) {
         const type = room[pos.row][pos.col];
         if (useUdewa && type === TUTI) {
             return BYYN;
+        }
+        if (ignoreMizu && type === MIZU) {
+            return NONE;
         }
         return type;
     }
