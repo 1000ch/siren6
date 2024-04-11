@@ -9,8 +9,6 @@ let isMouseDown = false;
 
 let simTimer = 0;
 
-let oriRoom = [];
-
 window.addEventListener('mousedown', () => {
     isMouseDown = true;
 });
@@ -154,8 +152,6 @@ const vm = {
 
         onClickSearch() {
             this.isClickSearch = true;
-
-            oriRoom = this.room.map(row => [...row]);
             this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
 
             if (this.pathList.length === 0) {
@@ -275,7 +271,14 @@ const vm = {
             }
         },
         removeItem() {
-            this.room = oriRoom.map(row => [...row]);
+            for (let row = 0; row < this.room.length; row++) {
+                for (let col = 0; col < this.room.length; col++) {
+                    const type = this.room[row][col];
+                    if (type === ITEM || type === PREV_ITEM) {
+                        this.room[row][col] = NONE;
+                    }
+                }
+            }
         },
     }
 };
