@@ -132,10 +132,10 @@
               @mousedown="onMouseDownCell"
               @mouseenter="onMouseEnterCell"
               @touchmove="onTouchMoveCell">
-              <img v-if="start !== null && row === start.pos.row && col === start.pos.col"
-                   src="./assets/top_left_arrow.png"
-                   :class="arrowClassName">
-            </td>
+            <img v-if="start !== null && row === start.pos.row && col === start.pos.col"
+                 src="./assets/top_left_arrow.png"
+                 :class="arrowClassName">
+          </td>
         </tr>
       </table>
     </div>
