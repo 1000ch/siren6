@@ -269,6 +269,37 @@ label {
   background-color: #8B4513;
 }
 
+.fill-type-mizu {
+  border-color: #666;
+  background-color: #ADD8E6;
+  opacity: 0.5;
+
+  &.selected {
+    background-color: #00BFFF;
+    opacity: 1;
+    color: #fff;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #00BFFF;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+  @media (any-hover: none) {
+    &:active {
+      background-color: #00BFFF;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+}
+
+.mizu {
+  background-color: #00BFFF;
+}
+
 #action-btn-area {
   display: flex;
   column-gap: 8px;

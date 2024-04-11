@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
-import { NONE, BYYN, TUTI, ITEM, PREV_ITEM } from '../logic/byyn/cell';
+import { NONE, BYYN, TUTI, MIZU, ITEM, PREV_ITEM } from '../logic/byyn/cell';
 import { byynCheck } from '../logic/byyn/byyn_check';
 import { TL, TR, BL, BR } from '../logic/byyn/position';
 
@@ -26,7 +26,7 @@ const vm = {
     },
     data() {
         return {
-            BYYN: BYYN, TUTI: TUTI,
+            BYYN: BYYN, TUTI: TUTI, MIZU: MIZU,
             roomSize: 16,
             roomSizeMin: 10,
             roomSizeMax: 30,
