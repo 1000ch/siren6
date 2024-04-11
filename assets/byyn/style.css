@@ -208,13 +208,12 @@ label {
 }
 
 .fill-type-byyn {
-  border-color: #666;
-  background-color: #C8A2C8;
-  opacity: 0.5;
+  border-color: #999;
+  color: rgba(102, 102, 102, 0.5);
+  background-color: rgba(200, 162, 200, 0.5);
 
   &.selected {
     background-color: #ab2ad6;
-    opacity: 1;
     color: #fff;
   }
 
@@ -222,14 +221,12 @@ label {
     &:hover {
       background-color: #ab2ad6;
       color: #fff;
-      opacity: 1;
     }
   }
   @media (any-hover: none) {
     &:active {
       background-color: #ab2ad6;
       color: #fff;
-      opacity: 1;
     }
   }
 }
@@ -239,13 +236,12 @@ label {
 }
 
 .fill-type-tuti {
-  border-color: #666;
-  background-color: #e2bc5b;
-  opacity: 0.5;
+  border-color: #999;
+  color: rgba(102, 102, 102, 0.5);
+  background-color: rgba(226, 188, 91, 0.5);
 
   &.selected {
     background-color: #8B4513;
-    opacity: 1;
     color: #fff;
   }
 
@@ -253,14 +249,12 @@ label {
     &:hover {
       background-color: #8B4513;
       color: #fff;
-      opacity: 1;
     }
   }
   @media (any-hover: none) {
     &:active {
       background-color: #8B4513;
       color: #fff;
-      opacity: 1;
     }
   }
 }
@@ -270,13 +264,12 @@ label {
 }
 
 .fill-type-mizu {
-  border-color: #666;
-  background-color: #ADD8E6;
-  opacity: 0.5;
+  border-color: #999;
+  color: rgba(102, 102, 102, 0.5);
+  background-color: rgba(173, 216, 230, 0.5);
 
   &.selected {
     background-color: #00BFFF;
-    opacity: 1;
     color: #fff;
   }
 
@@ -284,14 +277,12 @@ label {
     &:hover {
       background-color: #00BFFF;
       color: #fff;
-      opacity: 1;
     }
   }
   @media (any-hover: none) {
     &:active {
       background-color: #00BFFF;
       color: #fff;
-      opacity: 1;
     }
   }
 }
