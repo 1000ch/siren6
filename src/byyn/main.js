@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { PlusMinusInputNumbur } from '../components/plus_minus_input_numbur'
-import { NONE, BYYN, TUTI, MIZU, ITEM, PREV_ITEM } from '../logic/byyn/cell';
+import { cell, NONE, BYYN, TUTI, MIZU, ITEM, PREV_ITEM } from '../logic/byyn/cell';
 import { byynCheck } from '../logic/byyn/byyn_check';
 import { TL, TR, BL, BR } from '../logic/byyn/position';
 
@@ -90,13 +90,13 @@ const vm = {
 
             const {row, col} = this.elementToRowCol(event.target);
             
-            if (this.room[row][col] === this.mainFillType) {
+            if (this.room[row][col].fill === this.mainFillType) {
                 this.fillType = NONE;
             }
             else {
                 this.fillType = this.mainFillType;
             }
-            this.room[row][col] = this.fillType;
+            this.room[row][col].fill = this.fillType;
             
             isFisrt = false;
         },
@@ -108,7 +108,7 @@ const vm = {
             const {row, col} = this.elementToRowCol(event.target);
 
             if (isFisrt) {
-                if (this.room[row][col] === this.mainFillType) {
+                if (this.room[row][col].fill === this.mainFillType) {
                     this.fillType = NONE;
                 }
                 else {
@@ -118,7 +118,7 @@ const vm = {
             }
 
             if (isMouseDown) {
-                this.room[row][col] = this.fillType;
+                this.room[row][col].fill = this.fillType;
             }
         },
 
@@ -139,7 +139,7 @@ const vm = {
             const {row, col} = this.elementToRowCol(target);
 
             if (isFisrt) {
-                if (this.room[row][col] === this.mainFillType) {
+                if (this.room[row][col].fill === this.mainFillType) {
                     this.fillType = NONE;
                 }
                 else {
@@ -147,12 +147,12 @@ const vm = {
                 }
                 isFisrt = false;
             }
-            this.room[row][col] = this.fillType;
+            this.room[row][col].fill = this.fillType;
         },
 
         onClickSearch() {
             this.isClickSearch = true;
-            this.pathList = byynCheck(this.room, this.useUdewa, this.isTubo);
+            this.pathList = byynCheck(this.room.map(row => row.map(c => c.fill)), this.useUdewa, this.isTubo);
 
             if (this.pathList.length === 0) {
                 return;
@@ -171,7 +171,7 @@ const vm = {
             this.isClickSearch = false;
             for (let row = 0; row < this.room.length; row++) {
                 for (let col = 0; col < this.room.length; col++) {
-                    this.room[row][col] = NONE;
+                    this.room[row][col].fill = NONE;
                 }
             }
         },
@@ -196,16 +196,16 @@ const vm = {
 
             simTimer = setInterval(() => {
                 if (prevPos !== null) {
-                    this.room[prevPos.row][prevPos.col] = PREV_ITEM;
+                    this.room[prevPos.row][prevPos.col].item = PREV_ITEM;
                 }
 
                 const pos = path[index].pos;
 
                 if (pos === null) {
-                    this.room[prevPos.row][prevPos.col] = PREV_ITEM;
+                    this.room[prevPos.row][prevPos.col].item = PREV_ITEM;
                 }
                 else {
-                    this.room[pos.row][pos.col] = ITEM;
+                    this.room[pos.row][pos.col].item = ITEM;
                 }
 
                 prevPos = pos;
@@ -237,7 +237,7 @@ const vm = {
                         newRoom[row].push(this.room[row][col]);
                     }
                     else {
-                        newRoom[row].push(NONE);
+                        newRoom[row].push(cell());
                     }
                 }
             }
@@ -246,7 +246,7 @@ const vm = {
         resetRoom() {
             for (let row = 0; row < this.roomSize; row++) {
                 for (let col = 0; col < this.roomSize; col++) {
-                    this.room[row][col] = NONE;
+                    this.room[row][col].fill = NONE;
                 }
             }
         },
@@ -263,10 +263,10 @@ const vm = {
                     // 何もしない
                 }
                 else if (i === path.length - 1) {
-                    this.room[pos.row][pos.col] = ITEM;
+                    this.room[pos.row][pos.col].item = ITEM;
                 }
                 else {
-                    this.room[pos.row][pos.col] = PREV_ITEM;
+                    this.room[pos.row][pos.col].item = PREV_ITEM;
                 }
             }
         },
@@ -275,7 +275,7 @@ const vm = {
                 for (let col = 0; col < this.room.length; col++) {
                     const type = this.room[row][col];
                     if (type === ITEM || type === PREV_ITEM) {
-                        this.room[row][col] = NONE;
+                        this.room[row][col].item = NONE;
                     }
                 }
             }
