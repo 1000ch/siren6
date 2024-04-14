@@ -68,11 +68,15 @@
       </div>
       <div>
         <div class="config">
-          <input type="checkbox" id="chkbox-udewa" v-model="useUdewa">
+          <input type="checkbox" id="chkbox-udewa"
+                 :value="useUdewa"
+                 @change="isClickSearch = false, useUdewa = !useUdewa">
           <label for="chkbox-udewa">ボヨヨン腕輪</label>
         </div>
         <div class="config">
-          <input type="checkbox" id="chkbox-tubo" v-model="isTubo">
+          <input type="checkbox" id="chkbox-tubo"
+                 :value="isTubo"
+                 @change="isClickSearch = false, isTubo = !isTubo">
           <label for="chkbox-tubo">壺を投げる</label>
         </div>
       </div>
@@ -80,30 +84,25 @@
 
     <hr>
 
-    <template v-if="isClickSearch">
-      <template v-if="existsResult">
-        <div v-show="pathList.length > 1"
-             id="path-list">
-          <div v-for="(_, index) in pathList"
-               class="path-btn"
-               :class="{selected: pathIndex === index}"
-               @click="onClickPathList(index)">
-            {{index + 1}}
-          </div>
+    <template v-if="isClickSearch && existsResult">
+      <div v-show="pathList.length > 1"
+           id="path-list">
+        <div v-for="(_, index) in pathList"
+             class="path-btn"
+             :class="{selected: pathIndex === index}"
+             @click="onClickPathList(index)">
+          {{index + 1}}
         </div>
-        <div class="message">
-          <div>{{`${pathList[pathIndex][0].dir.name}に投げる`}}</div>
-          <div v-show="pathList[pathIndex].at(-1).pos === null">
-            注意！画面外で消失する可能性あり
-          </div>
-          <div v-show="pathList[pathIndex].at(-1).isTuboCrash">
-            注意！壺を投げると割れます
-          </div>
+      </div>
+      <div class="message">
+        <div>{{`${pathList[pathIndex][0].dir.name}に投げる`}}</div>
+        <div v-show="pathList[pathIndex].at(-1).pos === null">
+          注意！画面外で消失する可能性あり
         </div>
-      </template>
-      <template v-else>
-        アイテム増殖不可
-      </template>
+        <div v-show="pathList[pathIndex].at(-1).isTuboCrash">
+          注意！壺を投げると割れます
+        </div>
+      </div>
       <hr>
     </template>
 
@@ -113,6 +112,16 @@
              @click="onClickSearch">調べる</div>
         <div class="action-btn reset"
              @click="onClickReset">リセット</div>
+        <div v-show="isClickSearch && !existsResult"
+             style="height: 39px; line-height: 39px;">
+          <span style="font-weight: bold; color: red;">
+            不可能
+          </span>
+          <span v-show="!useUdewa && room.some(row => row.some(cell => cell.fill === TUTI))"
+                style="font-size: 0.6rem;">
+            ボヨヨン腕輪ある？
+          </span>
+        </div>
       </template>
       <template v-else>
         <div class="action-btn"

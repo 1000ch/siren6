@@ -73,6 +73,8 @@ const vm = {
     },
     methods: {
         onChangeRoomSize() {
+            this.isClickSearch = false;
+
             if (this.roomSize < this.roomSizeMin) {
                 this.roomSize = this.roomSizeMin;
             }
@@ -87,6 +89,7 @@ const vm = {
             if (this.existsResult) {
                 return;
             }
+            this.isClickSearch = false;
 
             const {row, col} = this.elementToRowCol(event.target);
             
@@ -118,6 +121,7 @@ const vm = {
             }
 
             if (isMouseDown) {
+                this.isClickSearch = false;
                 this.room[row][col].fill = this.fillType;
             }
         },
@@ -126,6 +130,7 @@ const vm = {
             if (this.existsResult) {
                 return;
             }
+            this.isClickSearch = false;
 
             event.preventDefault();
 
