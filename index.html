@@ -164,8 +164,8 @@
                 'borderline': item.needBorderline,
               }">
             <td>{{item.name}}</td>
-            <td class="right">{{item.kaine}}</td>
-            <td class="right">{{item.urine}}</td>
+            <td class="right">{{item.kaine.toLocaleString()}}</td>
+            <td class="right">{{item.urine.toLocaleString()}}</td>
           </tr>
         </table>
       </template>
@@ -236,8 +236,8 @@
                 'borderline': item.needBorderline,
               }">
             <td>{{item.name}}</td>
-            <td class="right">{{item.kaine}}</td>
-            <td class="right">{{item.urine}}</td>
+            <td class="right">{{item.kaine.toLocaleString()}}</td>
+            <td class="right">{{item.urine.toLocaleString()}}</td>
           </tr>
         </table>
       </template>
@@ -262,7 +262,7 @@
               </tr>
               <tr v-for="tue in result.itemList"
                   :class="{'exists-noroi': tue.isNoroi}">
-                <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
+                <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count.toLocaleString()}}</td>
               </tr>
             </table>
           </template>
@@ -273,7 +273,7 @@
           </tr>
           <tr v-for="tue in resultTueCountList"
               :class="{'exists-noroi': tue.isNoroi}">
-            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count}}</td>
+            <td class="center">{{tue.isNoroi ? 'あり' : 'なし'}}</td><td class="center">{{tue.count.toLocaleString()}}</td>
           </tr>
         </table>
       </template>
@@ -339,9 +339,9 @@
             <tr v-for="item in resultItemList"
                 :class="{'borderline': item.needBorderline}">
               <td>{{item.name}}</td>
-              <td class="right">{{item.kaine}}</td>
-              <td class="right">{{item.urine}}</td>
-              <td class="center">{{item.count}}</td>
+              <td class="right">{{item.kaine.toLocaleString()}}</td>
+              <td class="right">{{item.urine.toLocaleString()}}</td>
+              <td class="center">{{item.count.toLocaleString()}}</td>
             </tr>
           </table>
           <!-- それ以外 -->
@@ -374,11 +374,11 @@
               <td>{{item.name}}</td>
               <td class="right"
                   :class="{'search-nedan-type': searchNedanType !== 'all' && item.kaine === searchNedan}">
-                {{item.kaine}}
+                {{item.kaine.toLocaleString()}}
               </td>
               <td class="right"
                   :class="{'search-nedan-type': searchNedanType !== 'all' && item.urine === searchNedan}">
-                {{item.urine}}
+                {{item.urine.toLocaleString()}}
               </td>
             </tr>
           </table>
