@@ -402,6 +402,7 @@ th, td {
   border: 1px solid #ccc;
   border-bottom-width: 0;
   padding: 12px 6px;
+  font-size: 18px;
 }
 
 .clickable {
