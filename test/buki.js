@@ -4,7 +4,7 @@ import { bukiRepository } from '../src/logic/item/buki_repository';
 describe('武器', function () {
     it('検索 一覧', function () {
         const resultList = bukiRepository.findAllItemList();
-        assert.strictEqual(resultList.length, 37);
+        assert.strictEqual(resultList.length, 38);
         assert.strictEqual(resultList[0].name, '木刀');
         assert.strictEqual(resultList[1].name, '青銅の太刀');
         assert.strictEqual(resultList[2].name, 'カタナ');
@@ -41,6 +41,7 @@ describe('武器', function () {
         assert.strictEqual(resultList[33].name, '最強ハンマー');
         assert.strictEqual(resultList[34].name, '火迅風魔刀');
         assert.strictEqual(resultList[35].name, '黄金のつるはし');
-        assert.strictEqual(resultList[36].name, '秘剣カブラステギ');
+        assert.strictEqual(resultList[36].name, '必中の剣');
+        assert.strictEqual(resultList[37].name, '秘剣カブラステギ');
     });
 });
