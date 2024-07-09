@@ -86,6 +86,7 @@ class BukiRepository extends ItemRepository {
         this.add(c('金の剣', 3000, 1200, 'サビ'));
         this.add(c('妖刀かまいたち', 8400, 3360, '三'));
         this.add(c('ミノタウロスの斧', 6500, 2600, '会'));
+        this.add(c('必中の剣', 20000, 8000, '必'));
         this.add(c('連撃刀', 10000, 4000, '連'));
         this.add(c('水斬りの剣', 3300, 1320, '水'));
         this.add(c('原始の斧', 5000, 2000, '獣'));
