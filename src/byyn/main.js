@@ -27,8 +27,9 @@ const vm = {
     data() {
         return {
             BYYN: BYYN, TUTI: TUTI, MIZU: MIZU,
-            roomSize: 16,
-            roomSizeMin: 10,
+            roomSizeX: 12,
+            roomSizeY: 12,
+            roomSizeMin: 6,
             roomSizeMax: 30,
             fillType: NONE,
             mainFillType: BYYN,
@@ -75,11 +76,18 @@ const vm = {
         onChangeRoomSize() {
             this.isClickSearch = false;
 
-            if (this.roomSize < this.roomSizeMin) {
-                this.roomSize = this.roomSizeMin;
+            if (this.roomSizeX < this.roomSizeMin) {
+                this.roomSizeX = this.roomSizeMin;
             }
-            else if (this.roomSize > this.roomSizeMax) {
-                this.roomSize = this.roomSizeMax;
+            else if (this.roomSizeX > this.roomSizeMax) {
+                this.roomSizeX = this.roomSizeMax;
+            }
+
+            if (this.roomSizeY < this.roomSizeMin) {
+                this.roomSizeY = this.roomSizeMin;
+            }
+            else if (this.roomSizeY > this.roomSizeMax) {
+                this.roomSizeY = this.roomSizeMax;
             }
 
             this.createRoom();
@@ -175,7 +183,7 @@ const vm = {
 
             this.isClickSearch = false;
             for (let row = 0; row < this.room.length; row++) {
-                for (let col = 0; col < this.room.length; col++) {
+                for (let col = 0; col < this.room[row].length; col++) {
                     this.room[row][col].fill = NONE;
                 }
             }
@@ -234,23 +242,29 @@ const vm = {
 
         createRoom() {
             const newRoom = [];
-            const prevRoomSize = this.room.length;
-            for (let row = 0; row < this.roomSize; row++) {
+            for (let row = 0; row < this.roomSizeY; row++) {
                 newRoom.push([]);
-                for (let col = 0; col < this.roomSize; col++) {
-                    if (row < prevRoomSize && col < prevRoomSize) {
-                        newRoom[row].push(this.room[row][col]);
+                for (let col = 0; col < this.roomSizeX; col++) {
+                    newRoom[row].push(cell());
+                }
+            }
+
+            for (let row = 0; row < newRoom.length; row++) {
+                for (let col = 0; col < newRoom[row].length; col++) {
+                    if (row === 0 || row === newRoom.length - 1) {
+                        newRoom[row][col].fill = this.mainFillType;
                     }
-                    else {
-                        newRoom[row].push(cell());
+                    else if (col === 0 || col === newRoom[0].length -1) {
+                        newRoom[row][col].fill = this.mainFillType;
                     }
                 }
             }
+
             this.room = newRoom;
         },
         resetRoom() {
-            for (let row = 0; row < this.roomSize; row++) {
-                for (let col = 0; col < this.roomSize; col++) {
+            for (let row = 0; row < this.roomSizeY; row++) {
+                for (let col = 0; col < this.roomSizeX; col++) {
                     this.room[row][col].fill = NONE;
                 }
             }

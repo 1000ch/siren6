@@ -44,12 +44,21 @@
          :class="{disabled: existsResult}">
       <div>
         <div class="config">
-          <label for="input-size">幅</label>
+          <label for="input-size-y">縦幅</label>
           <plus-minus-input-numbur
-            id="input-size"
+            id="input-size-y"
             :min="roomSizeMin"
             :max="roomSizeMax"
-            v-model="roomSize"
+            v-model="roomSizeY"
+            @change="onChangeRoomSize">
+        </div>
+        <div class="config" style="margin-top: 8px;">
+          <label for="input-size-x">横幅</label>
+          <plus-minus-input-numbur
+            id="input-size-x"
+            :min="roomSizeMin"
+            :max="roomSizeMax"
+            v-model="roomSizeX"
             @change="onChangeRoomSize">
         </div>
         <div class="config" style="margin-top: 8px;">
